@@ -4,6 +4,10 @@ Everything is documented in this folder, as well as in the actual function. Mean
 
 ## Programs
 
+If you make a function for this massive build, you will be credeted here as well as all the functions that you have made.
+
+### Made by dragmine149
+
 [Convert.py](../Program/Convert.py). ([Documentation](./Convert.md)).
 Converts `XY` to `(Y, Z)` (Where X is letter, and Y is a nummber, and Z is a number)
 
