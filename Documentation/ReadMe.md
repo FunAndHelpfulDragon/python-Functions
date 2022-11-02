@@ -28,3 +28,6 @@ Makes a 2d array, prints a 2d array.
 
 [PrintTraceback.py](../Program/PrintTraceback.py). ([Documentation](./PrintTraceback.md)).
 Prints the traceback of a program at any given point
+
+[Watermark.py](../Program/watermark.py). ([Documentation](./watermark.md)).
+Prints off information about you in a nice formatted way. (As well as some information about the program)
