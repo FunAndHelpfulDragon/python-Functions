@@ -57,3 +57,6 @@ class Encrypt(Encryption.Encryption):
 
 ## colours.py
 from Program import colours
+
+## run.py
+from Program import run
