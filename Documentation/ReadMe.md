@@ -31,3 +31,9 @@ Prints the traceback of a program at any given point
 
 [Watermark.py](../Program/watermark.py). ([Documentation](./watermark.md)).
 Prints off information about you in a nice formatted way. (As well as some information about the program)
+
+[Encryption.py](../Program/Encryption.py). ([Documentation](./Encryption.md)).
+Encrypts you data, also decrypts it. (Please read documentation first, important note)
+
+[colours.py](../Program/colours.py). ([Documentation](./colours.md)).
+Dull life? No more. you have colour now!

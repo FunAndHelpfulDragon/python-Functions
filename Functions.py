@@ -48,3 +48,12 @@ def LogTraceback():
 
 ## watermark.py
 from Program import watermark
+
+## Encryption.py
+from Program import Encryption
+class Encrypt(Encryption.Encryption):
+    def __init__(self) -> None:
+        super().__init__()
+
+## colours.py
+from Program import colours

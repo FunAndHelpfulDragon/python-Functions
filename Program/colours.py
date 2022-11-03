@@ -201,11 +201,11 @@ class reverse:
         for dictonary in colours.values():
             for value in dictonary.values():
                 if value.split('[')[1] == self.code:
-                    return True
+                    return "colour"
 
         for value in format.values():
             if value.split('[')[1] == self.code:
-                return True
+                return "format"
 
         # return false if can't find
         return False
