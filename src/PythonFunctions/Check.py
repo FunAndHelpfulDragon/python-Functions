@@ -1,3 +1,6 @@
+"""Checks to see if inputted value matches some rules
+"""
+
 import importlib
 import os
 
@@ -9,7 +12,7 @@ from .Message import Message
 
 
 # Check if the input is a valid input using a whole bunch of data
-class check:
+class Check:
     """Does some checks on the input.
 
     Please read the docmentation for a list of all the checks
@@ -18,7 +21,7 @@ class check:
     def __init__(self) -> None:
         pass
 
-    def __TranslateMode(self, data: str, mode: str, **info):
+    def __translate_Mode(self, data: str, mode: str, **info):
         """Loop through each alvalible check and do stuff
 
         Args:
@@ -31,9 +34,9 @@ class check:
         Returns:
             _type_: Result of the check
         """
-        pathLocation = os.path.realpath(__file__)
-        pathInfo = os.path.split(pathLocation)
-        for external in Clean().clean(f"{pathInfo[0]}/Checks"):
+        path_Location = os.path.realpath(__file__)
+        path_Info = os.path.split(path_Location)
+        for external in Clean().clean(f"{path_Info[0]}/Checks"):
             if external[:-3] == mode:
                 module = importlib.import_module(f"{Checks.__package__}.{mode}")
                 return module.check(data, Message, ID, **info)
@@ -63,7 +66,7 @@ class check:
         while check is None:
             check = input(f"{c(colour)}{msg}{c()}")
 
-            result = self.__TranslateMode(check, mode, **info)
+            result = self.__translate_Mode(check, mode, **info)
             if result is None:
                 check = None
                 continue

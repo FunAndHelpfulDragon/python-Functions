@@ -130,7 +130,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
 
     def __GetListInput(self):
         try:
-            v = Check.check().getInput(
+            v = Check().getInput(
                 "Please enter the number you want to select: ",
                 "int",
                 lower=self.__lowest,

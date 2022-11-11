@@ -1,6 +1,6 @@
 # Credit: Dragmine149
 from . import Board, colours, run
-from .Check import check
+from .Check import Check
 from .CleanFolderData import Clean
 from .Convert import LocationConvert as LocConv
 from .Encryption import Encryption

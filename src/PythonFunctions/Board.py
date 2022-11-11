@@ -10,7 +10,7 @@ import typing
 from .colours import c
 
 
-def CreateBoard(x: int, y: int, *, value: str = "-") -> typing.List[typing.List]:
+def CreateBoard(x_len: int, y_len: int, *, value: str = "-") -> typing.List[typing.List]:
     """Create a 2D array that is like a board
 
     Args:
@@ -22,27 +22,27 @@ def CreateBoard(x: int, y: int, *, value: str = "-") -> typing.List[typing.List]
         typing.List[typing.List]: The array result
     """
     board = []
-    for _ in range(y):  # Y size (height)
-        xLen = []
-        for _ in range(x):  # X size (width)
-            xLen.append(value)
-        board.append(xLen)
+    for _ in range(y_len):  # Y size (height)
+        x_Grid = []
+        for _ in range(x_len):  # X size (width)
+            x_Grid.append(value)
+        board.append(x_Grid)
     return board
 
 
-def DisplayBoard(board: typing.List[typing.List], *, colourInfo={}):
+def DisplayBoard(board: typing.List[typing.List], *, colourInfo: typing.DefaultDict=None):
     """Displays the inputted board
 
     Args:
         board (typing.List[typing.List]): The board (2D array) to show
-        colourInfo (dict, optional): The list of data that represent the colour of each value on the board. Defaults to {}.
+        colourInfo (dict, optional): The colour info of the grid. Defaults to {}.
     """
-    for y in board:
-        for x in y:
-            if x in colourInfo:
-                print(f"{c(colourInfo[x])}{x}{c()}", end="")
+    for y_Index in board:
+        for x_Index in y_Index:
+            if x_Index in colourInfo:
+                print(f"{c(colourInfo[x_Index])}{x_Index}{c()}", end="")
             else:
-                print(x, end="")
+                print(x_Index, end="")
         print()
 
 

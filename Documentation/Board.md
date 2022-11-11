@@ -7,14 +7,14 @@ FILE: [Board.py](../PythonFunctions/Board.py)
 Used to quicky create a 2d array or display that 2d array. Useful for creating boards
 
 ```py
-from PythonFunctions import Board
-brd = Board.CreateBoard(3, 5)
+from PythonFunctions import board
+brd = Board.create_Board(3, 5)
 Board.DisplayBoard(brd)
 ```
 
 ## Functions and argumnets
 
-### Creating a board
+### CreateBoard
 
 ```py
 brd = Board.CreateBoard(X, Y, Info='-')
@@ -23,14 +23,12 @@ brd = Board.CreateBoard(X, Y, Info='-')
 This returns a board of X (required) by Y (required) with all the positions in the board being filled in with Info (optional string).
 By default the board looks something like this: `[['-', '-', '-'], ['-', '-', '-']]` but you can change info to be whatever you want.
 
-#### CreateBoard Args
-
-Required:
+Required Arguments:
 
 - X: int
 - Y: int
 
-Optional:
+Optional: Arguments
 
 - Info
 

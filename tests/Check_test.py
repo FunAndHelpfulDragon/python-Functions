@@ -1,9 +1,10 @@
-from . import PythonFunctions
-
-Check = PythonFunctions.check
 import random
 import sys
 from io import StringIO
+
+from . import PythonFunctions
+
+Check = PythonFunctions.Check
 
 
 def int_check(chk: Check):
@@ -19,7 +20,6 @@ def yn_check(chk: Check, vIn: str):
 
 
 chk = Check()
-
 
 def test_int():
     rt = int_check(chk)
