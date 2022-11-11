@@ -19,7 +19,6 @@ Extra help:
 """
 
 
-
 def ConsoleFormat():
     # defines the colours and what they do
     format = {

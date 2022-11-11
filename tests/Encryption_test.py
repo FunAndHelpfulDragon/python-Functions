@@ -3,7 +3,6 @@ from . import PythonFunctions
 Encryption = PythonFunctions.Encryption
 import os
 
-
 enc = Encryption()
 gblKey = None
 
