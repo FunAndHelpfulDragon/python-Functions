@@ -1,7 +1,7 @@
 import os
 import inspect
 import datetime
-from PythonFunctions import colours
+from . import colours
 
 def main(name: str, twitter:str=None, youtube:str=None, github:str=None, *, colour:str=""):
     """

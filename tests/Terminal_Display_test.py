@@ -1,12 +1,12 @@
 from io import StringIO
 import sys
-import importlib
-TD = importlib.import_module("PythonFunctions.TerminalDisplay", "..")
+from . import PythonFunctions
+TD = PythonFunctions.Display
 import pytest
 import random
 
 
-dsp = TD.Display()
+dsp = TD()
 
 def callback(value):
     assert value is not None

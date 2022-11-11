@@ -1,8 +1,8 @@
-import importlib
 import os
-Clean = importlib.import_module('PythonFunctions.CleanFolderData', '..')
+from . import PythonFunctions
+Clean = PythonFunctions.Clean
 
-cln = Clean.Clean()
+cln = Clean()
 
 def test_Clean():
     # Clean the current folder, and make sure that any file ending in .py is not included.

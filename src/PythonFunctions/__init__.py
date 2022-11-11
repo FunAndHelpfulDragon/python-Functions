@@ -3,7 +3,7 @@ from . import Board
 from .Check import check
 from .CleanFolderData import Clean
 from . import colours
-from .Convert import LocationConvert
+from .Convert import LocationConvert as LocConv
 from .TerminalDisplay import Display
 from .Encryption import Encryption
 from .IsDigit import IsDigit

@@ -1,9 +1,12 @@
-import importlib
-Encryption = importlib.import_module("PythonFunctions.Encryption", "..")
+from . import PythonFunctions
+Encryption = PythonFunctions.Encryption
 import os
+import pytest
 
-enc = Encryption.Encryption()
+enc = Encryption()
 gblKey = None
+
+# NOTE: IF these tests (test_Key, test_Encrypt, test_Decrypt) fail, it is on purpose as something broke on the server side (not installed modules)
 
 def test_Key():
     global gblKey
@@ -23,7 +26,7 @@ def test_Decrypt_wrong():
     key = enc.GetKey("encrypt".encode('utf-8'))
     try:
         result = enc.decrypt(key, fileName="EncryptionTest.byte")
-    except Encryption.fernet.InvalidToken:
+    except enc.fernet.InvalidToken:
         assert True
 
 def test_Decrypt_Correct():
@@ -31,11 +34,13 @@ def test_Decrypt_Correct():
     try:
         result = enc.decrypt(gblKey, fileName="EncryptionTest.byte")
         assert result == "Hello"
-    except Encryption.fernet.InvalidToken:
+    except enc.fernet.InvalidToken:
         assert False
 
-def test_CleanUp():
+def test_finish():
     global gblKey
     gblKey = None
-    os.remove("EncryptionTest.byte")
-    assert True
+    try:
+        os.remove("EncryptionTest.byte")
+    except FileNotFoundError:
+        pass

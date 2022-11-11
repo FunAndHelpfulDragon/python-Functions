@@ -3,9 +3,9 @@ import re
 import sys
 import os
 
-from PythonFunctions.colorama.ansi import AnsiFore, AnsiBack, AnsiStyle, Style, BEL
-from PythonFunctions.colorama.winterm import WinTerm, WinColor, WinStyle
-from PythonFunctions.colorama.win32 import windll, winapi_test
+from src.PythonFunctions.colorama.ansi import AnsiFore, AnsiBack, AnsiStyle, Style, BEL
+from src.PythonFunctions.colorama.winterm import WinTerm, WinColor, WinStyle
+from src.PythonFunctions.colorama.win32 import windll, winapi_test
 
 
 winterm = None

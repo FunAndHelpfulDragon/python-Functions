@@ -1,5 +1,5 @@
-from PythonFunctions import Message
-from PythonFunctions import PrintTraceback
+from . import Message
+from . import PrintTraceback
 
 disabled = False
 
@@ -10,13 +10,18 @@ try:
     import hashlib
 except ModuleNotFoundError:
     Message.Message.warn("Failed to load encrypting class (Missing imports!)", timeS=2, colour="red")
-    PrintTraceback.PrintTraceback()
+    try:
+        PrintTraceback.PrintTraceback()
+    except Exception:
+        # Just don't print if failed for some reason
+        pass
     disabled = True
 
 class Encryption:
     def __init__(self) -> None:
         """The major class to encrypt and decrypt data securly
         """
+        self.fernet = fernet
         pass
     
     def GetKey(self, passcode:bytes=None) -> bytes:

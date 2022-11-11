@@ -1,6 +1,7 @@
-import importlib
 import random
-Board = importlib.import_module('PythonFunctions.Board', '..')
+
+from . import PythonFunctions
+Board = PythonFunctions.Board
 
 def rp_test_Size(x:int, y:int):
     """Test that the size input is the correct for size output"""

@@ -42,3 +42,9 @@ def DisplayBoard(board: typing.List[typing.List], *, colourInfo={}):
             else:
                 print(x, end='')
         print()
+
+if __name__ == "__main__":
+    brd = CreateBoard(3, 3, value="+")
+    DisplayBoard(brd, colourInfo={
+        "+": "y"
+    })

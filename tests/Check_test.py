@@ -1,5 +1,5 @@
-import importlib
-Check = importlib.import_module('PythonFunctions.Check', '..')
+from . import PythonFunctions
+Check = PythonFunctions.check
 import sys
 from io import StringIO
 import random
@@ -14,7 +14,7 @@ def yn_check(chk: Check, vIn: str):
     sys.stdin = StringIO(f"{vIn}")
     return chk.getInput("Testing (yn): ", "yn")
 
-chk = Check.check()
+chk = Check()
 def test_int():
     assert int_check(chk)
 

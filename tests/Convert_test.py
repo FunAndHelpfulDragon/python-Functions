@@ -1,10 +1,8 @@
-import importlib
-import os
-Convert = importlib.import_module("PythonFunctions.Convert", "..")
+from . import PythonFunctions
+Convert = PythonFunctions.LocConv
 import pytest
 import random
 import string
-import pytest_repeat
 
 # BAD WAY BUT FOR TESTING PURPOSE
 letters = {
@@ -41,7 +39,7 @@ def test_Convert():
     position = ''.join(random.sample(string.ascii_uppercase, random.randrange(1, 3)))
     
     num = random.randrange(100)
-    result = Convert.LocationConvert().Convert(f"{position}{num}")
+    result = Convert().Convert(f"{position}{num}")
     
     x = 0
     for v in range(len(position)):

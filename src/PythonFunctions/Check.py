@@ -3,6 +3,8 @@ from .Message import Message
 from . import IsDigit as ID
 from .colours import c
 from .CleanFolderData import Clean
+import os
+from . import Checks
 
 # Check if the input is a valid input using a whole bunch of data
 class check:
@@ -26,10 +28,12 @@ class check:
         Returns:
             _type_: Result of the check
         """
-        for external in Clean().clean("PythonFunctions/Checks"):
+        pathLocation = os.path.realpath(__file__)
+        pathInfo = os.path.split(pathLocation)
+        for external in Clean().clean(f"{pathInfo[0]}/Checks"):
             if external[:-3] == mode:
                 module = importlib.import_module(
-                    f"PythonFunctions.Checks.{mode}")
+                    f"{Checks.__package__}.{mode}")
                 return module.check(data, Message, ID, **info)
         
         raise NotImplementedError(f"Mode: {mode} not implemented")

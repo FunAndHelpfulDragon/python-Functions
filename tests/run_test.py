@@ -1,6 +1,6 @@
-import importlib
-run = importlib.import_module("PythonFunctions.run", "..")
-IsDigit = importlib.import_module("PythonFunctions.IsDigit", "..")
+from . import PythonFunctions
+run = PythonFunctions.run
+IsDigit = PythonFunctions.IsDigit
 import pytest
 import time
 
@@ -19,7 +19,7 @@ def test_get_mark():
     except IndexError:
         assert True
     
-    assert IsDigit.IsDigit(run.GetMarkTime(0))
+    assert IsDigit(run.GetMarkTime(0))
 
 def test_compare():
     if len(run.markers) == 0:

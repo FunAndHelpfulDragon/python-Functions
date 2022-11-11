@@ -1,5 +1,5 @@
 # Copyright Jonathan Hartley 2013. BSD 3-Clause license, see LICENSE file.
-import PythonFunctions.colorama.win32 as win32
+import src.PythonFunctions.colorama.win32 as win32
 
 
 # from wincon.h
