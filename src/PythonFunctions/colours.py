@@ -18,49 +18,48 @@ Extra help:
 - Copy codes from ConsoleFormat if needed.
 """
 
-from .colorama import colorama
 
 
 def ConsoleFormat():
     # defines the colours and what they do
     format = {
-        'reset': '\033[0m',
-        'bold': '\033[01m',
-        'disable': '\033[02m',
-        'italic': '\033[03m',
-        'underline': '\033[04m',
-        'reverse': '\033[07m',
-        'strikethrough': '\033[09m',
-        'invisible': '\033[08m',
+        "reset": "\033[0m",
+        "bold": "\033[01m",
+        "disable": "\033[02m",
+        "italic": "\033[03m",
+        "underline": "\033[04m",
+        "reverse": "\033[07m",
+        "strikethrough": "\033[09m",
+        "invisible": "\033[08m",
     }
     colours = {
-        'fg': {
-            'black': '\033[30m',
-            'red': '\033[31m',
-            'green': '\033[32m',
-            'orange': '\033[33m',
-            'blue': '\033[34m',
-            'purple': '\033[35m',
-            'cyan': '\033[36m',
-            'light grey': '\033[37m',
-            'dark grey': '\033[90m',
-            'light red': '\033[91m',
-            'light green': '\033[92m',
-            'yellow': '\033[93m',
-            'light blue': '\033[94m',
-            'pink': '\033[95m',
-            'light cyan': '\033[96m'
+        "fg": {
+            "black": "\033[30m",
+            "red": "\033[31m",
+            "green": "\033[32m",
+            "orange": "\033[33m",
+            "blue": "\033[34m",
+            "purple": "\033[35m",
+            "cyan": "\033[36m",
+            "light grey": "\033[37m",
+            "dark grey": "\033[90m",
+            "light red": "\033[91m",
+            "light green": "\033[92m",
+            "yellow": "\033[93m",
+            "light blue": "\033[94m",
+            "pink": "\033[95m",
+            "light cyan": "\033[96m",
         },
-        'bg': {
-            'black': '\033[40m',
-            'red': '\033[41m',
-            'green': '\033[42m',
-            'orange': '\033[43m',
-            'blue': '\033[44m',
-            'purple': '\033[45m',
-            'cyan': '\033[46m',
-            'light grey': '\033[47m'
-        }
+        "bg": {
+            "black": "\033[40m",
+            "red": "\033[41m",
+            "green": "\033[42m",
+            "orange": "\033[43m",
+            "blue": "\033[44m",
+            "purple": "\033[45m",
+            "cyan": "\033[46m",
+            "light grey": "\033[47m",
+        },
     }
     return format, colours
 
@@ -80,9 +79,12 @@ class Print:
     ]
     """
 
-    def __init__(self, msg, colour=[None, None], options=[
-        None, None, None, None, None, None, None
-    ]):
+    def __init__(
+        self,
+        msg,
+        colour=[None, None],
+        options=[None, None, None, None, None, None, None],
+    ):
         self.msg = msg
 
         # gets the colour and checks it
@@ -113,15 +115,15 @@ class Print:
         return [colour, None]
 
     def __getOptionValues(self):
-        optStr = ''
+        optStr = ""
         _FormatOptions = [
-            'reset',
-            'bold',
-            'disable',
-            'underline',
-            'reverse',
-            'strikethrough',
-            'invisible'
+            "reset",
+            "bold",
+            "disable",
+            "underline",
+            "reverse",
+            "strikethrough",
+            "invisible",
         ]
         # checks if string
         if isinstance(self.options, str):
@@ -133,43 +135,44 @@ class Print:
             if option in _FormatOptions:
                 optStr += self._format[option]
         return optStr
-    
+
     def GetValue(self):
         return self.Value
 
     def __output(self):
         # Take colour and message and print them correctly
-        colourValues = ['', '']
+        colourValues = ["", ""]
 
         # get the foreground colour value
         for i in range(2):
             if self.colour[i] is None:
-                colourValues[i] = ''
+                colourValues[i] = ""
                 break
 
             # background and foreground colour set
             try:
                 colourValue = self.colour[i].lower()
                 if i == 0:
-                    colourValues[i] = self._colours['fg'][colourValue]
+                    colourValues[i] = self._colours["fg"][colourValue]
                 if i == 1:
-                    colourValues[i] = self._colours['bg'][colourValue]
+                    colourValues[i] = self._colours["bg"][colourValue]
 
             except KeyError:
-                colourValues[i] = ''  # don't include one if not present
+                colourValues[i] = ""  # don't include one if not present
             except AttributeError:
-                colourValue[i] = ''
+                colourValue[i] = ""
 
         # print out colours
-        print('{}{}{}{}'.format(self.__getOptionValues(),
-                                colourValues[0],
-                                colourValues[1],
-                                self.msg),
-              end='')  # no end so it reset bg colour as well
+        print(
+            "{}{}{}{}".format(
+                self.__getOptionValues(), colourValues[0], colourValues[1], self.msg
+            ),
+            end="",
+        )  # no end so it reset bg colour as well
 
         # reset to normal afterwards
-        print(self._format['reset'])
-        
+        print(self._format["reset"])
+
         self.value = f"{self.__getOptionValues()}{colourValues[0]}{colourValues[1]}"
 
 
@@ -181,10 +184,11 @@ class reverse:
     -- usage: [code]
     --- code: the code you want to find the name of.
     """
+
     def __init__(self, code):
         # Checks for valid code
         try:
-            self.code = code.split('[')[1]
+            self.code = code.split("[")[1]
         except IndexError:
             self.code = None
 
@@ -197,11 +201,11 @@ class reverse:
         format, colours = ConsoleFormat()
         for dictonary in colours.values():
             for value in dictonary.values():
-                if value.split('[')[1] == self.code:
+                if value.split("[")[1] == self.code:
                     return "colour"
 
         for value in format.values():
-            if value.split('[')[1] == self.code:
+            if value.split("[")[1] == self.code:
                 return "format"
 
         # return false if can't find
@@ -233,36 +237,37 @@ class colourRetrieve:
     """
     Usage: [f, bg, fg][colour, result]
     """
+
     def __init__(self, choice=None):
         self.format, self.colours = ConsoleFormat()
         self.fullName = None
 
         # reset if no input
         if choice is None or len(choice) == 0:
-            self.colourCode = self.format['reset']
+            self.colourCode = self.format["reset"]
         else:
             mode = self.__getMode(choice)
-            self.colourCode = self.format['reset']
+            self.colourCode = self.format["reset"]
 
-            if mode[0] == 'colours':
+            if mode[0] == "colours":
                 self.colourCode = self.__getColour(mode)
-            if mode[0] == 'format':
+            if mode[0] == "format":
                 self.colourCode = self.__getFormat(choice)
 
     def __getMode(self, choice):
         # take first 2 and get result
         if len(choice) == 1:
-            return 'colours', 'fg', choice
+            return "colours", "fg", choice
         f2L = choice[0] + choice[1]
 
         # process result
-        if f2L == 'bg':
-            return 'colours', 'bg', choice[2:]
-        if f2L == 'fg':
-            return 'colours', 'fg', choice[2:]
-        if choice[0] == 'f':
-            return 'format', ''
-        return 'colours', 'fg', choice[2:]  # default
+        if f2L == "bg":
+            return "colours", "bg", choice[2:]
+        if f2L == "fg":
+            return "colours", "fg", choice[2:]
+        if choice[0] == "f":
+            return "format", ""
+        return "colours", "fg", choice[2:]  # default
 
     def __getColour(self, mode):
         choice = mode[2]
@@ -275,12 +280,12 @@ class colourRetrieve:
         # checks for first letter
         for option in self.colours[mode[1]]:
             self.fullName = option
-            if option[:len(choice)] == choice:
+            if option[: len(choice)] == choice:
                 return self.colours[mode[1]][option]
 
             # checks for multi word
-            if choice[0] == 'l' or choice[0] == 'd':
-                if option[6:6 + len(choice[1:])] == choice[1:]:
+            if choice[0] == "l" or choice[0] == "d":
+                if option[6 : 6 + len(choice[1:])] == choice[1:]:
                     return self.colours[mode[1]][option]
 
         raise ValueError("Invalid colour inputted!")
@@ -295,19 +300,19 @@ class colourRetrieve:
         # check for letter
         for option in self.format:
             self.fullName = option
-            if option[:len(choice)] == choice:
+            if option[: len(choice)] == choice:
                 return self.format[option]
 
-        raise ValueError('Invalid format option inputted!')
+        raise ValueError("Invalid format option inputted!")
 
 
 # run python colours.py to see the results from this
 def test_Test():
     print("Normal Colour")
-    print('{}Hello{}World{}'.format(c('fgr'), c() + c('bgg'), c()))
+    print("{}Hello{}World{}".format(c("fgr"), c() + c("bgg"), c()))
     Print("Hello World", ["dark grey", "cyan"], ["bold", "underline"])
     return True
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     assert test_Test()

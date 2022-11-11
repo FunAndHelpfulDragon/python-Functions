@@ -1,6 +1,8 @@
 import time
+
 start = time.time()
 markers = []
+
 
 def Mark() -> int:
     """Add a new marker
@@ -10,6 +12,7 @@ def Mark() -> int:
     """
     markers.append(time.time())
     return len(markers)
+
 
 def GetMarkTime(i: int) -> float:
     """Return the time at the mark
@@ -22,7 +25,8 @@ def GetMarkTime(i: int) -> float:
     """
     return markers[i]
 
-def CompareIndex(a: int, b:int) -> float:
+
+def CompareIndex(a: int, b: int) -> float:
     """Compare the time differences between 2 points in the marker index
 
     Args:
@@ -33,6 +37,7 @@ def CompareIndex(a: int, b:int) -> float:
         float: The time difference
     """
     return markers[b] - markers[a]
+
 
 def End() -> float:
     """Returns the time since the program started

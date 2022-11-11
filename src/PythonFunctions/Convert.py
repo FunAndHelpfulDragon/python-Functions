@@ -1,5 +1,7 @@
-from . import Message
 import typing
+
+from . import Message
+
 
 # Converts the input to a valid location (a1 -> [0,0])
 class LocationConvert:
@@ -9,14 +11,14 @@ class LocationConvert:
         Args:
             value (str): The position to translate
         """
-        self.letters:str = ""
-        self.y:str = ""
+        self.letters: str = ""
+        self.y: str = ""
 
     # Thanks to Guy_732
     # changes letter to number based in the alphabet
     def _decode(self, s: str) -> int:
         s = s.lower()
-        ref = ord('a') - 1
+        ref = ord("a") - 1
         v = 0
         exp = 1
         for c in reversed(s):
@@ -25,11 +27,11 @@ class LocationConvert:
 
         return v
 
-    def Convert(self, value:str) -> typing.Tuple:
+    def Convert(self, value: str) -> typing.Tuple:
         """Main convert function
 
         Args:
-            value: (str) 
+            value: (str)
 
         Returns:
             Tuple: The cooridnate position
@@ -37,25 +39,34 @@ class LocationConvert:
         if len(value) >= 2:
             # lower input
             value = value.lower().strip()
-            
+
             # splits the input into numbers and letters
             for v in value:
                 if v.isdigit():
                     self.y += v
                 else:
                     self.letters += v
-            
+
             # Checks if there is at least 1 character that is not a letter
             if self.letters == value:
-                Message.Message().clear("Must be at least two digits, a letter (x) and a number (y)", timeS=1, colour=["orange"])  # noqa
+                Message.Message().clear(
+                    "Must be at least two digits, a letter (x) and a number (y)",
+                    timeS=1,
+                    colour=["orange"],
+                )  # noqa
                 return None, None
 
             # convert letters into numbers
             return self._decode(self.letters) - 1, (int(self.y) - 1)
-        
+
         # Not enough characters
-        Message.Message().clear("Must be at least two digits, a letter (x) and a number (y)", timeS=1, colour=["orange"])  # noqa
+        Message.Message().clear(
+            "Must be at least two digits, a letter (x) and a number (y)",
+            timeS=1,
+            colour=["orange"],
+        )  # noqa
         return None, None
+
 
 if __name__ == "__main__":
     data = LocationConvert("A3").Convert()

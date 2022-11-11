@@ -1,8 +1,10 @@
 from . import PythonFunctions
+
 Convert = PythonFunctions.LocConv
-import pytest
 import random
 import string
+
+import pytest
 
 # BAD WAY BUT FOR TESTING PURPOSE
 letters = {
@@ -31,21 +33,22 @@ letters = {
     "W": 23,
     "X": 24,
     "Y": 25,
-    "Z": 26
+    "Z": 26,
 }
+
 
 @pytest.mark.repeat(3)
 def test_Convert():
-    position = ''.join(random.sample(string.ascii_uppercase, random.randrange(1, 3)))
-    
+    position = "".join(random.sample(string.ascii_uppercase, random.randrange(1, 3)))
+
     num = random.randrange(100)
     result = Convert().Convert(f"{position}{num}")
-    
+
     x = 0
     for v in range(len(position)):
         numo = letters.get(position[v])
         x *= 26
         x += numo
-    
+
     assert result[0] == x - 1
     assert result[1] == num - 1

@@ -5,6 +5,8 @@ Arguments:
 ----------
 None
 """
+
+
 def check(value, Message, ID, **_):
     value = value.strip()
 
