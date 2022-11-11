@@ -10,7 +10,9 @@ import typing
 from .colours import c
 
 
-def CreateBoard(x_len: int, y_len: int, *, value: str = "-") -> typing.List[typing.List]:
+def CreateBoard(
+    x_len: int, y_len: int, *, value: str = "-"
+) -> typing.List[typing.List]:
     """Create a 2D array that is like a board
 
     Args:
@@ -30,7 +32,9 @@ def CreateBoard(x_len: int, y_len: int, *, value: str = "-") -> typing.List[typi
     return board
 
 
-def DisplayBoard(board: typing.List[typing.List], *, colourInfo: typing.DefaultDict=None):
+def DisplayBoard(
+    board: typing.List[typing.List], *, colourInfo: typing.DefaultDict = None
+):
     """Displays the inputted board
 
     Args:

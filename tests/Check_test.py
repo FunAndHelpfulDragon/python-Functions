@@ -21,6 +21,7 @@ def yn_check(chk: Check, vIn: str):
 
 chk = Check()
 
+
 def test_int():
     rt = int_check(chk)
     if rt == 0:
