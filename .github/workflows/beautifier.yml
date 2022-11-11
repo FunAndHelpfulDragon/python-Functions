@@ -24,7 +24,7 @@ jobs:
         python -m isort .
         python -m black .
         python -m flake8 .  --exit-zero
-        python -m autoflake --remove-all-unused-imports --remove-unused-variables --in-place -r .
+        python -m autoflake --remove-unused-variables --in-place -r .
 
     - name: typings
       run: |
