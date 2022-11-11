@@ -16,7 +16,11 @@ def yn_check(chk: Check, vIn: str):
 
 chk = Check()
 def test_int():
-    assert int_check(chk)
+    rt = int_check(chk)
+    if rt == 0:
+        assert True
+        return
+    assert rt
 
 def test_yes():
     assert yn_check(chk, "y") == True
