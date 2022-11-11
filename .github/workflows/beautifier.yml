@@ -30,6 +30,7 @@ jobs:
       run: |
         stubgen -p src -o typings
         stubgen -p tests -o typings
+        stubgen -p src/PythonFunctions -o typings
 
     - name: send those file back pzlpzlpzlpzlz
       uses: EndBug/add-and-commit@v7.5.0
