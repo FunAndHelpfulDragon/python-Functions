@@ -1,9 +1,10 @@
-from Program import Message
-from Program import PrintTraceback
+from PythonFunctions import Message
+from PythonFunctions import PrintTraceback
 
 disabled = False
 
 try:
+    import cryptography.fernet as fernet
     from cryptography.fernet import Fernet
     import base64
     import hashlib

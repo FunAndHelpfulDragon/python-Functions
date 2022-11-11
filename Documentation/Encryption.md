@@ -1,6 +1,6 @@
 # Encryption.py
 
-FILE: [Encryption.py](../Program/Encryption.py)
+FILE: [Encryption.py](../PythonFunctions/Encryption.py)
 
 Encrypts and decrypts data.
 
@@ -24,11 +24,26 @@ encryptClass.decrypt(key, fileNam="Hello")
 
 Just three simple functions to encrypt and decrypt your data.
 
+### Function and arguments
+
+#### encrypt
+
 ```py
 encryptClass.encrypt("Hello World", key, fileName="Hello")
 ```
 
 This above function just encrypts the data `"Hello World"` (Which can be anything not just string) with the key and saves it under the fileName. You can then read the file all you want, but you won't be able to read the data as it's been ecrypted.
+
+Required Arguments:
+
+- Data: any (The data to encrypt and save)
+- Key: bytes (The key to encrypt with)
+
+Optional Arguments:
+
+- fileName: str (The name of the file to save to)
+
+#### decrypt
 
 ```py
 encryptClass.decrypt(key, fileName="Hello")
@@ -36,13 +51,27 @@ encryptClass.decrypt(key, fileName="Hello")
 
 This above function just decrypts data saved in fileName. If the key is not the same as the original key used to store the data, the data will still be decrypted but not in the correct way, causing errors in the data if you try to use it like you would normally use it.
 
+Required Arguments:
+
+- Key: bytes (The same key to decrypt with)
+
+Optional Arguments:
+
+- fileName: str (The name of the file to decrypt)
+
+#### GetKey
+
 ```py
 encryptClass.GetKey("Hello".encode('utf-8'))
 ```
 
 This above function translates an encoded `utf-8` string into a better string for use in a key. This way you can use whatever key you would want to use. If this is left blank, then the program will automatically generate a passcode for you. If you loose this, you might not be able to get your data back.
 
-## Requirements
+Optional Arguments:
+
+- key: str (Encoded `utf-8` custom made key)
+
+## Module Requirements
 
 This file is one of the small list of files that require other modules which i didn't make. As so, you will have to manually install them. Most of the time, i would import the package into the project myself, and just use a slightly older version however for encypting data it is easier (and keeps your data safer) if the latest version of the software gets used.
 

@@ -1,4 +1,4 @@
-from Program.colours import Print
+from PythonFunctions.colours import Print
 import os
 import time
 import typing

@@ -37,11 +37,13 @@ class Clean:
         Returns:
             typing.List[str]: The new list without hidden files
         """
-        for folder in data:
-            if folder.startswith(".") or folder.startswith("__"):
-                data.pop(data.index(folder))
         
-        return data
+        newData = []
+        for folder in data:
+            if not folder.startswith(".") and not folder.startswith("__"):
+                newData.append(folder)
+        
+        return newData
     
     def RemoveReserved(self, data: typing.List[str], reserved: typing.List[str]) -> typing.List[str]:
         """Remove any files that are resereved for other purposes that have not already been accounted for
@@ -53,11 +55,17 @@ class Clean:
         Returns:
             typing.List[str]: The new list with the removed files
         """
-        for file in data:
-            if file in reserved:
-                data.pop(data.index(file))
+        # Checks if there are actually stuff to remove
+        if len(reserved) == 0:
+            return data
         
-        return data
+        newData = []
+        for file in data:
+            if file not in reserved:
+                newData.append(file)
+                continue
+        
+        return newData
 
     def clean(self, path:str, reserved: typing.List[str] = []) -> typing.List[str]:
         """Returns the finished product of cleaning up the path

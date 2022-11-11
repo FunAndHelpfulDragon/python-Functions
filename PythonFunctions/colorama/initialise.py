@@ -3,7 +3,7 @@ import atexit
 import contextlib
 import sys
 
-from ansitowin32 import AnsiToWin32
+from PythonFunctions.colorama.ansitowin32 import AnsiToWin32
 
 
 orig_stdout = None

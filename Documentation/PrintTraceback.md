@@ -1,12 +1,12 @@
 # PrintTraceback.py
 
-FILE: [PrintTraceback.py](../Program/PrintTraceback.py)
+FILE: [PrintTraceback.py](../PythonFunctions/PrintTraceback.py)
 
 ## Usage
 
 ```py
-import Functions
-Functions.LogTraceback()
+from PythonFunctions import PrintTraceback
+PrintTraceback()
 ```
 
-To print the traceback at any given point. Very simple file
+To print the traceback at any given point. Very simple file. No arguments needed at all

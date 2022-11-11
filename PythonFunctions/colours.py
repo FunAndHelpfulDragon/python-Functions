@@ -18,10 +18,7 @@ Extra help:
 - Copy codes from ConsoleFormat if needed.
 """
 
-# from Program.colorama import colorama
-import importlib
-import re
-colorama = importlib.import_module('.colorama', 'Program.colorama')
+from .colorama import colorama
 
 
 def ConsoleFormat():
@@ -248,29 +245,27 @@ class colourRetrieve:
             self.colourCode = self.format['reset']
 
             if mode[0] == 'colours':
-                self.colourCode = self.__getColour(choice, mode)
+                self.colourCode = self.__getColour(mode)
             if mode[0] == 'format':
                 self.colourCode = self.__getFormat(choice)
 
     def __getMode(self, choice):
         # take first 2 and get result
         if len(choice) == 1:
-            return 'colours', 'fg'
+            return 'colours', 'fg', choice
         f2L = choice[0] + choice[1]
 
         # process result
         if f2L == 'bg':
-            return 'colours', 'bg'
+            return 'colours', 'bg', choice[2:]
         if f2L == 'fg':
-            return 'colours', 'fg'
+            return 'colours', 'fg', choice[2:]
         if choice[0] == 'f':
             return 'format', ''
-        return 'colours', 'fg'  # default
+        return 'colours', 'fg', choice[2:]  # default
 
-    def __getColour(self, choice, mode):
-        # checks what needs to be found
-        if mode[0] != 'colours':
-            choice = choice[2:]
+    def __getColour(self, mode):
+        choice = mode[2]
 
         # checks if whole word
         if choice in self.colours[mode[1]]:

@@ -1,47 +1,65 @@
-# Clean Folder Data
+# CleanFolderData.py
 
-FILE: [CleanFolderData.py](../Program/CleanFolderData.py)
+FILE: [CleanFolderData.py](../PythonFunctions/CleanFolderData.py)
 Cleans the folder data returned by os.listdir to not include any hidden or reserved files
 
-## Basic Usage
+## Usage
 
 ```py
-import Functions
-clean = Functions.Clean()
-data = clean.clean("../Program")
-print(data)
+from PythonFunctions import Clean
+folder = Clean().clean(".")
 ```
 
-Above is the bare minimum to get this to work, This takes the folder `../Program` and returns a list without specified rules.
-This function does everything that the below functions do in one.
+Above is an example that will remove files starting with `.` or `__` in the folder that the program is run. And returns the list.
 
-## Functions and more
+## Function and Arguments
+
+### GetData
 
 ```py
-# Returns the data stored in '../Program'
-data = clean.GetData(path="../Program")
+data = Clean().GetData("PythonFunctions")
 ```
 
-Here `path` is of type string, and `data` is of type list. The program will allow path to be a list but will just return the list instead of any folers that list might find
+This returns all the files and folders stored in the path `PythonFunctions` Basically the same as doing `os.listdir("PythonFunctions")`.
+
+Required Arguments:
+
+- path: str (where to list folder and file data)
+
+### RemoveHidden
 
 ```py
-# Returns the data without files starting with '.' or __'
-data = clean.RemoveHidden(data=["Temp.md", ".Hidden", "__pycache__"])  # Returns ["Temp.md"]
+data = Clean().RemoveHidden(data)
 ```
 
-Here `data` is of type list, for both in and out. The first data can be renamed if you want, but it's easier and recommended to just use the output as the new data.
+This removes all the hidden files that the pervious function returns. The hidden files are files that startswith `.`or `__`.
+
+Requierd Arguments:
+
+- data: list[] (A list of strings)
+
+### RemoveRserved
 
 ```py
-# Returns the data without files in the reserved list (if any)
-data = clean.RemoveReserved(data=["Temp.md", "name.txt", "Game", "Reserved.md"], reserved=["name.txt", "Reserved.md"])  # returns ["Temp.md", "Game"]
+data = Clean().RemoveReserved(data, reserved=["name.txt", "Reserved.md"])
 ```
 
-Here `data` is of type list, `reserved` is of type list.
+This removes all files in data that are also in the reserved list. Currently does not support file syntax with `*.py` or `b*`
+
+Required Arguments:
+
+- data: list[] (A list of strings)
+- reserved: list[] (Another list of strings)
+
+### clean
 
 ```py
-# Returns the finished product of all of the above functions.
-data = clean.clean(path="../Program", reserved=["Info.md"])
+data = Clean().clean(".", [".secret"])
 ```
 
-Here `data` is of type list, `path` is of type string, `reserved` is of type list. This does the above 3 functions but all in one.
-NOTE: `reserved` here is optional and does not have to be included.
+This does the same thing as all 3 above functions do. Just automatic and with some more checks.
+
+Required Arguments:
+
+- path: str (The path to clean)
+- reserved: list (A list of strings to remove from the path)

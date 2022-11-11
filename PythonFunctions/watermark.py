@@ -1,8 +1,9 @@
 import os
 import inspect
 import datetime
+from PythonFunctions import colours
 
-def main(name: str, twitter:str="", youtube:str="", github:str=""):
+def main(name: str, twitter:str=None, youtube:str=None, github:str=None, *, colour:str=""):
     """
     Prints off a watermark / header style thing on call.
     
@@ -27,13 +28,17 @@ def main(name: str, twitter:str="", youtube:str="", github:str=""):
     line = '-' * os.get_terminal_size().columns
 
     # Gets data
-    data = "Nothing linked"
-    if twitter != "":
+    data = ""
+    if twitter != None:
         data += f"\u001b]8;;{twitter}\u001b\\Twitter\u001b]8;;\u001b\\, "
-    if youtube != "":
+    if youtube != None:
         data += f"\u001b]8;;{youtube}\u001b\\Youtube\u001b]8;;\u001b\\, "
-    if github != "":
+    if github != None:
         data += f"\u001b]8;;{github}\u001b\\Github\u001b]8;;\u001b\\"
+    
+    # If data is null
+    if data == "":
+        data = "Nothing linked"
     
     mydata = ""
     mydata += f"\u001b]8;;{twitURL}\u001b\\Twitter\u001b]8;;\u001b\\, "
@@ -44,11 +49,11 @@ def main(name: str, twitter:str="", youtube:str="", github:str=""):
     ctime = datetime.datetime.now()
 
     print("\x1b[2J\x1b[H", end='')
-    print(f"""{line}
+    print(f"""{colours.c(colour)}{line}{colours.c()}
 {fileName} made by {name} ({data}). 
 Contains Functions.py made by dragmine149 ({mydata}). 
 Activation Time: {ctime.hour}:{ctime.minute}:{ctime.second}
-{line}""")
+{colours.c(colour)}{line}{colours.c()}""")
 
 if __name__ == "__main__":
     main("drag")

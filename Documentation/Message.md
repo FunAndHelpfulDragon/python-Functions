@@ -1,37 +1,29 @@
 # Message.py
 
-FILE: [Message.py](../Program/Message.py)
+FILE: [Message.py](../PythonFunctions/Message.py)
 
 Another way to handle logging stuff in the console
 
 ## Usage
 
 ```py
-import Functions
-Functions.Message.warn("Hello World", timeS=2)
-Functions.Message.clear("Goodbye", timeS=2)
+from PythonFunctions import Message
+Message.warn("Hello World", timeS=2)
+Message.clear("Goodbye", timeS=2)
 ```
 
 Above are some examples of what you can do. There are more things that can also be done and more detail about things.
 
-```py
-Functions.Message.warn()
-```
+### Function and arguments
 
-By default, will just print nothing. But will accept arguments to print whatever you need.
+Both functions take the same base arguments, but clear takes more optional arguments.
 
-### Arguments
+Optional Argumnets:
 
-Message (message to print): str (Example: `"Hello World"`)
+- Message: str (Message to print)
+- timeS: int (Time to wait before continuing)
+- colour: array (Colour of the message, see [colours.md](./colours.md))
 
-timeS (time to wait before continuing): int (Example: `3`)
+Clear Optional Argument ONLY
 
-colour (colour of the message): [] (Example: `["red", "black"]`)
-
-- Note: you do not need all the colours here, one will do just fine
-
-Using all arguments it looks something like this:
-
-```py
-Functions.Message.warn("Hello World", timeS=3, colour=["red", "black"])
-```
+- Delete: bool (Whever to use the clear command, or just to print a whole bunch of empty lines)
