@@ -27,7 +27,9 @@ jobs:
         python -m autoflake --remove-all-unused-imports --remove-unused-variables --in-place -r .
 
     - name: typings
-      run: make stubgen
+      run: |
+        stubgen -p src -o typings
+        stubgen -p tests -o typings
 
     - name: send those file back pzlpzlpzlpzlz
       uses: EndBug/add-and-commit@v7.5.0
