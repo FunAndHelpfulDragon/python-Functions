@@ -1,21 +1,24 @@
 import importlib
-from .Message import Message
-from . import IsDigit as ID
-from .colours import c
-from .CleanFolderData import Clean
 import os
+
 from . import Checks
+from . import IsDigit as ID
+from .CleanFolderData import Clean
+from .colours import c
+from .Message import Message
+
 
 # Check if the input is a valid input using a whole bunch of data
 class check:
     """Does some checks on the input.
-        
+
     Please read the docmentation for a list of all the checks
     """
+
     def __init__(self) -> None:
         pass
 
-    def __TranslateMode(self, data:str, mode:str, **info):
+    def __TranslateMode(self, data: str, mode: str, **info):
         """Loop through each alvalible check and do stuff
 
         Args:
@@ -32,13 +35,12 @@ class check:
         pathInfo = os.path.split(pathLocation)
         for external in Clean().clean(f"{pathInfo[0]}/Checks"):
             if external[:-3] == mode:
-                module = importlib.import_module(
-                    f"{Checks.__package__}.{mode}")
+                module = importlib.import_module(f"{Checks.__package__}.{mode}")
                 return module.check(data, Message, ID, **info)
-        
+
         raise NotImplementedError(f"Mode: {mode} not implemented")
-        
-    def getInput(self, msg: str, mode:str, *, colour:str="", **info):
+
+    def getInput(self, msg: str, mode: str, *, colour: str = "", **info):
         """Translate the user input, through the check and returns
 
         Args:
@@ -50,23 +52,23 @@ class check:
         Returns:
             _type_: The result of the check
         """
-        
+
         # HAHAHA Force them to use colon space
         if msg.endswith(":") and not msg.endswith(" "):
             msg += " "
         elif not msg.endswith(": "):
             msg += ": "
-        
+
         check = None
         while check is None:
             check = input(f"{c(colour)}{msg}{c()}")
-            
+
             result = self.__TranslateMode(check, mode, **info)
             if result is None:
                 check = None
                 continue
-            
+
             return result
-        
+
         # If check is none, just send it back i suppose.
         return check

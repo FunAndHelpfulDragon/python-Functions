@@ -6,10 +6,11 @@ Functions:
 """
 
 import typing
+
 from .colours import c
 
 
-def CreateBoard(x: int, y: int, *, value: str = '-') -> typing.List[typing.List]:
+def CreateBoard(x: int, y: int, *, value: str = "-") -> typing.List[typing.List]:
     """Create a 2D array that is like a board
 
     Args:
@@ -28,6 +29,7 @@ def CreateBoard(x: int, y: int, *, value: str = '-') -> typing.List[typing.List]
         board.append(xLen)
     return board
 
+
 def DisplayBoard(board: typing.List[typing.List], *, colourInfo={}):
     """Displays the inputted board
 
@@ -38,13 +40,12 @@ def DisplayBoard(board: typing.List[typing.List], *, colourInfo={}):
     for y in board:
         for x in y:
             if x in colourInfo:
-                print(f"{c(colourInfo[x])}{x}{c()}", end='')
+                print(f"{c(colourInfo[x])}{x}{c()}", end="")
             else:
-                print(x, end='')
+                print(x, end="")
         print()
+
 
 if __name__ == "__main__":
     brd = CreateBoard(3, 3, value="+")
-    DisplayBoard(brd, colourInfo={
-        "+": "y"
-    })
+    DisplayBoard(brd, colourInfo={"+": "y"})

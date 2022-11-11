@@ -1,11 +1,10 @@
 import os
 import typing
 
+
 class Clean:
     def __init__(self) -> None:
-        """Cleans up the path and removes unnessecary files
-        """
-        pass
+        """Cleans up the path and removes unnessecary files"""
 
     def GetData(self, path: str) -> typing.List:
         """Returns the files stored in a given path
@@ -19,15 +18,15 @@ class Clean:
         # If list, just use that instead
         if type(path) == typing.List:
             return path
-        
+
         if path is None:
             return []
-        
+
         try:
-            return os.listdir(path)        
+            return os.listdir(path)
         except FileNotFoundError:
             return []
-    
+
     def RemoveHidden(self, data: typing.List[str]) -> typing.List[str]:
         """Removes files and folders that start with `.` or `__`
 
@@ -37,15 +36,17 @@ class Clean:
         Returns:
             typing.List[str]: The new list without hidden files
         """
-        
+
         newData = []
         for folder in data:
             if not folder.startswith(".") and not folder.startswith("__"):
                 newData.append(folder)
-        
+
         return newData
-    
-    def RemoveReserved(self, data: typing.List[str], reserved: typing.List[str]) -> typing.List[str]:
+
+    def RemoveReserved(
+        self, data: typing.List[str], reserved: typing.List[str]
+    ) -> typing.List[str]:
         """Remove any files that are resereved for other purposes that have not already been accounted for
 
         Args:
@@ -58,16 +59,16 @@ class Clean:
         # Checks if there are actually stuff to remove
         if len(reserved) == 0:
             return data
-        
+
         newData = []
         for file in data:
             if file not in reserved:
                 newData.append(file)
                 continue
-        
+
         return newData
 
-    def clean(self, path:str, reserved: typing.List[str] = []) -> typing.List[str]:
+    def clean(self, path: str, reserved: typing.List[str] = []) -> typing.List[str]:
         """Returns the finished product of cleaning up the path
 
         Args:
@@ -82,19 +83,20 @@ class Clean:
         # Earily return
         if len(data) == 0:
             return data
-        
+
         # Remove hidden
         data = self.RemoveHidden(data)
-        
+
         if len(data) == 0:
             return data
-        
+
         # Remove reserved files
         reserved.append("Desktop.ini")  # windows non hidden
-        reserved.append("$RECYCLE.BIN") # windows non hidden
-        
+        reserved.append("$RECYCLE.BIN")  # windows non hidden
+
         data = self.RemoveReserved(data, reserved)
         return data
+
 
 if __name__ == "__main__":
     clean = Clean()

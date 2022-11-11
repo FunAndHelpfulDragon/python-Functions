@@ -1,5 +1,4 @@
-from . import key
-from . import readchar_main
+from . import key, readchar_main
 
 readchar = readchar_main.readchar
 readkey = readchar_main.readkey
