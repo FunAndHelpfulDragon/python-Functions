@@ -3,6 +3,7 @@
 
 import importlib
 import os
+import dataclasses
 
 from . import Checks
 from . import IsDigit as ID
@@ -12,6 +13,7 @@ from .Message import Message
 
 
 # Check if the input is a valid input using a whole bunch of data
+@dataclasses.dataclass
 class Check:
     """Does some checks on the input.
 

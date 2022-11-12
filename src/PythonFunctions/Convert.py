@@ -1,16 +1,20 @@
+"""Convert a string of A and I to (A, I)"""
+
 import typing
+import dataclasses
 
 from . import Message
 
 
 # Converts the input to a valid location (a1 -> [0,0])
+@dataclasses.dataclass
 class LocationConvert:
-    def __init__(self):
-        """Convert a letter and a number, to a position array
+    """Convert a letter and a number, to a position array
 
-        Args:
-            value (str): The position to translate
-        """
+    Args:
+        value (str): The position to translate
+    """
+    def __init__(self):
         self.letters: str = ""
         self.y: str = ""
 
@@ -49,7 +53,7 @@ class LocationConvert:
 
             # Checks if there is at least 1 character that is not a letter
             if self.letters == value:
-                Message.Message().clear(
+                Message().clear(
                     "Must be at least two digits, a letter (x) and a number (y)",
                     timeS=1,
                     colour=["orange"],
@@ -60,14 +64,9 @@ class LocationConvert:
             return self._decode(self.letters) - 1, (int(self.y) - 1)
 
         # Not enough characters
-        Message.Message().clear(
+        Message().clear(
             "Must be at least two digits, a letter (x) and a number (y)",
             timeS=1,
             colour=["orange"],
         )  # noqa
         return None, None
-
-
-if __name__ == "__main__":
-    data = LocationConvert("A3").Convert()
-    print(data)

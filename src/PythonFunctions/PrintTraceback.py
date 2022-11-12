@@ -1,3 +1,4 @@
+"""Prints the traceback if an error is caught from an try except statement"""
 import os
 import traceback
 

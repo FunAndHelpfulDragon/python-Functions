@@ -114,10 +114,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         )
 
     def __ShowList(self):
-        optionList = {
-            key: val
-            for key, val in sorted(self.options.items(), key=lambda ele: ele[0])
-        }
+        optionList = dict(sorted(self.options.items(), key=lambda ele: ele[0]))
 
         negList = []
         for opt in optionList:
