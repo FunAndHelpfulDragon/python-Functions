@@ -1,20 +1,23 @@
-from . import PythonFunctions
+"""Test to do with run and time"""
 
+import time
+import pytest
+
+from . import PythonFunctions
 run = PythonFunctions.run
 IsDigit = PythonFunctions.IsDigit
-import time
-
-import pytest
 
 
 @pytest.mark.repeat(5)
 def test_mark():
+    """Marking..."""
     index = run.Mark()
     assert index > 0
     assert len(run.markers) == index
 
 
 def test_get_mark():
+    """Reading..."""
     if len(run.markers) == 0:
         run.Mark()
 
@@ -27,6 +30,7 @@ def test_get_mark():
 
 
 def test_compare():
+    "Comparing..."
     if len(run.markers) == 0:
         run.Mark()
         time.sleep(0.05)

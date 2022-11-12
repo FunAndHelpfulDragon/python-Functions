@@ -64,7 +64,7 @@ def main(
     print("\x1b[2J\x1b[H", end="")
     print(
         f"""{colours.c(colour)}{line}{colours.c()}
-{fileName} made by {name} ({data}). 
+{fileName} made by {name} ({data}).
 Contains Functions.py made by dragmine149 ({mydata}).
 Activation Time: {ctime.hour}:{ctime.minute}:{ctime.second}
 {colours.c(colour)}{line}{colours.c()}"""
