@@ -26,7 +26,7 @@ def test_Key():
 
 def test_Encrypt():
     """Test to see if encryption is good"""
-    with open("key.keybyte", "rb") as f:
+    with open("Key.keybyte", "rb") as f:
         key = f.read()
 
     data = "Hello"
@@ -46,7 +46,7 @@ def test_Decrypt_wrong():
 def test_Decrypt_Correct():
     """Test to see if we get the right data on decrypting the file"""
     try:
-        with open("key.keybyte", "rb") as f:
+        with open("Key.keybyte", "rb") as f:
             key = f.read()
 
         result = enc.decrypt(key, fileName="EncryptionTest.byte")
