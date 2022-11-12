@@ -2,6 +2,7 @@
 Checks if input is a real number
 """
 
+
 def IsDigit(var: str):
     """Checks if var is a `real` number
 

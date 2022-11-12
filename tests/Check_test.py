@@ -40,8 +40,7 @@ chk = Check()
 
 
 def test_int():
-    """Result of the int check test
-    """
+    """Result of the int check test"""
     rt = int_check()
     if rt == 0:
         assert True

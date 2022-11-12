@@ -1,6 +1,7 @@
 """Checks if a value is within a certain range
 """
 
+
 def check(value, Message, ID, **info):
     """Checks if a value is within a certain range
 
@@ -13,7 +14,7 @@ def check(value, Message, ID, **info):
         _type_: Either the value, or nothing
     """
     higherRange = 0
-    
+
     lowerRange = info.get("lower")
     higherRange = info.get("higher")
 

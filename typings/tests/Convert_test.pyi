@@ -1,5 +1,6 @@
-from . import PythonFunctions as PythonFunctions
 from _typeshed import Incomplete
+
+from . import PythonFunctions as PythonFunctions
 
 Convert: Incomplete
 letters: Incomplete

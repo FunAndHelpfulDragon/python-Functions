@@ -3,7 +3,9 @@
 
 import random
 import string
+
 import pytest
+
 from . import PythonFunctions
 
 Convert = PythonFunctions.LocConv

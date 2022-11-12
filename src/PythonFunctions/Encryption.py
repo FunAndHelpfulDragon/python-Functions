@@ -21,6 +21,7 @@ except ModuleNotFoundError:
 
 class Encryption:
     """The major class to encrypt and decrypt data securly"""
+
     def __init__(self) -> None:
         self.fernet = fernet
 

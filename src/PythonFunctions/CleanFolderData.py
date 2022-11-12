@@ -72,7 +72,7 @@ class Clean:
 
         return newData
 
-    def clean(self, path: str, reserved: typing.List[str]=None) -> typing.List[str]:
+    def clean(self, path: str, reserved: typing.List[str] = None) -> typing.List[str]:
         """Returns the finished product of cleaning up the path
 
         Args:

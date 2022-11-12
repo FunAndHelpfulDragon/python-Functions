@@ -3,8 +3,11 @@
 
 import random
 import string
+
 import pytest
+
 from . import PythonFunctions
+
 IsDigit = PythonFunctions.IsDigit
 
 

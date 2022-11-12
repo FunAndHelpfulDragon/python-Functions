@@ -5,6 +5,7 @@ it is on purpose as something broke on the server side (not installed modules)
 """
 
 import os
+
 from . import PythonFunctions
 
 Encryption = PythonFunctions.Encryption
@@ -47,7 +48,7 @@ def test_Decrypt_Correct():
     try:
         with open("key.keybyte", "rb") as f:
             key = f.read()
-        
+
         result = enc.decrypt(key, fileName="EncryptionTest.byte")
         assert result == "Hello"
     except enc.fernet.InvalidToken:

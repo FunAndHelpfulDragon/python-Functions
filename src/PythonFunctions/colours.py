@@ -226,19 +226,18 @@ class reverse:
 
 def c(choice=None):
     """
-c(choice)
--- returns the code of the choice, breaks if fails to find.
--- if multiple options, returns the first one found.
+    c(choice)
+    -- returns the code of the choice, breaks if fails to find.
+    -- if multiple options, returns the first one found.
 
--- Usage: [mode][colour/format]
---- mode > One of the : features, fg, bg
---- colour/format > One of the possible options in ConsoleFormat()
---- leave blank to reset the colours used.
+    -- Usage: [mode][colour/format]
+    --- mode > One of the : features, fg, bg
+    --- colour/format > One of the possible options in ConsoleFormat()
+    --- leave blank to reset the colours used.
 
-Example usage:
-print(c('fgr') + 'Hello' + c() + c('bgg') + 'World' + c())
-- prints "Hello" in red, "World" in white with a green background.
-"""
+    Example usage:
+    print(c('fgr') + 'Hello' + c() + c('bgg') + 'World' + c())
+    - prints "Hello" in red, "World" in white with a green background."""
     cR = colourRetrieve(choice)
     return cR.colourCode
 

@@ -8,8 +8,8 @@ from .readchar import readchar
 
 
 class Display:
-    """The main class to give the user an option
-    """
+    """The main class to give the user an option"""
+
     def __init__(self) -> None:
         self.options: typing.Dict = {}  # specific formaat.
         self.__storedText = None
