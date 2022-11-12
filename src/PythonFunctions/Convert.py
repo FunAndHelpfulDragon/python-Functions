@@ -1,7 +1,7 @@
 """Convert a string of A and I to (A, I)"""
 
-import typing
 import dataclasses
+import typing
 
 from . import Message
 
@@ -14,6 +14,7 @@ class LocationConvert:
     Args:
         value (str): The position to translate
     """
+
     def __init__(self):
         self.letters: str = ""
         self.y: str = ""

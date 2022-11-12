@@ -1,9 +1,9 @@
 """Checks to see if inputted value matches some rules
 """
 
+import dataclasses
 import importlib
 import os
-import dataclasses
 
 from . import Checks
 from . import IsDigit as ID
