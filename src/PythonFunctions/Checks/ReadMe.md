@@ -5,9 +5,10 @@ More information here (If you have it): [Check.md](../../Documentation/Check.md)
 
 ## Int Check
 
-FILE: [int.py](int.py)
+FILE: [INT.py](INT.py)
 
 Returns an int value if it's within a range.
+To avoid conflicting (even though it shouldn't) the file name is captilaised. However, this does not matter in the input.
 
 Arguments:
 

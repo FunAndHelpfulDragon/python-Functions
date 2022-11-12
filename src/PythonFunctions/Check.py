@@ -37,7 +37,7 @@ class Check:
         path_Location = os.path.realpath(__file__)
         path_Info = os.path.split(path_Location)
         for external in Clean().clean(f"{path_Info[0]}/Checks"):
-            if external[:-3] == mode:
+            if external[:-3].lower() == mode.lower():
                 module = importlib.import_module(f"{Checks.__package__}.{mode}")
                 return module.check(data, Message, ID, **info)
 

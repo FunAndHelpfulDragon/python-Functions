@@ -1,3 +1,10 @@
+"""
+Run.py
+
+Mainipulate time, in a module.
+Basic functions, but just stored elsewhere
+"""
+
 import time
 
 start = time.time()

@@ -1,3 +1,7 @@
+"""
+Prints off a watermark, to let people know about the origin of this program
+"""
+
 import datetime
 import inspect
 import os
@@ -38,11 +42,11 @@ def main(
 
     # Gets data
     data = ""
-    if twitter != None:
+    if twitter is not None:
         data += f"\u001b]8;;{twitter}\u001b\\Twitter\u001b]8;;\u001b\\, "
-    if youtube != None:
+    if youtube is not None:
         data += f"\u001b]8;;{youtube}\u001b\\Youtube\u001b]8;;\u001b\\, "
-    if github != None:
+    if github is not None:
         data += f"\u001b]8;;{github}\u001b\\Github\u001b]8;;\u001b\\"
 
     # If data is null
@@ -61,7 +65,7 @@ def main(
     print(
         f"""{colours.c(colour)}{line}{colours.c()}
 {fileName} made by {name} ({data}). 
-Contains Functions.py made by dragmine149 ({mydata}). 
+Contains Functions.py made by dragmine149 ({mydata}).
 Activation Time: {ctime.hour}:{ctime.minute}:{ctime.second}
 {colours.c(colour)}{line}{colours.c()}"""
     )

@@ -1,22 +1,21 @@
+"""Checks if a value is within a certain range
 """
-Returns an int value if it's within a range.
-
-Arguments:
----------
-lower (int, Optional): lower range of the number. Defaults to 0
-higher (int, Optional): higher range of the number. Defaults to 0
-"""
-
 
 def check(value, Message, ID, **info):
-    lowerRange = 0
+    """Checks if a value is within a certain range
+
+    Args:
+        value (_type_): The value to check
+        Message (_type_): Message obj
+        ID (_type_): IsDigit obj
+
+    Returns:
+        _type_: Either the value, or nothing
+    """
     higherRange = 0
-
-    if "lower" in info:
-        lowerRange = info["lower"]
-
-    if "higher" in info:
-        higherRange = info["higher"]
+    
+    lowerRange = info.get("lower")
+    higherRange = info.get("higher")
 
     if higherRange is None:
         higherRange = lowerRange

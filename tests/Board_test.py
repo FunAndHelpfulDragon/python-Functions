@@ -1,3 +1,5 @@
+"""Tests functions in the Board module
+"""
 import random
 
 from . import PythonFunctions
@@ -10,8 +12,8 @@ def rp_test_Size(x: int, y: int):
     brd = Board.CreateBoard(x, y)
 
     count = 0
-    for x in brd:
-        for y in x:
+    for xGrid in brd:
+        for _ in xGrid:
             count += 1
 
     return count

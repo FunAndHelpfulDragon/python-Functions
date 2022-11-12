@@ -1,22 +1,26 @@
+"""Tests functions in the TerminalDisplay module
+"""
+
+import random
 import sys
 from io import StringIO
+import pytest
 
 from . import PythonFunctions
 
 TD = PythonFunctions.Display
-import random
-
-import pytest
 
 dsp = TD()
 
 
 def callback(value):
+    """The test callback check function"""
     assert value is not None
     return value
 
 
 def test_set():
+    """Test to see if options are set correctly"""
     dsp.SetOptions(
         {0: (callback, "home"), 1: (callback, "Test1"), 2: (callback, "Test2")}
     )
@@ -25,6 +29,7 @@ def test_set():
 
 
 def test_add():
+    """Tests to see if adding options works and is still correct"""
     dsp.AddOption(-1, (callback, "Test3"))
     dsp.AddOption(-2, (callback, "Test4"))
 
@@ -33,6 +38,7 @@ def test_add():
 
 @pytest.mark.repeat(4)
 def test_List():
+    """Tests to see if using an option actually works"""
     # Checks to see if they exists, else add them.
     if len(dsp.options) < 5:
         test_set()
@@ -40,12 +46,13 @@ def test_List():
 
     v = random.randrange(-2, 2)
     sys.stdin = StringIO(f"{v}")
-    rst = dsp.ShowOptions(list=True)
+    rst = dsp.ShowOptions(useList=True)
     assert rst is not None
 
 
 @pytest.mark.repeat(5)
 def test_Remove():
+    """Tests to see if removing an option removes an option"""
     # Checks to see if removing works
     cLen = len(dsp.options)
     try:

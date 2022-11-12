@@ -1,51 +1,63 @@
+"""Tests functions in the Encryption module
+
+NOTE: IF these tests (test_Key, test_Encrypt, test_Decrypt) fail,
+it is on purpose as something broke on the server side (not installed modules)
+"""
+
+import os
 from . import PythonFunctions
 
 Encryption = PythonFunctions.Encryption
-import os
 
 enc = Encryption()
-gblKey = None
-
-# NOTE: IF these tests (test_Key, test_Encrypt, test_Decrypt) fail, it is on purpose as something broke on the server side (not installed modules)
 
 
 def test_Key():
-    global gblKey
+    """Test to see if a random gen key can be generated"""
     key = enc.GetKey()
-    gblKey = key
-    assert type(key) == bytes
+    assert isinstance(key, bytes)
+
+    with open("Key.keybyte", "wb") as f:
+        f.write(key)
+
+    return key
 
 
 def test_Encrypt():
-    if gblKey is None:
-        test_Key()
+    """Test to see if encryption is good"""
+    with open("key.keybyte", "rb") as f:
+        key = f.read()
 
     data = "Hello"
-    enc.encrypt(data, gblKey, fileName="EncryptionTest.byte")
+    enc.encrypt(data, key, fileName="EncryptionTest.byte")
     assert os.path.exists("EncryptionTest.byte")
 
 
 def test_Decrypt_wrong():
+    """Test to see if we get an invalid token with a random key"""
     key = enc.GetKey("encrypt".encode("utf-8"))
     try:
-        result = enc.decrypt(key, fileName="EncryptionTest.byte")
+        enc.decrypt(key, fileName="EncryptionTest.byte")
     except enc.fernet.InvalidToken:
         assert True
 
 
 def test_Decrypt_Correct():
-    global gblKey
+    """Test to see if we get the right data on decrypting the file"""
     try:
-        result = enc.decrypt(gblKey, fileName="EncryptionTest.byte")
+        with open("key.keybyte", "rb") as f:
+            key = f.read()
+        
+        result = enc.decrypt(key, fileName="EncryptionTest.byte")
         assert result == "Hello"
     except enc.fernet.InvalidToken:
         assert False
 
 
 def test_finish():
-    global gblKey
-    gblKey = None
+    """Play cleanup"""
     try:
         os.remove("EncryptionTest.byte")
+        os.remove("key.keybyte")
     except FileNotFoundError:
         pass

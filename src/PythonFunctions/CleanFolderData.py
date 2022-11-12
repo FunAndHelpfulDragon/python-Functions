@@ -1,10 +1,13 @@
+"""
+Cleans up a list of arrays by following certain rules.
+"""
+
 import os
 import typing
 
 
 class Clean:
-    def __init__(self) -> None:
-        """Cleans up the path and removes unnessecary files"""
+    """Cleans up the path and removes unnessecary files"""
 
     def GetData(self, path: str) -> typing.List:
         """Returns the files stored in a given path
@@ -16,7 +19,7 @@ class Clean:
             typing.List: The list found for that path
         """
         # If list, just use that instead
-        if type(path) == typing.List:
+        if isinstance(path, typing.List):
             return path
 
         if path is None:
@@ -47,7 +50,8 @@ class Clean:
     def RemoveReserved(
         self, data: typing.List[str], reserved: typing.List[str]
     ) -> typing.List[str]:
-        """Remove any files that are resereved for other purposes that have not already been accounted for
+        """Remove any files that are resereved for other purposes
+        Which the user didn't include, or are just generic system files.
 
         Args:
             data (typing.List[str]): The data for that path
@@ -68,16 +72,19 @@ class Clean:
 
         return newData
 
-    def clean(self, path: str, reserved: typing.List[str] = []) -> typing.List[str]:
+    def clean(self, path: str, reserved: typing.List[str]=None) -> typing.List[str]:
         """Returns the finished product of cleaning up the path
 
         Args:
             path (str): The path to get the files from
-            reserved (typing.List[str], optional): The list of data to not include in the final list. Defaults to [].
+            reserved (typing.List[str], optional): The list of data to not include in the final list
 
         Returns:
             typing.List[str]: The final data list
         """
+        if reserved is None:
+            reserved = []
+
         # Get data
         data = self.GetData(path)
         # Earily return
@@ -96,9 +103,3 @@ class Clean:
 
         data = self.RemoveReserved(data, reserved)
         return data
-
-
-if __name__ == "__main__":
-    clean = Clean()
-    data = clean.clean(".")
-    print(data)

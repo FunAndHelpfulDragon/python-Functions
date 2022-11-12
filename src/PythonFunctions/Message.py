@@ -1,3 +1,5 @@
+"""More ways to control your terminal"""
+
 import os
 import time
 import typing
@@ -6,8 +8,7 @@ from .colours import Print
 
 
 class Message:
-    def __init__(self) -> None:
-        """Another way to handle console clearing"""
+    """Another way to handle console clearing"""
 
     @staticmethod
     def __messageSort(
@@ -15,7 +16,7 @@ class Message:
         timeS: int = 0,
         message: str = None,
         clear: bool = False,
-        colour: typing.List = [None, None],
+        colour: typing.List = None,
         delete: bool = False
     ):
         # checks for timeS is string instead of time
@@ -41,6 +42,7 @@ class Message:
             if delete:
                 return os.system("cls" if os.name == "nt" else "clear")
             return print("\x1b[2J\x1b[H", end="")
+        return None
 
     @staticmethod
     def clear(

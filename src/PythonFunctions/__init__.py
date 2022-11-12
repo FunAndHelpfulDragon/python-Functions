@@ -1,3 +1,6 @@
+"""Init for all the modules
+Lets us rename, skip declartion of stuff and more."""
+
 # Credit: Dragmine149
 from . import Board, colours, run
 from .Check import Check

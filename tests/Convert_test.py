@@ -1,10 +1,13 @@
+"""Tests functions in the Convert module
+"""
+
+import random
+import string
+import pytest
 from . import PythonFunctions
 
 Convert = PythonFunctions.LocConv
-import random
-import string
 
-import pytest
 
 # BAD WAY BUT FOR TESTING PURPOSE
 letters = {
@@ -39,14 +42,15 @@ letters = {
 
 @pytest.mark.repeat(3)
 def test_Convert():
+    """Test to convert a random location to a tuple"""
     position = "".join(random.sample(string.ascii_uppercase, random.randrange(1, 3)))
 
     num = random.randrange(100)
     result = Convert().Convert(f"{position}{num}")
 
     x = 0
-    for v in range(len(position)):
-        numo = letters.get(position[v])
+    for _, i in enumerate(position):
+        numo = letters.get(i)
         x *= 26
         x += numo
 

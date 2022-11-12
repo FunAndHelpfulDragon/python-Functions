@@ -1,3 +1,7 @@
+"""
+Checks if input is a real number
+"""
+
 def IsDigit(var: str):
     """Checks if var is a `real` number
 
@@ -47,5 +51,5 @@ def IsDigit(var: str):
         var2 = var[decimalLocation + 1 :].isdigit()
         return var1 and var2
     except IndexError as ie:  # if error, return false
-        print("IndexError: {}".format(ie))
+        print(f"IndexError: {ie}")
         return False

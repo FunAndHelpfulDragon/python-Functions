@@ -20,8 +20,12 @@ Extra help:
 
 
 def ConsoleFormat():
-    # defines the colours and what they do
-    format = {
+    """Defines the list of possible colours and format
+
+    Returns:
+        Tuple: The colour and formats
+    """
+    consoleFormat = {
         "reset": "\033[0m",
         "bold": "\033[01m",
         "disable": "\033[02m",
@@ -31,7 +35,7 @@ def ConsoleFormat():
         "strikethrough": "\033[09m",
         "invisible": "\033[08m",
     }
-    colours = {
+    consoleColours = {
         "fg": {
             "black": "\033[30m",
             "red": "\033[31m",
@@ -60,7 +64,7 @@ def ConsoleFormat():
             "light grey": "\033[47m",
         },
     }
-    return format, colours
+    return consoleFormat, consoleColours
 
 
 class Print:
@@ -81,9 +85,15 @@ class Print:
     def __init__(
         self,
         msg,
-        colour=[None, None],
-        options=[None, None, None, None, None, None, None],
+        colour=None,
+        options=None,
     ):
+        if colour is None:
+            colour = [None, None]
+
+        if options is None:
+            options = [None, None, None, None, None, None, None]
+
         self.msg = msg
 
         # gets the colour and checks it
@@ -136,7 +146,12 @@ class Print:
         return optStr
 
     def GetValue(self):
-        return self.Value
+        """
+
+        Returns:
+            str: The value used to colour the message
+        """
+        return self.value
 
     def __output(self):
         # Take colour and message and print them correctly
@@ -161,18 +176,13 @@ class Print:
             except AttributeError:
                 colourValue[i] = ""
 
+        self.value = f"{self.__getOptionValues()}{colourValues[0]}{colourValues[1]}"
+
         # print out colours
-        print(
-            "{}{}{}{}".format(
-                self.__getOptionValues(), colourValues[0], colourValues[1], self.msg
-            ),
-            end="",
-        )  # no end so it reset bg colour as well
+        print(self.value, end="")
 
         # reset to normal afterwards
         print(self._format["reset"])
-
-        self.value = f"{self.__getOptionValues()}{colourValues[0]}{colourValues[1]}"
 
 
 class reverse:
@@ -192,12 +202,15 @@ class reverse:
             self.code = None
 
     def reverse(self):
+        """
+        Take the code and flip into the name
+        """
         # if invalid, false
         if self.code is None:
             return False
 
         # loops though data and sources to try and find the code
-        format, colours = ConsoleFormat()
+        _, colours = ConsoleFormat()
         for dictonary in colours.values():
             for value in dictonary.values():
                 if value.split("[")[1] == self.code:
@@ -211,7 +224,8 @@ class reverse:
         return False
 
 
-"""
+def c(choice=None):
+    """
 c(choice)
 -- returns the code of the choice, breaks if fails to find.
 -- if multiple options, returns the first one found.
@@ -225,9 +239,6 @@ Example usage:
 print(c('fgr') + 'Hello' + c() + c('bgg') + 'World' + c())
 - prints "Hello" in red, "World" in white with a green background.
 """
-
-
-def c(choice=None):
     cR = colourRetrieve(choice)
     return cR.colourCode
 
@@ -297,21 +308,9 @@ class colourRetrieve:
             return self.format[choice]
 
         # check for letter
-        for option in self.format:
-            self.fullName = option
-            if option[: len(choice)] == choice:
-                return self.format[option]
+        for name, index in self.format.items():
+            self.fullName = name
+            if name[: len(choice)] == choice:
+                return index
 
         raise ValueError("Invalid format option inputted!")
-
-
-# run python colours.py to see the results from this
-def test_Test():
-    print("Normal Colour")
-    print("{}Hello{}World{}".format(c("fgr"), c() + c("bgg"), c()))
-    Print("Hello World", ["dark grey", "cyan"], ["bold", "underline"])
-    return True
-
-
-if __name__ == "__main__":
-    assert test_Test()

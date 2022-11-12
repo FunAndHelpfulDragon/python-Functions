@@ -1,4 +1,7 @@
-from . import Message, PrintTraceback
+"""Encrypt files, bc yeah"""
+
+from . import PrintTraceback
+from .Message import Message
 
 disabled = False
 
@@ -6,23 +9,19 @@ try:
     import base64
     import hashlib
 
-    import cryptography.fernet as fernet
+    from cryptography import fernet
     from cryptography.fernet import Fernet
 except ModuleNotFoundError:
-    Message.Message.warn(
+    Message.warn(
         "Failed to load encrypting class (Missing imports!)", timeS=2, colour="red"
     )
-    try:
-        PrintTraceback.PrintTraceback()
-    except Exception:
-        # Just don't print if failed for some reason
-        pass
+    PrintTraceback()
     disabled = True
 
 
 class Encryption:
+    """The major class to encrypt and decrypt data securly"""
     def __init__(self) -> None:
-        """The major class to encrypt and decrypt data securly"""
         self.fernet = fernet
 
     def GetKey(self, passcode: bytes = None) -> bytes:
@@ -43,7 +42,7 @@ class Encryption:
         assert isinstance(passcode, bytes)
         hlib = hashlib.md5()
         hlib.update(passcode)
-        Message.Message.warn(
+        Message().warn(
             "WARNING, here is your key please keep this safe.", timeS=2, colour="red"
         )
         return base64.urlsafe_b64encode(hlib.hexdigest().encode("latin-1"))
@@ -61,12 +60,15 @@ class Encryption:
 
         with open(fileName, "wb") as f:
             f.write(Fernet(passcode).encrypt(data.encode("utf-8")))
+            return "Saved data"
+
+        return "(Somehow) failed to save data"
 
     def decrypt(self, passcode: bytes, *, fileName="encrypted"):
         """Decrypt the data stored in the file
 
         Args:
-            passcode (bytes): Your passcode to decypt with (Must be same else you get different data)
+            passcode (bytes): Your passcode to decypt with
             fileName (str, optional): The name of the file. Defaults to "encrypted".
 
         Returns:

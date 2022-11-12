@@ -9,7 +9,7 @@ Get a string from the user, and returns the value... After passing through some 
 ```py
 from PythonFunctions import check
 chk = check()
-result = chk.getInput("Testing (int): ", "int", lower=0, higher=10)
+result = chk.getInput("Testing (int): ", "INT", lower=0, higher=10)
 ```
 
 Above is one example of what this class can be used for, This returns the user int if it's in range 0 to 10.
@@ -19,7 +19,7 @@ Above is one example of what this class can be used for, This returns the user i
 Instead of multiple functions, everything is called via the one function but with different inputs listed below.
 
 ```py
-check().getInput("Testing (int)", "int", lower=0, higher=10)
+check().getInput("Testing (int)", "INT", lower=0, higher=10)
 ```
 
 ### Agumnets

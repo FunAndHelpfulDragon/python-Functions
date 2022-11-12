@@ -1,13 +1,23 @@
+"""Control the terminal output in new ways."""
 import os
 import typing
 
-from . import Check, Message, colours
+from . import Message, colours
+from .Check import Check
 from .readchar import readchar
 
 
 class Display:
+    """The main class to give the user an option
+    """
     def __init__(self) -> None:
         self.options: typing.Dict = {}  # specific formaat.
+        self.__storedText = None
+        self.gridData = []
+        self.__highest: int = 2_147_483_648
+        self.__lowest: int = -2_147_483_648
+        self.chk: Check = Check()
+        self.cursorPosition = [0, 0]
 
     def SetOptions(self, options: typing.Dict):
         """Set the program options
@@ -18,7 +28,7 @@ class Display:
         # Validation check
         cleanOptions = {}
         for option in options:
-            if type(options.get(option)) == tuple:
+            if isinstance(options.get(option), tuple):
                 newOption = options.get(option)[1].replace(" ", "_")
                 cleanOptions.update({int(option): (options.get(option)[0], newOption)})
             else:
@@ -83,17 +93,14 @@ class Display:
 
     def __ShowGrid(self):
         """Prints out the grid generated in __GenerateGridData"""
-        for yIndex in range(len(self.gridData)):
-            y = self.gridData[yIndex]
-            for xIndex in range(len(y)):
-                x = self.gridData[yIndex][xIndex]
-
-                # Complicated string, but it calculates the square that should have the `> ` pointer.
+        for yIndex, yValue in enumerate(self.gridData):
+            for xIndex, xValue in enumerate(yValue):
+                # Complicated string, but it calculates the square that should have the `> ` pointer
                 v = (
-                    f"{colours.c('bgblue')}>{colours.c()} {x}"
+                    f"{colours.c('bgblue')}>{colours.c()} {xValue}"
                     if self.cursorPosition[0] == xIndex
                     and self.cursorPosition[1] == yIndex
-                    else x
+                    else xValue
                 )
 
                 print(v, end="")
@@ -130,18 +137,18 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
 
     def __GetListInput(self):
         try:
-            v = Check().getInput(
+            v = self.chk.getInput(
                 "Please enter the number you want to select: ",
-                "int",
+                "INT",
                 lower=self.__lowest,
                 higher=self.__highest,
             )
             return self.options.get(v)[0](self.options.get(v)[1])
         except TypeError:
-            Message.Message().clear("Invalid input!", timeS=2, colour="red")
+            Message().clear("Invalid input!", timeS=2, colour="red")
             return None
 
-    def ShowOptions(self, *, list: bool = False):
+    def ShowOptions(self, *, useList: bool = False):
         """Returns the item at that index
 
         Args:
@@ -150,7 +157,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         Returns:
             _type_: The item returned
         """
-        if not list:
+        if not useList:
             self.cursorPosition = [0, 0]
             self.__GenerateGridData()
             self.__ShowGrid()
@@ -208,6 +215,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
                 return None
 
             # move the curspor position instead, as this saves memory and is easier to debug
-            print("\033[%d;%dH" % (0, 0), end="")
+            # print("\033[%d;%dH" % (0, 0), end="")
+            print("\033[0;0H", end="")
             self.ShowHeader(text=self.__storedText)
             self.__ShowGrid()
