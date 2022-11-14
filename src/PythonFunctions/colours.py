@@ -68,6 +68,7 @@ def ConsoleFormat():
     }
     return consoleFormat, consoleColours
 
+
 @dataclass
 class Print:
     """
@@ -186,6 +187,7 @@ class Print:
         # reset to normal afterwards
         print(self._format["reset"])
 
+
 @dataclass
 class reverse:
     """
@@ -242,6 +244,7 @@ def c(choice=None):
     - prints "Hello" in red, "World" in white with a green background."""
     cR = colourRetrieve(choice)
     return cR.colourCode
+
 
 @dataclass
 class colourRetrieve:

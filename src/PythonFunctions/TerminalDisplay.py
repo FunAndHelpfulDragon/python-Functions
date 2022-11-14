@@ -1,5 +1,6 @@
 import os
 import typing
+
 import readchar
 
 from . import Message, colours

@@ -1,9 +1,11 @@
 """Test to do with run and time"""
 
 import time
+
 import pytest
 
 from . import PythonFunctions
+
 run = PythonFunctions.run
 IsDigit = PythonFunctions.IsDigit
 
