@@ -21,8 +21,6 @@ def test_Key():
     with open("Key.keybyte", "wb") as f:
         f.write(key)
 
-    return key
-
 
 def test_Encrypt():
     """Test to see if encryption is good"""
