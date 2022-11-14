@@ -13,5 +13,21 @@
     ],
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.linting.flake8Enabled": false
+    "python.linting.flake8Enabled": false,
+    "pylint.args": [
+        "--class-naming-style=any",
+        "--module-naming-style=any",
+        "--const-naming-style=any",
+        "--function-naming-style=any",
+        "--method-naming-style=any",
+        "--argument-naming-style=any",
+        "--attr-naming-style=any",
+        "--variable-naming-style=any",
+        "--class-attribute-naming-style=any",
+        "--class-const-naming-style=any",
+        "--inlinevar-naming-style=any",
+        "--disable=C0114",
+        "--disable=C0115",
+        "--disable=C0116"
+    ]
 }

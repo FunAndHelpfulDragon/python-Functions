@@ -1,5 +1,3 @@
-"""Encrypt files, bc yeah"""
-
 from . import PrintTraceback
 from .Message import Message
 

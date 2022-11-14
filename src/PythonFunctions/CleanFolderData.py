@@ -1,7 +1,3 @@
-"""
-Cleans up a list of arrays by following certain rules.
-"""
-
 import os
 import typing
 

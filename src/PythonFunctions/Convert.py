@@ -1,5 +1,3 @@
-"""Convert a string of A and I to (A, I)"""
-
 import dataclasses
 import typing
 

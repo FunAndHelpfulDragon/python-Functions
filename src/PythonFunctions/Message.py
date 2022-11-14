@@ -1,5 +1,3 @@
-"""More ways to control your terminal"""
-
 import os
 import time
 import typing

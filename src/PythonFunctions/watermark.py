@@ -1,7 +1,3 @@
-"""
-Prints off a watermark, to let people know about the origin of this program
-"""
-
 import datetime
 import inspect
 import os

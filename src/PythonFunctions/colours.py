@@ -18,6 +18,8 @@ Extra help:
 - Copy codes from ConsoleFormat if needed.
 """
 
+from dataclasses import dataclass
+
 
 def ConsoleFormat():
     """Defines the list of possible colours and format
@@ -66,7 +68,7 @@ def ConsoleFormat():
     }
     return consoleFormat, consoleColours
 
-
+@dataclass
 class Print:
     """
     Colours:
@@ -184,7 +186,7 @@ class Print:
         # reset to normal afterwards
         print(self._format["reset"])
 
-
+@dataclass
 class reverse:
     """
     reverse(code)
@@ -241,7 +243,7 @@ def c(choice=None):
     cR = colourRetrieve(choice)
     return cR.colourCode
 
-
+@dataclass
 class colourRetrieve:
     """
     Usage: [f, bg, fg][colour, result]

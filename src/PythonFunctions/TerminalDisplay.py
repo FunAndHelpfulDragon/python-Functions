@@ -1,10 +1,9 @@
-"""Control the terminal output in new ways."""
 import os
 import typing
+import readchar
 
 from . import Message, colours
 from .Check import Check
-from .readchar import readchar
 
 
 class Display:
