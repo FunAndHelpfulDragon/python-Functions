@@ -125,12 +125,8 @@ class save:
             "Please enter a password / passcode to save encrypted data with: "
         )
 
-        key = self.enc.GetKey(
-            Passcode.encode("utf-8")
-        )  # get the byte version
-        self.settings["Passcode"] = key.decode(
-            "utf-8"
-        )  # store the byte as string
+        key = self.enc.GetKey(Passcode.encode("utf-8"))  # get the byte version
+        self.settings["Passcode"] = key.decode("utf-8")  # store the byte as string
 
         # save the data
         self.Save(
@@ -194,10 +190,9 @@ class save:
 
         return result, rBytes
 
-    def __GetFileInformation(self,
-                             path: str,
-                             encoding: typing.List = None
-                             ) -> typing.Tuple[str, Storage, typing.List]:
+    def __GetFileInformation(
+        self, path: str, encoding: typing.List = None
+    ) -> typing.Tuple[str, Storage, typing.List]:
         if encoding is None:
             encoding = [self.encoding.NONE]
 
@@ -239,8 +234,7 @@ class save:
             any: The data in the file
         """
         path, storage, encoding = self.__GetFileInformation(path, encoding)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
 
         rBytes = False
         for item in encoding:
@@ -266,8 +260,7 @@ class save:
         if storage is None:
             path, storage = self.__TranslateStorage(path)
 
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.MakeFolders(path)
 
     def RemoveFile(self, path: str):
@@ -277,8 +270,7 @@ class save:
             path (str): The path to remove that file
         """
         path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.DeleteFile(path)
 
     def RemoveFolder(self, path: str):
@@ -288,6 +280,5 @@ class save:
             path (str): The path to remove the folder
         """
         path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.DeleteFolder(path)
