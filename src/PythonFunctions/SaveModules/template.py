@@ -1,8 +1,8 @@
-class SaveTemplate():
+class SaveTemplate:
     def __init__(self) -> None:
         pass
 
-    def WriteData(self, data: any, path: str, Encoding:bool=False) -> bool:
+    def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
         """Save data to a file by writing it
 
         Args:
@@ -17,9 +17,10 @@ class SaveTemplate():
             bool: Did the save succseed?
         """
         raise NotImplementedError(
-            "The file system you are trying to use does not have support for `WriteData`")
+            "The file system you are trying to use does not have support for `WriteData`"
+        )
 
-    def ReadData(self, path: str, Encoding: bool=False) -> any:
+    def ReadData(self, path: str, Encoding: bool = False) -> any:
         """Read data from a file and returns it
 
         Args:
@@ -33,7 +34,8 @@ class SaveTemplate():
             any: The data to return
         """
         raise NotImplementedError(
-            "The file system you are trying to use does not have support for `ReadData`")
+            "The file system you are trying to use does not have support for `ReadData`"
+        )
 
     def MakeFolders(self, path: str):
         """Make folders to save a file in.
@@ -46,9 +48,10 @@ class SaveTemplate():
             NotImplementedError: This hasn't been made for this file system yet
         """
         raise NotImplementedError(
-            "The file system you are trying to use does not have support for `MakeFolders`")
+            "The file system you are trying to use does not have support for `MakeFolders`"
+        )
 
-    def DeleteFile(self, path:str):
+    def DeleteFile(self, path: str):
         """Delete a file.
 
         Args:
@@ -58,9 +61,10 @@ class SaveTemplate():
             NotImplementedError: This hasn't been made for this file system yet
         """
         raise NotImplementedError(
-            "The file system you are trying to use does not have support for `DeleteFile`")
+            "The file system you are trying to use does not have support for `DeleteFile`"
+        )
 
-    def DeleteFolder(self, path:str):
+    def DeleteFolder(self, path: str):
         """Delete a folder (or multiple if it's a sub folder)
 
         Args:
@@ -70,4 +74,5 @@ class SaveTemplate():
             NotImplementedError: This hasn't been made for this file system yet
         """
         raise NotImplementedError(
-            "The file system you are trying to use does not have support for `DeleteFolder`")
+            "The file system you are trying to use does not have support for `DeleteFolder`"
+        )

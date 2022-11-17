@@ -1,6 +1,8 @@
 import os
 import shutil
+
 from . import template
+
 
 class Save(template.SaveTemplate):
     def __init__(self) -> None:
@@ -33,6 +35,7 @@ class Save(template.SaveTemplate):
     def DeleteFolder(self, path: str):
         if os.path.exists(path):
             shutil.rmtree(path)
+
 
 def load():
     return Save()

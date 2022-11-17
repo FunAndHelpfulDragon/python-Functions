@@ -1,11 +1,12 @@
+import getpass
+import importlib
+import json
 import os
 import pickle
-import json
-import importlib
 import typing
-import getpass
 from enum import Enum
-from . import Encryption, Message, SaveModules, Clean, PrintTraceback
+
+from . import Clean, Encryption, Message, PrintTraceback, SaveModules
 from .SaveModules import template
 
 
@@ -33,20 +34,16 @@ class save:
     """
 
     def __init__(self) -> None:
-        """Loading the class, storing data such as enum, modules, settings
-        """
+        """Loading the class, storing data such as enum, modules, settings"""
         self.encoding: Encoding = Enum(
-            "Encoding", ["NONE", "JSON", "BINARY", "CRYPTOGRAPHY"])
-        self.storage: Storage = Enum(
-            "Storage", ["NORMAL", "FTP", "GOOGLE", "OTHER"])
+            "Encoding", ["NONE", "JSON", "BINARY", "CRYPTOGRAPHY"]
+        )
+        self.storage: Storage = Enum("Storage", ["NORMAL", "FTP", "GOOGLE", "OTHER"])
         self.saveModules = {}
         self.settings = {
-            "FTP": {
-                "Name": "",
-                "Password": ""
-            },
+            "FTP": {"Name": "", "Password": ""},
             "SettingsSave": "",
-            "Passcode": ""
+            "Passcode": "",
         }
 
         self.__LoadModules()
@@ -54,29 +51,28 @@ class save:
         self.__CheckData()
 
     def __LoadModules(self):
-        """Loading external save modules in.
-        """
+        """Loading external save modules in."""
 
         # Loop through the clean list of modules
         # clean -> removes .* and template.py due to reserved
-        for module in Clean().clean(os.path.dirname(SaveModules.__file__),
-                                    reserved=["template.py"]):
+        for module in Clean().clean(
+            os.path.dirname(SaveModules.__file__), reserved=["template.py"]
+        ):
             module = module[:-3]  # remove .py
 
             # Attempt to load the module
             try:
-                mdl = importlib.import_module(
-                    f"{SaveModules.__package__}.{module}")
+                mdl = importlib.import_module(f"{SaveModules.__package__}.{module}")
                 self.saveModules[module]: template.SaveTemplate = mdl.load()
             except (AttributeError, ModuleNotFoundError) as e:
                 Message.warn(
                     f"Failed to load save module: {SaveModules.__package__}.{module}. Error: {e}",
-                    colour=["Red"])
+                    colour=["Red"],
+                )
                 PrintTraceback()
 
     def __CheckData(self) -> None:
-        """Check if the required data exists
-        """
+        """Check if the required data exists"""
 
         # File checker
         parent = os.path.dirname(__file__)
@@ -88,12 +84,17 @@ class save:
             self.settings["SettingsSave"] = f"{parent}/PyFuncSave/Settings.secret"
 
             # Save if not exists
-            self.Save(self.settings, self.settings.get("SettingsSave"),
-                      [self.encoding.JSON, self.encoding.BINARY])
+            self.Save(
+                self.settings,
+                self.settings.get("SettingsSave"),
+                [self.encoding.JSON, self.encoding.BINARY],
+            )
         else:
             # Load settings otherwise
-            self.settings = self.Read(f"{parent}/PyFuncSave/Settings.secret",
-                                      [self.encoding.JSON, self.encoding.BINARY])
+            self.settings = self.Read(
+                f"{parent}/PyFuncSave/Settings.secret",
+                [self.encoding.JSON, self.encoding.BINARY],
+            )
 
     def __TranslateStorage(self, path: str):
         """Takes the path and returns the storage type
@@ -115,10 +116,9 @@ class save:
 
         return path, self.storage.NORMAL
 
-    def __CodeData(self, data: any,
-                   encoding: typing.List[Encoding],
-                   *,
-                   decode: bool = False):
+    def __CodeData(
+        self, data: any, encoding: typing.List[Encoding], *, decode: bool = False
+    ):
         """Encode / Decode data
 
         Args:
@@ -144,8 +144,7 @@ class save:
 
             if code.value == 3:
                 # simple byte encode
-                result = pickle.dumps(
-                    result) if not decode else pickle.loads(result)
+                result = pickle.dumps(result) if not decode else pickle.loads(result)
                 rBytes = True
 
             if code.value == 4:
@@ -154,16 +153,22 @@ class save:
                 # Get passcode if not exists
                 if Passcode is None or Passcode == "":
                     Passcode = getpass.getpass(
-                        "Please enter a password / passcode to save encrypted data with: ")
+                        "Please enter a password / passcode to save encrypted data with: "
+                    )
 
-                    key = self.enc.GetKey(Passcode.encode(
-                        "utf-8"))  # get the byte version
+                    key = self.enc.GetKey(
+                        Passcode.encode("utf-8")
+                    )  # get the byte version
                     self.settings["Passcode"] = key.decode(
-                        "utf-8")  # store the byte as string
+                        "utf-8"
+                    )  # store the byte as string
 
                     # save the data
-                    self.Save(self.settings, self.settings.get("SettingsSave"),
-                              [self.encoding.JSON, self.encoding.BINARY])
+                    self.Save(
+                        self.settings,
+                        self.settings.get("SettingsSave"),
+                        [self.encoding.JSON, self.encoding.BINARY],
+                    )
 
                 # decrypt / encrypt data
                 key = Passcode.encode("utf-8")
@@ -177,11 +182,9 @@ class save:
 
         return result, rBytes
 
-    def __GetFileInformation(self,
-                             path: str,
-                             encoding: typing.List = None) -> typing.Tuple[str,
-                                                                           Storage,
-                                                                           typing.List]:
+    def __GetFileInformation(
+        self, path: str, encoding: typing.List = None
+    ) -> typing.Tuple[str, Storage, typing.List]:
         if encoding is None:
             encoding = [self.encoding.NONE]
 
