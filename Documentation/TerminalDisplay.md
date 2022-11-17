@@ -1,6 +1,6 @@
 # Display.py
 
-FILE: [Display.py](../PythonFunctions/TerminalDisplay.py)
+FILE: [Display.py](../src/PythonFunctions/TerminalDisplay.py)
 Pass in a list of inputs, and get what the user choice in return.
 
 ## Usage

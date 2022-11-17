@@ -1,6 +1,6 @@
 # Message.py
 
-FILE: [Message.py](../PythonFunctions/Message.py)
+FILE: [Message.py](../src/PythonFunctions/Message.py)
 
 Another way to handle logging stuff in the console
 

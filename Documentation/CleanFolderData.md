@@ -1,6 +1,6 @@
 # CleanFolderData.py
 
-FILE: [CleanFolderData.py](../PythonFunctions/CleanFolderData.py)
+FILE: [CleanFolderData.py](../src/PythonFunctions/CleanFolderData.py)
 Cleans the folder data returned by os.listdir to not include any hidden or reserved files
 
 ## Usage

@@ -1,6 +1,6 @@
 # IsDigit.py
 
-FILE: [IsDigit.py](../PythonFunctions/IsDigit.py)
+FILE: [IsDigit.py](../src/PythonFunctions/IsDigit.py)
 
 Checks if the inputted string is a `real` number.
 

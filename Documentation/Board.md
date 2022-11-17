@@ -1,6 +1,6 @@
 # board.md
 
-FILE: [Board.py](../PythonFunctions/Board.py)
+FILE: [Board.py](../src/PythonFunctions/Board.py)
 
 ## Usage
 

@@ -1,6 +1,6 @@
 # Convert.py
 
-FILE: [Convert.py](../PythonFunctions/Convert.py)
+FILE: [Convert.py](../src/PythonFunctions/Convert.py)
 
 Converts cooridnates to the represented position
 

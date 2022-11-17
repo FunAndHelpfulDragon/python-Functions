@@ -1,6 +1,6 @@
 # Colours.py
 
-FILE: [colours.py](../PythonFunctions/colours.py)
+FILE: [colours.py](../src/PythonFunctions/colours.py)
 
 Brighten up your terminal with different colours.
 

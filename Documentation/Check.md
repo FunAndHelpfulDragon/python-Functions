@@ -1,6 +1,6 @@
 # Check.py
 
-FILE: [Check.py](../PythonFunctions/Check.py)
+FILE: [Check.py](../src/PythonFunctions/Check.py)
 
 Get a string from the user, and returns the value... After passing through some checks
 
@@ -34,6 +34,6 @@ These are dependant on what the script wants, please check the documentation for
 
 ## Checks
 
-There are multiple checks, which have their own [folder](../PythonFunctions/Checks/) to contain them all, Mainly because it's easier to add new checks and more.
+There are multiple checks, which have their own [folder](../src/PythonFunctions/Checks/) to contain them all, Mainly because it's easier to add new checks and more.
 
-[Check Documentation](../PythonFunctions/Checks/ReadMe.md)
+[Check Documentation](../src/PythonFunctions/Checks/ReadMe.md)
