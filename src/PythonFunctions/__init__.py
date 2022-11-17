@@ -2,7 +2,7 @@
 Lets us rename, skip declartion of stuff and more."""
 
 # Credit: Dragmine149
-from . import Board, colours, run
+from . import Board, colours, run, SaveModules
 from .Check import Check
 from .CleanFolderData import Clean
 from .Convert import LocationConvert as LocConv

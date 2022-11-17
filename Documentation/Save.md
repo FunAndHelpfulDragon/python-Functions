@@ -115,3 +115,12 @@ Remove the folder and all subdirs of that folder.
 Required Arguments:
 
 - path: str (Path to remove the folder from.)
+
+#### ChangePasscode
+
+```py
+sv = save()
+passcode = sv.ChangePasscode()
+```
+
+Change the stored passcode and return it.

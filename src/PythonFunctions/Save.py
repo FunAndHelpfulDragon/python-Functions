@@ -7,7 +7,6 @@ import typing
 from enum import Enum
 
 from . import Clean, Encryption, Message, PrintTraceback, SaveModules
-from .SaveModules import template
 
 
 class Encoding(Enum):
@@ -43,7 +42,7 @@ class save:
         self.settings = {
             "FTP": {"Name": "", "Password": ""},
             "SettingsSave": "",
-            "Passcode": "",
+            "Passcode": "MGNiYzY2MTFmNTU0MGJkMDgwOWEzODhkYzk1YTYxNWI=",
         }
 
         self.__LoadModules()
@@ -63,7 +62,7 @@ class save:
             # Attempt to load the module
             try:
                 mdl = importlib.import_module(f"{SaveModules.__package__}.{module}")
-                self.saveModules[module]: template.SaveTemplate = mdl.load()
+                self.saveModules[module]: SaveModules.template.SaveTemplate = mdl.load()
             except (AttributeError, ModuleNotFoundError) as e:
                 Message.warn(
                     f"Failed to load save module: {SaveModules.__package__}.{module}. Error: {e}",
@@ -116,6 +115,32 @@ class save:
 
         return path, self.storage.NORMAL
 
+    def ChangePasscode(self):
+        """Let the user change their passcode
+
+        Returns:
+            bytes: The new passcode
+        """
+        Passcode = getpass.getpass(
+            "Please enter a password / passcode to save encrypted data with: "
+        )
+
+        key = self.enc.GetKey(
+            Passcode.encode("utf-8")
+        )  # get the byte version
+        self.settings["Passcode"] = key.decode(
+            "utf-8"
+        )  # store the byte as string
+
+        # save the data
+        self.Save(
+            self.settings,
+            self.settings.get("SettingsSave"),
+            [self.encoding.JSON, self.encoding.BINARY],
+        )
+
+        return key
+
     def __CodeData(
         self, data: any, encoding: typing.List[Encoding], *, decode: bool = False
     ):
@@ -150,25 +175,12 @@ class save:
             if code.value == 4:
                 Passcode = self.settings.get("Passcode")
 
+                if Passcode == "MGNiYzY2MTFmNTU0MGJkMDgwOWEzODhkYzk1YTYxNWI=":
+                    Message.warn("WARNING: DEFAULT PASSCODE IN USE!", colour="red")
+
                 # Get passcode if not exists
                 if Passcode is None or Passcode == "":
-                    Passcode = getpass.getpass(
-                        "Please enter a password / passcode to save encrypted data with: "
-                    )
-
-                    key = self.enc.GetKey(
-                        Passcode.encode("utf-8")
-                    )  # get the byte version
-                    self.settings["Passcode"] = key.decode(
-                        "utf-8"
-                    )  # store the byte as string
-
-                    # save the data
-                    self.Save(
-                        self.settings,
-                        self.settings.get("SettingsSave"),
-                        [self.encoding.JSON, self.encoding.BINARY],
-                    )
+                    key = self.ChangePasscode()
 
                 # decrypt / encrypt data
                 key = Passcode.encode("utf-8")
@@ -182,9 +194,10 @@ class save:
 
         return result, rBytes
 
-    def __GetFileInformation(
-        self, path: str, encoding: typing.List = None
-    ) -> typing.Tuple[str, Storage, typing.List]:
+    def __GetFileInformation(self,
+                             path: str,
+                             encoding: typing.List = None
+                             ) -> typing.Tuple[str, Storage, typing.List]:
         if encoding is None:
             encoding = [self.encoding.NONE]
 
@@ -212,7 +225,7 @@ class save:
 
         data, wByte = self.__CodeData(data, encoding)
 
-        module: template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         return module.WriteData(data, path, wByte)
 
     def Read(self, path: str, encoding: typing.List = None) -> any:
@@ -226,7 +239,8 @@ class save:
             any: The data in the file
         """
         path, storage, encoding = self.__GetFileInformation(path, encoding)
-        module: template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
 
         rBytes = False
         for item in encoding:
@@ -252,7 +266,8 @@ class save:
         if storage is None:
             path, storage = self.__TranslateStorage(path)
 
-        module: template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         module.MakeFolders(path)
 
     def RemoveFile(self, path: str):
@@ -262,7 +277,8 @@ class save:
             path (str): The path to remove that file
         """
         path, storage = self.__TranslateStorage(path)
-        module: template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         module.DeleteFile(path)
 
     def RemoveFolder(self, path: str):
@@ -272,5 +288,6 @@ class save:
             path (str): The path to remove the folder
         """
         path, storage = self.__TranslateStorage(path)
-        module: template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         module.DeleteFolder(path)

@@ -1,1 +1,1 @@
-from . import NORMAL
+from . import NORMAL, template
