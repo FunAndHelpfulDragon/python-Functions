@@ -22,6 +22,7 @@ class Encryption:
 
     def __init__(self) -> None:
         self.fernet = fernet
+        self.check: bool = not disabled
 
     def GetKey(self, passcode: bytes = None) -> bytes:
         """Translates your encrypted (using utf-8) passcode into something more secure
@@ -46,6 +47,19 @@ class Encryption:
         )
         return base64.urlsafe_b64encode(hlib.hexdigest().encode("latin-1"))
 
+    def EncryptData(self, data, passcode):
+        key = passcode
+        if not isinstance(passcode, bytes):
+            key = self.GetKey(passcode.encode("utf-8"))
+
+        if not isinstance(data, bytes):
+            data = data.encode("utf-8")
+
+        return Fernet(key).encrypt(data)
+
+    def DecryptData(self, data, passcode):
+        return Fernet(passcode).decrypt(data)
+
     def encrypt(self, data, passcode: bytes, *, fileName="encrypted"):
         """Encrypts the data that you want to in a safe file
 
@@ -57,11 +71,17 @@ class Encryption:
         if disabled:
             return "Missing Modules! Classs Disabled!!"
 
-        with open(fileName, "wb") as f:
-            f.write(Fernet(passcode).encrypt(data.encode("utf-8")))
-            return "Saved data"
+        # COnvert to bytes
+        key = passcode
+        if not isinstance(passcode, bytes):
+            key = self.GetKey(passcode.encode("utf-8"))
 
-        return "(Somehow) failed to save data"
+        if not isinstance(data, bytes):
+            data = data.encode("utf-8")
+
+        with open(fileName, "wb") as f:
+            f.write(self.EncryptData(data, key))
+            return "Saved data"
 
     def decrypt(self, passcode: bytes, *, fileName="encrypted"):
         """Decrypt the data stored in the file
@@ -69,6 +89,7 @@ class Encryption:
         Args:
             passcode (bytes): Your passcode to decypt with
             fileName (str, optional): The name of the file. Defaults to "encrypted".
+            data (any, optional): ONLY REQUIRED IF YOU ALREADY HAVE ENCRYPTED DATA
 
         Returns:
             _type_: The decrypted data
@@ -77,5 +98,5 @@ class Encryption:
             return "Missing Modules! Classs Disabled!!"
 
         with open(fileName, "rb") as f:
-            data = Fernet(passcode).decrypt(f.read())
+            data = self.DecryptData(f.read(), passcode)
             return data.decode("utf-8")

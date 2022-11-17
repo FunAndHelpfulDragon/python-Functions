@@ -1,6 +1,6 @@
 # Encryption.py
 
-FILE: [Encryption.py](../PythonFunctions/Encryption.py)
+FILE: [Encryption.py](../src/PythonFunctions/Encryption.py)
 
 Encrypts and decrypts data.
 
@@ -41,7 +41,7 @@ Required Arguments:
 
 Optional Arguments:
 
-- fileName: str (The name of the file to save to)
+- fileName: str (The name of the file to save to) (Defaults to "encrypted")
 
 #### decrypt
 
@@ -57,7 +57,7 @@ Required Arguments:
 
 Optional Arguments:
 
-- fileName: str (The name of the file to decrypt)
+- fileName: str (The name of the file to decrypt) (Defaults to "encrypted")
 
 #### GetKey
 
@@ -70,6 +70,34 @@ This above function translates an encoded `utf-8` string into a better string fo
 Optional Arguments:
 
 - key: str (Encoded `utf-8` custom made key)
+
+#### EncryptData
+
+```py
+encryptClass.EncryptData("Hello".encode("utf-8"), key)
+```
+
+Returns the encrypted data
+
+Required Arguments:
+
+- data: any (Data to encrypt)
+- key: str (Key to encrypt with)
+
+#### DecryptData
+
+```py
+encryptClass.DecryptData(data, key)
+```
+
+Returns the decrypted data
+
+Raisese: Invalid Token (Wrong key)
+
+Required Arguments:
+
+- data: any (Data to decrypt)
+- key: any (key to decrypt with)
 
 ## Module Requirements
 
