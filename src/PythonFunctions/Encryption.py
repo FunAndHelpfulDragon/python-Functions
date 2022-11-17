@@ -58,7 +58,10 @@ class Encryption:
         return Fernet(key).encrypt(data)
 
     def DecryptData(self, data, passcode):
-        return Fernet(passcode).decrypt(data)
+        dta = Fernet(passcode).decrypt(data)
+        if isinstance(dta, bytes):
+            return dta.decode("utf-8")
+        return dta
 
     def encrypt(self, data, passcode: bytes, *, fileName="encrypted"):
         """Encrypts the data that you want to in a safe file
@@ -99,4 +102,4 @@ class Encryption:
 
         with open(fileName, "rb") as f:
             data = self.DecryptData(f.read(), passcode)
-            return data.decode("utf-8")
+            return data
