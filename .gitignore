@@ -1,2 +1,4 @@
 *.pyc
 *.code-workspace
+PyFuncSave
+main.py

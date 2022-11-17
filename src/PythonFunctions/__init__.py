@@ -10,5 +10,6 @@ from .Encryption import Encryption
 from .IsDigit import IsDigit
 from .Message import Message
 from .PrintTraceback import PrintTraceback
+from .Save import save
 from .TerminalDisplay import Display
 from .watermark import main as Watermark
