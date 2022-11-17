@@ -26,7 +26,7 @@ def main(
 
     for frame in inspect.stack()[1:]:
         if frame.filename[0] != "<":
-            fileName = os.path.split(frame.filename)[1][:-3]
+            fileName = os.path.basename(frame.filename)[:-3]
             break
 
     twitURL = "https://twitter.com/DragMine149"
