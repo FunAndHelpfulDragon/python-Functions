@@ -29,8 +29,8 @@ jobs:
     - name: typings
       run: |
         stubgen -p src -o typings
-        stubgen -p tests -o typings
-        stubgen -p src/PythonFunctions -o typings
+        stubgen -p tests -o typings/tests
+        stubgen -p src/PythonFunctions -o typings/PythonFunctions
 
     - name: send those file back pzlpzlpzlpzlz
       uses: EndBug/add-and-commit@v7.5.0
