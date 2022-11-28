@@ -63,9 +63,20 @@ class ui:
 
         raise NotImplementedError(f"{buttonName} has no designated callback function!")
 
-    def AddButton(self, text: str, callback, row: int = 0, column: int = 0, *,
-                  textVar: tk.StringVar = None, frame=None, sticky: str = 'nesw',
-                  callbackArgs: bool = True, rowspan: int = 1, columnspan: int = 1) -> tk.Button:
+    def AddButton(
+        self,
+        text: str,
+        callback,
+        row: int = 0,
+        column: int = 0,
+        *,
+        textVar: tk.StringVar = None,
+        frame=None,
+        sticky: str = "nesw",
+        callbackArgs: bool = True,
+        rowspan: int = 1,
+        columnspan: int = 1,
+    ) -> tk.Button:
         """Add a new button to the UI
 
         Args:
@@ -114,10 +125,19 @@ class ui:
         self.Elements.append({"Element": Button, "row": row, "column": column})
         return Button
 
-    def AddLabel(self, text: str, row: int = 0, column: int = 0, *,
-                 textVar: tk.StringVar = None, frame=None,
-                 sticky: str = 'nesw', rowspan: int = 1, columnspan: int = 1,
-                 image: tk.PhotoImage) -> tk.Label:
+    def AddLabel(
+        self,
+        text: str,
+        row: int = 0,
+        column: int = 0,
+        *,
+        textVar: tk.StringVar = None,
+        frame=None,
+        sticky: str = "nesw",
+        rowspan: int = 1,
+        columnspan: int = 1,
+        image: tk.PhotoImage,
+    ) -> tk.Label:
         """Adds a new label to the UI
 
         Args:
@@ -135,20 +155,35 @@ class ui:
             tk.Label: The label object
         """
 
-        Label = tk.Label(self.__GetUiElement(frame),
-                         text=text, textvariable=textVar, font=self.font, image=image)
-        Label.grid(row=row, column=column, sticky=sticky,
-                   rowspan=rowspan, columnspan=columnspan)
-        self.Elements.append({
-            "Element": Label,
-            "row": row,
-            "column": column
-        })
+        Label = tk.Label(
+            self.__GetUiElement(frame),
+            text=text,
+            textvariable=textVar,
+            font=self.font,
+            image=image,
+        )
+        Label.grid(
+            row=row,
+            column=column,
+            sticky=sticky,
+            rowspan=rowspan,
+            columnspan=columnspan,
+        )
+        self.Elements.append({"Element": Label, "row": row, "column": column})
         return Label
 
-    def AddTexBox(self, textVar: tk.StringVar, row: int = 0, column: int = 0, *,
-                  frame: tk.Frame = None, sticky: str = 'nesw', rowspan: int = 1,
-                  columnspan: int = 1, show: str = '') -> tk.Entry:
+    def AddTexBox(
+        self,
+        textVar: tk.StringVar,
+        row: int = 0,
+        column: int = 0,
+        *,
+        frame: tk.Frame = None,
+        sticky: str = "nesw",
+        rowspan: int = 1,
+        columnspan: int = 1,
+        show: str = "",
+    ) -> tk.Entry:
         """Adds a new text box to the UI
 
         Args:
