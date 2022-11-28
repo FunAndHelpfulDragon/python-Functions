@@ -14,13 +14,13 @@ class ui:
         self.Elements = []  # list of elements (Buttons, labels)
         self.Frames = []  # List of frames
         self.callback = callback
-        pass
+        self.font = ("verdana", 20)
 
-    def FontSettings(self, fontData=()):
+    def FontSettings(self, fontData=("verdana", 20)):
         """Change the font settings
 
         Args:
-            fontData (tuple, optional): _description_. Defaults to ().
+            fontData (tuple, optional): _description_. Defaults to ("verdana", 20).
         """
         self.font = fontData
 
@@ -62,12 +62,14 @@ class ui:
             buttonName (string): The name of the button
         """
         if self.callback is not None:
-            return self.callback()
+            return self.callback(**kwargs)
 
         raise NotImplementedError(
             f"{buttonName} has no designated callback function!")
 
-    def AddButton(self, text: str, callback, row: int = 0, column: int = 0, *, textVar: tk.StringVar = None, frame=None, sticky: str = 'nesw', callbackArgs: bool = True, rowspan: int = 1, columnspan: int = 1) -> tk.Button:
+    def AddButton(self, text: str, callback, row: int = 0, column: int = 0, *,
+                  textVar: tk.StringVar = None, frame=None, sticky: str = 'nesw',
+                  callbackArgs: bool = True, rowspan: int = 1, columnspan: int = 1) -> tk.Button:
         """Add a new button to the UI
 
         Args:
@@ -80,7 +82,7 @@ class ui:
             sticky (str, optional): Whever to make the box stick to a side or not. Defaults to nesw.
             rowspan (int, optional): How many rows it covers. Defaults to 1.
             columnspan (int, optional): How many columns it covers. Defaults to 1.
-        
+
         Returns:
             tk.Button: The button object
         """
@@ -106,7 +108,10 @@ class ui:
         })
         return Button
 
-    def AddLabel(self, text: str, row: int = 0, column: int = 0, *, textVar: tk.StringVar = None, frame=None, sticky: str = 'nesw', rowspan: int = 1, columnspan: int = 1) -> tk.Label:
+    def AddLabel(self, text: str, row: int = 0, column: int = 0, *,
+                 textVar: tk.StringVar = None, frame=None,
+                 sticky: str = 'nesw', rowspan: int = 1, columnspan: int = 1,
+                 image: tk.PhotoImage) -> tk.Label:
         """Adds a new label to the UI
 
         Args:
@@ -118,13 +123,14 @@ class ui:
             sticky (str, optional): Whever to make the box stick to a side or not. Defaults to nesw.
             rowspan (int, optional): How many rows it covers. Defaults to 1.
             columnspan (int, optional): How many columns it covers. Defaults to 1.
-        
+            image (tk.PhotoImage, optional): Assaign an image to the ui
+
         Returns:
             tk.Label: The label object
         """
 
         Label = tk.Label(self.__GetUiElement(frame),
-                         text=text, textvariable=textVar, font=self.font)
+                         text=text, textvariable=textVar, font=self.font, image=image)
         Label.grid(row=row, column=column, sticky=sticky,
                    rowspan=rowspan, columnspan=columnspan)
         self.Elements.append({
@@ -134,7 +140,9 @@ class ui:
         })
         return Label
 
-    def AddTexBox(self, textVar: tk.StringVar, row: int = 0, column: int = 0, *, frame: tk.Frame = None, sticky: str = 'nesw', rowspan: int = 1, columnspan: int = 1, show: str = '') -> tk.Entry:
+    def AddTexBox(self, textVar: tk.StringVar, row: int = 0, column: int = 0, *,
+                  frame: tk.Frame = None, sticky: str = 'nesw', rowspan: int = 1,
+                  columnspan: int = 1, show: str = '') -> tk.Entry:
         """Adds a new text box to the UI
 
         Args:
