@@ -21,14 +21,30 @@ As i plan to add in support for more file systems in the future, you will need t
 
 These prefixes are:
 
-- `nml://` (Normal)
 - `gdr://` (Google drive)
 - `ftp://` (File transfer protocol)
 - `oth://` (Other)
 
-By including one of them at the start, you will use that file system instead of the default file system.
+If nothing is included, the default file system will be used (local file system)
 
 If you want to support a file system / api that i don't support, you will need to use `oth://{system}://` (once i've added in this support). If you want to add in a system by default, then submit a pull request and i'll look into it.
+
+#### ftp
+
+`ftp://192.168.120.1:21/Hi.txt`
+
+Above is an example of a path to the file "Hi.txt" on an ftp server.
+In this case:
+
+- `ftp://` Tells the script that the next thing is a URL
+- `192.168.120.1` Tells the script the IP that the server is on.
+- `21` Tells the script the port the server is on (Defalt: 21)
+- `/Hi.txt` Tells the script the file / folder to intreact with.
+
+Notes of worth:
+
+- Everytime the program restart, you will be asked for you password again.
+- On program start, you will be asked to check if your username is correct.
 
 ### Functions and arguments
 

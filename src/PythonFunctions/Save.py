@@ -6,7 +6,7 @@ import pickle
 import typing
 from enum import Enum
 
-from . import Clean, Encryption, Message, PrintTraceback, SaveModules
+from . import Clean, Encryption, Message, PrintTraceback, SaveModules, Check
 
 
 class Encoding(Enum):
@@ -28,8 +28,9 @@ class Storage(Enum):
 class save:
     """Save data, supports multiple systems.
 
-    Supported Systems: [File]
-    Planning Support for: [FTP, Google]
+    Supported Systems: [File, FTP]
+    Partial Supported: []
+    Planning Support for: [Google]
     """
 
     def __init__(self) -> None:
@@ -62,7 +63,7 @@ class save:
             # Attempt to load the module
             try:
                 mdl = importlib.import_module(f"{SaveModules.__package__}.{module}")
-                self.saveModules[module]: SaveModules.template.SaveTemplate = mdl.load()
+                self.saveModules[module] = mdl.load(data=self.settings)
             except (AttributeError, ModuleNotFoundError) as e:
                 Message.warn(
                     f"Failed to load save module: {SaveModules.__package__}.{module}. Error: {e}",
@@ -95,6 +96,27 @@ class save:
                 [self.encoding.JSON, self.encoding.BINARY],
             )
 
+        # Reset the password as we want them to add it.
+        self.settings["FTP"]["Password"] = ""
+
+    def __FTPDetails(self):
+        data = self.settings.get("FTP")
+
+        if data.get("Password") == "":
+            correct = Check().getInput(
+                f"Name: {data.get('Name')} for the ftp server is correct? (y or n): ",
+                "yn")
+
+            if data.get("Name") == "" or not correct:
+                data["Name"] = input("Please enter your username for the FTP server: ")
+
+            data["Password"] = getpass.getpass("Please enter your password for the FTP server: ")
+
+            self.settings["FTP"] = data
+            self.Save(self.settings,
+                    self.settings.get("SettingsSave"),
+                    [self.encoding.JSON, self.encoding.BINARY])
+
     def __TranslateStorage(self, path: str):
         """Takes the path and returns the storage type
 
@@ -105,13 +127,15 @@ class save:
             (str, Storage): New path, The storage type
         """
         if path.startswith("ftp://"):
-            return path.removeprefix("ftp://"), self.storage.FTP
+            self.__FTPDetails()
+            self.saveModules.get(self.storage.FTP.name).credentials(self.settings)
+            return path.strip("ftp://"), self.storage.FTP
 
         if path.startswith("gdr://"):
-            return path.removeprefix("gdr://"), self.storage.GOOGLE
+            return path.strip("gdr://"), self.storage.GOOGLE
 
         if path.startswith("oth://"):
-            return path.removeprefix("oth://"), self.storage.OTHER
+            return path.strip("oth://"), self.storage.OTHER
 
         return path, self.storage.NORMAL
 
@@ -261,7 +285,7 @@ class save:
             path, storage = self.__TranslateStorage(path)
 
         module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
-        module.MakeFolders(path)
+        return module.MakeFolders(path)
 
     def RemoveFile(self, path: str):
         """Remove a file at a path
