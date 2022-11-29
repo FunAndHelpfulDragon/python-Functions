@@ -44,7 +44,7 @@ A system to easly write, read, delete data. with support of multiple file system
 [TerminalDisplay.py](../src/PythonFunctions/TerminalDisplay.py). ([Documentation](TerminalDisplay.md)). (Version: 2)
 Pass in a list of inputs, and get what the user choice in return.
 
-[UI.py](../src/PythonFunctions/ui.py). ([Documentation](ui.md)) (Version: 3)
+[ui.py](../src/PythonFunctions/ui.py). ([Documentation](ui.md)) (Version: 3)
 Make a ui, using tkinter.
 
 [Watermark.py](../src/PythonFunctions/watermark.py). ([Documentation](watermark.md)). (Version: 2)
