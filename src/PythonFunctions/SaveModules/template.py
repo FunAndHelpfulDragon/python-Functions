@@ -1,5 +1,6 @@
 import os
 
+
 class SaveTemplate:
     def __init__(self, **data) -> None:
         self.data = data
