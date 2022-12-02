@@ -1,1 +1,1 @@
-from . import NORMAL, template, FTP
+from . import NORMAL, template, FTP, GOOGLE

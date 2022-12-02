@@ -1,10 +1,13 @@
 import os
 
 class SaveTemplate:
-    def __init__(self, **data) -> None:
-        self.data = data
+    def __init__(self) -> None:
         self.parent = os.path.dirname(os.path.dirname(__file__))
         self.tempFile = f"{self.parent}/PyFuncSave/temp.temp"
+        self.data = {}
+
+    def credentials(self, data):
+        self.data = data
 
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
         """Save data to a file by writing it

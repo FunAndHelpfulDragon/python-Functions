@@ -3,11 +3,10 @@ import os
 from . import template
 
 class save(template.SaveTemplate):
-    def __init__(self, **data) -> None:
+    def __init__(self) -> None:
         self.ftp: ftplib.FTP = ftplib.FTP()
-        self.data = data.get("data")
 
-        super().__init__(**data)
+        super().__init__()
 
     def __Login(self, path):
         """Log in to the FTP server using the provided information
@@ -46,10 +45,6 @@ class save(template.SaveTemplate):
             print("Connection refused by target machine!")
 
         return path
-
-    def credentials(self, data):
-        self.data = data
-        return True
 
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
         print("Writing data...")
@@ -120,5 +115,5 @@ class save(template.SaveTemplate):
         return self.ftp.rmd(path)
 
 
-def load(**data):
-    return save(data=data.get("data"))
+def load():
+    return save()

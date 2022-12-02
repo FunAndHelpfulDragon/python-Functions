@@ -44,6 +44,7 @@ class save:
             "FTP": {"Name": "", "Password": ""},
             "SettingsSave": "",
             "Passcode": "MGNiYzY2MTFmNTU0MGJkMDgwOWEzODhkYzk1YTYxNWI=",
+            "gPage": -1
         }
 
         self.__LoadModules()
@@ -63,7 +64,7 @@ class save:
             # Attempt to load the module
             try:
                 mdl = importlib.import_module(f"{SaveModules.__package__}.{module}")
-                self.saveModules[module] = mdl.load(data=self.settings)
+                self.saveModules[module] = mdl.load()
             except (AttributeError, ModuleNotFoundError) as e:
                 Message.warn(
                     f"Failed to load save module: {SaveModules.__package__}.{module}. Error: {e}",
@@ -128,7 +129,6 @@ class save:
         """
         if path.startswith("ftp://"):
             self.__FTPDetails()
-            self.saveModules.get(self.storage.FTP.name).credentials(self.settings)
             return path.strip("ftp://"), self.storage.FTP
 
         if path.startswith("gdr://"):
@@ -224,6 +224,7 @@ class save:
             encoding = [encoding]
 
         path, storage = self.__TranslateStorage(path)
+        self.saveModules.get(self.storage.FTP.name).credentials(self.settings)
 
         self.MakeFolders(os.path.dirname(path), storage=storage)
 
@@ -285,6 +286,7 @@ class save:
             path, storage = self.__TranslateStorage(path)
 
         module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module.credentials(self.settings)
         return module.MakeFolders(path)
 
     def RemoveFile(self, path: str):
@@ -295,6 +297,7 @@ class save:
         """
         path, storage = self.__TranslateStorage(path)
         module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module.credentials(self.settings)
         module.DeleteFile(path)
 
     def RemoveFolder(self, path: str):
@@ -305,4 +308,5 @@ class save:
         """
         path, storage = self.__TranslateStorage(path)
         module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module.credentials(self.settings)
         module.DeleteFolder(path)

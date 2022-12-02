@@ -5,8 +5,8 @@ from . import template
 
 
 class Save(template.SaveTemplate):
-    def __init__(self, **data) -> None:
-        super().__init__(**data)
+    def __init__(self) -> None:
+        super().__init__()
     
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
         if Encoding:
@@ -37,5 +37,5 @@ class Save(template.SaveTemplate):
             shutil.rmtree(path)
 
 
-def load(**data):
-    return Save(data=data)
+def load():
+    return Save()

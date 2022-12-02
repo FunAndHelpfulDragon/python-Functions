@@ -11,3 +11,10 @@ There are 2 main uses of this file:
 """
 
 print("hi....")
+
+from src.PythonFunctions.Save import save
+
+sv = save()
+
+rst = sv.Save("Hello World", "gdr://Test.txt")
+print(rst)
