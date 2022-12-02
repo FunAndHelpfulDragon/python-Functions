@@ -1,19 +1,21 @@
 import os
 import sys
 
-from google.auth.transport.requests import Request
 from google.auth.exceptions import RefreshError
+from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+
 from . import template
+
 
 class save(template.SaveTemplate):
     def __init__(self) -> None:
         super().__init__()
-        self.SCOPES = ['https://www.googleapis.com/auth/drive']
+        self.SCOPES = ["https://www.googleapis.com/auth/drive"]
         self.service = None
         self.pageSize = 0
 
@@ -41,28 +43,27 @@ class save(template.SaveTemplate):
                 if creds and creds.expired and creds.refresh_token:
                     creds.refresh(Request())
                 else:
-                    flow = InstalledAppFlow.from_client_secrets_file(
-                        Cpath, self.SCOPES)
+                    flow = InstalledAppFlow.from_client_secrets_file(Cpath, self.SCOPES)
                     creds = flow.run_local_server(port=0)
 
                 # Save the credentials for the next run
-                with open(Tpath, 'w', encoding='utf-8') as token:
+                with open(Tpath, "w", encoding="utf-8") as token:
                     token.write(creds.to_json())
 
             print("Drive API loaded!")
-            return build('drive', 'v3', credentials=creds)
+            return build("drive", "v3", credentials=creds)
         except KeyboardInterrupt:
-            sys.exit('Bad drive... Please restart the program and try again.')
+            sys.exit("Bad drive... Please restart the program and try again.")
         except RefreshError:
             if os.path.exists(Tpath):
-                os.system(f'rm {Tpath}')
+                os.system(f"rm {Tpath}")
 
                 # Check if files are actually there and not missing due to folder creation.
                 if not os.path.exists(Cpath):
-                    sys.exit(f'{Cpath} has not been found!')
+                    sys.exit(f"{Cpath} has not been found!")
             return self.__LoadGoogle()
 
-    def __ListDirectory(self, folder='.'):
+    def __ListDirectory(self, folder="."):
         """Loop through the path to get all the items
 
         Args:
@@ -72,7 +73,9 @@ class save(template.SaveTemplate):
             List: List of all the items
         """
 
-        import ipdb; ipdb.set_trace()
+        import ipdb
+
+        ipdb.set_trace()
         query = "trashed = false"
 
         if folder != "":
@@ -82,20 +85,25 @@ class save(template.SaveTemplate):
             files = []
             page_token = None
             while True:
-                response = self.service.files().list(q=query,
-                                                spaces='drive',
-                                                fields='nextPageToken, '
-                                                    'files(id, name)',
-                                                pageToken=page_token).execute()
-                for file in response.get('files', []):
+                response = (
+                    self.service.files()
+                    .list(
+                        q=query,
+                        spaces="drive",
+                        fields="nextPageToken, " "files(id, name)",
+                        pageToken=page_token,
+                    )
+                    .execute()
+                )
+                for file in response.get("files", []):
                     # Process change
-                    print(F'Found file: {file.get("name")}, {file.get("id")}')
-                files.extend(response.get('files', []))
-                page_token = response.get('nextPageToken', None)
+                    print(f'Found file: {file.get("name")}, {file.get("id")}')
+                files.extend(response.get("files", []))
+                page_token = response.get("nextPageToken", None)
                 if page_token is None:
                     break
         except HttpError as error:
-            print(F'An error occurred: {error}')
+            print(f"An error occurred: {error}")
             files = None
 
         return files
@@ -111,11 +119,11 @@ class save(template.SaveTemplate):
             Bool: Does it exists
             item: The id of the item if it exists
         """
-        print({'folder': folder})
+        print({"folder": folder})
         items = self.__ListDirectory(folder)
         if items is not None:
             for item in items:
-                if item['name'] == name:
+                if item["name"] == name:
                     return True, item
         return False, None
 
@@ -123,7 +131,7 @@ class save(template.SaveTemplate):
         pathInfo = os.path.split(path)
 
         if not isinstance(data, bytes):
-            data = data.encode('utf-8')
+            data = data.encode("utf-8")
 
         with open(self.tempFile, "wb") as f:
             f.write(data)
@@ -132,34 +140,31 @@ class save(template.SaveTemplate):
         if exists:
             self.__DeleteByID(exId)
 
-        metadata = {
-            'name': pathInfo[1],
-            'mimeType': '*/*',
-            'parents': pathInfo[0]
-        }
+        metadata = {"name": pathInfo[1], "mimeType": "*/*", "parents": pathInfo[0]}
 
-        media = MediaFileUpload(self.tempFile,
-                                mimetype='*/*',
-                                resumable=True)
+        media = MediaFileUpload(self.tempFile, mimetype="*/*", resumable=True)
 
-        id = self.service.files().create(body=metadata,
-                                    media_body=media,
-                                    fields='id').execute()
+        id = (
+            self.service.files()
+            .create(body=metadata, media_body=media, fields="id")
+            .execute()
+        )
 
         return id
 
     def MakeFolders(self, path: str):
         pass
-    
+
     def DeleteFile(self, path: str):
         return super().DeleteFile(path)
-    
+
     def __DeleteByID(self, id):
         try:
             self.service.files().delete(fileId=id).execute()
             return "Deleted"
         except HttpError:
             return "Not found"
+
 
 def load():
     return save()
