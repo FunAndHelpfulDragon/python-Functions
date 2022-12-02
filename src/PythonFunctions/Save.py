@@ -6,7 +6,7 @@ import pickle
 import typing
 from enum import Enum
 
-from . import Clean, Encryption, Message, PrintTraceback, SaveModules, Check
+from . import Check, Clean, Encryption, Message, PrintTraceback, SaveModules
 
 
 class Encoding(Enum):
@@ -106,17 +106,22 @@ class save:
         if data.get("Password") == "":
             correct = Check().getInput(
                 f"Name: {data.get('Name')} for the ftp server is correct? (y or n): ",
-                "yn")
+                "yn",
+            )
 
             if data.get("Name") == "" or not correct:
                 data["Name"] = input("Please enter your username for the FTP server: ")
 
-            data["Password"] = getpass.getpass("Please enter your password for the FTP server: ")
+            data["Password"] = getpass.getpass(
+                "Please enter your password for the FTP server: "
+            )
 
             self.settings["FTP"] = data
-            self.Save(self.settings,
-                    self.settings.get("SettingsSave"),
-                    [self.encoding.JSON, self.encoding.BINARY])
+            self.Save(
+                self.settings,
+                self.settings.get("SettingsSave"),
+                [self.encoding.JSON, self.encoding.BINARY],
+            )
 
     def __TranslateStorage(self, path: str):
         """Takes the path and returns the storage type

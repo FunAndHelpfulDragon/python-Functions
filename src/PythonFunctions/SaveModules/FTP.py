@@ -1,6 +1,8 @@
 import ftplib
 import os
+
 from . import template
+
 
 class save(template.SaveTemplate):
     def __init__(self) -> None:
@@ -54,7 +56,7 @@ class save(template.SaveTemplate):
         # Translate to binary for easier storage
         code = None
         if not isinstance(data, bytes):
-            data = data.encode('utf-8')
+            data = data.encode("utf-8")
 
         # write temp file
         with open(self.tempFile, "wb") as f:
@@ -62,7 +64,7 @@ class save(template.SaveTemplate):
 
         # store file on server
         with open(self.tempFile, "rb") as f:
-            code = self.ftp.storbinary(f'STOR {path}', f)
+            code = self.ftp.storbinary(f"STOR {path}", f)
 
         # remove data from local client
         if os.path.exists(self.tempFile):
@@ -76,12 +78,12 @@ class save(template.SaveTemplate):
 
         # get data from server
         with open(self.tempFile, "wb") as f:
-            self.ftp.retrbinary(f'RETR {path}', f.write)
+            self.ftp.retrbinary(f"RETR {path}", f.write)
 
-        with open(self.tempFile, 'rb') as f:
+        with open(self.tempFile, "rb") as f:
             d = f.read()
             try:
-                return d.decode('utf-8')
+                return d.decode("utf-8")
             except UnicodeDecodeError:
                 return d
 
@@ -95,7 +97,7 @@ class save(template.SaveTemplate):
             cPath = self.ftp.pwd()
 
             for item in directories:
-                if item not in self.ftp.nlst() and item != '':
+                if item not in self.ftp.nlst() and item != "":
                     self.ftp.mkd(item)
                 self.ftp.cwd(item)
             self.ftp.cwd(cPath)

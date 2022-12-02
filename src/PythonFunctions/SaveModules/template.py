@@ -1,5 +1,6 @@
 import os
 
+
 class SaveTemplate:
     def __init__(self) -> None:
         self.parent = os.path.dirname(os.path.dirname(__file__))
