@@ -1,14 +1,23 @@
 import os
 import sys
-
-from google.auth.transport.requests import Request
-from google.auth.exceptions import RefreshError
-from google.oauth2.credentials import Credentials
-from google_auth_oauthlib.flow import InstalledAppFlow
-from googleapiclient.discovery import build
-from googleapiclient.errors import HttpError
-from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 from . import template
+
+disabled = False
+
+try:
+    from google.auth.transport.requests import Request
+    from google.auth.exceptions import RefreshError
+    from google.oauth2.credentials import Credentials
+    from google_auth_oauthlib.flow import InstalledAppFlow
+    from googleapiclient.discovery import build
+    from googleapiclient.errors import HttpError
+    from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+except ModuleNotFoundError:
+    disabled = True
+    # pylint:disable=C0301
+    print("NOTE: google drive api is NOT INSTALLED. As so, communicating with google drive api is DISABLED!!")
+    # pylint:enable=C0301
+
 
 class save(template.SaveTemplate):
     def __init__(self) -> None:
@@ -23,6 +32,9 @@ class save(template.SaveTemplate):
         self.service = self.__LoadGoogle()
 
     def __LoadGoogle(self):
+        if disabled:
+            return False
+
         path = self.data.get("SettingsSave")
         path = os.path.dirname(path)
         Tpath = path + "/gToken.json"
@@ -34,7 +46,8 @@ class save(template.SaveTemplate):
         try:
             creds = None
             if os.path.exists(Tpath):
-                creds = Credentials.from_authorized_user_file(Tpath, self.SCOPES)
+                creds = Credentials.from_authorized_user_file(
+                    Tpath, self.SCOPES)
 
             # If there are no (valid) credentials available, let the user login
             if not creds or not creds.valid:
@@ -71,8 +84,11 @@ class save(template.SaveTemplate):
         Returns:
             List: List of all the items
         """
+        if disabled:
+            return False
 
-        import ipdb; ipdb.set_trace()
+        import ipdb
+        ipdb.set_trace()
         query = "trashed = false"
 
         if folder != "":
@@ -83,10 +99,10 @@ class save(template.SaveTemplate):
             page_token = None
             while True:
                 response = self.service.files().list(q=query,
-                                                spaces='drive',
-                                                fields='nextPageToken, '
-                                                    'files(id, name)',
-                                                pageToken=page_token).execute()
+                                                     spaces='drive',
+                                                     fields='nextPageToken, '
+                                                     'files(id, name)',
+                                                     pageToken=page_token).execute()
                 for file in response.get('files', []):
                     # Process change
                     print(F'Found file: {file.get("name")}, {file.get("id")}')
@@ -111,6 +127,9 @@ class save(template.SaveTemplate):
             Bool: Does it exists
             item: The id of the item if it exists
         """
+        if disabled:
+            return False
+
         print({'folder': folder})
         items = self.__ListDirectory(folder)
         if items is not None:
@@ -120,6 +139,9 @@ class save(template.SaveTemplate):
         return False, None
 
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
+        if disabled:
+            return False
+
         pathInfo = os.path.split(path)
 
         if not isinstance(data, bytes):
@@ -143,23 +165,32 @@ class save(template.SaveTemplate):
                                 resumable=True)
 
         id = self.service.files().create(body=metadata,
-                                    media_body=media,
-                                    fields='id').execute()
+                                         media_body=media,
+                                         fields='id').execute()
 
         return id
 
     def MakeFolders(self, path: str):
-        pass
-    
+        if disabled:
+            return False
+        return
+
     def DeleteFile(self, path: str):
+        if disabled:
+            return False
+
         return super().DeleteFile(path)
-    
+
     def __DeleteByID(self, id):
+        if disabled:
+            return False
+
         try:
             self.service.files().delete(fileId=id).execute()
             return "Deleted"
         except HttpError:
             return "Not found"
+
 
 def load():
     return save()
