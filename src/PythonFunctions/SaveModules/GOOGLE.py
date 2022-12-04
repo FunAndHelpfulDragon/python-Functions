@@ -1,12 +1,13 @@
 import os
 import sys
+
 from . import template
 
 disabled = False
 
 try:
-    from google.auth.transport.requests import Request
     from google.auth.exceptions import RefreshError
+    from google.auth.transport.requests import Request
     from google.oauth2.credentials import Credentials
     from google_auth_oauthlib.flow import InstalledAppFlow
     from googleapiclient.discovery import build
@@ -15,7 +16,9 @@ try:
 except ModuleNotFoundError:
     disabled = True
     # pylint:disable=C0301
-    print("NOTE: google drive api is NOT INSTALLED. As so, communicating with google drive api is DISABLED!!")
+    print(
+        "NOTE: google drive api is NOT INSTALLED. As so, communicating with google drive api is DISABLED!!"
+    )
     # pylint:enable=C0301
 
 
@@ -46,8 +49,7 @@ class save(template.SaveTemplate):
         try:
             creds = None
             if os.path.exists(Tpath):
-                creds = Credentials.from_authorized_user_file(
-                    Tpath, self.SCOPES)
+                creds = Credentials.from_authorized_user_file(Tpath, self.SCOPES)
 
             # If there are no (valid) credentials available, let the user login
             if not creds or not creds.valid:
@@ -87,6 +89,7 @@ class save(template.SaveTemplate):
             return False
 
         import ipdb
+
         ipdb.set_trace()
         query = "trashed = false"
 
@@ -134,7 +137,7 @@ class save(template.SaveTemplate):
         if disabled:
             return False
 
-        print({'folder': folder})
+        print({"folder": folder})
         items = self.__ListDirectory(folder)
         if items is not None:
             for item in items:
