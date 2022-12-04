@@ -44,7 +44,7 @@ class save:
             "FTP": {"Name": "", "Password": ""},
             "SettingsSave": "",
             "Passcode": "MGNiYzY2MTFmNTU0MGJkMDgwOWEzODhkYzk1YTYxNWI=",
-            "gPage": -1
+            "gPage": -1,
         }
 
         self.__LoadModules()
