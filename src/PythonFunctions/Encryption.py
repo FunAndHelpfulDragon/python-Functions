@@ -34,14 +34,17 @@ class Encryption:
         if disabled:
             return "Missing Modules! Classs Disabled!!"
 
-        Message().warn("Please make sure you keep the key safe! If you loose it, all your data is possible lost.", timeS=4, colour="RED")
+        Message().warn(
+            "Please make sure you keep the key safe! If you loose it, all your data is possible lost.",
+            timeS=4,
+            colour="RED",
+        )
         if self.key is not None:
             return self.key
 
         key = Fernet.generate_key()
         self.key = key
         return self.key
-
 
     def EncryptData(self, data, passcode):
         if not isinstance(data, bytes):
