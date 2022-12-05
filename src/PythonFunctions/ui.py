@@ -89,6 +89,7 @@ class ui:
             sticky (str, optional): Whever to make the box stick to a side or not. Defaults to nesw.
             rowspan (int, optional): How many rows it covers. Defaults to 1.
             columnspan (int, optional): How many columns it covers. Defaults to 1.
+            callbackArgs (any, optional): Value to send to the function
 
         Returns:
             tk.Button: The button object
@@ -104,7 +105,7 @@ class ui:
                 self.__GetUiElement(frame),
                 text=text,
                 textvariable=textVar,
-                command=lambda: callback(text),
+                command=lambda: callback(callbackArgs),
                 font=self.font,
             )
         else:
