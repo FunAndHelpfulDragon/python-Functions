@@ -1,5 +1,6 @@
 import os
 import sys
+import io
 
 from . import template
 
@@ -49,14 +50,16 @@ class save(template.SaveTemplate):
         try:
             creds = None
             if os.path.exists(Tpath):
-                creds = Credentials.from_authorized_user_file(Tpath, self.SCOPES)
+                creds = Credentials.from_authorized_user_file(
+                    Tpath, self.SCOPES)
 
             # If there are no (valid) credentials available, let the user login
             if not creds or not creds.valid:
                 if creds and creds.expired and creds.refresh_token:
                     creds.refresh(Request())
                 else:
-                    flow = InstalledAppFlow.from_client_secrets_file(Cpath, self.SCOPES)
+                    flow = InstalledAppFlow.from_client_secrets_file(
+                        Cpath, self.SCOPES)
                     creds = flow.run_local_server(port=0)
 
                 # Save the credentials for the next run
@@ -76,11 +79,12 @@ class save(template.SaveTemplate):
                     sys.exit(f"{Cpath} has not been found!")
             return self.__LoadGoogle()
 
-    def __ListDirectory(self, folder="."):
+    def __ListDirectory(self, folder=".", name=""):
         """Loop through the path to get all the items
 
         Args:
             folder (string): The path to check
+            name (string): name of the file to check
 
         Returns:
             List: List of all the items
@@ -88,13 +92,12 @@ class save(template.SaveTemplate):
         if disabled:
             return False
 
-        import ipdb
-
-        ipdb.set_trace()
-        query = "trashed = false"
+        query = "trashed = false and 'me' in owners"
 
         if folder != "":
-            query += f"'{folder}' in parents"
+            query += f" and '{folder}' in parents"
+        if name != "":
+            query += f" and name contains '{name}'"
 
         try:
             files = []
@@ -110,9 +113,6 @@ class save(template.SaveTemplate):
                     )
                     .execute()
                 )
-                for file in response.get("files", []):
-                    # Process change
-                    print(f'Found file: {file.get("name")}, {file.get("id")}')
                 files.extend(response.get("files", []))
                 page_token = response.get("nextPageToken", None)
                 if page_token is None:
@@ -123,7 +123,7 @@ class save(template.SaveTemplate):
 
         return files
 
-    def __checkIfExists(self, folder, name):
+    def __checkIfExists(self, folder, name=""):
         """Check if an item with a certain name already exists
 
         Args:
@@ -137,13 +137,10 @@ class save(template.SaveTemplate):
         if disabled:
             return False
 
-        print({"folder": folder})
-        items = self.__ListDirectory(folder)
-        if items is not None:
-            for item in items:
-                if item["name"] == name:
-                    return True, item
-        return False, None
+        items = self.__ListDirectory(folder, name)
+        if len(items) == 0:
+            return False, None
+        return True, items[0]
 
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
         if disabled:
@@ -159,37 +156,115 @@ class save(template.SaveTemplate):
 
         exists, exId = self.__checkIfExists(pathInfo[0], pathInfo[1])
         if exists:
-            self.__DeleteByID(exId)
+            deleted = self.__DeleteByID(exId.get("id"))
+            print("deleted old file" if deleted else "failed to delete old file")
 
-        metadata = {"name": pathInfo[1], "mimeType": "*/*", "parents": pathInfo[0]}
+        metadata = {"name": pathInfo[1],
+                    "mimeType": "*/*", "parents": pathInfo[0]}
 
-        media = MediaFileUpload(self.tempFile, mimetype="*/*", resumable=True)
+        fileId = None
+        try:
+            media = MediaFileUpload(
+                self.tempFile, mimetype="*/*", resumable=True)
 
-        id = (
-            self.service.files()
-            .create(body=metadata, media_body=media, fields="id")
-            .execute()
-        )
+            fileId = (
+                self.service.files()
+                .create(body=metadata, media_body=media, fields="id")
+                .execute()
+            )
+        except HttpError:
+            print("Error occured trying to upload the data")
 
-        return id
+        return fileId
+
+    def ReadData(self, path: str, Encoding: bool = False) -> any:
+        if disabled:
+            return False
+
+        pathInfo = os.path.split(path)
+
+        exists, fileID = self.__checkIfExists(pathInfo[0], pathInfo[1])
+        if not exists:
+            print("File not found on server!")
+            return None
+
+        try:
+            request = self.service.files().get_media(fileId=fileID.get("id"))
+            file = io.BytesIO()
+            downloader = MediaIoBaseDownload(file, request)
+            done = False
+            while done is False:
+                status, done = downloader.next_chunk()
+                print(f"Downloading: {status.progress() * 100}%")
+
+            return file.getvalue().decode("utf-8")
+        except HttpError:
+            print("Error occured downloading the file to be read")
+            return None
 
     def MakeFolders(self, path: str):
         if disabled:
             return False
-        return
+
+        fileId = None
+        try:
+            folders = [path]
+            if path.find("/") > -1:
+                folders = path.split("/")
+            if path.find("\\") > -1:
+                folders = path.split("\\")
+
+            currentPath = ""
+            for file in folders:
+
+                if currentPath != "":
+                    exists, fileId = self.__checkIfExists(
+                        currentPath.get("id"))
+                    if exists:
+                        currentPath = fileId
+                        continue
+
+                metadata = {
+                    "name": file,
+                    "mimeType": "application/vnd.google-apps.folder",
+                }
+
+                if currentPath != "":
+                    metadata["parents"] = [currentPath.get("id")]
+
+                fileId = self.service.files().create(body=metadata, fields="id").execute()
+                currentPath = fileId
+
+            return fileId
+        except HttpError:
+            print("Error occured during making of folders")
+            return fileId
+
+    def DeleteFolder(self, path: str):
+        if disabled:
+            return False
+
+        return self.__DeleteByPath(path)
 
     def DeleteFile(self, path: str):
         if disabled:
             return False
 
-        return super().DeleteFile(path)
+        return self.__DeleteByPath(path)
 
-    def __DeleteByID(self, id):
+    def __DeleteByPath(self, path):
+        pathInfo = os.path.split(path)
+        exists, fileId = self.__checkIfExists(pathInfo[0], pathInfo[1])
+        if exists:
+            return self.__DeleteByID(fileId)
+        return "Not found on server"
+
+    def __DeleteByID(self, fileId):
         if disabled:
             return False
 
         try:
-            self.service.files().delete(fileId=id).execute()
+            self.service.files().delete(fileId=fileId).execute()
             return "Deleted"
         except HttpError:
             return "Not found"

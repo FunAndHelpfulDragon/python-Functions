@@ -99,6 +99,8 @@ class save:
 
         # Reset the password as we want them to add it.
         self.settings["FTP"]["Password"] = ""
+        # Reset the save location, just in case they have changed stuff around.
+        self.settings["SettingsSave"] = f"{parent}/PyFuncSave/Settings.secret"
 
     def __FTPDetails(self):
         data = self.settings.get("FTP")
@@ -150,11 +152,8 @@ class save:
         Returns:
             bytes: The new passcode
         """
-        Passcode = getpass.getpass(
-            "Please enter a password / passcode to save encrypted data with: "
-        )
 
-        key = self.enc.GetKey(Passcode.encode("utf-8"))  # get the byte version
+        key = self.enc.GetKey()  # get the byte version
         self.settings["Passcode"] = key.decode("utf-8")  # store the byte as string
 
         # save the data
