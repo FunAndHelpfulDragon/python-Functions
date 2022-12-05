@@ -4,9 +4,6 @@ from .Message import Message
 disabled = False
 
 try:
-    import base64
-    import hashlib
-
     from cryptography import fernet
     from cryptography.fernet import Fernet
 except ModuleNotFoundError:
@@ -23,8 +20,9 @@ class Encryption:
     def __init__(self) -> None:
         self.fernet = fernet
         self.check: bool = not disabled
+        self.key = None
 
-    def GetKey(self, passcode: bytes = None) -> bytes:
+    def GetKey(self) -> bytes:
         """Translates your encrypted (using utf-8) passcode into something more secure
 
         Args:
@@ -36,26 +34,20 @@ class Encryption:
         if disabled:
             return "Missing Modules! Classs Disabled!!"
 
-        if passcode is None:
-            return Fernet.generate_key()
+        Message().warn("Please make sure you keep the key safe! If you loose it, all your data is possible lost.", timeS=4, colour="RED")
+        if self.key is not None:
+            return self.key
 
-        assert isinstance(passcode, bytes)
-        hlib = hashlib.md5()
-        hlib.update(passcode)
-        Message().warn(
-            "WARNING, here is your key please keep this safe.", timeS=2, colour="red"
-        )
-        return base64.urlsafe_b64encode(hlib.hexdigest().encode("latin-1"))
+        key = Fernet.generate_key()
+        self.key = key
+        return self.key
+
 
     def EncryptData(self, data, passcode):
-        key = passcode
-        if not isinstance(passcode, bytes):
-            key = self.GetKey(passcode.encode("utf-8"))
-
         if not isinstance(data, bytes):
             data = data.encode("utf-8")
 
-        return Fernet(key).encrypt(data)
+        return Fernet(passcode).encrypt(data)
 
     def DecryptData(self, data, passcode):
         dta = Fernet(passcode).decrypt(data)
@@ -74,16 +66,11 @@ class Encryption:
         if disabled:
             return "Missing Modules! Classs Disabled!!"
 
-        # COnvert to bytes
-        key = passcode
-        if not isinstance(passcode, bytes):
-            key = self.GetKey(passcode.encode("utf-8"))
-
         if not isinstance(data, bytes):
             data = data.encode("utf-8")
 
         with open(fileName, "wb") as f:
-            f.write(self.EncryptData(data, key))
+            f.write(self.EncryptData(data, passcode))
             return "Saved data"
 
     def decrypt(self, passcode: bytes, *, fileName="encrypted"):

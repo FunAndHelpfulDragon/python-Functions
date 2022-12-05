@@ -34,7 +34,7 @@ def test_Encrypt():
 
 def test_Decrypt_wrong():
     """Test to see if we get an invalid token with a random key"""
-    key = enc.GetKey("encrypt".encode("utf-8"))
+    key = enc.fernet.Fernet.generate_key()
     try:
         enc.decrypt(key, fileName="EncryptionTest.byte")
     except enc.fernet.InvalidToken:
