@@ -1,4 +1,5 @@
 import importlib
+
 from . import template
 
 
@@ -14,7 +15,8 @@ class save(template.SaveTemplate):
             file = input("Please enter path to file: ")
             try:
                 module = importlib.import_module(
-                    file.replace("/", ".").replace("\\", "."))
+                    file.replace("/", ".").replace("\\", ".")
+                )
                 self.moduleClass = module.load()
             except ModuleNotFoundError:
                 file = None
@@ -44,7 +46,7 @@ class save(template.SaveTemplate):
 
         return self.moduleClass.DeleteFolder(path)
 
-    def MakeFolders(self, path: str): 
+    def MakeFolders(self, path: str):
         if self.moduleClass is None:
             self.getFileSystem()
 
