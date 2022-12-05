@@ -5,9 +5,6 @@ from . import template
 
 
 class Save(template.SaveTemplate):
-    def __init__(self) -> None:
-        super().__init__()
-
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
         if Encoding:
             with open(path, "wb") as f:

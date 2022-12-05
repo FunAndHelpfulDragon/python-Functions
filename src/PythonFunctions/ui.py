@@ -84,7 +84,7 @@ class ui:
             callback (function): The callback function on button click
             row (int, optional): The row position of the button. Defaults to 0.
             column (int, optional): The column position of the button. Defaults to 0.
-            textVar (tk.StringVar, optional): A string variable to assign to the button. Defaults to None.
+            textVar (tk.StringVar, optional): A string variable. Defaults to None.
             frame (optional): Where to add the element to.
             sticky (str, optional): Whever to make the box stick to a side or not. Defaults to nesw.
             rowspan (int, optional): How many rows it covers. Defaults to 1.
@@ -144,7 +144,7 @@ class ui:
             text (str): The text to display on the label
             row (int, optional): The row position of the label. Defaults to 0.
             column (int, optional): The column position of the label. Defaults to 0.
-            textVar (tk.StringVar, optional): A string variable to assign to the button. Defaults to None.
+            textVar (tk.StringVar, optional): A string variable. Defaults to None.
             frame (optional): Where to add the element to.
             sticky (str, optional): Whever to make the box stick to a side or not. Defaults to nesw.
             rowspan (int, optional): How many rows it covers. Defaults to 1.

@@ -35,7 +35,7 @@ class Encryption:
             return "Missing Modules! Classs Disabled!!"
 
         Message().warn(
-            "Please make sure you keep the key safe! If you loose it, all your data is possible lost.",
+            "Please make sure you keep the key safe!",
             timeS=4,
             colour="RED",
         )
