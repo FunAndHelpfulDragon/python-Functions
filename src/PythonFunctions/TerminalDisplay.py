@@ -1,16 +1,24 @@
 import os
 import typing
-
-import readchar
-
 from . import Message, colours
 from .Check import Check
+
+
+canRead = True
+try:
+    import readchar
+except ModuleNotFoundError:
+    canRead = False
 
 
 class Display:
     """The main class to give the user an option"""
 
     def __init__(self) -> None:
+
+        if not canRead:
+            print("NOTE: readchar is NOT INSTALLED. As so, TerminalDisplay is DISABLED!!")
+
         self.options: typing.Dict = {}  # specific formaat.
         self.__storedText = None
         self.gridData = []
@@ -25,12 +33,16 @@ class Display:
         Args:
             options (typing.Dict): The options to set
         """
+        if not canRead:
+            return
+
         # Validation check
         cleanOptions = {}
         for option in options:
             if isinstance(options.get(option), tuple):
                 newOption = options.get(option)[1].replace(" ", "_")
-                cleanOptions.update({int(option): (options.get(option)[0], newOption)})
+                cleanOptions.update(
+                    {int(option): (options.get(option)[0], newOption)})
             else:
                 print(
                     f"{option} with data {options.get(option)} has an invalid data structure"
@@ -45,6 +57,8 @@ class Display:
             index (int): The index to add
             option (typing.Tuple): The information about the option to set
         """
+        if not canRead:
+            return
         newOption = option[1].replace(" ", "_")
         self.options.update({index: (option[0], newOption)})
 
@@ -54,6 +68,8 @@ class Display:
         Args:
             index (int): The index to remove an option
         """
+        if not canRead:
+            return
         return self.options.pop(index)
 
     def ShowHeader(self, *, text: str = "Display.py"):
@@ -62,6 +78,8 @@ class Display:
         Args:
             text: (str, option) The text to display. Deafults to "Display.py".
         """
+        if not canRead:
+            return
         print(
             f"""{colours.c('g')}{'-' * os.get_terminal_size().columns}{colours.c()}
 {text}
@@ -154,6 +172,9 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         Returns:
             _type_: The item returned
         """
+        if not canRead:
+            return None
+
         if not useList:
             self.cursorPosition = [0, 0]
             self.__GenerateGridData()
@@ -200,10 +221,12 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif c == "\r":
                 chosen = True
                 return self.options.get(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]
+                                  ][self.cursorPosition[0]]
                 )[0](
                     self.options.get(
-                        self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                        self.gridData[self.cursorPosition[1]
+                                      ][self.cursorPosition[0]]
                     )[1]
                 )
 
