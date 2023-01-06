@@ -15,6 +15,14 @@ What you see now is not the final version.
 
 Please read [Contributing.md](Contribution.md)
 
+## Update Log
+
+Please see [Updatelog.md](Updatelog.md) for updates after the latest update
+
+### 1.0.1
+
+- Attempting to fix no description on testpypi
+
 ## Credits
 
 This project uses functions and modules from other people to run. Most of the modules have been auto imported (and kept up to date) but some require you to manually install them (check that module infomation).

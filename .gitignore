@@ -2,3 +2,6 @@
 *.code-workspace
 PyFuncSave
 main.py
+dist/
+*.egg
+*.egg-info/

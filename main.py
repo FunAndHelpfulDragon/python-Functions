@@ -10,3 +10,7 @@ There are 2 main uses of this file:
 
 """
 print("hi....")
+
+from src.PythonFunctions import Watermark
+
+Watermark("drag")
