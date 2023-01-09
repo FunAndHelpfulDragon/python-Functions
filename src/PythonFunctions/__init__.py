@@ -1,7 +1,13 @@
 # Update checker mainly.
 
 import os
-import requests
+
+canReadGlobal = True
+try:
+    import requests
+except ModuleNotFoundError:
+    print("Requests is not installed. Can not check for a new PythonFunction update!")
+    canReadGlobal = False
 
 
 def ReadLocal():
@@ -20,4 +26,5 @@ def ReadGlobal():
         print("Notice: A newer version of PythonFunctions is alvalible.")
 
 
-ReadGlobal()
+if canReadGlobal:
+    ReadGlobal()
