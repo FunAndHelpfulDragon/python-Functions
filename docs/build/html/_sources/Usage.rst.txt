@@ -6,14 +6,16 @@ Usage
 Installation
 ------------
 
-To use Python_Functions install it using pip:
+To use ``PythonFunctions`` first install it using pip:
+
+(Using testpypi, developement builds)
 
 .. code-block:: console
+
     (.venv) $ pip install -i https://test.pypi.org/simple/ Python-Functions
 
-Setup
------
+(Using pypi, stable build)
 
-To use Python-Functions in your program add this code to the start of the file
-.. code-block:: python
-    import Python_Functions
+.. code-block:: console
+
+    (.venv) $ pip install Python-Functions
