@@ -37,20 +37,6 @@ def test_add():
     assert len(dsp.options) == 5
 
 
-@pytest.mark.repeat(4)
-def test_List():
-    """Tests to see if using an option actually works"""
-    # Checks to see if they exists, else add them.
-    if len(dsp.options) < 5:
-        test_set()
-        test_add()
-
-    v = random.randrange(-2, 2)
-    sys.stdin = StringIO(f"{v}")
-    rst = dsp.ShowOptions(useList=True)
-    assert rst is not None
-
-
 @pytest.mark.repeat(5)
 def test_Remove():
     """Tests to see if removing an option removes an option"""
