@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Board &mdash; Python Functions 1.0.1 documentation</title>
+  <title>Board (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Usage" href="../usage.html" /> 
+    <link rel="next" title="Check (Version 2)" href="Check.html" />
+    <link rel="prev" title="Usage" href="../Usage.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -39,18 +40,13 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Board</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#createboard">CreateBoard</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#PythonFunctions.Board.CreateBoard"><code class="docutils literal notranslate"><span class="pre">PythonFunctions.Board.CreateBoard()</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Board (Version 2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#createboard-version-2">CreateBoard (Version 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#displayboard-version-2">DisplayBoard (Version 2)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#displayboard">DisplayBoard</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#PythonFunctions.Board.DisplayBoard"><code class="docutils literal notranslate"><span class="pre">PythonFunctions.Board.DisplayBoard()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="Check.html">Check (Version 2)</a></li>
 </ul>
 
         </div>
@@ -67,7 +63,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Board</li>
+      <li class="breadcrumb-item active">Board (Version 2)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Modules/Board.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -77,19 +73,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="board">
-<h1>Board<a class="headerlink" href="#board" title="Permalink to this heading"></a></h1>
+  <section id="board-version-2">
+<h1>Board (Version 2)<a class="headerlink" href="#board-version-2" title="Permalink to this heading"></a></h1>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions</span> <span class="kn">import</span> <span class="n">Board</span>
 </pre></div>
 </div>
 <p>Used to quickly create or display a 2d array of items.
 Useful for creating boards for board games.</p>
-<section id="createboard">
-<h2>CreateBoard<a class="headerlink" href="#createboard" title="Permalink to this heading"></a></h2>
+<section id="createboard-version-2">
+<h2>CreateBoard (Version 2)<a class="headerlink" href="#createboard-version-2" title="Permalink to this heading"></a></h2>
 <p>To create a board, you can use the <code class="docutils literal notranslate"><span class="pre">Board.CreateBoard()</span></code> function</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="PythonFunctions.Board.CreateBoard">
-<span class="sig-prename descclassname"><span class="pre">PythonFunctions.Board.</span></span><span class="sig-name descname"><span class="pre">CreateBoard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PythonFunctions.Board.CreateBoard" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">PythonFunctions.Board.</span></span><span class="sig-name descname"><span class="pre">CreateBoard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Returns a 2D array</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -109,12 +105,12 @@ Useful for creating boards for board games.</p>
 </dd></dl>
 
 </section>
-<section id="displayboard">
-<h2>DisplayBoard<a class="headerlink" href="#displayboard" title="Permalink to this heading"></a></h2>
+<section id="displayboard-version-2">
+<h2>DisplayBoard (Version 2)<a class="headerlink" href="#displayboard-version-2" title="Permalink to this heading"></a></h2>
 <p>Display a 2d array? Use this useful function.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="PythonFunctions.Board.DisplayBoard">
-<span class="sig-prename descclassname"><span class="pre">PythonFunctions.Board.</span></span><span class="sig-name descname"><span class="pre">DisplayBoard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colourData</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#PythonFunctions.Board.DisplayBoard" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">PythonFunctions.Board.</span></span><span class="sig-name descname"><span class="pre">DisplayBoard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">brd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colourData</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Prints out the 2D array in the terrminal</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -134,7 +130,8 @@ Useful for creating boards for board games.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Check.html" class="btn btn-neutral float-right" title="Check (Version 2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

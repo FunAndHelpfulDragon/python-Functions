@@ -2,7 +2,7 @@
 """
 
 
-def check(value, Message, ID, **info):
+def check(value, Message, ID, **info) -> int:
     """Checks if a value is within a certain range
 
     Args:
@@ -13,31 +13,33 @@ def check(value, Message, ID, **info):
     Returns:
         _type_: Either the value, or nothing
     """
-    higherRange = 0
-
-    lowerRange = info.get("lower")
     higherRange = info.get("higher")
+    lowerRange = info.get("lower")
 
-    if higherRange is None:
-        higherRange = lowerRange
-        lowerRange = 0
-
+    # is digit check
     if ID.IsDigit(value):
+
         value = float(value)
-        if value < lowerRange:
-            return Message.clear(
-                f"Out of range. Too low! (Lowest Value: {lowerRange})",
-                timeS=1,
-                colour=["red"],
-            )
-        if value > higherRange:
-            return Message.clear(
-                f"Out of range. Too high! (Highest Value: {higherRange})",
-                timeS=1,
-                colour=["red"],
-            )
+        if lowerRange is not None:
+            if value < lowerRange:
+                Message.clear(
+                    f"Out of range. Too low! (Lowest Value: {lowerRange})",
+                    timeS=1,
+                    colour=["red"],
+                )
+                return None
+
+        if higherRange is not None:
+            if value > higherRange:
+                Message.clear(
+                    f"Out of range. Too high! (Highest Value: {higherRange})",
+                    timeS=1,
+                    colour=["red"],
+                )
+                return None
         return int(value)
 
-    return Message.clear(
+    Message.clear(
         "Invalid input! Not a `real` number", timeS=1, colour="light red"
     )
+    return None

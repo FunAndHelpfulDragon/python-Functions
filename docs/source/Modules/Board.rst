@@ -1,5 +1,5 @@
-Board
-=====
+Board (Version 2)
+=================
 
 .. code-block:: python
 
@@ -8,12 +8,13 @@ Board
 Used to quickly create or display a 2d array of items.
 Useful for creating boards for board games.
 
-CreateBoard
------------
+CreateBoard (Version 2)
+-----------------------
 
 To create a board, you can use the ``Board.CreateBoard()`` function
 
 .. py:function:: PythonFunctions.Board.CreateBoard(x, y)
+   :noindex:
 
    Returns a 2D array
 
@@ -26,12 +27,13 @@ To create a board, you can use the ``Board.CreateBoard()`` function
    :return: The 2D array
    :rtype: list[list[str]]
 
-DisplayBoard
-------------
+DisplayBoard (Version 2)
+------------------------
 
 Display a 2d array? Use this useful function.
 
 .. py:function:: PythonFunctions.Board.DisplayBoard(brd, colourData)
+   :noindex:
 
    Prints out the 2D array in the terrminal
 
