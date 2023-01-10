@@ -6,7 +6,12 @@ import pickle
 import typing
 from enum import Enum
 
-from . import Check, Clean, Encryption, Message, PrintTraceback, SaveModules
+from . import SaveModules
+from .Check import Check
+from .CleanFolderData import Clean
+from .Encryption import Encryption
+from .Message import Message
+from .PrintTraceback import PrintTraceback
 
 
 class Encoding(Enum):

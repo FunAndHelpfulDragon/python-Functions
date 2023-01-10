@@ -1,4 +1,4 @@
-from . import PrintTraceback
+from .PrintTraceback import PrintTraceback
 from .Message import Message
 
 disabled = False

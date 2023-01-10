@@ -9,7 +9,7 @@ import pytest
 
 from . import PythonFunctions
 
-TD = PythonFunctions.Display
+TD = PythonFunctions.TerminalDisplay.Display
 
 dsp = TD()
 

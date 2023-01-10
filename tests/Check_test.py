@@ -8,7 +8,7 @@ from io import StringIO
 from . import PythonFunctions
 
 Check = PythonFunctions.Check
-chk = Check()
+chk = Check.Check()
 
 
 def int_check():
@@ -34,9 +34,6 @@ def yn_check(vIn: str):
     """
     sys.stdin = StringIO(f"{vIn}")
     return chk.getInput("Testing (yn): ", chk.ModeEnum.yesno)
-
-
-chk = Check()
 
 
 def test_int():
