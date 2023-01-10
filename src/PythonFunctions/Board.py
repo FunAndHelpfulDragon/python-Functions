@@ -7,7 +7,7 @@ Functions:
 
 import typing
 
-from .colours import c
+from .Colours import c
 
 
 def CreateBoard(

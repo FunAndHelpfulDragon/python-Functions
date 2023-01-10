@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Colours (Version 1) &mdash; Python Functions 1.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="CleanFolderData (Version 2)" href="CleanFolderData.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Python Functions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board.html">Board (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Check.html">Check (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Colours (Version 1)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#consoleformat-version-1">ConsoleFormat (Version 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#print-version-1-0-1">Print (Version 1.0.1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#print-getvalue-version-1">Print.GetValue (Version 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reverse-version-1">reverse (Version 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#c-version-1">c (Version 1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#colourretrieve-version-1">colourRetrieve (Version 1)</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python Functions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Colours (Version 1)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Modules/Colours.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="colours-version-1">
+<h1>Colours (Version 1)<a class="headerlink" href="#colours-version-1" title="Permalink to this heading"></a></h1>
+<p>The terminal can now output text in colour instead of black and white.
+Very useful for debugging error messages and making a user interface in the terminal.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module will not work in an IDE unless it uses an integrated terminal. (It won’t break, but won’t print what is excepted.)</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Windows command prompt users will need the module <a class="reference external" href="https://pypi.org/project/colorama/">Colourama</a> to be able to see the colours.
+If you are not on windows and can’t see colours, try also downloading colourama and importing that into your program as well.</p>
+</div>
+<p>There are multiple functions and not all in a class, making it easy to use.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions</span> <span class="kn">import</span> <span class="n">Colours</span> <span class="k">as</span> <span class="n">c</span>
+</pre></div>
+</div>
+<section id="consoleformat-version-1">
+<h2>ConsoleFormat (Version 1)<a class="headerlink" href="#consoleformat-version-1" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">c.</span></span><span class="sig-name descname"><span class="pre">ConsoleFormat</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>A tuple of dictionaries that contain all of the formats for all of the colours in terminal</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Tuple[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions</span> <span class="kn">import</span> <span class="n">Colours</span> <span class="k">as</span> <span class="n">c</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ConsoleFormat</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="print-version-1-0-1">
+<h2>Print (Version 1.0.1)<a class="headerlink" href="#print-version-1-0-1" title="Permalink to this heading"></a></h2>
+<p>The same as the print command although you don’t have to format the message with the colour codes beforehand.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You don’t get access to all of the print features, and you can’t get the actually raw text back.</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">c.</span></span><span class="sig-name descname"><span class="pre">Print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<em>str</em>) – The message to print</p></li>
+<li><p><strong>colour</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>str</em>) – The foreground and background colour, if only one is supplied will be used as foreground. If left as None, default colour will be used.</p></li>
+<li><p><strong>options</strong> (<em>List</em><em>[</em><em>str</em><em>] </em><em>| </em><em>str</em>) – Different ways to format the message, e.g. Bold Underline. Multiple can be passed in a list. If left as None, default colour will be used.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions</span> <span class="kn">import</span> <span class="n">Colours</span> <span class="k">as</span> <span class="n">c</span>
+<span class="n">c</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">])</span> <span class="c1"># Prints hello world but in black text on a cyan background.</span>
+</pre></div>
+</div>
+</section>
+<section id="print-getvalue-version-1">
+<h2>Print.GetValue (Version 1)<a class="headerlink" href="#print-getvalue-version-1" title="Permalink to this heading"></a></h2>
+<p>A public method in the print class. This method returns the value that it last printed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you try and print this, you need to reset the colours otherwise everything beyond that point is going to be a different colour.
+Reset the colour py doing <cite>print(”033[0m”)</cite> or <cite>print(c.c())</cite></p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">c.</span></span><span class="sig-name descname"><span class="pre">Print</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">).GetValue(</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The value last printed by <cite>Print()</cite></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions</span> <span class="kn">import</span> <span class="n">Colurs</span> <span class="k">as</span> <span class="n">c</span>
+<span class="n">printer</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="s2">&quot;cyan&quot;</span><span class="p">])</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">printer</span><span class="o">.</span><span class="n">GetValue</span><span class="p">()</span> <span class="c1"># Returns the same as above but without the reset value.</span>
+</pre></div>
+</div>
+</section>
+<section id="reverse-version-1">
+<h2>reverse (Version 1)<a class="headerlink" href="#reverse-version-1" title="Permalink to this heading"></a></h2>
+<p>Takes the colour code and outputs if it’s a format type or colour type.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This does not return the name of the code but what category…
+Might update this at some point.</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">c.</span></span><span class="sig-name descname"><span class="pre">reverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code).reverse(</span></span></em><span class="sig-paren">)</span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>str</em>) – The code to find the type of</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The type or if it’s not found</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str | bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Even though i put code in the class definition, you still have to use .reverse()</p>
+</div>
+</section>
+<section id="c-version-1">
+<h2>c (Version 1)<a class="headerlink" href="#c-version-1" title="Permalink to this heading"></a></h2>
+<p>The simplist function</p>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">c.</span></span><span class="sig-name descname"><span class="pre">c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Returns the code that is found with the name specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name to get the code of.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Thhe code if found.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="colourretrieve-version-1">
+<h2>colourRetrieve (Version 1)<a class="headerlink" href="#colourretrieve-version-1" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not meant to be used as a class, yet its used for the function <cite>c</cite>
+It runs the back end code for <cite>c</cite>. and does pretty much exactully the same thing.</p>
+<p>Please use function <cite>c</cite> instead.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CleanFolderData.html" class="btn btn-neutral float-left" title="CleanFolderData (Version 2)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FunAndHelpfullDragon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

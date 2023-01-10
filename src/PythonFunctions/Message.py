@@ -2,7 +2,7 @@ import os
 import time
 import typing
 
-from .colours import Print
+from .Colours import Print
 
 
 class Message:

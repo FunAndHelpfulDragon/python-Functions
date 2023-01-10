@@ -1,6 +1,6 @@
 import os
 import typing
-from . import Message, colours
+from . import Colours, Message
 from .Check import Check
 
 
@@ -81,9 +81,9 @@ class Display:
         if not canRead:
             return
         print(
-            f"""{colours.c('g')}{'-' * os.get_terminal_size().columns}{colours.c()}
+            f"""{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}
 {text}
-{colours.c('g')}{'-' * os.get_terminal_size().columns}{colours.c()}"""
+{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}"""
         )
 
         self.__storedText = text
@@ -115,7 +115,7 @@ class Display:
             for xIndex, xValue in enumerate(yValue):
                 # Complicated string, but it calculates the square that should have the `> ` pointer
                 v = (
-                    f"{colours.c('bgblue')}>{colours.c()} {xValue}"
+                    f"{Colours.c('bgblue')}>{Colours.c()} {xValue}"
                     if self.cursorPosition[0] == xIndex
                     and self.cursorPosition[1] == yIndex
                     else xValue

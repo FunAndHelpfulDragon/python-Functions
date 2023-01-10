@@ -6,7 +6,7 @@ from enum import Enum
 from . import Checks
 from . import IsDigit as ID
 from .CleanFolderData import Clean
-from .colours import c
+from .Colours import c
 from .Message import Message
 
 

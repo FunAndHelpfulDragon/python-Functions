@@ -2,7 +2,7 @@ import datetime
 import inspect
 import os
 
-from . import colours
+from .Colours import c
 
 
 def main(
@@ -59,11 +59,11 @@ def main(
 
     print("\x1b[2J\x1b[H", end="")
     print(
-        f"""{colours.c(colour)}{line}{colours.c()}
+        f"""{c(colour)}{line}{c()}
 {fileName} made by {name} ({data}).
 Contains Functions.py made by dragmine149 ({mydata}).
 Activation Time: {ctime.hour}:{ctime.minute}:{ctime.second}
-{colours.c(colour)}{line}{colours.c()}"""
+{c(colour)}{line}{c()}"""
     )
 
 
