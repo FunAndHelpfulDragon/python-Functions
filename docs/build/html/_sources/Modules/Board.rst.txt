@@ -4,6 +4,8 @@ Board (Version 2)
 .. code-block:: python
 
    from PythonFunctions import Board
+   brd = Board.CreateBoard(5, 5)
+   Board.DisplayBoard(brd)
 
 Used to quickly create or display a 2d array of items.
 Useful for creating boards for board games.

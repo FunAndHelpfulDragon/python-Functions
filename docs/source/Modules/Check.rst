@@ -28,6 +28,12 @@ Usage
 
 Everything is called and passed though the above function, however for some of the things to work more arguments are required as well.
 
+ModeEnum
+--------
+
+This enum is a variable used for declaring the mode that the getInput function should call when it wants the input.
+This enum contains all of the possible checks and is required to use.
+
 Int Check (Version 3)
 ---------------------
 
@@ -51,6 +57,13 @@ Int Check (Version 3)
     If higher or lower aren't definied it will just check if it is an int value.
     If one or both are defined, then it will make sure the value is between that range (or smaller / bigger)
 
+.. code-block:: python
+
+    from PythonFunctions.Check import Check
+    check = Check()
+    result = check.getInput("Please enter a number between 1 and 10: ", check.ModeEnum.int, 1, 10)
+    print(result)
+
 Yes No Check (Version 1)
 ------------------------
 
@@ -65,3 +78,10 @@ Yes No Check (Version 1)
     :type type: checck.ModeEnum.yesno
     :return: If yes or no got entered
     :rtype: bool
+
+.. code-block:: python
+
+    from PythonFunctions.Check import Check
+    check = Check()
+    result = check.getInput("Do you want to continue [Y/n]: ", check.ModeEnum.yesno)
+    print(result)

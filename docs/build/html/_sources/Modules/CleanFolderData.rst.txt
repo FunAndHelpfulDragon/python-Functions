@@ -24,6 +24,13 @@ Usage
     :return: A list of files that have been "cleaned"
     :rtype: List[str]
 
+.. code-block:: python
+
+    from PythonFunctions.CleanFolderData import Clean
+    clean = Clean()
+    result = clean.clean(".", ["secret.txt"])
+    print(result) # Excepts everything but having hidden files and secret.txt in a list
+
 GetData
 -------
 
@@ -40,6 +47,13 @@ GetData
 .. note::
     If the path could not be found, then an empty list is returned
 
+.. code-block:: python
+
+    from PythonFunctions.CleanFolderData import Clean
+    clean = Clean()
+    result = clean.GetData(".")
+    print(result) # Pretty much prints os.listdir(".")
+
 RemoveHidden
 ------------
 
@@ -52,6 +66,13 @@ RemoveHidden
     :type data: List[str]
     :return: A list of files without hidden files
     :rtype: List[str]
+
+.. code-block:: python
+
+    from PythonFunctions.CleanFolderData import Clean
+    clean = Clean()
+    result = clean.RemoveHidden(["a", "b", ".hidden", "__pycache", "", "hidden.txt"])
+    print(result) # ["a", "b", "hidden.txt"]
 
 RemoveReserved
 --------------
@@ -70,3 +91,10 @@ RemoveReserved
 
 .. note::
     If a string gets passed instead of a list, then the program will error. I might fix this one day. --Drag
+
+.. code-block:: python
+
+    from PythonFunctions.CleanFolderData import Clean
+    clean = Clean()
+    result = clean.RemoveReserved(["a", "b", "hidden.txt"], ["hidden.txt"])
+    print(result) # ["a", "b"]

@@ -20,6 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CleanFolderData (Version 2)" href="CleanFolderData.html" />
     <link rel="prev" title="Board (Version 2)" href="Board.html" /> 
 </head>
 
@@ -43,10 +44,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Board.html">Board (Version 2)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Check (Version 2)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modeenum">ModeEnum</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#int-check-version-3">Int Check (Version 3)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#yes-no-check-version-1">Yes No Check (Version 1)</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
 </ul>
 
         </div>
@@ -105,6 +108,11 @@
 
 <p>Everything is called and passed though the above function, however for some of the things to work more arguments are required as well.</p>
 </section>
+<section id="modeenum">
+<h2>ModeEnum<a class="headerlink" href="#modeenum" title="Permalink to this heading"></a></h2>
+<p>This enum is a variable used for declaring the mode that the getInput function should call when it wants the input.
+This enum contains all of the possible checks and is required to use.</p>
+</section>
 <section id="int-check-version-3">
 <h2>Int Check (Version 3)<a class="headerlink" href="#int-check-version-3" title="Permalink to this heading"></a></h2>
 <dl class="py function">
@@ -134,6 +142,12 @@
 <p>If higher or lower aren’t definied it will just check if it is an int value.
 If one or both are defined, then it will make sure the value is between that range (or smaller / bigger)</p>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Check</span> <span class="kn">import</span> <span class="n">Check</span>
+<span class="n">check</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Please enter a number between 1 and 10: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="yes-no-check-version-1">
 <h2>Yes No Check (Version 1)<a class="headerlink" href="#yes-no-check-version-1" title="Permalink to this heading"></a></h2>
@@ -157,6 +171,12 @@ If one or both are defined, then it will make sure the value is between that ran
 </dl>
 </dd></dl>
 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Check</span> <span class="kn">import</span> <span class="n">Check</span>
+<span class="n">check</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Do you want to continue [Y/n]: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">yesno</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -165,6 +185,7 @@ If one or both are defined, then it will make sure the value is between that ran
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Board.html" class="btn btn-neutral float-left" title="Board (Version 2)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="CleanFolderData.html" class="btn btn-neutral float-right" title="CleanFolderData (Version 2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

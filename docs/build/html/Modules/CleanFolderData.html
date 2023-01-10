@@ -105,6 +105,12 @@ This function does add some small things compaired to the other functions howeve
 </dl>
 </dd></dl>
 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.CleanFolderData</span> <span class="kn">import</span> <span class="n">Clean</span>
+<span class="n">clean</span> <span class="o">=</span> <span class="n">Clean</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;secret.txt&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># Excepts everything but having hidden files and secret.txt in a list</span>
+</pre></div>
+</div>
 </section>
 <section id="getdata">
 <h2>GetData<a class="headerlink" href="#getdata" title="Permalink to this heading"></a></h2>
@@ -129,6 +135,12 @@ This function does add some small things compaired to the other functions howeve
 <p class="admonition-title">Note</p>
 <p>If the path could not be found, then an empty list is returned</p>
 </div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.CleanFolderData</span> <span class="kn">import</span> <span class="n">Clean</span>
+<span class="n">clean</span> <span class="o">=</span> <span class="n">Clean</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">GetData</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># Pretty much prints os.listdir(&quot;.&quot;)</span>
+</pre></div>
+</div>
 </section>
 <section id="removehidden">
 <h2>RemoveHidden<a class="headerlink" href="#removehidden" title="Permalink to this heading"></a></h2>
@@ -149,6 +161,12 @@ This function does add some small things compaired to the other functions howeve
 </dl>
 </dd></dl>
 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.CleanFolderData</span> <span class="kn">import</span> <span class="n">Clean</span>
+<span class="n">clean</span> <span class="o">=</span> <span class="n">Clean</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">RemoveHidden</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;.hidden&quot;</span><span class="p">,</span> <span class="s2">&quot;__pycache&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;hidden.txt&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># [&quot;a&quot;, &quot;b&quot;, &quot;hidden.txt&quot;]</span>
+</pre></div>
+</div>
 </section>
 <section id="removereserved">
 <h2>RemoveReserved<a class="headerlink" href="#removereserved" title="Permalink to this heading"></a></h2>
@@ -175,6 +193,12 @@ This function does add some small things compaired to the other functions howeve
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If a string gets passed instead of a list, then the program will error. I might fix this one day. –Drag</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.CleanFolderData</span> <span class="kn">import</span> <span class="n">Clean</span>
+<span class="n">clean</span> <span class="o">=</span> <span class="n">Clean</span><span class="p">()</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">RemoveReserved</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;hidden.txt&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;hidden.txt&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="c1"># [&quot;a&quot;, &quot;b&quot;]</span>
+</pre></div>
 </div>
 </section>
 </section>
