@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Convert (Version 1.1) &mdash; Python Functions 1.0.1 documentation</title>
+  <title>IsDigit (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,8 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Encryption (Version 1)" href="Encryption.html" />
-    <link rel="prev" title="Colours (Version 1)" href="Colours.html" /> 
+    <link rel="prev" title="Encryption (Version 1)" href="Encryption.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,11 +44,12 @@
 <li class="toctree-l1"><a class="reference internal" href="Check.html">Check (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Colours.html">Colours (Version 1)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Convert (Version 1.1)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#convert">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convert.html">Convert (Version 1.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption (Version 1)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">IsDigit (Version 2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#isdigit">IsDigit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption (Version 1)</a></li>
 </ul>
 
         </div>
@@ -66,9 +66,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Convert (Version 1.1)</li>
+      <li class="breadcrumb-item active">IsDigit (Version 2)</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/Modules/Convert.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/Modules/IsDigit.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -76,32 +76,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="convert-version-1-1">
-<h1>Convert (Version 1.1)<a class="headerlink" href="#convert-version-1-1" title="Permalink to this heading"></a></h1>
-<p>Converts cooridnates to the represented position</p>
+  <section id="isdigit-version-2">
+<h1>IsDigit (Version 2)<a class="headerlink" href="#isdigit-version-2" title="Permalink to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>More things might get added, depends on if i need to conver stuff for ease.</p>
+<p>There is no class here for once 👀</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Convert</span> <span class="kn">import</span> <span class="n">LocationConvert</span> <span class="k">as</span> <span class="n">LC</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">LC</span><span class="o">.</span><span class="n">Convert</span><span class="p">(</span><span class="s2">&quot;A3&quot;</span><span class="p">))</span> <span class="c1"># Output (0, 3)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.IsDigit</span> <span class="kn">import</span> <span class="n">IsDigit</span>
 </pre></div>
 </div>
-<section id="convert">
-<h2>Convert<a class="headerlink" href="#convert" title="Permalink to this heading"></a></h2>
+<section id="isdigit">
+<h2>IsDigit<a class="headerlink" href="#isdigit" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">LC.</span></span><span class="sig-name descname"><span class="pre">Convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Translates letter to number and make a tuple</p>
+<span class="sig-prename descclassname"><span class="pre">IsDigit.</span></span><span class="sig-name descname"><span class="pre">IsDigit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>NOTE: by digit, we include both negative and positive numbers.
+A <cite>float</cite> is also included</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>position</strong> (<em>str</em>) – The position to convert</p>
+<dd class="field-odd"><p><strong>var</strong> (<em>str</em>) – The input to check for digit</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The position but split up and translated</p>
+<dd class="field-even"><p>Is it a digit</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>AttributeError</strong> – None was passed in.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -113,8 +115,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Colours.html" class="btn btn-neutral float-left" title="Colours (Version 1)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Encryption.html" class="btn btn-neutral float-right" title="Encryption (Version 1)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Encryption.html" class="btn btn-neutral float-left" title="Encryption (Version 1)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
