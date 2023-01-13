@@ -25,9 +25,6 @@ class Encryption:
     def GetKey(self) -> bytes:
         """Translates your encrypted (using utf-8) passcode into something more secure
 
-        Args:
-            passcode (bytes): Your passcode encrypted with utf-8
-
         Returns:
             bytes: The result
         """

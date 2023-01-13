@@ -1,7 +1,7 @@
 import dataclasses
 import typing
 
-from . import Message
+from .Message import Message
 
 
 # Converts the input to a valid location (a1 -> [0,0])
