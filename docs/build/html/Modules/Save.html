@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Save (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Run (Version 3)" href="Run.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Python Functions
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board.html">Board (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Check.html">Check (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Colours.html">Colours (Version 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convert.html">Convert (Version 1.1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption (Version 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IsDigit.html">IsDigit (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback (Version 1)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Save (Version 2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#save">Save</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read">Read</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#makefolders">MakeFolders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removefile">RemoveFile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#removefolder">RemoveFolder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#changepasscode">ChangePasscode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#file-system-support">File System support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prefixs">Prefixs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ftp-file-transfer-protocol">ftp (File Transfer Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oth-other">oth (Other)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#encoding">encoding</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Python Functions</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Save (Version 2)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Modules/Save.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="save-version-2">
+<h1>Save (Version 2)<a class="headerlink" href="#save-version-2" title="Permalink to this heading"></a></h1>
+<p>A system to easly write, read, delete data. with support of multiple file systems and encryption levels.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">src.PythonFunctions</span> <span class="kn">import</span> <span class="n">save</span>
+<span class="n">sv</span> <span class="o">=</span> <span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multiple types of file systems are supported!
+More information about them later</p>
+</div>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It does not matter what os you are on, if you use <cite>/</cite> or <cite>\</cite> it will still be translated and works for any os.</p>
+</div>
+<section id="save">
+<h3>Save<a class="headerlink" href="#save" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Save the specified data to a file (path) with the specified encoding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>any</em>) – The data to save</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – The location to save to</p></li>
+<li><p><strong>encoding</strong> (<em>List</em><em>[</em><em>encoding</em><em>] </em><em>| </em><em>encoding</em>) – (Optional) The levels of encoding to apply to the data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Information to do with the saving</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool | str | dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="s2">&quot;Example.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="read">
+<h3>Read<a class="headerlink" href="#read" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Returns what the file contains after going through the specified encoding</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path to read from</p></li>
+<li><p><strong>encoding</strong> (<em>List</em><em>[</em><em>encoding</em><em>] </em><em>| </em><em>encoding</em>) – The encoding to apply to the file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The data stored in the file</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">Read</span><span class="p">(</span><span class="s2">&quot;Example.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="makefolders">
+<h3>MakeFolders<a class="headerlink" href="#makefolders" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">MakeFolders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Make a folder, or folders following the path given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The folders to make</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The path of the folders</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str | dict | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">MakeFolders</span><span class="p">(</span><span class="s2">&quot;Test/a/b/c/d&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="removefile">
+<h3>RemoveFile<a class="headerlink" href="#removefile" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">RemoveFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remove path</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – File to remove</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Information about deletion</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str | bool | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">RemoveFile</span><span class="p">(</span><span class="s2">&quot;Test/a/b/test.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="removefolder">
+<h3>RemoveFolder<a class="headerlink" href="#removefolder" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">RemoveFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remove the folder and all subfolders / paths</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Parent folder to remove</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Information about deletion</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str | bool | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">RemoveFolder</span><span class="p">(</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="changepasscode">
+<h3>ChangePasscode<a class="headerlink" href="#changepasscode" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Changing your Passcode will lock you out of your encrypted data,
+please make sure to decrypt and save it before changing your passcode.</p>
+<p>The passcode is also randomlly generated by the <cite>Encryption</cite> module</p>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ChangePasscode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Changes the stored passcode to a new random value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The new passcode</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">passcode</span> <span class="o">=</span> <span class="n">sv</span><span class="o">.</span><span class="n">ChangePasscode</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="file-system-support">
+<h2>File System support<a class="headerlink" href="#file-system-support" title="Permalink to this heading"></a></h2>
+<p>This module doesn’t just support the default file system, instead it supports way more (and custom ones)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Other than the ones provided, new ones are probably never going to be added or maintaied by me.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want one to be in this module, submit a pull request. However you are going to have to maintain it.</p>
+</div>
+<section id="prefixs">
+<h3>Prefixs<a class="headerlink" href="#prefixs" title="Permalink to this heading"></a></h3>
+<p>To call upon a different file system, we use a different prefix before the path.
+This tells the class which file system we want to use.</p>
+<p>The prefixes are as followed:</p>
+<ul class="simple">
+<li><p><cite>gdr://</cite> (google drive)</p></li>
+<li><p><cite>ftp://</cite> (File transfer protocol)</p></li>
+<li><p><cite>oth://</cite> (Other, custom)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the required modules aren’t installed then some of these file systems might not work</p>
+</div>
+<p>Depending on the file system, you might have to provide more information, which will be listed below.</p>
+</section>
+<section id="ftp-file-transfer-protocol">
+<h3>ftp (File Transfer Protocol)<a class="headerlink" href="#ftp-file-transfer-protocol" title="Permalink to this heading"></a></h3>
+<p>The ftp system requires a bit more information before you can provide the path.
+After which, it will ask for some details before actually getting to the path.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>I belive this is using the insecure version of ftp because i don’t know if there is a secure module out there.
+Please only use this on your local network and not some kind of big private company network.</p>
+</div>
+<p>Example of ftp file:
+<cite>ftp://192.168.120.1:21/Hi.txt</cite></p>
+<ul class="simple">
+<li><p><cite>ftp://</cite> Tells the script the file system</p></li>
+<li><p><cite>192.168.120.1</cite> Tells the script the IP to connect to</p></li>
+<li><p><cite>:21</cite> Tells the script the port to connect to (Default: 21, so not needed for default)</p></li>
+<li><p><cite>Hi.txt</cite> and after, tells the script the file to interact with.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On program start, the first time you call the server to do anything you will be asked to check your username and enter your password.
+You can’t switch servers unless the other server has the same username and surname as the first server or you change your information.</p>
+</div>
+</section>
+<section id="oth-other">
+<h3>oth (Other)<a class="headerlink" href="#oth-other" title="Permalink to this heading"></a></h3>
+<p>This prefix is mainly for your own custom file system. You can make one and use it by this command.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please follow this <a class="reference external" href="https://github.com/FunAndHelpfulDragon/python-Functions/blob/main/src/PythonFunctions/SaveModules/template.py">template</a> otherwise you will run into some errors whilst using it.</p>
+</div>
+<p>The first time you call that file in that class, you will be asked to provide the path.</p>
+</section>
+</section>
+<section id="encoding">
+<h2>encoding<a class="headerlink" href="#encoding" title="Permalink to this heading"></a></h2>
+<p>As well as multiple file system supports, there is also supports for the following encoding</p>
+<ul class="simple">
+<li><p>None</p></li>
+<li><p>Json</p></li>
+<li><p>Binary</p></li>
+<li><p>Cryptography</p></li>
+</ul>
+<p>When passing in an encoding argument, it can either be a list or one value and will be treated left to right. (Except for decoding which will treat right to left)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you pass in the arguments in the wrong order, you are going to run into issues.
+The order to pass them in is the same order as you did when you saved it.</p>
+</div>
+<p>To get an encoding value, use the enum provided.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions</span> <span class="kn">import</span> <span class="n">Save</span>
+<span class="n">binary</span> <span class="o">=</span> <span class="n">Save</span><span class="o">.</span><span class="n">Encoding</span><span class="o">.</span><span class="n">BINARY</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Run.html" class="btn btn-neutral float-left" title="Run (Version 3)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, FunAndHelpfullDragon.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

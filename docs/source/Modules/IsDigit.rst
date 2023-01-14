@@ -20,5 +20,5 @@ IsDigit
     :param var: The input to check for digit
     :type var: str
     :returns: Is it a digit
-    :rtype: int
+    :rtype: bool
     :raise AttributeError: None was passed in.
