@@ -6,7 +6,7 @@ import pytest
 
 from . import PythonFunctions
 
-run = PythonFunctions.run
+run = PythonFunctions.Run
 IsDigit = PythonFunctions.IsDigit.IsDigit
 
 
