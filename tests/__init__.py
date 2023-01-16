@@ -16,4 +16,4 @@ from src.PythonFunctions.Message import Message
 from src.PythonFunctions.PrintTraceback import PrintTraceback
 from src.PythonFunctions.Save import save
 from src.PythonFunctions.TerminalDisplay import Display
-from src.PythonFunctions.watermark import main as Watermark
+from src.PythonFunctions.Watermark import main as Watermark

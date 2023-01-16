@@ -1,7 +1,8 @@
 import os
 import typing
-from . import Colours, Message
+from . import Colours
 from .Check import Check
+from .Message import Message
 
 
 canRead = True
@@ -17,7 +18,7 @@ class Display:
     def __init__(self) -> None:
 
         if not canRead:
-            print("NOTE: readchar is NOT INSTALLED. As so, TerminalDisplay is DISABLED!!")
+            print("NOTE: readchar is NOT INSTALLED. This means you can only use list view")
 
         self.options: typing.Dict = {}  # specific formaat.
         self.__storedText = None
@@ -33,8 +34,6 @@ class Display:
         Args:
             options (typing.Dict): The options to set
         """
-        if not canRead:
-            return
 
         # Validation check
         cleanOptions = {}
@@ -57,8 +56,6 @@ class Display:
             index (int): The index to add
             option (typing.Tuple): The information about the option to set
         """
-        if not canRead:
-            return
         newOption = option[1].replace(" ", "_")
         self.options.update({index: (option[0], newOption)})
 
@@ -68,8 +65,6 @@ class Display:
         Args:
             index (int): The index to remove an option
         """
-        if not canRead:
-            return
         return self.options.pop(index)
 
     def ShowHeader(self, *, text: str = "Display.py"):
@@ -78,8 +73,6 @@ class Display:
         Args:
             text: (str, option) The text to display. Deafults to "Display.py".
         """
-        if not canRead:
-            return
         print(
             f"""{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}
 {text}
@@ -172,10 +165,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         Returns:
             _type_: The item returned
         """
-        if not canRead:
-            return None
-
-        if not useList:
+        if not useList and canRead:
             self.cursorPosition = [0, 0]
             self.__GenerateGridData()
             self.__ShowGrid()
