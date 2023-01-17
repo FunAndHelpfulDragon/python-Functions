@@ -1,10 +1,11 @@
 # Functions
 
-This is a gigantic folder, with multiple functions for multiple use cases. The only folder that you will need, is [PythonFunctions](./PythonFunctions/).
+This is a gigantic folder, with multiple functions for multiple use cases. The only folder that you will need, is [PythonFunctions](./src/PythonFunctions/).
 
 ## Documentation
 
-Every file has it own documentation, which can be found here: [Documentation](Documentation/ReadMe.md).
+Every file has it own documentation, which can be found here: [Documentation](https://python-functions.readthedocs.io/en/latest/).
+Outdated (ish) but local documents can be found here: [Local documentation](Documentation/ReadMe.md)
 
 ## Expanding
 
@@ -19,9 +20,18 @@ Please read [Contributing.md](Contribution.md)
 
 Please see [Updatelog.md](Updatelog.md) for updates after the latest update
 
-### 1.0.1
+For versions before `1.1.0` please see the test.pypi directory.
 
-- Attempting to fix no description on testpypi
+### 1.1.0
+
+- Created documentation on readthedocs
+- Added dependencies to pyproject.toml
+- Renamed some stuff
+- Improved some checks
+- Fixed some bugs
+- Added Version.txt to inform people of outdated versions.
+- Removed loading all the modules on __init__
+- Updated and fixed tests
 
 ## Credits
 
@@ -41,3 +51,8 @@ Taking an input straight away, instead of getting the user to press enter afterw
 
 [Github](https://github.com/pyca/cryptography)
 Encrypting and decrypting data. Quick and simple
+
+### Requests
+
+[Github](https://github.com/psf/requests)
+Checking if you have the latest version

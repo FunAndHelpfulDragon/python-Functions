@@ -51,3 +51,7 @@ class save(template.SaveTemplate):
             self.getFileSystem()
 
         return self.moduleClass.MakeFolders(path)
+
+
+def load():
+    return save()

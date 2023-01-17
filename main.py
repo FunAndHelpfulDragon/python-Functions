@@ -11,6 +11,6 @@ There are 2 main uses of this file:
 """
 print("hi....")
 
-from src.PythonFunctions import Watermark
+from src.PythonFunctions import Colours as c
 
-Watermark("drag")
+a = c.Print("Hello World", ["black", "cyan"])

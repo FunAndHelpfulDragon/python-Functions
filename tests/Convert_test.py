@@ -8,7 +8,7 @@ import pytest
 
 from . import PythonFunctions
 
-Convert = PythonFunctions.LocConv
+Convert = PythonFunctions.Convert.LocationConvert
 
 
 # BAD WAY BUT FOR TESTING PURPOSE

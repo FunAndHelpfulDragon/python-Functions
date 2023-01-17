@@ -17,13 +17,14 @@ class ui:
         self.callback = callback
         self.font = ("verdana", 20)
 
-    def FontSettings(self, fontData=("verdana", 20)):
-        """Change the font settings
+    def FontSettings(self, *, font="verdana", size=20):
+        """Changes the font settings
 
         Args:
-            fontData (tuple, optional): _description_. Defaults to ("verdana", 20).
+            font (str, optional): The font type. Defaults to "verdana".
+            size (int, optional): The font size. Defaults to 20.
         """
-        self.font = fontData
+        self.font = (font, size)
 
     def CreateFrame(self, row: int = 0, column: int = 0) -> tk.Frame:
         """Creates a new frame
@@ -191,7 +192,6 @@ class ui:
             textvar (tk.StringVar): The text variable to assign the data to
             row (int, optional): The row position of the label. Defaults to 0.
             column (int, optional): The column position of the label. Defaults to 0.
-            text (str, optional): The default text in the textbox. Defaults to "".
             frame (tk.Frame, optional): The frame of the textbox. Defaults to None.
             sticky (str, optional): The sides to stick the box to. Defaults to 'nesw'.
             rowspan (int, optional): How many rows it covers. Defaults to 1.

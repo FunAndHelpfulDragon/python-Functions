@@ -179,7 +179,9 @@ class Print:
             except AttributeError:
                 colourValue[i] = ""
 
-        self.value = f"{self.__getOptionValues()}{colourValues[0]}{colourValues[1]}"
+        self.value = (
+            f"{self.__getOptionValues()}{colourValues[0]}{colourValues[1]}{self.msg}"
+        )
 
         # print out colours
         print(self.value, end="")

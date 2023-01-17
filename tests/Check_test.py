@@ -8,7 +8,7 @@ from io import StringIO
 from . import PythonFunctions
 
 Check = PythonFunctions.Check
-chk = Check()
+chk = Check.Check()
 
 
 def int_check():
@@ -19,7 +19,7 @@ def int_check():
     """
     ranIn = random.randrange(-10, 10)
     sys.stdin = StringIO(f"{ranIn}")
-    result = chk.getInput("Testing (int): ", "INT", lower=-10, higher=10)
+    result = chk.getInput("Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
     return result
 
 
@@ -33,10 +33,7 @@ def yn_check(vIn: str):
         The result: of the check
     """
     sys.stdin = StringIO(f"{vIn}")
-    return chk.getInput("Testing (yn): ", "yn")
-
-
-chk = Check()
+    return chk.getInput("Testing (yn): ", chk.ModeEnum.yesno)
 
 
 def test_int():

@@ -1,16 +1,27 @@
 import os
 import typing
 
-import readchar
-
-from . import Message, colours
+from . import Colours
 from .Check import Check
+from .Message import Message
+
+canRead = True
+try:
+    import readchar
+except ModuleNotFoundError:
+    canRead = False
 
 
 class Display:
     """The main class to give the user an option"""
 
     def __init__(self) -> None:
+
+        if not canRead:
+            print(
+                "NOTE: readchar is NOT INSTALLED. This means you can only use list view"
+            )
+
         self.options: typing.Dict = {}  # specific formaat.
         self.__storedText = None
         self.gridData = []
@@ -25,6 +36,7 @@ class Display:
         Args:
             options (typing.Dict): The options to set
         """
+
         # Validation check
         cleanOptions = {}
         for option in options:
@@ -63,9 +75,9 @@ class Display:
             text: (str, option) The text to display. Deafults to "Display.py".
         """
         print(
-            f"""{colours.c('g')}{'-' * os.get_terminal_size().columns}{colours.c()}
+            f"""{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}
 {text}
-{colours.c('g')}{'-' * os.get_terminal_size().columns}{colours.c()}"""
+{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}"""
         )
 
         self.__storedText = text
@@ -97,7 +109,7 @@ class Display:
             for xIndex, xValue in enumerate(yValue):
                 # Complicated string, but it calculates the square that should have the `> ` pointer
                 v = (
-                    f"{colours.c('bgblue')}>{colours.c()} {xValue}"
+                    f"{Colours.c('bgblue')}>{Colours.c()} {xValue}"
                     if self.cursorPosition[0] == xIndex
                     and self.cursorPosition[1] == yIndex
                     else xValue
@@ -154,7 +166,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         Returns:
             _type_: The item returned
         """
-        if not useList:
+        if not useList and canRead:
             self.cursorPosition = [0, 0]
             self.__GenerateGridData()
             self.__ShowGrid()

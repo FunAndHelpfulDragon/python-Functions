@@ -6,18 +6,22 @@
 Welcome to Python Functions's documentation!
 ============================================
 
+**Python Functions** Is a python library for small quick easy to use functions for quality of life needs.
+It contains many functions that anyone can help with as well as tests, documentation.
+
+.. note::
+   This project developmenet is not stable and is not meant to be stable.
+   When there is an issue, we will fix it as soon as possible.
+
+Check out the :doc:`Usage` section for further information, including how to
+:ref:`install <installation>` the project.
+
+Contents
+--------
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :glob:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-
-Comming soon... Please wait
+   Usage
+   Modules/*

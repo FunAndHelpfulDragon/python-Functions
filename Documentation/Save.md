@@ -50,7 +50,7 @@ Notes of worth:
 
 #### oth
 
-A file system that i have not made, but is still alvalible for use. To use, you have to start with `otp://`. When using it, the first time the path to the module is required, after that (until the script stops) you will use the same module.
+A file system that i have not made, but is still alvalible for use. To use, you have to start with `oth://`. When using it, the first time the path to the module is required, after that (until the script stops) you will use the same module.
 
 If you are making a script, please follow use [template.py](../src/PythonFunctions/SaveModules/template.py) as a base and make your class using that file. This is so that the main script can easily run those files. Encoding the data has been supported by me, you just need to manage where the data goes.
 

@@ -5,9 +5,9 @@ import os
 
 from . import PythonFunctions
 
-Clean = PythonFunctions.Clean
+Clean = PythonFunctions.CleanFolderData
 
-cln = Clean()
+cln = Clean.Clean()
 
 
 def test_Clean():

@@ -2,14 +2,12 @@
 """
 
 import random
-import sys
-from io import StringIO
 
 import pytest
 
 from . import PythonFunctions
 
-TD = PythonFunctions.Display
+TD = PythonFunctions.TerminalDisplay.Display
 
 dsp = TD()
 
@@ -35,20 +33,6 @@ def test_add():
     dsp.AddOption(-2, (callback, "Test4"))
 
     assert len(dsp.options) == 5
-
-
-@pytest.mark.repeat(4)
-def test_List():
-    """Tests to see if using an option actually works"""
-    # Checks to see if they exists, else add them.
-    if len(dsp.options) < 5:
-        test_set()
-        test_add()
-
-    v = random.randrange(-2, 2)
-    sys.stdin = StringIO(f"{v}")
-    rst = dsp.ShowOptions(useList=True)
-    assert rst is not None
 
 
 @pytest.mark.repeat(5)

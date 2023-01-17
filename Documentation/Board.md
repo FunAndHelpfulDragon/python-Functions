@@ -9,7 +9,7 @@ Used to quicky create a 2d array or display that 2d array. Useful for creating b
 ```py
 from PythonFunctions import board
 brd = Board.create_Board(3, 5)
-Board.DisplayBoard(brd)
+board.DisplayBoard(brd)
 ```
 
 ## Functions and argumnets

@@ -10,7 +10,7 @@ from . import PythonFunctions
 
 Encryption = PythonFunctions.Encryption
 
-enc = Encryption()
+enc = Encryption.Encryption()
 
 
 def test_Key():

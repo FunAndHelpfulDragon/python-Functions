@@ -5,4 +5,4 @@ main.py
 dist/
 *.egg
 *.egg-info/
-.venv
+.venv/

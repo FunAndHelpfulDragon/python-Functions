@@ -6,8 +6,8 @@ import pytest
 
 from . import PythonFunctions
 
-run = PythonFunctions.run
-IsDigit = PythonFunctions.IsDigit
+run = PythonFunctions.Run
+IsDigit = PythonFunctions.IsDigit.IsDigit
 
 
 @pytest.mark.repeat(5)

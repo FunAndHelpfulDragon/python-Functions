@@ -84,3 +84,7 @@ class SaveTemplate:
         raise NotImplementedError(
             "The file system you are trying to use does not have support for `DeleteFolder`"
         )
+
+
+def load():
+    return SaveTemplate()
