@@ -20,6 +20,8 @@ Please read [Contributing.md](Contribution.md)
 
 Please see [Updatelog.md](Updatelog.md) for updates after the latest update
 
+For versions before `1.1.0` please see the test.pypi directory.
+
 ### 1.1.0
 
 - Created documentation on readthedocs
