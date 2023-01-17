@@ -1,5 +1,5 @@
-from .PrintTraceback import PrintTraceback
 from .Message import Message
+from .PrintTraceback import PrintTraceback
 
 disabled = False
 

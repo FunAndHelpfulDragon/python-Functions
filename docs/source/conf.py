@@ -18,9 +18,7 @@ release = "1.0.1"
 # sys.path.append('..')
 
 # extensions = ['src.PythonFunctions']
-extensions = ['sphinx.ext.duration',
-              'sphinx.ext.doctest',
-              'sphinx.ext.autodoc']
+extensions = ["sphinx.ext.duration", "sphinx.ext.doctest", "sphinx.ext.autodoc"]
 
 templates_path = ["_templates"]
 exclude_patterns = []

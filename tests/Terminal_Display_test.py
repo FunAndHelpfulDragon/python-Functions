@@ -2,8 +2,6 @@
 """
 
 import random
-import sys
-from io import StringIO
 
 import pytest
 

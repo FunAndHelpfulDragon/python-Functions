@@ -1,8 +1,8 @@
 import dataclasses
 import importlib
 import os
-
 from enum import Enum
+
 from . import Checks
 from . import IsDigit as ID
 from .CleanFolderData import Clean
@@ -13,6 +13,7 @@ from .Message import Message
 class ModeEnum(Enum):
     int = "INT"
     yesno = "yn"
+
 
 # Check if the input is a valid input using a whole bunch of data
 
@@ -44,8 +45,7 @@ class Check:
         path_Info = os.path.dirname(path_Location)
         for external in Clean().clean(f"{path_Info}/Checks"):
             if external[:-3].lower() == mode.lower():
-                module = importlib.import_module(
-                    f"{Checks.__package__}.{mode}")
+                module = importlib.import_module(f"{Checks.__package__}.{mode}")
                 return module.check(data, Message, ID, **info)
 
         raise NotImplementedError(f"Mode: {mode} not implemented")
@@ -64,7 +64,8 @@ class Check:
         """
         if not isinstance(mode, ModeEnum):
             Message.warn(
-                "Invalid value entered to check.getInput. Please use check.ModeEnum")
+                "Invalid value entered to check.getInput. Please use check.ModeEnum"
+            )
             return None
 
         # HAHAHA Force them to use colon space

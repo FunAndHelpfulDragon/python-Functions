@@ -1,7 +1,6 @@
 # Module update checker, based off the github file
 import os
 
-
 canReadGlobal = True
 try:
     import requests
@@ -20,8 +19,7 @@ def ReadLocal():
 
 def ReadGlobal():
     url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
-    r = requests.get(
-        url, timeout=60)
+    r = requests.get(url, timeout=60)
     if r != ReadLocal():
         print("Notice: A newer version of PythonFunctions is alvalible.")
 

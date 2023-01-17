@@ -7,8 +7,7 @@ sys.path.append(os.getcwd())
 
 # pylint: disable=wrong-import-position
 from src import PythonFunctions
-from src.PythonFunctions import Board, Colours, Check, Run, SaveModules
-from src.PythonFunctions import CleanFolderData
+from src.PythonFunctions import Board, Check, CleanFolderData, Colours, Run, SaveModules
 from src.PythonFunctions.Convert import LocationConvert as LocConv
 from src.PythonFunctions.Encryption import Encryption
 from src.PythonFunctions.IsDigit import IsDigit
