@@ -65,12 +65,18 @@ class Clean:
             return data
 
         newData = []
-        for item in reserved:
-            if item.startswith("*"):
-                for file in data:
-                    if not file.endswith(item[1:]) and file not in reserved:
-                        newData.append(file)
+        for file in data:
+            # Reserved check
+            if file in reserved:
+                continue
 
+            # ends with reserved *
+            for item in reserved:
+                if item.startswith("*"):
+                    if file.endswith(item[1:]):
+                        continue
+
+            newData.append(file)
         return newData
 
     def clean(self, path: str, reserved: typing.List[str] = None) -> typing.List[str]:

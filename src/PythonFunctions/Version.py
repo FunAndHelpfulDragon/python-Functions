@@ -33,7 +33,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.1.4"
+    return "1.1.5"
 
 
 def ReadGlobal():
