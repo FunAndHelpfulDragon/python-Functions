@@ -22,6 +22,11 @@ Please see [Updatelog.md](Updatelog.md) for updates after the latest update
 
 For versions before `1.1.0` please see the test.pypi directory.
 
+### 1.1.1
+
+- Fixed issue with how i did the update check (also made a new function because of it)
+- Added documentation for how to mute the update output
+
 ### 1.1.0
 
 - Created documentation on readthedocs

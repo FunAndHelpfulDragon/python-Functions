@@ -16,9 +16,19 @@ To use ``PythonFunctions`` first install it using pip:
 
 (Using pypi, stable build)
 
-.. note::
-    The stable build does not currently exist. Please use the development build
-
 .. code-block:: console
 
     (.venv) $ pip install Python-Functions
+
+Muting the module
+-----------------
+
+Lets say, you are using an older version for a specific reason and you don't wont to upgrade yet. Well you can mute the output by making a file
+By making the file `PyFuncSet.json` and attaching the code below, all update notifications will be muted. If file does not exists, it will not be muted.
+
+.. code-block:: javascript
+
+    {
+        "Mute": true
+    }
+
