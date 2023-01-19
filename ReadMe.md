@@ -22,6 +22,10 @@ Please see [Updatelog.md](Updatelog.md) for updates after the latest update
 
 For versions before `1.1.0` please see the test.pypi directory.
 
+### 1.1.4
+
+- Fixed issue with CleanFolderData.clean() not working due to resvered not being a string
+
 ### 1.1.3
 
 - Added `*.txt` (wildcard) support to CleanFolderData.RemoveReserved()
@@ -32,21 +36,7 @@ For versions before `1.1.0` please see the test.pypi directory.
 
 - Fixed issue with getting server version.
 
-### 1.1.1
-
-- Fixed issue with how i did the update check (also made a new function because of it)
-- Added documentation for how to mute the update output
-
-### 1.1.0
-
-- Created documentation on readthedocs
-- Added dependencies to pyproject.toml
-- Renamed some stuff
-- Improved some checks
-- Fixed some bugs
-- Added Version.txt to inform people of outdated versions.
-- Removed loading all the modules on __init__
-- Updated and fixed tests
+Updates before 1.1.2 are in [Updatelog.md](Updatelog.md)
 
 ## Credits
 

@@ -86,6 +86,9 @@ class Clean:
         if reserved is None:
             reserved = []
 
+        if isinstance(reserved, str):
+            reserved = [reserved]
+
         # Get data
         data = self.GetData(path)
         # Earily return
