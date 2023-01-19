@@ -33,7 +33,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.1.1"
+    return "1.1.2"
 
 
 def ReadGlobal():
@@ -41,7 +41,7 @@ def ReadGlobal():
     """
     url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
     r = requests.get(url, timeout=60)
-    if r != ReadLocal():
+    if r.text != ReadLocal():
         print("Notice: A newer version of PythonFunctions is alvalible.")
 
 
