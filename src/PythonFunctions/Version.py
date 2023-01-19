@@ -1,6 +1,6 @@
 # Module update checker, based off the github file
-import os
 import json
+import os
 
 canReadGlobal = True
 try:
@@ -37,8 +37,7 @@ def ReadLocal():
 
 
 def ReadGlobal():
-    """Get the version on the server
-    """
+    """Get the version on the server"""
     url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
     r = requests.get(url, timeout=60)
     if r.text != ReadLocal():
