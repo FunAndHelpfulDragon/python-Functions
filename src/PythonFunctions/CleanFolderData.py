@@ -56,6 +56,7 @@ class Clean:
         Returns:
             typing.List[str]: The new list with the removed files
         """
+
         # Convert to array if string
         if isinstance(reserved, str):
             reserved = [reserved]
@@ -71,10 +72,14 @@ class Clean:
                 continue
 
             # ends with reserved *
+            endswithForbidden = False
             for item in reserved:
                 if item.startswith("*"):
                     if file.endswith(item[1:]):
-                        continue
+                        endswithForbidden = True
+
+            if endswithForbidden:
+                continue
 
             newData.append(file)
         return newData
