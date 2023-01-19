@@ -2,38 +2,46 @@ name: Beautifier
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 permissions: write-all
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-      
-    - name: install
-      run: pip install isort black flake8 autoflake mypy
-      
-    - name: beauty
-      run: |
-        python -m isort .
-        python -m black .
-        python -m flake8 .  --exit-zero
-        python -m autoflake --remove-unused-variables --in-place -r .
+      - uses: actions/checkout@v2
 
-    - name: typings
-      run: |
-        stubgen -p src -o typings
-        stubgen -p tests -o typings/tests
-        stubgen -p src/PythonFunctions -o typings/PythonFunctions
+      - name: install
+        run: pip install isort black flake8 autoflake mypy
 
-    - name: send those file back pzlpzlpzlpzlz
-      uses: EndBug/add-and-commit@v7.5.0
-      with:
-        message: "beautified and linted code you stupid nerd"
-        author_name: "Code beautifier and Code linter"
+      - name: beauty
+        run: |
+          python -m isort .
+          python -m black .
+          python -m flake8 .  --exit-zero
+          python -m autoflake --remove-unused-variables --in-place -r .
+
+      - name: typings
+        run: |
+          stubgen -p src -o typings
+          stubgen -p tests -o typings/tests
+          stubgen -p src/PythonFunctions -o typings/PythonFunctions
+
+      # - name: send those file back pzlpzlpzlpzlz
+      #   uses: EndBug/add-and-commit@v7.5.0
+      #   with:
+      #     message: "beautified and linted code you stupid nerd"
+      #     author_name: "Code beautifier and Code linter"
+
+      - name: send those file back (pull request edition)
+        uses: peter-evans/create-pull-request@v4
+        with:
+          commit-message: "beautified and linted code you stupid nerd"
+          body: |
+            Beautified
+
+          title: "Beautified and Linted code"
