@@ -56,15 +56,20 @@ class Clean:
         Returns:
             typing.List[str]: The new list with the removed files
         """
+        # Convert to array if string
+        if isinstance(reserved, str):
+            reserved = [reserved]
+
         # Checks if there are actually stuff to remove
         if len(reserved) == 0:
             return data
 
         newData = []
-        for file in data:
-            if file not in reserved:
-                newData.append(file)
-                continue
+        for item in reserved:
+            if item.startswith("*"):
+                for file in data:
+                    if not file.endswith(item[1:]) and file not in reserved:
+                        newData.append(file)
 
         return newData
 

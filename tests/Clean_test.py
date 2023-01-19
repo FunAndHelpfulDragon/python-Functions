@@ -44,3 +44,21 @@ def test_Reserved():
         assert item not in result
 
     os.remove("tests/Password.txt")
+
+
+def test_Wild_Reserved():
+    """Tests if the clean module can remove files with * features"""
+    data = cln.GetData("tests")
+    data = cln.RemoveHidden(data)
+
+    reserved = ["*.txt"]
+    for i in range(10):
+        with open(f"tests/test{i}.txt", "w", encoding="utf-8") as f:
+            f.write("hi")
+
+    result = cln.RemoveReserved(data, reserved)
+    for item in result:
+        assert not item.endswith(".txt")
+
+    for i in range(10):
+        os.remove(f"tests/test{i}.txt")

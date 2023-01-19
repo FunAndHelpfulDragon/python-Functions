@@ -22,6 +22,12 @@ Please see [Updatelog.md](Updatelog.md) for updates after the latest update
 
 For versions before `1.1.0` please see the test.pypi directory.
 
+### 1.1.3
+
+- Added `*.txt` (wildcard) support to CleanFolderData.RemoveReserved()
+- Added str support to CleanFolderData.RemoveReserved() (You can pass in a string now without it breaking)
+- Updated testing to include `*.txt` support
+
 ### 1.1.2
 
 - Fixed issue with getting server version.
