@@ -226,7 +226,9 @@ class ui:
         else:
             Element["Element"].grid_forget()
 
-    def CreateStringVar(self, frame: tk.Frame = None, default: str = "") -> tk.StringVar:
+    def CreateStringVar(
+        self, frame: tk.Frame = None, default: str = ""
+    ) -> tk.StringVar:
         """Creates a tk.StringVar object
 
         Args:
