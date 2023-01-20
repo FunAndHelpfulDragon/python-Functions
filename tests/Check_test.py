@@ -20,8 +20,7 @@ def int_check():
     """
     ranIn = random.randrange(-10, 10)
     sys.stdin = StringIO(f"{ranIn}")
-    result = chk.getInput(
-        "Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
+    result = chk.getInput("Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
     return result
 
 
@@ -81,8 +80,7 @@ def test_error():
 
 
 def test_str():
-    """Test to see if random string in list
-    """
+    """Test to see if random string in list"""
     strList = []
     for _ in range(random.randrange(10)):
         strList.append(random.choice(string.ascii_letters))
