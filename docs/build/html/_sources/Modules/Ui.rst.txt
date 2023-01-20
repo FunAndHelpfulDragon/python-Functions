@@ -173,3 +173,22 @@ ChangeState
 
 .. note::
     element needs to be a dictionary containing "Element" (if state is false) and "row", "column" (if state is true)
+
+CreateStringVar
+---------------
+
+.. py:function:: CreateStringVar(frame, default)
+    :noindex:
+
+    Creates a tk.StringVar variable
+
+    :param frame: The frame to attachs to. Defaults to self.canvas
+    :param default: The default value to store in the variable
+    :type frame: tk.StringVar
+    :type default: str
+    :returns: The object
+    :rtype: tk.StringVar
+
+.. code-block:: python
+
+    pos = tkUi.CreateStringVar()

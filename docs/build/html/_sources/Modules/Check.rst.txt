@@ -75,7 +75,7 @@ Yes No Check (Version 1)
     :param input: The stuff to ask the user
     :type input: str
     :param type: The check to run.
-    :type type: checck.ModeEnum.yesno
+    :type type: check.ModeEnum.yesno
     :return: If yes or no got entered
     :rtype: bool
 
@@ -84,4 +84,28 @@ Yes No Check (Version 1)
     from PythonFunctions.Check import Check
     check = Check()
     result = check.getInput("Do you want to continue [Y/n]: ", check.ModeEnum.yesno)
+    print(result)
+
+Str Check (Version 1)
+---------------------
+
+.. py:function:: check.getInput(input, type, *, info)
+    :noindex:
+
+    The main function but with arguments for a str check
+
+    :param input: The stuff to ask the user
+    :type input: str
+    :param type: The check to run.
+    :type type: check.ModeEnum.str
+    :param info: The list to check the value against
+    :type info: tuple | list
+    :returns: if input is in info
+    :rtype: bool
+
+.. code-block:: python
+
+    from PythonFunctions.Check import Check
+    check = Check()
+    result = check.getInput("Vowel: ", check.ModeEnum.str, info=("a", "e", "i", "o", "u"))
     print(result)

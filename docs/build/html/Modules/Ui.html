@@ -59,6 +59,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#addlabel">AddLabel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#addtextbox">AddTextBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#changestate">ChangeState</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#createstringvar">CreateStringVar</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Watermark.html">Watermark (Version 2)</a></li>
@@ -274,6 +275,32 @@ If you want it added, file a pull request</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>element needs to be a dictionary containing “Element” (if state is false) and “row”, “column” (if state is true)</p>
+</div>
+</section>
+<section id="createstringvar">
+<h2>CreateStringVar<a class="headerlink" href="#createstringvar" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">CreateStringVar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates a tk.StringVar variable</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frame</strong> (<em>tk.StringVar</em>) – The frame to attachs to. Defaults to self.canvas</p></li>
+<li><p><strong>default</strong> (<em>str</em>) – The default value to store in the variable</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tk.StringVar</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pos</span> <span class="o">=</span> <span class="n">tkUi</span><span class="o">.</span><span class="n">CreateStringVar</span><span class="p">()</span>
+</pre></div>
 </div>
 </section>
 </section>

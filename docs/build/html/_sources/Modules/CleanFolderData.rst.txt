@@ -90,7 +90,7 @@ RemoveReserved
     :rtype: List[str]
 
 .. note::
-    If a string gets passed instead of a list, then the program will error. I might fix this one day. --Drag
+    You can use wildcards! `*.txt` will remove all files ending in .txt
 
 .. code-block:: python
 
