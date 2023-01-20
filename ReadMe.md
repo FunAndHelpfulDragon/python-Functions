@@ -18,33 +18,13 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
-Please see [Updatelog.md](Updatelog.md) for updates after the latest update
+Please see [Updatelog.md](Updatelog.md) for updates after the latest update.
 
-For versions before `1.1.0` please see the test.pypi directory.
+### 1.1.7
 
-### 1.1.6
+- Fixed issue where ui.AddLabel would say image was required.
 
-- Fixed issue where `CleanFolderData.RemoveReserved()` would not remove files with `*`
-
-### 1.1.5
-
-- Fixed another issue with `CleanFolderdata.clean()` causing reserved file not to be removed (or everything got removed).
-
-### 1.1.4
-
-- Fixed issue with `CleanFolderData.clean()` not working due to resvered not being a string
-
-### 1.1.3
-
-- Added `*.txt` (wildcard) support to `CleanFolderData.RemoveReserved()`
-- Added str support to `CleanFolderData.RemoveReserved()` (You can pass in a string now without it breaking)
-- Updated testing to include `*.txt` support
-
-### 1.1.2
-
-- Fixed issue with getting server version.
-
-Updates before 1.1.2 are in [Updatelog.md](Updatelog.md)
+Updates before 1.1.7 are in [Updatelog.md](Updatelog.md)
 
 ## Credits
 

@@ -62,7 +62,8 @@ class ui:
         if self.callback is not None:
             return self.callback(**kwargs)
 
-        raise NotImplementedError(f"{buttonName} has no designated callback function!")
+        raise NotImplementedError(
+            f"{buttonName} has no designated callback function!")
 
     def AddButton(
         self,
@@ -138,7 +139,7 @@ class ui:
         sticky: str = "nesw",
         rowspan: int = 1,
         columnspan: int = 1,
-        image: tk.PhotoImage,
+        image: tk.PhotoImage = None,
     ) -> tk.Label:
         """Adds a new label to the UI
 
@@ -151,7 +152,7 @@ class ui:
             sticky (str, optional): Whever to make the box stick to a side or not. Defaults to nesw.
             rowspan (int, optional): How many rows it covers. Defaults to 1.
             columnspan (int, optional): How many columns it covers. Defaults to 1.
-            image (tk.PhotoImage, optional): Assaign an image to the ui
+            image (tk.PhotoImage, optional): Assaign an image to the ui. Defaults to None
 
         Returns:
             tk.Label: The label object
@@ -211,7 +212,8 @@ class ui:
             rowspan=rowspan,
             columnspan=columnspan,
         )
-        self.Elements.append({"Element": textBox, "row": row, "column": column})
+        self.Elements.append(
+            {"Element": textBox, "row": row, "column": column})
         return textBox
 
     def ChangeState(self, Element: dict, state: bool = True):
@@ -222,6 +224,7 @@ class ui:
             state (bool, optional): The new state of the frame. Defaults to True.
         """
         if state:
-            Element["Element"].grid(row=Element["row"], column=Element["column"])
+            Element["Element"].grid(
+                row=Element["row"], column=Element["column"])
         else:
             Element["Element"].grid_forget()
