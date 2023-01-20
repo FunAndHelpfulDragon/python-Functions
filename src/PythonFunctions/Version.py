@@ -35,6 +35,7 @@ def ReadLocal():
     """
     return "1.1.9"
 
+
 def ReadGlobal():
     """Get the version on the server"""
     url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
