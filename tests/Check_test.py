@@ -2,7 +2,6 @@
 """
 
 import random
-import string
 import sys
 from io import StringIO
 
@@ -80,8 +79,7 @@ def test_error():
 
 
 def test_str():
-    """Test to see if random string in list
-    """
+    """Test to see if random string in list"""
     strList = ["a", "e", "i", "o", "u"]
     assert str_check("a", strList)
     assert str_check("e", strList)
