@@ -1,9 +1,0 @@
-from _typeshed import Incomplete
-
-from . import PythonFunctions as PythonFunctions
-
-IsDigit: Incomplete
-
-def test_isdigit() -> None: ...
-def test_isdigit_str() -> None: ...
-def test_notDigit() -> None: ...

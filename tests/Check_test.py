@@ -2,6 +2,7 @@
 """
 
 import random
+import string
 import sys
 from io import StringIO
 
@@ -19,7 +20,8 @@ def int_check():
     """
     ranIn = random.randrange(-10, 10)
     sys.stdin = StringIO(f"{ranIn}")
-    result = chk.getInput("Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
+    result = chk.getInput(
+        "Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
     return result
 
 
@@ -34,6 +36,20 @@ def yn_check(vIn: str):
     """
     sys.stdin = StringIO(f"{vIn}")
     return chk.getInput("Testing (yn): ", chk.ModeEnum.yesno)
+
+
+def str_check(vIn: str, arr: list):
+    """Checks if input is in list
+
+    Args:
+        vIn (str): The inputs
+        arr (list): The check list
+
+    Returns:
+        The result: of the check
+    """
+    sys.stdin = StringIO(f"{vIn}")
+    return chk.getInput("Testing (str): ", chk.ModeEnum.str, info=arr)
 
 
 def test_int():
@@ -62,3 +78,14 @@ def test_error():
     except EOFError:
         # End of file error means that nothing got returned. As so, it breaka
         assert True
+
+
+def test_str():
+    """Test to see if random string in list
+    """
+    strList = []
+    for _ in range(random.randrange(10)):
+        strList.append(random.choice(string.ascii_letters))
+
+    assert str_check(strList[random.randrange(len(strList) - 1)], strList)
+    assert not str_check(random.choice(string.digits), strList)

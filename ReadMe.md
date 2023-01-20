@@ -20,6 +20,10 @@ Please read [Contributing.md](Contribution.md)
 
 Please see [Updatelog.md](Updatelog.md) for updates after the latest update.
 
+### 1.1.8
+
+- Added new check module. `str` (Checks if X is in tuple / list provided)
+
 ### 1.1.7
 
 - Fixed issue where ui.AddLabel would say image was required.
