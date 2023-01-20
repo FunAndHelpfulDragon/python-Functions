@@ -62,8 +62,7 @@ class ui:
         if self.callback is not None:
             return self.callback(**kwargs)
 
-        raise NotImplementedError(
-            f"{buttonName} has no designated callback function!")
+        raise NotImplementedError(f"{buttonName} has no designated callback function!")
 
     def AddButton(
         self,
@@ -212,8 +211,7 @@ class ui:
             rowspan=rowspan,
             columnspan=columnspan,
         )
-        self.Elements.append(
-            {"Element": textBox, "row": row, "column": column})
+        self.Elements.append({"Element": textBox, "row": row, "column": column})
         return textBox
 
     def ChangeState(self, Element: dict, state: bool = True):
@@ -224,7 +222,6 @@ class ui:
             state (bool, optional): The new state of the frame. Defaults to True.
         """
         if state:
-            Element["Element"].grid(
-                row=Element["row"], column=Element["column"])
+            Element["Element"].grid(row=Element["row"], column=Element["column"])
         else:
             Element["Element"].grid_forget()
