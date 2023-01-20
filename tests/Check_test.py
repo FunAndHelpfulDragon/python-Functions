@@ -20,7 +20,8 @@ def int_check():
     """
     ranIn = random.randrange(-10, 10)
     sys.stdin = StringIO(f"{ranIn}")
-    result = chk.getInput("Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
+    result = chk.getInput(
+        "Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
     return result
 
 

@@ -5,7 +5,6 @@ This is a gigantic folder, with multiple functions for multiple use cases. The o
 ## Documentation
 
 Every file has it own documentation, which can be found here: [Documentation](https://python-functions.readthedocs.io/en/latest/).
-Outdated (ish) but local documents can be found here: [Local documentation](Documentation/ReadMe.md)
 
 ## Expanding
 
@@ -19,6 +18,18 @@ Please read [Contributing.md](Contribution.md)
 ## Update Log
 
 Please see [Updatelog.md](Updatelog.md) for updates after the latest update.
+
+### 1.1.9
+
+- Updated tests
+- Fixed an issue with `None` or `''` being passed into os.makedirs in `src/PythonFunctions/SaveModules/NORMAL.py`
+- Added `__main__.py` with `-s` and `-v` arguments. (`-s` generates `PyFuncSet.json` file, `-v` prints the module version)
+- Updated `Version.py` to not run at start (the out of data check) unless mainally called.
+- Updated `__init__.py` to accomodate for `Version.py` changes
+- Added `CreateStringVar` to `ui.py` for easy creation of string variables (without having to also import tk into your module)
+- Updated documentation
+- Removed old documentation (A: online is more up to date. B: If you have the source code, you can view the online version even if offline)
+- Updated contributing information
 
 ### 1.1.8
 

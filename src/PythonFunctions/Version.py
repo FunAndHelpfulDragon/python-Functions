@@ -33,8 +33,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.1.8"
-
+    return "1.1.9"
 
 def ReadGlobal():
     """Get the version on the server"""
@@ -44,5 +43,6 @@ def ReadGlobal():
         print("Notice: A newer version of PythonFunctions is alvalible.")
 
 
-if canReadGlobal and LocalSettings():
-    ReadGlobal()
+if __name__ == "__main__":
+    if canReadGlobal and LocalSettings():
+        ReadGlobal()

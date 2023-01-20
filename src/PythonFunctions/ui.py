@@ -66,8 +66,8 @@ class ui:
 
     def AddButton(
         self,
-        text: str,
-        callback,
+        text: str = "",
+        callback=None,
         row: int = 0,
         column: int = 0,
         *,
@@ -129,7 +129,7 @@ class ui:
 
     def AddLabel(
         self,
-        text: str,
+        text: str = "",
         row: int = 0,
         column: int = 0,
         *,
@@ -225,3 +225,17 @@ class ui:
             Element["Element"].grid(row=Element["row"], column=Element["column"])
         else:
             Element["Element"].grid_forget()
+
+    def CreateStringVar(self, frame: tk.Frame = None, default: str = "") -> tk.StringVar:
+        """Creates a tk.StringVar object
+
+        Args:
+            frame (tk.Frame, optional): The frame to attach to. Defaults to None.
+            default (str, optional): The default value in the string var. Defaults to "".
+
+        Returns:
+            tk.StringVar: The string var object
+        """
+        if frame is None:
+            frame = self.canvas
+        return tk.StringVar(frame, default)

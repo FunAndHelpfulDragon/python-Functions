@@ -22,7 +22,7 @@ class Save(template.SaveTemplate):
             return f.read()
 
     def MakeFolders(self, path: str):
-        if not os.path.exists(path):
+        if not os.path.exists(path) and path not in ('', None):
             os.makedirs(path)
 
     def DeleteFile(self, path: str):
