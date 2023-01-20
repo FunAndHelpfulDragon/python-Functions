@@ -81,10 +81,16 @@ def test_error():
 
 
 def test_str():
-    """Test to see if random string in list"""
-    strList = []
-    for _ in range(random.randrange(10)):
-        strList.append(random.choice(string.ascii_letters))
-
-    assert str_check(strList[random.randrange(len(strList) - 1)], strList)
-    assert not str_check(random.choice(string.digits), strList)
+    """Test to see if random string in list
+    """
+    strList = ["a", "e", "i", "o", "u"]
+    assert str_check("a", strList)
+    assert str_check("e", strList)
+    assert str_check("i", strList)
+    assert str_check("o", strList)
+    assert str_check("u", strList)
+    assert not str_check("b", strList)
+    assert not str_check("c", strList)
+    assert not str_check("d", strList)
+    assert not str_check("f", strList)
+    assert not str_check("g", strList)
