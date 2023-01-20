@@ -25,7 +25,7 @@ def main():
 
     fI, fV = None, None
     for i, v in enumerate(data):
-        if v.startswith('version = '):
+        if v.startswith("version = "):
             fI = i
             fV = v
             break
