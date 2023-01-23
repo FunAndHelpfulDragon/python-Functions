@@ -3,6 +3,14 @@
 This file contains all the updates that were removed from [read me](README.md) to save space in the main file.
 The only update in the main file, is the latest update.
 
+## 1.1.8
+
+- Added new check module. `str` (Checks if X is in tuple / list provided)
+
+## 1.1.7
+
+- Fixed issue where ui.AddLabel would say image was required.
+
 ## 1.1.6
 
 - Fixed issue where `CleanFolderData.RemoveReserved()` would not remove files with `*`

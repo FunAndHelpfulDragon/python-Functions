@@ -2,7 +2,7 @@ import argparse
 import json
 import os
 
-import Version
+from . import Version
 
 
 def parserFunc():

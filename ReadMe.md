@@ -17,7 +17,9 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
-Please see [Updatelog.md](Updatelog.md) for updates after the latest update.
+### 1.1.10
+
+- Updated `Version.py` to not do anything if the setting says it should be muted.
 
 ### 1.1.9
 
@@ -31,15 +33,7 @@ Please see [Updatelog.md](Updatelog.md) for updates after the latest update.
 - Removed old documentation (A: online is more up to date. B: If you have the source code, you can view the online version even if offline)
 - Updated contributing information
 
-### 1.1.8
-
-- Added new check module. `str` (Checks if X is in tuple / list provided)
-
-### 1.1.7
-
-- Fixed issue where ui.AddLabel would say image was required.
-
-Updates before 1.1.7 are in [Updatelog.md](Updatelog.md)
+Updates before 1.1.9 are in [Updatelog.md](Updatelog.md)
 
 ## Credits
 

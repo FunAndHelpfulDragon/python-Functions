@@ -2,13 +2,6 @@
 import json
 import os
 
-canReadGlobal = True
-try:
-    import requests
-except ModuleNotFoundError:
-    print("Requests is not installed. Can not check for a new PythonFunction update!")
-    canReadGlobal = False
-
 
 def LocalSettings():
     """Check if muted
@@ -27,14 +20,23 @@ def LocalSettings():
     return True
 
 
+muted = LocalSettings()
+if muted:
+    canReadGlobal = True
+    try:
+        import requests
+    except ModuleNotFoundError:
+        print("Requests is not installed. Can not check for a new PythonFunction update!")
+        canReadGlobal = False
+
+
 def ReadLocal():
     """Get the module version
 
     Returns:
         str: Module version
     """
-    return "1.1.9"
-
+    return "1.1.10"
 
 def ReadGlobal():
     """Get the version on the server"""
@@ -45,5 +47,5 @@ def ReadGlobal():
 
 
 if __name__ == "__main__":
-    if canReadGlobal and LocalSettings():
+    if canReadGlobal and muted:
         ReadGlobal()
