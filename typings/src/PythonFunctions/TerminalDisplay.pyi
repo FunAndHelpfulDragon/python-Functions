@@ -1,0 +1,19 @@
+import typing
+from . import Colours as Colours
+from .Check import Check as Check
+from .Message import Message as Message
+from _typeshed import Incomplete
+
+canRead: bool
+
+class Display:
+    options: Incomplete
+    gridData: Incomplete
+    chk: Incomplete
+    cursorPosition: Incomplete
+    def __init__(self) -> None: ...
+    def SetOptions(self, options: typing.Dict): ...
+    def AddOption(self, index: int, option: typing.Tuple): ...
+    def RemoveOption(self, index: int): ...
+    def ShowHeader(self, *, text: str = ...): ...
+    def ShowOptions(self, *, useList: bool = ...): ...

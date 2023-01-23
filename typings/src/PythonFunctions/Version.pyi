@@ -1,0 +1,9 @@
+from _typeshed import Incomplete
+
+def LocalSettings(): ...
+
+muted: Incomplete
+canReadGlobal: bool
+
+def ReadLocal(): ...
+def ReadGlobal() -> None: ...

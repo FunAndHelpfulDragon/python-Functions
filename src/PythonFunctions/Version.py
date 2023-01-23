@@ -26,7 +26,9 @@ if muted:
     try:
         import requests
     except ModuleNotFoundError:
-        print("Requests is not installed. Can not check for a new PythonFunction update!")
+        print(
+            "Requests is not installed. Can not check for a new PythonFunction update!"
+        )
         canReadGlobal = False
 
 
@@ -37,6 +39,7 @@ def ReadLocal():
         str: Module version
     """
     return "1.1.10"
+
 
 def ReadGlobal():
     """Get the version on the server"""
