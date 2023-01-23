@@ -1,0 +1,3 @@
+from .Colours import c as c
+
+def main(name: str, twitter: str = ..., youtube: str = ..., github: str = ..., *, colour: str = ...): ...

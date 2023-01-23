@@ -1,5 +1,5 @@
-import os
 import concurrent.futures
+import os
 
 
 def getVersion():
@@ -15,5 +15,7 @@ with concurrent.futures.ThreadPoolExecutor() as executor:
     print(f"Version: {version}")
     print(f"Build Result: {build.result()}")
     twine = executor.submit(
-        os.system, f"twine upload dist/PythonFunctions-{version}.tar.gz dist/PythonFunctions-{version}-py3-none-any.whl")
+        os.system,
+        f"twine upload dist/PythonFunctions-{version}.tar.gz dist/PythonFunctions-{version}-py3-none-any.whl",
+    )
     print(f"Twine: {twine.result()}")
