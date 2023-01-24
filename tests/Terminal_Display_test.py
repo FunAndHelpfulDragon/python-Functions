@@ -1,10 +1,3 @@
-"""Tests functions in the TerminalDisplay module
-"""
-
-import random
-
-import pytest
-
 from . import PythonFunctions
 
 TD = PythonFunctions.TerminalDisplay.Display
@@ -35,30 +28,20 @@ def test_add():
     assert len(dsp.options) == 5
 
 
-@pytest.mark.repeat(5)
 def test_Remove():
     """Tests to see if removing an option removes an option"""
     # Checks to see if removing works
     cLen = len(dsp.options)
-    try:
-        dsp.RemoveOption(random.randrange(-2, 2))
-        assert len(dsp.options) == cLen - 1
-    except KeyError:
-        # If key error, probably issue in random
-        pass
+    dsp.RemoveOption(-2)
+    assert len(dsp.options) == cLen - 1
 
 
-# @pytest.mark.repeat(2)
-# def test_Grid():
-#     moveOptions = ""
-#     end = False
-#     opt = ["w", "a", "s", "d", "\r"]
-#     while not end:
-#         item = random.sample(opt, 1)[0]
-#         moveOptions += item
-#         end = item == "\r"
+def test_RemoveMore():
+    cLen = len(dsp.options)
+    dsp.RemoveOptions(1, 2)
+    assert len(dsp.options) == cLen - 2
 
 
-#     sys.stdin = StringIO(moveOptions)
-#     rst = dsp.ShowOptions()
-#     assert rst is not None
+def test_RemoveAll():
+    dsp.RemoveAllOptions()
+    assert len(dsp.options) == 0

@@ -64,6 +64,27 @@ RemoveOption
     :returns: The value at that position
     :rtype: tuple    
 
+RemoveOptions
+-------------
+
+.. py:function:: RemoveOptions(*index)
+    :noindex:
+
+    Remove all options specified
+
+    :param index: The index to remove the option from
+    :type index: int
+    :return: The value at those positions
+    :rtype: list
+
+RemoveAllOptions
+----------------
+
+.. py:function:: RemoveAllOptions()
+    :noindex:
+
+    Clears the list
+
 ShowHeader
 ----------
 

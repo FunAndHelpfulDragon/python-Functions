@@ -42,7 +42,8 @@ class Display:
         for option in options:
             if isinstance(options.get(option), tuple):
                 newOption = options.get(option)[1].replace(" ", "_")
-                cleanOptions.update({int(option): (options.get(option)[0], newOption)})
+                cleanOptions.update(
+                    {int(option): (options.get(option)[0], newOption)})
             else:
                 print(
                     f"{option} with data {options.get(option)} has an invalid data structure"
@@ -67,6 +68,25 @@ class Display:
             index (int): The index to remove an option
         """
         return self.options.pop(index)
+
+    def RemoveOptions(self, *index: int):
+        """Remove all the options with the selected index
+
+        Args:
+            *index (int): The indexs to remove
+
+        Returns:
+            list: The list of removed options
+        """
+        removedOptions = []
+        for item in index:
+            removedOptions.append(self.options.pop(item))
+        return removedOptions
+
+    def RemoveAllOptions(self):
+        """Remove all of the options in the list
+        """
+        self.options = {}
 
     def ShowHeader(self, *, text: str = "Display.py"):
         """Print out a header message
@@ -212,10 +232,12 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif c == "\r":
                 chosen = True
                 return self.options.get(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]
+                                  ][self.cursorPosition[0]]
                 )[0](
                     self.options.get(
-                        self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                        self.gridData[self.cursorPosition[1]
+                                      ][self.cursorPosition[0]]
                     )[1]
                 )
 
