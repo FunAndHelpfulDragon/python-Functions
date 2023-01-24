@@ -27,7 +27,7 @@ SetOptions
 Options Example
 ^^^^^^^^^^^^^^^
 
-.. code-block:: javascript
+.. code-block:: python
     
     {
         1: (Callback, "Home"),
@@ -36,7 +36,11 @@ Options Example
     }
 
 Above is an example of how the dictionary should be laid out, index then tuple with a callback function along the value to show.
-The number on the left only defines the position and can be negative. (Although they get treeted slightly differently)
+The number on the left only defines the position and can be negative. (Although they get treeted slightly differently).
+
+.. note::
+    You can pass in more than 2 arguments, anything else will be passed to the function that you desire as the callback.
+    e.g. passing in `(Callback, "Home", 123)` will send `"Home"` and `123` to the function `Callback` once selected without showing `123` to the user.
 
 AddOption
 ---------

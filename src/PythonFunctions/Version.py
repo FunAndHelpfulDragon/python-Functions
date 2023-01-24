@@ -38,8 +38,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.1.13"
-
+    return "1.1.14"
 
 def ReadGlobal():
     """Get the version on the server"""

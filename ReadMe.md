@@ -33,23 +33,7 @@ Please read [Contributing.md](Contribution.md)
 - Updated `Version.py` to display how to mute the message.
 - Updated `Save` documentation
 
-### 1.1.10
-
-- Updated `Version.py` to not do anything if the setting says it should be muted.
-
-### 1.1.9
-
-- Updated tests
-- Fixed an issue with `None` or `''` being passed into os.makedirs in `src/PythonFunctions/SaveModules/NORMAL.py`
-- Added `__main__.py` with `-s` and `-v` arguments. (`-s` generates `PyFuncSet.json` file, `-v` prints the module version)
-- Updated `Version.py` to not run at start (the out of data check) unless mainally called.
-- Updated `__init__.py` to accomodate for `Version.py` changes
-- Added `CreateStringVar` to `ui.py` for easy creation of string variables (without having to also import tk into your module)
-- Updated documentation
-- Removed old documentation (A: online is more up to date. B: If you have the source code, you can view the online version even if offline)
-- Updated contributing information
-
-Updates before 1.1.9 are in [Updatelog.md](Updatelog.md)
+Updates before 1.1.11 are in [Updatelog.md](Updatelog.md)
 
 ## Credits
 

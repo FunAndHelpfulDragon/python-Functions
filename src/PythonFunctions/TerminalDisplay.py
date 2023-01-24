@@ -42,7 +42,8 @@ class Display:
         for option in options:
             if isinstance(options.get(option), tuple):
                 newOption = options.get(option)[1].replace(" ", "_")
-                cleanOptions.update({int(option): (options.get(option)[0], newOption)})
+                cleanOptions.update(
+                    {int(option): (options.get(option)[0], newOption)})
             else:
                 print(
                     f"{option} with data {options.get(option)} has an invalid data structure"
@@ -170,7 +171,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
                 lower=self.__lowest,
                 higher=self.__highest,
             )
-            return self.options.get(v)[0](self.options.get(v)[1])
+            return self.options.get(v)[0](self.options.get(v)[1:])
         except TypeError:
             Message().clear("Invalid input!", timeS=2, colour="red")
             return None
@@ -230,11 +231,13 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif c == "\r":
                 chosen = True
                 return self.options.get(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]
+                                  ][self.cursorPosition[0]]
                 )[0](
                     self.options.get(
-                        self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
-                    )[1]
+                        self.gridData[self.cursorPosition[1]
+                                      ][self.cursorPosition[0]]
+                    )[1:]
                 )
 
             elif c == "q":
