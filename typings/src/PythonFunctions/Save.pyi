@@ -13,6 +13,7 @@ class Encoding(Enum):
     JSON: int
     BINARY: int
     CRYPTOGRAPHY: int
+    CSV: int
 
 class Storage(Enum):
     NORMAL: int

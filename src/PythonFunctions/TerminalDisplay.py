@@ -42,8 +42,7 @@ class Display:
         for option in options:
             if isinstance(options.get(option), tuple):
                 newOption = options.get(option)[1].replace(" ", "_")
-                cleanOptions.update(
-                    {int(option): (options.get(option)[0], newOption)})
+                cleanOptions.update({int(option): (options.get(option)[0], newOption)})
             else:
                 print(
                     f"{option} with data {options.get(option)} has an invalid data structure"
@@ -84,8 +83,7 @@ class Display:
         return removedOptions
 
     def RemoveAllOptions(self):
-        """Remove all of the options in the list
-        """
+        """Remove all of the options in the list"""
         self.options = {}
 
     def ShowHeader(self, *, text: str = "Display.py"):
@@ -232,12 +230,10 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif c == "\r":
                 chosen = True
                 return self.options.get(
-                    self.gridData[self.cursorPosition[1]
-                                  ][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
                 )[0](
                     self.options.get(
-                        self.gridData[self.cursorPosition[1]
-                                      ][self.cursorPosition[0]]
+                        self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
                     )[1]
                 )
 
