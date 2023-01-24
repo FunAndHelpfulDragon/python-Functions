@@ -17,6 +17,14 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.1.11
+
+- Moved files around
+- Added `CSV` support to `Save`
+- Added `CSV` support to `Save_test`
+- Updated `Version.py` to display how to mute the message.
+- Updated `Save` documentation
+
 ### 1.1.10
 
 - Updated `Version.py` to not do anything if the setting says it should be muted.

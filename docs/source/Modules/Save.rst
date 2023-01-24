@@ -202,6 +202,7 @@ As well as multiple file system supports, there is also supports for the followi
 - Json 
 - Binary
 - Cryptography
+- CSV
 
 When passing in an encoding argument, it can either be a list or one value and will be treated left to right. (Except for decoding which will treat right to left)
 
@@ -215,3 +216,33 @@ To get an encoding value, use the enum provided.
     
     from PythonFunctions import Save
     binary = Save.Encoding.BINARY
+
+CSV encoding
+^^^^^^^^^^^^
+
+CSV encoding is handled differently so requires it's own little section here.
+To use this format, you need to pass in a dictionary as the data with no other encoding before hand. This has to be the first thing encoded.
+The dictionary must contain these values: `header` and `rows`
+
+`header` must be of type list
+`rows` must also be of type list with sub dictionaries with all of the headers and fields in them.
+
+Example:
+
+.. code-block:: python
+
+    csvItems = {
+        "header": ["name", "test"],
+        "rows": [
+            {
+                "name": "Save",
+                "test": "Making sure stuff saves correctly"
+            },
+            {
+                "name": "Clean",
+                "test": "Cleaning out a folder to only have the stuff you want"
+            }
+        ]
+    }
+
+If not provided in this format, then it will not work.

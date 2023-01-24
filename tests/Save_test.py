@@ -4,10 +4,20 @@ import shutil
 import pytest
 
 from . import PythonFunctions
-
 Save = PythonFunctions.Save
 
 sv = Save.save()
+
+csvData = {"header": ["name", "test"],
+           "rows": [{"name": "save",
+                    "test": "Stuff to do with saving"
+                     },
+                    {
+               "name": "Clean",
+                       "test": "Cleaning folders"
+           }
+]
+}
 
 
 @pytest.fixture(autouse=True)
@@ -40,12 +50,19 @@ def test_write_Data_BINARY():
 
 def test_Write_Data_Crypto():
     """Test to write data using cryptography correctly"""
-    assert sv.Save("Hello World", "TestSaveTemp/Crypt.bin", sv.encoding.CRYPTOGRAPHY)
+    assert sv.Save("Hello World", "TestSaveTemp/Crypt.bin",
+                   sv.encoding.CRYPTOGRAPHY)
+
+
+def test_Save_Data_CSV():
+    """Test to write csv data from a dictonary"""
+    assert sv.Save(csvData, "TestSaveTemp/CSV.csv", sv.encoding.CSV)
 
 
 def test_Read_Data_None():
     """Test to read normal file correctly"""
-    assert sv.Read("TestSaveTemp/Normal.txt", sv.encoding.NONE) == "Hello World"
+    assert sv.Read("TestSaveTemp/Normal.txt",
+                   sv.encoding.NONE) == "Hello World"
 
 
 def test_Read_Data_JSON():
@@ -63,7 +80,12 @@ def test_Read_Data_BINARY():
 
 def test_Read_Data_Crypto():
     """Test to read data ussing cryptography correctly"""
-    assert sv.Read("TestSaveTemp/Crypt.bin", sv.encoding.CRYPTOGRAPHY) == "Hello World"
+    assert sv.Read("TestSaveTemp/Crypt.bin",
+                   sv.encoding.CRYPTOGRAPHY) == "Hello World"
+
+
+def test_Read_Data_CSV():
+    assert sv.Read("TestSaveTemp/CSV.csv", sv.encoding.CSV)
 
 
 def test_Remove_File_None():
