@@ -38,14 +38,17 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.1.12"
+    return "1.1.13"
+
 def ReadGlobal():
     """Get the version on the server"""
     url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
     r = requests.get(url, timeout=60)
     if r.text != ReadLocal():
+        print("*" * os.get_terminal_size().columns)
         print("""Notice: A newer version of PythonFunctions is alvalible.
 Make the file PyFuncSet.json to mute this""")
+        print("*" * os.get_terminal_size().columns)
 
 
 if __name__ == "__main__":
