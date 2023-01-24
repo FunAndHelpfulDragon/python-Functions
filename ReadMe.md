@@ -17,6 +17,10 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.1.13
+
+- Updated `Version.py` to make the notice of new PythonFunction update clearer.
+
 ### 1.1.12
 
 - Updated `TerminalDisplay.py` to be able to remove more options in the list at a time.
