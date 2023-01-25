@@ -48,7 +48,7 @@ def main():
             fV = v
             break
 
-    fV = f'    return "{version}"'
+    fV = f'    return "{version}"\n'
     data[fI] = fV
 
     with open(path, "w", encoding="utf-8") as f:

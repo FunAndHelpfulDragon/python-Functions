@@ -3,6 +3,26 @@
 This file contains all the updates that were removed from [read me](README.md) to save space in the main file.
 The only update in the main file, is the latest update.
 
+## 1.1.14
+
+- Updated `TerminalDisplay.py` to make user of `readKey` instead.
+
+## 1.1.13
+
+- Updated `Version.py` to make the notice of new PythonFunction update clearer.
+
+## 1.1.12
+
+- Updated `TerminalDisplay.py` to be able to remove more options in the list at a time.
+
+## 1.1.11
+
+- Moved files around
+- Added `CSV` support to `Save`
+- Added `CSV` support to `Save_test`
+- Updated `Version.py` to display how to mute the message.
+- Updated `Save` documentation
+
 ## 1.1.10
 
 - Updated `Version.py` to not do anything if the setting says it should be muted.

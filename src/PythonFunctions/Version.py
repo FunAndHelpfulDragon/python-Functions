@@ -38,15 +38,25 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.1.14"
+    return "1.2.0"
+
 
 def ReadGlobal():
     """Get the version on the server"""
-    url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
-    r = requests.get(url, timeout=60)
-    if r.text != ReadLocal():
+    if canReadGlobal:
+        url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
+        r = requests.get(url, timeout=60)
+        return r.text
+
+
+def Compare():
+    current = ReadLocal()
+    server = ReadGlobal()
+
+    if server > current:
         print("*" * os.get_terminal_size().columns)
-        print("""Notice: A newer version of PythonFunctions is alvalible.
+        print(f"""Notice: A newer version of PythonFunctions is alvalible.
+Current Version: {current}. New version: {server}
 Make the file PyFuncSet.json to mute this""")
         print("*" * os.get_terminal_size().columns)
 

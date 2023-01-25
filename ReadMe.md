@@ -17,23 +17,17 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
-### 1.1.13
+### 1.2.0
 
-- Updated `Version.py` to make the notice of new PythonFunction update clearer.
+- Bumbed versions
+- Added `Version.py` documentation
+- Updated `Version.py` to make sure that you are on the newest version using `>`
+- Updated `__init__.py` to include the new `Version.py` function
+- Fixed issues with pypi and version numbering. (Reason to bumb versions as well)
+- Fixed an issue slowly causing `Version.py` to break (was todo with my version updater module.)
+- Moved `cryptography` from requirements to optional requirements.
 
-### 1.1.12
-
-- Updated `TerminalDisplay.py` to be able to remove more options in the list at a time.
-
-### 1.1.11
-
-- Moved files around
-- Added `CSV` support to `Save`
-- Added `CSV` support to `Save_test`
-- Updated `Version.py` to display how to mute the message.
-- Updated `Save` documentation
-
-Updates before 1.1.11 are in [Updatelog.md](Updatelog.md)
+Updates before 1.2.0 are in [Updatelog.md](Updatelog.md)
 
 ## Credits
 

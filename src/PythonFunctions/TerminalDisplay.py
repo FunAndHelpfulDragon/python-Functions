@@ -7,7 +7,7 @@ from .Message import Message
 
 canRead = True
 try:
-    import readchar
+    from readchar import readkey, key
 except ModuleNotFoundError:
     canRead = False
 
@@ -198,26 +198,26 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         """Moves the cursor on the screen"""
         chosen = False
         while not chosen:
-            c = readchar.readchar().lower()
-            if c == "w":
+            k = readkey().lower()
+            if k == "w":
                 self.cursorPosition[1] -= 1
                 # Lock
                 if self.cursorPosition[1] < 0:
                     self.cursorPosition[1] = 0
 
-            elif c == "a":
+            elif k == "a":
                 self.cursorPosition[0] -= 1
                 # Lock
                 if self.cursorPosition[0] < 0:
                     self.cursorPosition[0] = 0
 
-            elif c == "s":
+            elif k == "s":
                 self.cursorPosition[1] += 1
                 # lock
                 if self.cursorPosition[1] > len(self.gridData) - 1:
                     self.cursorPosition[1] = len(self.gridData) - 1
 
-            elif c == "d":
+            elif k == "d":
                 self.cursorPosition[0] += 1
                 # Lock
                 if (
@@ -228,7 +228,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
                         len(self.gridData[self.cursorPosition[1]]) - 1
                     )
 
-            elif c == "\r":
+            elif k == key.ENTER:
                 chosen = True
                 return self.options.get(
                     self.gridData[self.cursorPosition[1]
@@ -240,7 +240,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
                     )[1:]
                 )
 
-            elif c == "q":
+            elif k == "q":
                 chosen = True
                 return None
 
