@@ -55,9 +55,11 @@ def Compare():
 
     if server > current:
         print("*" * os.get_terminal_size().columns)
-        print(f"""Notice: A newer version of PythonFunctions is alvalible.
+        print(
+            f"""Notice: A newer version of PythonFunctions is alvalible.
 Current Version: {current}. New version: {server}
-Make the file PyFuncSet.json to mute this""")
+Make the file PyFuncSet.json to mute this"""
+        )
         print("*" * os.get_terminal_size().columns)
 
 
