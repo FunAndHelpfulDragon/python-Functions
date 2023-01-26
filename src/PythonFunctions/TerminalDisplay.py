@@ -7,7 +7,7 @@ from .Message import Message
 
 canRead = True
 try:
-    from readchar import readkey, key
+    from readchar import key, readkey
 except ModuleNotFoundError:
     canRead = False
 
@@ -42,8 +42,7 @@ class Display:
         for option in options:
             if isinstance(options.get(option), tuple):
                 newOption = options.get(option)[1].replace(" ", "_")
-                cleanOptions.update(
-                    {int(option): (options.get(option)[0], newOption)})
+                cleanOptions.update({int(option): (options.get(option)[0], newOption)})
             else:
                 print(
                     f"{option} with data {options.get(option)} has an invalid data structure"
@@ -251,7 +250,8 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]])
+                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                )
 
                 if len(itemInfo) > 2:
                     return itemInfo[0](itemInfo[1:])
