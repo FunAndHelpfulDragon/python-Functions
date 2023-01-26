@@ -17,10 +17,6 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
-### 1.2.4
-
-- Updated `TerminalDisplay.py` to only return the inner tuple
-
 ### 1.2.3
 
 - Removed print that i acidently left in `TerminalDisplay.py`
