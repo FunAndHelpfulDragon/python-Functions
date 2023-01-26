@@ -17,6 +17,10 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.2.3
+
+- Removed print that i acidently left in `TerminalDisplay.py`
+
 ### 1.2.2
 
 - Fixed an issue in `TerminalDisplay.py` not having multiple arguments in an option. (Also improved the system of adding them)
