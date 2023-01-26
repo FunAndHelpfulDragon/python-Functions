@@ -41,8 +41,12 @@ class Display:
         cleanOptions = {}
         for option in options:
             if isinstance(options.get(option), tuple):
-                newOption = options.get(option)[1].replace(" ", "_")
-                cleanOptions.update({int(option): (options.get(option)[0], newOption)})
+                newOptions = (options.get(option)[0], ) + \
+                    (options.get(option)[1].replace(" ", "_"), ) + \
+                    options.get(option)[2:]
+
+                cleanOptions.update(
+                    {int(option): newOptions})
             else:
                 print(
                     f"{option} with data {options.get(option)} has an invalid data structure"
@@ -60,8 +64,9 @@ class Display:
         if index is None:
             index = len(self.options)
 
-        newOption = option[1].replace(" ", "_")
-        self.options.update({index: (option[0], newOption)})
+        newOptions = (option[0], ) + \
+            (option[1].replace(" ", "_"), ) + option[2:]
+        self.options.update({index: newOptions})
 
     def RemoveOption(self, index: int):
         """Remove an option at the selected index
@@ -250,8 +255,10 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]
+                                  ][self.cursorPosition[0]]
                 )
+                print(itemInfo)
 
                 if len(itemInfo) > 2:
                     return itemInfo[0](itemInfo[1:])
