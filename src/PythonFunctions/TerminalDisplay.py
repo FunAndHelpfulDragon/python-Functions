@@ -51,13 +51,16 @@ class Display:
 
         self.options = cleanOptions
 
-    def AddOption(self, index: int, option: typing.Tuple):
+    def AddOption(self, option: typing.Tuple, *, index: int = None):
         """Add another option to the list
 
         Args:
-            index (int): The index to add
             option (typing.Tuple): The information about the option to set
+            index (int, optional): The index place to place the item
         """
+        if index is None:
+            index = len(self.options)
+
         newOption = option[1].replace(" ", "_")
         self.options.update({index: (option[0], newOption)})
 
@@ -194,6 +197,23 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         self.__ShowList()
         return self.__GetListInput()
 
+    def __GetItemInfo(self, item: str):
+        """Trys to find item in the list.
+
+        Args:
+            item (str): The item to find
+
+        Returns:
+            Tuple: The information about that item.
+        """
+        item = item.strip()
+        for option in self.options:
+            info = self.options.get(option)
+            if info[1] == item:
+                return info
+
+        return None
+
     def __MoveCursor(self):
         """Moves the cursor on the screen"""
         chosen = False
@@ -230,22 +250,19 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
 
             elif k == key.ENTER:
                 chosen = True
-                return self.options.get(
-                    self.gridData[self.cursorPosition[1]
-                                  ][self.cursorPosition[0]]
-                )[0](
-                    self.options.get(
-                        self.gridData[self.cursorPosition[1]
-                                      ][self.cursorPosition[0]]
-                    )[1:]
-                )
+                itemInfo = self.__GetItemInfo(
+                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]])
+
+                if len(itemInfo) > 2:
+                    return itemInfo[0](itemInfo[1:])
+
+                return itemInfo[0](itemInfo[1])
 
             elif k == "q":
                 chosen = True
                 return None
 
-            # move the curspor position instead, as this saves memory and is easier to debug
-            # print("\033[%d;%dH" % (0, 0), end="")
+            # moves the cursor, Makes it look clearer
             print("\033[0;0H", end="")
             self.ShowHeader(text=self.__storedText)
             self.__ShowGrid()

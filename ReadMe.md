@@ -17,6 +17,11 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.2.1
+
+- Updated `AddOption` index in `TerminalDisplay.py` to have a default value
+- Fixed an issue with TerminalDisplay when selecting an option in grid mode.
+
 ### 1.2.0
 
 - Bumbed versions

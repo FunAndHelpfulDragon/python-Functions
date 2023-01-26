@@ -45,12 +45,12 @@ The number on the left only defines the position and can be negative. (Although 
 AddOption
 ---------
 
-.. py:function:: AddOption(index, value)
+.. py:function:: AddOption(value, *, index)
     :noindex:
 
     Add an option to the display. This can also update an existing option
 
-    :param index: Position to add it to
+    :param index: (Optional) Position to add it to. Defaults to length of all the options.
     :param value: Value to add the option (Must be like above)
     :type index: int
     :type value: tuple
