@@ -260,7 +260,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
                 )
 
                 if len(itemInfo) > 2:
-                    return itemInfo[0](itemInfo[1:])
+                    return itemInfo[0](itemInfo[1:][0])
 
                 return itemInfo[0](itemInfo[1])
 
