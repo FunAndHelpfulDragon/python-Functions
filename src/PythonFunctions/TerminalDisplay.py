@@ -151,6 +151,7 @@ class Display:
                     and self.cursorPosition[1] == yIndex
                     else xValue
                 )
+                v = v.replace("_", " ")
 
                 print(v, end="")
             print()
@@ -266,7 +267,8 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]
+                                  ][self.cursorPosition[0]]
                 )
 
                 if len(itemInfo) > 2:

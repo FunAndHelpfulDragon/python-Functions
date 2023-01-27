@@ -17,6 +17,10 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.2.5
+
+- Updated `TerminalDisplay.ShowOptions` to not show `_` in the ui when options have spaces
+
 ### 1.2.4.1
 
 - Added typewriter effect to `TerminalDisplay.ShowHeader`
