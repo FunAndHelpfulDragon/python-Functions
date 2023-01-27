@@ -1,5 +1,6 @@
 import os
 import typing
+import time
 
 from . import Colours
 from .Check import Check
@@ -94,17 +95,25 @@ class Display:
         """Remove all of the options in the list"""
         self.options = {}
 
-    def ShowHeader(self, *, text: str = "Display.py"):
+    def ShowHeader(self, *, text: str = "Display.py", typewriter: bool = False, pace: int = 100):
         """Print out a header message
 
         Args:
             text: (str, option) The text to display. Deafults to "Display.py".
+            typewritter: (str, optional): Shows the text letter by letter. Defaults to False.
+            pace: (int, optional): Words per second to show using typewritter effect.Defaults to 100
         """
-        print(
-            f"""{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}
-{text}
-{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}"""
-        )
+        print(f"{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}")
+
+        if typewriter:
+            for i in text:
+                print(i, end="", flush=True)
+                time.sleep(pace * 0.001)
+            print()
+        else:
+            print(text)
+
+        print(f"{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}")
 
         self.__storedText = text
 

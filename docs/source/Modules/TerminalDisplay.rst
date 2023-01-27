@@ -92,13 +92,21 @@ RemoveAllOptions
 ShowHeader
 ----------
 
-.. py:function:: ShowHeader(text)
+.. py:function:: ShowHeader(*, text, typewriter, pace)
     :noindex:
 
     Shows a header
 
     :param text: (Optional), Text to display in the header. Defaults to "Display.py"
+    :param typewriter: (Optional), To make the text come out in a letter by letter. Defaults to False.
+    :param pace: (Optional), speed to make the typewriter work. Defaults to 100.
     :type text: str
+    :type typewriter: bool
+    :type pace: int
+
+.. note::
+    1 second per letter = 1000 pace
+    You can work out the rest from that.
 
 ShowOptions
 -----------

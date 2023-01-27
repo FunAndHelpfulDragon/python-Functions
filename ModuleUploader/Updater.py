@@ -2,12 +2,12 @@ import argparse
 
 
 def parser():
-    parser = argparse.ArgumentParser(
+    ARGparser = argparse.ArgumentParser(
         prog="Python Functions updater",
         description="Update the version in the program",
     )
-    parser.add_argument("version")
-    return parser.parse_args()
+    ARGparser.add_argument("version")
+    return ARGparser.parse_args()
 
 
 def main():

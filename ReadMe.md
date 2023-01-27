@@ -17,6 +17,13 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.2.4.1
+
+- Added typewriter effect to `TerminalDisplay.ShowHeader`
+- Added typewritter effect documentation.
+- (Github code) Updated ModuleUpload
+- Used 1.2.4.1 due to 1.2.4 breaking stuff.
+
 ### 1.2.3
 
 - Removed print that i acidently left in `TerminalDisplay.py`
