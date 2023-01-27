@@ -1,6 +1,6 @@
 import os
-import typing
 import time
+import typing
 
 from . import Colours
 from .Check import Check
@@ -95,7 +95,9 @@ class Display:
         """Remove all of the options in the list"""
         self.options = {}
 
-    def ShowHeader(self, *, text: str = "Display.py", typewriter: bool = False, pace: int = 100):
+    def ShowHeader(
+        self, *, text: str = "Display.py", typewriter: bool = False, pace: int = 100
+    ):
         """Print out a header message
 
         Args:
@@ -264,8 +266,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]
-                                  ][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
                 )
 
                 if len(itemInfo) > 2:
