@@ -1,7 +1,7 @@
 import io
 import os
-import sys
 import shutil
+import sys
 
 from . import template
 
@@ -34,7 +34,8 @@ class save(template.SaveTemplate):
     def __LoadGoogle(self):
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         Tpath = None
@@ -50,7 +51,8 @@ class save(template.SaveTemplate):
             if not os.path.exists(Cpath):
                 Cpath = None
                 path = input(
-                    "Please enter location of files (Leave blank for run directory): ")
+                    "Please enter location of files (Leave blank for run directory): "
+                )
                 if path in ("", None):
                     path = "."
 
@@ -61,16 +63,14 @@ class save(template.SaveTemplate):
         try:
             creds = None
             if os.path.exists(Tpath):
-                creds = Credentials.from_authorized_user_file(
-                    Tpath, self.SCOPES)
+                creds = Credentials.from_authorized_user_file(Tpath, self.SCOPES)
 
             # If there are no (valid) credentials available, let the user login
             if not creds or not creds.valid:
                 if creds and creds.expired and creds.refresh_token:
                     creds.refresh(Request())
                 else:
-                    flow = InstalledAppFlow.from_client_secrets_file(
-                        Cpath, self.SCOPES)
+                    flow = InstalledAppFlow.from_client_secrets_file(Cpath, self.SCOPES)
                     creds = flow.run_local_server(port=0)
 
                 # Save the credentials for the next run
@@ -102,7 +102,8 @@ class save(template.SaveTemplate):
         """
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         query = "trashed = false and 'me' in owners"
@@ -149,7 +150,8 @@ class save(template.SaveTemplate):
         """
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         items = self.__ListDirectory(folder, name)
@@ -160,7 +162,8 @@ class save(template.SaveTemplate):
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         pathInfo = os.path.split(path)
@@ -176,13 +179,11 @@ class save(template.SaveTemplate):
             deleted = self.__DeleteByID(exId.get("id"))
             print("deleted old file" if deleted else "failed to delete old file")
 
-        metadata = {"name": pathInfo[1],
-                    "mimeType": "*/*", "parents": pathInfo[0]}
+        metadata = {"name": pathInfo[1], "mimeType": "*/*", "parents": pathInfo[0]}
 
         fileId = None
         try:
-            media = MediaFileUpload(
-                self.tempFile, mimetype="*/*", resumable=True)
+            media = MediaFileUpload(self.tempFile, mimetype="*/*", resumable=True)
 
             fileId = (
                 self.service.files()
@@ -197,7 +198,8 @@ class save(template.SaveTemplate):
     def ReadData(self, path: str, Encoding: bool = False) -> any:
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         pathInfo = os.path.split(path)
@@ -224,7 +226,8 @@ class save(template.SaveTemplate):
     def MakeFolders(self, path: str):
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         fileId = None
@@ -239,8 +242,7 @@ class save(template.SaveTemplate):
             for file in folders:
 
                 if currentPath != "":
-                    exists, fileId = self.__checkIfExists(
-                        currentPath.get("id"))
+                    exists, fileId = self.__checkIfExists(currentPath.get("id"))
                     if exists:
                         currentPath = fileId
                         continue
@@ -266,7 +268,8 @@ class save(template.SaveTemplate):
     def DeleteFolder(self, path: str):
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         return self.__DeleteByPath(path)
@@ -274,7 +277,8 @@ class save(template.SaveTemplate):
     def DeleteFile(self, path: str):
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         return self.__DeleteByPath(path)
@@ -289,7 +293,8 @@ class save(template.SaveTemplate):
     def __DeleteByID(self, fileId):
         if disabled:
             print(
-                "Missing google drive api. Install using `pip install PythonFunctions[google]`")
+                "Missing google drive api. Install using `pip install PythonFunctions[google]`"
+            )
             return False
 
         try:
