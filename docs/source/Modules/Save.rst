@@ -181,6 +181,38 @@ Example of ftp file:
     On program start, the first time you call the server to do anything you will be asked to check your username and enter your password.
     You can't switch servers unless the other server has the same username and surname as the first server or you change your information.
 
+gdr (Google Drive API)
+^^^^^^^^^^^^^^^^^^^^^^
+
+Google drive api takes a bit more setup other than installing the module. Some of which i can not automate.
+I could set up a default one but i don't want to because then i have to handle it and everyone will share the same data.
+
+To set up google drive api follow these steps:
+
+1. Go to https://console.cloud.google.com/
+2. Make a new project
+3. go to https://console.cloud.google.com/apis/enableflow?apiid=drive.googleapis.com and follow the steps
+4. go to https://console.cloud.google.com/apis/credentials
+5. Create Credentials -> OAuth client ID.
+- Application type -> Desktop app
+- Name (anything you want, something useful though)
+- Create
+6. Download json file provided, rename to `gCred.json`
+7. Place `gCred.json` in the folder with the program.
+8. Run the program (It should open your browser and ask for you to sign in one first time use.)
+
+.. note::
+    This needs updating tbh. I've added a temparary fix that needs to be changed.
+    If you need to delete the file / make a new one then the file is located in `PyFuncSave` where the module is stored (Find this out by doing `print(PythonFunctions.__file__)`)
+
+.. note::
+    Even now and again you will need to reverify, this is a google thing not me.
+    It is super easy to do though.  
+
+.. note::
+    If google is saying you don't have access, add yourself as a tester.
+    Go to: https://console.cloud.google.com/apis/credentials/consent. Scroll down until you see `Test users`. Add User, enter you email and save.
+
 oth (Other)
 ^^^^^^^^^^^
 

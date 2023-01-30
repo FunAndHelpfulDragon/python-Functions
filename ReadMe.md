@@ -17,6 +17,12 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.2.6
+
+- Added a bad temparary way to use google drive
+- Updated google drive documentation
+- Removed annoying missing google drive api in save module. Only prints now if you try to use the drive api.
+
 ### 1.2.5
 
 - Updated `TerminalDisplay.ShowOptions` to not show `_` in the ui when options have spaces
