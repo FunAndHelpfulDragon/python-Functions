@@ -18,6 +18,42 @@ Functions
 .. note::
     It does not matter what os you are on, if you use `/` or `\\` it will still be translated and works for any os.
 
+DriveExists
+^^^^^^^^^^^
+
+.. py:function:: DriveExists()
+    :noindex:
+
+    Checks if `gCred.json` is found within the local storage
+
+    :returns: If it is found
+    :rtype: bool
+
+.. code-block:: python
+
+    print(sv.DriveExists())
+
+DriveCredentials
+^^^^^^^^^^^^^^^^
+
+.. py:function:: DriveCredentials(path, mode)
+    :noindex:
+
+    Copies and deletes drive credentials file.
+
+    :param path: The path where the file is
+    :param mode: What to do
+    :type path: str
+    :type mode: DriveCredentialsMode
+    :returns: Information about what happened
+    :rtype: str
+    :raise AttributeError: Invalid mode
+    :raise AttributeError: Can't find `gCred.json` under path
+
+.. code-block:: python
+
+    sv.DriveCredentials(".", sv.DriveCredentialsMode.ADD)
+
 Save
 ^^^^
 
@@ -194,22 +230,21 @@ To set up google drive api follow these steps:
 3. go to https://console.cloud.google.com/apis/enableflow?apiid=drive.googleapis.com and follow the steps
 4. go to https://console.cloud.google.com/apis/credentials
 5. Create Credentials -> OAuth client ID.
-- Application type -> Desktop app
-- Name (anything you want, something useful though)
-- Create
+    - Application type -> Desktop app
+    - Name (anything you want, something useful though)
+    - Create
 6. Download json file provided, rename to `gCred.json`
 7. Place `gCred.json` in the folder with the program.
 8. Run the program (It should open your browser and ask for you to sign in one first time use.)
+    - Make sure to run `sv.Drivecredentials()` beforehand, If you don't want to always run it, check using `sv.DriveExists()`
+
 
 .. note::
-    This needs updating tbh. I've added a temparary fix that needs to be changed.
-    If you need to delete the file / make a new one then the file is located in `PyFuncSave` where the module is stored (Find this out by doing `print(PythonFunctions.__file__)`)
+    GOOGLE NOTES:
 
-.. note::
     Even now and again you will need to reverify, this is a google thing not me.
     It is super easy to do though.  
 
-.. note::
     If google is saying you don't have access, add yourself as a tester.
     Go to: https://console.cloud.google.com/apis/credentials/consent. Scroll down until you see `Test users`. Add User, enter you email and save.
 

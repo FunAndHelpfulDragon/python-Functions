@@ -17,6 +17,12 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.2.7
+
+- Added 2 new functions into Save
+- Updated Save documentation
+- Removed old temparary fix.
+
 ### 1.2.6
 
 - Added a bad temparary way to use google drive

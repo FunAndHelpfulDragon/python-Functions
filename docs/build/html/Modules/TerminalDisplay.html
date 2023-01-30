@@ -58,11 +58,14 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#addoption">AddOption</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#removeoption">RemoveOption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#removeoptions">RemoveOptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#removealloptions">RemoveAllOptions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#showheader">ShowHeader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#showoptions">ShowOptions</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Watermark.html">Watermark (Version 2)</a></li>
 </ul>
 
@@ -116,27 +119,32 @@
 
 <section id="options-example">
 <h3>Options Example<a class="headerlink" href="#options-example" title="Permalink to this heading"></a></h3>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">Callback</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Home&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="mf">2</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">Callback</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Shop&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="mf">3</span><span class="o">:</span><span class="w"> </span><span class="p">(</span><span class="nx">Callback</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Wait&quot;</span><span class="p">),</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="n">Callback</span><span class="p">,</span> <span class="s2">&quot;Home&quot;</span><span class="p">),</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="n">Callback</span><span class="p">,</span> <span class="s2">&quot;Shop&quot;</span><span class="p">),</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="n">Callback</span><span class="p">,</span> <span class="s2">&quot;Wait&quot;</span><span class="p">),</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Above is an example of how the dictionary should be laid out, index then tuple with a callback function along the value to show.
-The number on the left only defines the position and can be negative. (Although they get treeted slightly differently)</p>
+The number on the left only defines the position and can be negative. (Although they get treeted slightly differently).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can pass in more than 2 arguments, anything else will be passed to the function that you desire as the callback.
+e.g. passing in <cite>(Callback, “Home”, 123)</cite> will send <cite>“Home”</cite> and <cite>123</cite> to the function <cite>Callback</cite> once selected without showing <cite>123</cite> to the user.</p>
+</div>
 </section>
 </section>
 <section id="addoption">
 <h2>AddOption<a class="headerlink" href="#addoption" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">AddOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">AddOption</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Add an option to the display. This can also update an existing option</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>index</strong> (<em>int</em>) – Position to add it to</p></li>
+<li><p><strong>index</strong> (<em>int</em>) – (Optional) Position to add it to. Defaults to length of all the options.</p></li>
 <li><p><strong>value</strong> (<em>tuple</em>) – Value to add the option (Must be like above)</p></li>
 </ul>
 </dd>
@@ -164,19 +172,57 @@ The number on the left only defines the position and can be negative. (Although 
 </dd></dl>
 
 </section>
-<section id="showheader">
-<h2>ShowHeader<a class="headerlink" href="#showheader" title="Permalink to this heading"></a></h2>
+<section id="removeoptions">
+<h2>RemoveOptions<a class="headerlink" href="#removeoptions" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">ShowHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Shows a header</p>
+<span class="sig-name descname"><span class="pre">RemoveOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Remove all options specified</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – (Optional), Text to display in the header. Defaults to “Display.py”</p>
+<dd class="field-odd"><p><strong>index</strong> (<em>int</em>) – The index to remove the option from</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The value at those positions</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
 </dd>
 </dl>
 </dd></dl>
 
+</section>
+<section id="removealloptions">
+<h2>RemoveAllOptions<a class="headerlink" href="#removealloptions" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">RemoveAllOptions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Clears the list</p>
+</dd></dl>
+
+</section>
+<section id="showheader">
+<h2>ShowHeader<a class="headerlink" href="#showheader" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ShowHeader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typewriter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pace</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Shows a header</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – (Optional), Text to display in the header. Defaults to “Display.py”</p></li>
+<li><p><strong>typewriter</strong> (<em>bool</em>) – (Optional), To make the text come out in a letter by letter. Defaults to False.</p></li>
+<li><p><strong>pace</strong> (<em>int</em>) – (Optional), speed to make the typewriter work. Defaults to 100.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1 second per letter = 1000 pace
+You can work out the rest from that.</p>
+</div>
 </section>
 <section id="showoptions">
 <h2>ShowOptions<a class="headerlink" href="#showoptions" title="Permalink to this heading"></a></h2>

@@ -38,39 +38,27 @@ class save(template.SaveTemplate):
             )
             return False
 
-        Tpath = None
-        Cpath = None
-        Opath = self.data.get("SettingsSave")
-        path = Opath
+        path = self.data.get("SettingsSave")
+        Tpath = path + "/gToken.json"
+        Cpath = path + "/gCred.json"
 
-        while Cpath is None:
-            path = os.path.dirname(path)
-            Tpath = path + "/gToken.json"
-            Cpath = path + "/gCred.json"
-
-            if not os.path.exists(Cpath):
-                Cpath = None
-                path = input(
-                    "Please enter location of files (Leave blank for run directory): "
-                )
-                if path in ("", None):
-                    path = "."
-
-            shutil.copy(path + "/gCred.json", Opath + "/gCred.json")
-
-            # sys.exit(f"Please make sure the file: {Cpath} exists!")
+        if not os.path.exists(Cpath):
+            raise AttributeError(
+                "Failed to find `gCred.json` Please run save().DriveCredntials() first (and follow instructions in docs)")
 
         try:
             creds = None
             if os.path.exists(Tpath):
-                creds = Credentials.from_authorized_user_file(Tpath, self.SCOPES)
+                creds = Credentials.from_authorized_user_file(
+                    Tpath, self.SCOPES)
 
             # If there are no (valid) credentials available, let the user login
             if not creds or not creds.valid:
                 if creds and creds.expired and creds.refresh_token:
                     creds.refresh(Request())
                 else:
-                    flow = InstalledAppFlow.from_client_secrets_file(Cpath, self.SCOPES)
+                    flow = InstalledAppFlow.from_client_secrets_file(
+                        Cpath, self.SCOPES)
                     creds = flow.run_local_server(port=0)
 
                 # Save the credentials for the next run
@@ -179,11 +167,13 @@ class save(template.SaveTemplate):
             deleted = self.__DeleteByID(exId.get("id"))
             print("deleted old file" if deleted else "failed to delete old file")
 
-        metadata = {"name": pathInfo[1], "mimeType": "*/*", "parents": pathInfo[0]}
+        metadata = {"name": pathInfo[1],
+                    "mimeType": "*/*", "parents": pathInfo[0]}
 
         fileId = None
         try:
-            media = MediaFileUpload(self.tempFile, mimetype="*/*", resumable=True)
+            media = MediaFileUpload(
+                self.tempFile, mimetype="*/*", resumable=True)
 
             fileId = (
                 self.service.files()
@@ -242,7 +232,8 @@ class save(template.SaveTemplate):
             for file in folders:
 
                 if currentPath != "":
-                    exists, fileId = self.__checkIfExists(currentPath.get("id"))
+                    exists, fileId = self.__checkIfExists(
+                        currentPath.get("id"))
                     if exists:
                         currentPath = fileId
                         continue

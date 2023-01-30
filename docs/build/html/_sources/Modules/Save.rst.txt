@@ -18,6 +18,38 @@ Functions
 .. note::
     It does not matter what os you are on, if you use `/` or `\\` it will still be translated and works for any os.
 
+DriveExists
+^^^^^^^^^^^
+
+.. py:function:: DriveExists()
+    :noindex:
+
+    Checks if `gCred.json` is found within the local storage
+
+    :returns: If it is found
+    :rtype: bool
+
+.. code-block:: python
+
+    print(sv.DriveExists())
+
+DriveCredentials
+^^^^^^^^^^^^^^^^
+
+.. py:function:: DriveCredentials(path, mode)
+    :noindex:
+
+    Copies and deletes drive credentials file.
+
+    :param path: The path where the file is
+    :param mode: What to do
+    :type path: str
+    :type mode: DriveCredentialsMode
+    :returns: Information about what happened
+    :rtype: str
+    :raise AttributeError: Invalid mode
+    :raise AttributeError: Can't find `gCred.json` under path
+
 Save
 ^^^^
 
@@ -181,6 +213,37 @@ Example of ftp file:
     On program start, the first time you call the server to do anything you will be asked to check your username and enter your password.
     You can't switch servers unless the other server has the same username and surname as the first server or you change your information.
 
+gdr (Google Drive API)
+^^^^^^^^^^^^^^^^^^^^^^
+
+Google drive api takes a bit more setup other than installing the module. Some of which i can not automate.
+I could set up a default one but i don't want to because then i have to handle it and everyone will share the same data.
+
+To set up google drive api follow these steps:
+
+1. Go to https://console.cloud.google.com/
+2. Make a new project
+3. go to https://console.cloud.google.com/apis/enableflow?apiid=drive.googleapis.com and follow the steps
+4. go to https://console.cloud.google.com/apis/credentials
+5. Create Credentials -> OAuth client ID.
+    - Application type -> Desktop app
+    - Name (anything you want, something useful though)
+    - Create
+6. Download json file provided, rename to `gCred.json`
+7. Place `gCred.json` in the folder with the program.
+8. Run the program (It should open your browser and ask for you to sign in one first time use.)
+    - Make sure to run `sv.Drivecredentials()` beforehand, If you don't want to always run it, check using `sv.DriveExists()`
+
+
+.. note::
+    GOOGLE NOTES:
+
+    Even now and again you will need to reverify, this is a google thing not me.
+    It is super easy to do though.  
+
+    If google is saying you don't have access, add yourself as a tester.
+    Go to: https://console.cloud.google.com/apis/credentials/consent. Scroll down until you see `Test users`. Add User, enter you email and save.
+
 oth (Other)
 ^^^^^^^^^^^
 
@@ -202,6 +265,7 @@ As well as multiple file system supports, there is also supports for the followi
 - Json 
 - Binary
 - Cryptography
+- CSV
 
 When passing in an encoding argument, it can either be a list or one value and will be treated left to right. (Except for decoding which will treat right to left)
 
@@ -215,3 +279,33 @@ To get an encoding value, use the enum provided.
     
     from PythonFunctions import Save
     binary = Save.Encoding.BINARY
+
+CSV encoding
+^^^^^^^^^^^^
+
+CSV encoding is handled differently so requires it's own little section here.
+To use this format, you need to pass in a dictionary as the data with no other encoding before hand. This has to be the first thing encoded.
+The dictionary must contain these values: `header` and `rows`
+
+`header` must be of type list
+`rows` must also be of type list with sub dictionaries with all of the headers and fields in them.
+
+Example:
+
+.. code-block:: python
+
+    csvItems = {
+        "header": ["name", "test"],
+        "rows": [
+            {
+                "name": "Save",
+                "test": "Making sure stuff saves correctly"
+            },
+            {
+                "name": "Clean",
+                "test": "Cleaning out a folder to only have the stuff you want"
+            }
+        ]
+    }
+
+If not provided in this format, then it will not work.

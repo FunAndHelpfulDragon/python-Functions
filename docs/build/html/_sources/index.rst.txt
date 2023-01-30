@@ -16,6 +16,10 @@ It contains many functions that anyone can help with as well as tests, documenta
 Check out the :doc:`Usage` section for further information, including how to
 :ref:`install <installation>` the project.
 
+Check out the pypi_ website for more information about the module.
+
+.. _pypi: pypi.org/project/PythonFunctions/
+
 Contents
 --------
 

@@ -52,6 +52,8 @@
 <li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Save (Version 2)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#driveexists">DriveExists</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drivecredentials">DriveCredentials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#save">Save</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#read">Read</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#makefolders">MakeFolders</a></li>
@@ -63,14 +65,19 @@
 <li class="toctree-l2"><a class="reference internal" href="#file-system-support">File System support</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prefixs">Prefixs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ftp-file-transfer-protocol">ftp (File Transfer Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gdr-google-drive-api">gdr (Google Drive API)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#oth-other">oth (Other)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#encoding">encoding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#encoding">encoding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#csv-encoding">CSV encoding</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Watermark.html">Watermark (Version 2)</a></li>
 </ul>
 
@@ -116,6 +123,55 @@ More information about them later</p>
 <p class="admonition-title">Note</p>
 <p>It does not matter what os you are on, if you use <cite>/</cite> or <cite>\</cite> it will still be translated and works for any os.</p>
 </div>
+<section id="driveexists">
+<h3>DriveExists<a class="headerlink" href="#driveexists" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">DriveExists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Checks if <cite>gCred.json</cite> is found within the local storage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>If it is found</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sv</span><span class="o">.</span><span class="n">DriveExists</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="drivecredentials">
+<h3>DriveCredentials<a class="headerlink" href="#drivecredentials" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">DriveCredentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Copies and deletes drive credentials file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The path where the file is</p></li>
+<li><p><strong>mode</strong> (<em>DriveCredentialsMode</em>) – What to do</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Information about what happened</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>AttributeError</strong> – Invalid mode</p></li>
+<li><p><strong>AttributeError</strong> – Can’t find <cite>gCred.json</cite> under path</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="save">
 <h3>Save<a class="headerlink" href="#save" title="Permalink to this heading"></a></h3>
 <dl class="py function">
@@ -315,6 +371,44 @@ Please only use this on your local network and not some kind of big private comp
 You can’t switch servers unless the other server has the same username and surname as the first server or you change your information.</p>
 </div>
 </section>
+<section id="gdr-google-drive-api">
+<h3>gdr (Google Drive API)<a class="headerlink" href="#gdr-google-drive-api" title="Permalink to this heading"></a></h3>
+<p>Google drive api takes a bit more setup other than installing the module. Some of which i can not automate.
+I could set up a default one but i don’t want to because then i have to handle it and everyone will share the same data.</p>
+<p>To set up google drive api follow these steps:</p>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference external" href="https://console.cloud.google.com/">https://console.cloud.google.com/</a></p></li>
+<li><p>Make a new project</p></li>
+<li><p>go to <a class="reference external" href="https://console.cloud.google.com/apis/enableflow?apiid=drive.googleapis.com">https://console.cloud.google.com/apis/enableflow?apiid=drive.googleapis.com</a> and follow the steps</p></li>
+<li><p>go to <a class="reference external" href="https://console.cloud.google.com/apis/credentials">https://console.cloud.google.com/apis/credentials</a></p></li>
+<li><dl class="simple">
+<dt>Create Credentials -&gt; OAuth client ID.</dt><dd><ul class="simple">
+<li><p>Application type -&gt; Desktop app</p></li>
+<li><p>Name (anything you want, something useful though)</p></li>
+<li><p>Create</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Download json file provided, rename to <cite>gCred.json</cite></p></li>
+<li><p>Place <cite>gCred.json</cite> in the folder with the program.</p></li>
+<li><dl class="simple">
+<dt>Run the program (It should open your browser and ask for you to sign in one first time use.)</dt><dd><ul class="simple">
+<li><p>Make sure to run <cite>sv.Drivecredentials()</cite> beforehand, If you don’t want to always run it, check using <cite>sv.DriveExists()</cite></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GOOGLE NOTES:</p>
+<p>Even now and again you will need to reverify, this is a google thing not me.
+It is super easy to do though.</p>
+<p>If google is saying you don’t have access, add yourself as a tester.
+Go to: <a class="reference external" href="https://console.cloud.google.com/apis/credentials/consent">https://console.cloud.google.com/apis/credentials/consent</a>. Scroll down until you see <cite>Test users</cite>. Add User, enter you email and save.</p>
+</div>
+</section>
 <section id="oth-other">
 <h3>oth (Other)<a class="headerlink" href="#oth-other" title="Permalink to this heading"></a></h3>
 <p>This prefix is mainly for your own custom file system. You can make one and use it by this command.</p>
@@ -333,6 +427,7 @@ You can’t switch servers unless the other server has the same username and sur
 <li><p>Json</p></li>
 <li><p>Binary</p></li>
 <li><p>Cryptography</p></li>
+<li><p>CSV</p></li>
 </ul>
 <p>When passing in an encoding argument, it can either be a list or one value and will be treated left to right. (Except for decoding which will treat right to left)</p>
 <div class="admonition note">
@@ -345,6 +440,31 @@ The order to pass them in is the same order as you did when you saved it.</p>
 <span class="n">binary</span> <span class="o">=</span> <span class="n">Save</span><span class="o">.</span><span class="n">Encoding</span><span class="o">.</span><span class="n">BINARY</span>
 </pre></div>
 </div>
+<section id="csv-encoding">
+<h3>CSV encoding<a class="headerlink" href="#csv-encoding" title="Permalink to this heading"></a></h3>
+<p>CSV encoding is handled differently so requires it’s own little section here.
+To use this format, you need to pass in a dictionary as the data with no other encoding before hand. This has to be the first thing encoded.
+The dictionary must contain these values: <cite>header</cite> and <cite>rows</cite></p>
+<p><cite>header</cite> must be of type list
+<cite>rows</cite> must also be of type list with sub dictionaries with all of the headers and fields in them.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">csvItems</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;header&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;test&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;rows&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Save&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;Making sure stuff saves correctly&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Clean&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;Cleaning out a folder to only have the stuff you want&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If not provided in this format, then it will not work.</p>
+</section>
 </section>
 </section>
 

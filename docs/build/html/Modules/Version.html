@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watermark (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
+  <title>Version (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -20,7 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Version (Version 2)" href="Version.html" /> 
+    <link rel="next" title="Watermark (Version 2)" href="Watermark.html" />
+    <link rel="prev" title="Ui (Version 3)" href="Ui.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,11 +53,14 @@
 <li class="toctree-l1"><a class="reference internal" href="Save.html">Save (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Watermark (Version 2)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#main">main</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Version (Version 2)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#localsettings">LocalSettings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readlocal">ReadLocal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#readglobal">ReadGlobal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compare">Compare</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Watermark.html">Watermark (Version 2)</a></li>
 </ul>
 
         </div>
@@ -73,9 +77,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Watermark (Version 2)</li>
+      <li class="breadcrumb-item active">Version (Version 2)</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/Modules/Watermark.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/Modules/Version.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -83,32 +87,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="watermark-version-2">
-<h1>Watermark (Version 2)<a class="headerlink" href="#watermark-version-2" title="Permalink to this heading"></a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Watermark</span> <span class="kn">import</span> <span class="n">main</span> <span class="k">as</span> <span class="n">Watermark</span>
-<span class="n">Watermark</span><span class="p">(</span><span class="s2">&quot;HI&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<section id="main">
-<h2>main<a class="headerlink" href="#main" title="Permalink to this heading"></a></h2>
+  <section id="version-version-2">
+<h1>Version (Version 2)<a class="headerlink" href="#version-version-2" title="Permalink to this heading"></a></h1>
+<p>A module designed to get the version of the package.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>I have also added my information into this function as i made it and wanted credit.</p>
+<p>I wasn’t planning on adding this in at first, but because of how stuff works out here it is.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions</span> <span class="kn">import</span> <span class="n">Version</span>
+</pre></div>
+</div>
+<section id="localsettings">
+<h2>LocalSettings<a class="headerlink" href="#localsettings" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">LocalSettings():</span></span></dt>
+<dd><p>Checks if the :ref: <cite>muted &lt;Mutting&gt;</cite> setting has been activated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>If <cite>Mute</cite> is true</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <cite>Mute</cite> is true, you can still manually can the function to bypass it.
+Mute just makes sure it doesn’t happen automatically</p>
+</div>
+</section>
+<section id="readlocal">
+<h2>ReadLocal<a class="headerlink" href="#readlocal" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ReadLocal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Gets the local version</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The local version</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="readglobal">
+<h2>ReadGlobal<a class="headerlink" href="#readglobal" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Module <a class="reference external" href="https://pypi.org/project/requests/">request</a>  is required to run this function.</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twitter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youtube</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">github</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span></em><span class="sig-paren">)</span></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>name</strong> (<em>str</em>) – Your name to display</p></li>
-<li><p><strong>twitter</strong> (<em>str</em>) – Link to twitter account</p></li>
-<li><p><strong>youtube</strong> (<em>str</em>) – Link to youtube account</p></li>
-<li><p><strong>github</strong> (<em>str</em>) – Link to github account</p></li>
-<li><p><strong>colour</strong> (<em>str</em>) – (Optional) The colour to make the <cite>-</cite> be.</p></li>
-</ul>
+<span class="sig-name descname"><span class="pre">ReadGlobal</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Using request, gets the version off the server.
+(Timeouts after 60 seconds)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The global (server) version</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p></p>
 </dd>
 </dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fun Fact! The server is actually just the github repositry.</p>
+</div>
+</section>
+<section id="compare">
+<h2>Compare<a class="headerlink" href="#compare" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Compare</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Using <cite>ReadLocal</cite> and <cite>ReadGlobal</cite> see if there is a new version.
+Prints out information about updating as well.</p>
 </dd></dl>
 
 </section>
@@ -118,7 +178,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Version.html" class="btn btn-neutral float-left" title="Version (Version 2)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Ui.html" class="btn btn-neutral float-left" title="Ui (Version 3)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Watermark.html" class="btn btn-neutral float-right" title="Watermark (Version 2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
