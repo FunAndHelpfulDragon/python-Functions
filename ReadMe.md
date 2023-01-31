@@ -17,6 +17,10 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.2.8
+
+- Updated google api installation so it shouldn't install cryptography. (You might have to install the main module first before the google)
+
 ### 1.2.7
 
 - Added 2 new functions into Save
