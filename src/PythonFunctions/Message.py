@@ -15,7 +15,7 @@ class Message:
         message: str = None,
         clear: bool = False,
         colour: typing.List = None,
-        delete: bool = False
+        delete: bool = False,
     ):
         # checks for timeS is string instead of time
         if isinstance(timeS, str):
@@ -48,7 +48,7 @@ class Message:
         *,
         timeS: int = 0,
         colour: typing.List = [None, None],
-        delete: bool = False
+        delete: bool = False,
     ):
         """Clears the console with some options
 

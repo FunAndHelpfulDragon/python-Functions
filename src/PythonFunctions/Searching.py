@@ -1,8 +1,9 @@
-import os
+import asyncio
 import copy
 import glob
+import os
 import typing
-import asyncio
+
 from .CleanFolderData import Clean as Cln
 from .Colours import Print
 
@@ -23,9 +24,15 @@ class search:
         if self.logging:
             Print(msg, colour, msgformat)
 
-    def Locate(self, target: typing.List[str],
-               *, directory: str = ".", layers: int = 2, hidden: typing.List[str] = None,
-               logging: bool = False):
+    def Locate(
+        self,
+        target: typing.List[str],
+        *,
+        directory: str = ".",
+        layers: int = 2,
+        hidden: typing.List[str] = None,
+        logging: bool = False,
+    ):
         """Find a file with paramaters
 
         Args:
@@ -41,15 +48,13 @@ class search:
         self.hidden = hidden or []
         self.target = target
         self.layers = layers + 1
-        self.directory = directory if directory != "." else os.path.abspath(
-            ".")
+        self.directory = directory if directory != "." else os.path.abspath(".")
         self.logging = logging
 
         return asyncio.run(self.__AsyncLocate())
 
     def Clear(self):
-        """Reset the module ready for the next use
-        """
+        """Reset the module ready for the next use"""
         self.__FoundList = []
 
         self.directory = ""
@@ -79,10 +84,15 @@ class search:
             raise IndexError("Invalid amount of layers! Must have at least 1")
 
         # Output the current check
-        fileText = "files" if isinstance(self.target,
-                                         list) and len(self.target) > 1 else "file"
+        fileText = (
+            "files"
+            if isinstance(self.target, list) and len(self.target) > 1
+            else "file"
+        )
         self.__Print(
-            f"Searching Directory: '{directory}' Target {fileText}: '{self.target}'", "green")
+            f"Searching Directory: '{directory}' Target {fileText}: '{self.target}'",
+            "green",
+        )
 
         # checks if in current directory, returns if it is.
         if isinstance(self.target, list):
@@ -97,11 +107,12 @@ class search:
             files = self.clean.clean(directory, hiddenFiles)
         except PermissionError:
             return self.__Print(
-                f'Missing permissions to read from {directory}', "red", "bold")
+                f"Missing permissions to read from {directory}", "red", "bold"
+            )
 
         # loops though all the files
         for file in files:
-            self.__Print(f'Looking at {file}', "yellow")
+            self.__Print(f"Looking at {file}", "yellow")
             info = os.path.join(directory, file)
 
             if file == self.target:
@@ -119,10 +130,14 @@ class search:
             if os.path.isdir(newFile):
                 await self.__searchDirectory(newFile, True)  # noqa E501
                 self.__Print(
-                    f"Searching Directory: '{directory}' Target {fileText}: '{self.target}'", "green")
+                    f"Searching Directory: '{directory}' Target {fileText}: '{self.target}'",
+                    "green",
+                )
 
         # if sub directory, don't go back up 1 directory.
         if not parentSearch and self.layers > 1:
             self.searched = os.path.basename(os.path.abspath(directory))
             self.layers -= 1  # limit to how high we can check.
-            await self.__searchDirectory(os.path.abspath(os.path.join(directory, '../')))
+            await self.__searchDirectory(
+                os.path.abspath(os.path.join(directory, "../"))
+            )

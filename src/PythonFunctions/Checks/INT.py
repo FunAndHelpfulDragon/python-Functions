@@ -18,7 +18,6 @@ def check(value, Message, ID, **info) -> int:
 
     # is digit check
     if ID.IsDigit(value):
-
         value = float(value)
         if lowerRange is not None:
             if value < lowerRange:

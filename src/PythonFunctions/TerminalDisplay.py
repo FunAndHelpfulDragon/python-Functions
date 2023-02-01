@@ -17,7 +17,6 @@ class Display:
     """The main class to give the user an option"""
 
     def __init__(self) -> None:
-
         if not canRead:
             print(
                 "NOTE: readchar is NOT INSTALLED. This means you can only use list view"
