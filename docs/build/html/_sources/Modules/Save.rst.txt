@@ -50,6 +50,10 @@ DriveCredentials
     :raise AttributeError: Invalid mode
     :raise AttributeError: Can't find `gCred.json` under path
 
+.. code-block:: python
+
+    sv.DriveCredentials(".", sv.DriveCredentialsMode.ADD)
+
 Save
 ^^^^
 

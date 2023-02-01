@@ -17,57 +17,23 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
-### 1.2.8
+### 1.3.0
 
-- Updated google api installation so it shouldn't install cryptography. (You might have to install the main module first before the google)
+#### Added
 
-### 1.2.7
+- Added Searching module.
+- Added Searching Tests.
+- Added Searching Documentation.
 
-- Added 2 new functions into Save
-- Updated Save documentation
-- Removed old temparary fix.
+#### Changed
 
-### 1.2.6
+- Changed how update log are and layed out.
 
-- Added a bad temparary way to use google drive
-- Updated google drive documentation
-- Removed annoying missing google drive api in save module. Only prints now if you try to use the drive api.
+#### Removed
 
-### 1.2.5
+- Removed requirements.txt from source.
 
-- Updated `TerminalDisplay.ShowOptions` to not show `_` in the ui when options have spaces
-
-### 1.2.4.1
-
-- Added typewriter effect to `TerminalDisplay.ShowHeader`
-- Added typewritter effect documentation.
-- (Github code) Updated ModuleUpload
-- Used 1.2.4.1 due to 1.2.4 breaking stuff.
-
-### 1.2.3
-
-- Removed print that i acidently left in `TerminalDisplay.py`
-
-### 1.2.2
-
-- Fixed an issue in `TerminalDisplay.py` not having multiple arguments in an option. (Also improved the system of adding them)
-
-### 1.2.1
-
-- Updated `AddOption` index in `TerminalDisplay.py` to have a default value
-- Fixed an issue with TerminalDisplay when selecting an option in grid mode.
-
-### 1.2.0
-
-- Bumbed versions
-- Added `Version.py` documentation
-- Updated `Version.py` to make sure that you are on the newest version using `>`
-- Updated `__init__.py` to include the new `Version.py` function
-- Fixed issues with pypi and version numbering. (Reason to bumb versions as well)
-- Fixed an issue slowly causing `Version.py` to break (was todo with my version updater module.)
-- Moved `cryptography` from requirements to optional requirements.
-
-Updates before 1.2.0 are in [Updatelog.md](Updatelog.md)
+To view all updates, Please view [Updates](Updates/ReadMe.md)
 
 ## Credits
 

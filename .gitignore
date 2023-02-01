@@ -1,7 +1,7 @@
 *.pyc
 *.code-workspace
 PyFuncSave
-main.py
+./main.py
 *.egg
 *.egg-info/
 .venv/

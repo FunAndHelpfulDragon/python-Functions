@@ -14,5 +14,6 @@ from src.PythonFunctions.IsDigit import IsDigit
 from src.PythonFunctions.Message import Message
 from src.PythonFunctions.PrintTraceback import PrintTraceback
 from src.PythonFunctions.Save import save
+from src.PythonFunctions.Searching import search
 from src.PythonFunctions.TerminalDisplay import Display
 from src.PythonFunctions.Watermark import main as Watermark
