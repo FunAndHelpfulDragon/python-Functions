@@ -19,8 +19,12 @@ There are multiple functions and not all in a class, making it easy to use.
 
     from PythonFunctions import Colours as c
 
-ConsoleFormat (Version 1)
+ConsoleFormat (PRE 1.3.1)
 -------------------------
+
+.. note::
+    Since PythonFunctions version 1.3.1, this function has been removed in favour for Colourama `Fore`, `Back`, `Style`
+    This is kept here for legacy versions though. (Although you won't be able to call it post 1.3.1).
 
 .. py:function:: c.ConsoleFormat
     :noindex:

@@ -19,8 +19,11 @@ Extra help:
 """
 
 from dataclasses import dataclass
+from deprecated import deprecated
+from colorama import Fore, Back, Style
 
 
+@deprecated(version='1.3.1', reason="Colorama has better options, please use 'Fore', 'Back', 'Style' instead. (This function will be removed in v1.4)")
 def ConsoleFormat():
     """Defines the list of possible colours and format
 
@@ -301,7 +304,7 @@ class colourRetrieve:
 
             # checks for multi word
             if choice[0] == "l" or choice[0] == "d":
-                if option[6 : 6 + len(choice[1:])] == choice[1:]:
+                if option[6: 6 + len(choice[1:])] == choice[1:]:
                     return self.colours[mode[1]][option]
 
         raise ValueError("Invalid colour inputted!")

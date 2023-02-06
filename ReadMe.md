@@ -17,6 +17,20 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.3.1
+
+#### Added
+
+- New required module `Deprecated`
+
+#### Updated
+
+- Colours documentation
+
+#### Deprecated
+
+- Colours.ConsoleFormat as Colorama is better.
+
 ### 1.3.0
 
 #### Added
