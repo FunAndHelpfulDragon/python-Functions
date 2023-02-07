@@ -45,8 +45,7 @@ class Check:
         path_Info = os.path.dirname(path_Location)
         for external in Clean().clean(f"{path_Info}/Checks"):
             if external[:-3].lower() == mode.lower():
-                module = importlib.import_module(
-                    f"{Checks.__package__}.{mode}")
+                module = importlib.import_module(f"{Checks.__package__}.{mode}")
                 return module.check(data, Message, ID, **info)
 
         raise NotImplementedError(f"Mode: {mode} not implemented")

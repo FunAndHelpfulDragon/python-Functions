@@ -57,10 +57,12 @@ def ReadGlobal():
         try:
             r = requests.get(url, timeout=10)
             return r.text
-        except (requests.exceptions.TooManyRedirects,
-                requests.exceptions.ConnectionError,
-                requests.exceptions.HTTPError,
-                requests.exceptions.Timeout):
+        except (
+            requests.exceptions.TooManyRedirects,
+            requests.exceptions.ConnectionError,
+            requests.exceptions.HTTPError,
+            requests.exceptions.Timeout,
+        ):
             print("Failed to read the latest version!")
 
     return None

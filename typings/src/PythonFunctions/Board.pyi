@@ -1,5 +1,5 @@
 import typing
-from .Colours import c as c
+from .Colours import Style as Style
 
 def CreateBoard(x_len: int, y_len: int, *, value: str = ...) -> typing.List[typing.List]: ...
 def DisplayBoard(board: typing.List[typing.List], *, colourInfo: typing.DefaultDict = ...): ...

@@ -1,3 +1,3 @@
-from .Colours import c as c
+from .Colours import Style as Style
 
 def main(name: str, twitter: str = ..., youtube: str = ..., github: str = ..., *, colour: str = ...): ...

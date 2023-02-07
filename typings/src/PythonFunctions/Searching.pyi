@@ -1,5 +1,5 @@
 import typing
-from .Colours import Print as Print
+from .Colours import CONSOLEFORMATS as CONSOLEFORMATS, Fore as Fore, Style as Style
 from _typeshed import Incomplete
 
 class search:
