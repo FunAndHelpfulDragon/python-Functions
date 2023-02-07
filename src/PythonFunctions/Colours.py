@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-from colorama import Style, Fore, Back
+
+from colorama import Back, Fore, Style
 
 
 @dataclass

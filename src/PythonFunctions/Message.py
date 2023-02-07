@@ -1,7 +1,7 @@
 import os
 import time
 
-from .Colours import Fore, CONSOLECOLOURS, Style
+from .Colours import CONSOLECOLOURS, Fore, Style
 
 
 class Message:
@@ -19,7 +19,8 @@ class Message:
         # checks for timeS is string instead of time
         if isinstance(timeS, str):
             print(
-                f"{Fore.LIGHTRED_EX}Automatically fixed error! `timeS` was string instead of number!{Fore.RESET}")
+                f"{Fore.LIGHTRED_EX}Automatically fixed error! `timeS` was string instead of number!{Fore.RESET}"
+            )
             time.sleep(2)  # force wait
             message = timeS
             timeS = 2  # default time, 2 seconds for message
@@ -54,18 +55,21 @@ class Message:
             delete (bool, optional): Whever to delete the console log afterwards. Defaults to False.
         """
         Message.__messageSort(
-            timeS=timeS, message=message, clear=True, delete=delete,
-            colour=CONSOLECOLOURS.Fore.ORANGE)
+            timeS=timeS,
+            message=message,
+            clear=True,
+            delete=delete,
+            colour=CONSOLECOLOURS.Fore.ORANGE,
+        )
 
     @staticmethod
-    def warn(
-        message: str = None, *, timeS: int = 0
-    ):
+    def warn(message: str = None, *, timeS: int = 0):
         """Not as bad as clear, but still shows as many options
 
         Args:
             message (str, optional): The message to show. Defaults to None.
             timeS (int, optional): The time to wait before carring on. Defaults to 0.
         """
-        Message.__messageSort(timeS=timeS, message=message,
-                              colour=CONSOLECOLOURS.Fore.ORANGE)
+        Message.__messageSort(
+            timeS=timeS, message=message, colour=CONSOLECOLOURS.Fore.ORANGE
+        )

@@ -28,7 +28,7 @@ def parserFunc():
         "--generateSettings",
         action="store_const",
         const=True,
-        help="Generate the settings file"
+        help="Generate the settings file",
     )
     return parser.parse_args()
 
@@ -41,9 +41,7 @@ def Settings():
     localSettingsFound = os.path.exists(settingPath)
 
     # Load settings.
-    defaultSettings = {
-        "Mute": False
-    }
+    defaultSettings = {"Mute": False}
     localSettings = {}
 
     # Read settings
@@ -52,13 +50,12 @@ def Settings():
             localSettings = json.load(f)
 
     # Print
-    print(
-        f"SETTINGS (Local: {localSettingsFound}): ")
+    print(f"SETTINGS (Local: {localSettingsFound}): ")
     for i in defaultSettings:
         if localSettings.get(i) is None:
             print(f"{i}: {defaultSettings.get(i)} (Default)")
         else:
-            print(f'{i}: {localSettings.get(i)} (Default: {defaultSettings.get(i)})')
+            print(f"{i}: {localSettings.get(i)} (Default: {defaultSettings.get(i)})")
 
 
 def GenerateSettings():

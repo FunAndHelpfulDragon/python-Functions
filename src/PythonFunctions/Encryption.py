@@ -7,9 +7,7 @@ try:
     from cryptography import fernet
     from cryptography.fernet import Fernet
 except ModuleNotFoundError:
-    Message.warn(
-        "Failed to load encrypting class (Missing imports!)", timeS=2
-    )
+    Message.warn("Failed to load encrypting class (Missing imports!)", timeS=2)
     PrintTraceback()
     disabled = True
 

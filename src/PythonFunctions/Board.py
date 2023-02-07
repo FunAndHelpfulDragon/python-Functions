@@ -6,6 +6,7 @@ Functions:
 """
 
 import typing
+
 from .Colours import Style
 
 
