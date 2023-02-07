@@ -5,7 +5,7 @@ import os
 import typing
 
 from .CleanFolderData import Clean as Cln
-from .Colours import Print
+from .Colours import Fore, Style, CONSOLEFORMATS
 
 
 class search:
@@ -22,7 +22,8 @@ class search:
 
     def __Print(self, msg: str, colour: str = None, msgformat: str = None):
         if self.logging:
-            Print(msg, colour, msgformat)
+            print(f"{msgformat}{colour}{msg}{Style.RESET_ALL}")
+            # Print(msg, colour, msgformat)
 
     def Locate(
         self,
@@ -48,7 +49,8 @@ class search:
         self.hidden = hidden or []
         self.target = target
         self.layers = layers + 1
-        self.directory = directory if directory != "." else os.path.abspath(".")
+        self.directory = directory if directory != "." else os.path.abspath(
+            ".")
         self.logging = logging
 
         return asyncio.run(self.__AsyncLocate())
@@ -91,7 +93,7 @@ class search:
         )
         self.__Print(
             f"Searching Directory: '{directory}' Target {fileText}: '{self.target}'",
-            "green",
+            Fore.GREEN
         )
 
         # checks if in current directory, returns if it is.
@@ -107,12 +109,12 @@ class search:
             files = self.clean.clean(directory, hiddenFiles)
         except PermissionError:
             return self.__Print(
-                f"Missing permissions to read from {directory}", "red", "bold"
+                f"Missing permissions to read from {directory}", Fore.RED, CONSOLEFORMATS.BOLD
             )
 
         # loops though all the files
         for file in files:
-            self.__Print(f"Looking at {file}", "yellow")
+            self.__Print(f"Looking at {file}", Fore.YELLOW)
             info = os.path.join(directory, file)
 
             if file == self.target:
@@ -131,7 +133,7 @@ class search:
                 await self.__searchDirectory(newFile, True)  # noqa E501
                 self.__Print(
                     f"Searching Directory: '{directory}' Target {fileText}: '{self.target}'",
-                    "green",
+                    Fore.GREEN
                 )
 
         # if sub directory, don't go back up 1 directory.

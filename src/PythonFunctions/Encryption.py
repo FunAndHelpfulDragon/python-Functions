@@ -8,7 +8,7 @@ try:
     from cryptography.fernet import Fernet
 except ModuleNotFoundError:
     Message.warn(
-        "Failed to load encrypting class (Missing imports!)", timeS=2, colour="red"
+        "Failed to load encrypting class (Missing imports!)", timeS=2
     )
     PrintTraceback()
     disabled = True
@@ -34,7 +34,6 @@ class Encryption:
         Message().warn(
             "Please make sure you keep the key safe!",
             timeS=4,
-            colour="RED",
         )
         if self.key is not None:
             return self.key

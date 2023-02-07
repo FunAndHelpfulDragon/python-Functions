@@ -1,8 +1,7 @@
 import os
 import time
-import typing
 
-from .Colours import Print
+from .Colours import Fore, CONSOLECOLOURS, Style
 
 
 class Message:
@@ -14,22 +13,20 @@ class Message:
         timeS: int = 0,
         message: str = None,
         clear: bool = False,
-        colour: typing.List = None,
+        colour: str = "",
         delete: bool = False,
     ):
         # checks for timeS is string instead of time
         if isinstance(timeS, str):
-            Print(
-                "Automatically fixed error! `timeS` was string instead of number!",
-                "light red",
-            )  # noqa E501
+            print(
+                f"{Fore.LIGHTRED_EX}Automatically fixed error! `timeS` was string instead of number!{Fore.RESET}")
             time.sleep(2)  # force wait
             message = timeS
             timeS = 2  # default time, 2 seconds for message
 
         # Prints the message
         if message:
-            Print(message, colour)
+            print(f"{colour}message{Style.RESET_ALL}")
 
         # Waits X seconds
         time.sleep(timeS)
@@ -47,7 +44,6 @@ class Message:
         message: str = "",
         *,
         timeS: int = 0,
-        colour: typing.List = [None, None],
         delete: bool = False,
     ):
         """Clears the console with some options
@@ -55,22 +51,21 @@ class Message:
         Args:
             message (str, optional): The message to show. Defaults to None.
             timeS (int, optional): Time to wait after showing the message. Defaults to 0.
-            colour (typing.List, optional): The colour of the message. Defaults to [None, None].
             delete (bool, optional): Whever to delete the console log afterwards. Defaults to False.
         """
         Message.__messageSort(
-            timeS=timeS, message=message, colour=colour, clear=True, delete=delete
-        )
+            timeS=timeS, message=message, clear=True, delete=delete,
+            colour=CONSOLECOLOURS.Fore.ORANGE)
 
     @staticmethod
     def warn(
-        message: str = None, *, timeS: int = 0, colour: typing.List = [None, None]
+        message: str = None, *, timeS: int = 0
     ):
         """Not as bad as clear, but still shows as many options
 
         Args:
             message (str, optional): The message to show. Defaults to None.
             timeS (int, optional): The time to wait before carring on. Defaults to 0.
-            colour (typing.List, optional): The colour of the message. Defaults to [None, None].
         """
-        Message.__messageSort(timeS=timeS, message=message, colour=colour)
+        Message.__messageSort(timeS=timeS, message=message,
+                              colour=CONSOLECOLOURS.Fore.ORANGE)

@@ -25,6 +25,15 @@ LocalSettings
     If `Mute` is true, you can still manually can the function to bypass it.
     Mute just makes sure it doesn't happen automatically
 
+CanReadGlobal
+-------------
+
+.. py:function:: CanReadGlobal()
+    :noindex:
+
+    :returns: If `requests` is installed
+    :rtype: bool
+
 ReadLocal
 ---------
 

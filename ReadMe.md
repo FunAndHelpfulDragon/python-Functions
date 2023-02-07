@@ -17,58 +17,31 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
-### 1.3.1
+### 1.4
 
 #### Added
 
-- New required module `Deprecated`
-
-#### Updated
-
-- Colours documentation
-
-#### Deprecated
-
-- Colours.ConsoleFormat as Colorama is better.
-
-### 1.3.0
-
-#### Added
-
-- Added Searching module.
-- Added Searching Tests.
-- Added Searching Documentation.
+- Way to view settings in terminal (and default values) (`-s` in `__main__.py`)
+- Documentation in `__init__.py`
+- Hint in `Version.py`
 
 #### Changed
 
-- Changed how update log are and layed out.
+- `ConsoleFormat` to be a dictionary made up of classes instead
+- `Colours` documentation
+- Changed `-s` in `__main__.py` to `-gs` and `-s` (2 different functions)
+- `Version.py` to work when offline and not crash
+- `Version.py` request timeout to 10 seconds (from 60)
+- `canReadGlobal` to a `ReadGlobal` and `CanReadGlobal`
+- Every file that had a link to old `Colours` functions
 
 #### Removed
 
-- Removed requirements.txt from source.
+- `Deprecated` module due to not working on wsl
+- `Colours.Print` due to useless and less features.
+- `Colours.reverse` Bit of a waste, and why don't you have to colour name if you are asking for code?
+- `Colours.c` Mini function
+- `Colours.colourRetrieved` woked when `ConsoleFormat` was a dictionary
+- `Credits` as they didn't really do much
 
 To view all updates, Please view [Updates](Updates/ReadMe.md)
-
-## Credits
-
-This project uses functions and modules from other people to run. Most of the modules have been auto imported (and kept up to date) but some require you to manually install them (check that module infomation).
-
-### Colourama
-
-[Github](https://github.com/tartley/colorama)
-Brings colours to the terminal
-
-### Readchar
-
-[Github](https://github.com/magmax/python-readchar)
-Taking an input straight away, instead of getting the user to press enter afterwards
-
-### Cryptography
-
-[Github](https://github.com/pyca/cryptography)
-Encrypting and decrypting data. Quick and simple
-
-### Requests
-
-[Github](https://github.com/psf/requests)
-Checking if you have the latest version

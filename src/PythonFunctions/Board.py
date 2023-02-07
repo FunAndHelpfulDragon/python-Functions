@@ -6,8 +6,7 @@ Functions:
 """
 
 import typing
-
-from .Colours import c
+from .Colours import Style
 
 
 def CreateBoard(
@@ -44,7 +43,7 @@ def DisplayBoard(
     for y_Index in board:
         for x_Index in y_Index:
             if colourInfo is not None:
-                print(f"{c(colourInfo.get(x_Index))}{x_Index}{c()}", end="")
+                print(f"{colourInfo.get(x_Index)}{x_Index}{Style.RESET_ALL}", end="")
             else:
                 print(x_Index, end="")
         print()

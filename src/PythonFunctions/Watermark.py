@@ -2,7 +2,7 @@ import datetime
 import inspect
 import os
 
-from .Colours import c
+from .Colours import Style
 
 
 def main(
@@ -20,7 +20,8 @@ def main(
         name (str): The username
         twitter (str, optional): Twitter link
         youtube (str, optional): Youtube link
-        github (str, optional); Github link
+        github (str, optional): Github link
+        colour (str, optional): Colour of the watermark
     """
     fileName: str = ""
 
@@ -59,13 +60,9 @@ def main(
 
     print("\x1b[2J\x1b[H", end="")
     print(
-        f"""{c(colour)}{line}{c()}
+        f"""{colour}{line}{Style.RESET_ALL}
 {fileName} made by {name} ({data}).
 Contains Functions.py made by dragmine149 ({mydata}).
 Activation Time: {ctime.hour}:{ctime.minute}:{ctime.second}
-{c(colour)}{line}{c()}"""
+{colour}{line}{Style.RESET_ALL}"""
     )
-
-
-if __name__ == "__main__":
-    main("drag")

@@ -23,7 +23,42 @@ def parserFunc():
         const=True,
         help="Generate the settings",
     )
+    parser.add_argument(
+        "-gs",
+        "--generateSettings",
+        action="store_const",
+        const=True,
+        help="Generate the settings file"
+    )
     return parser.parse_args()
+
+
+def Settings():
+    # Get path
+    settingPath = f"{os.getcwd()}/PyFuncSet.json"
+
+    # Get settings
+    localSettingsFound = os.path.exists(settingPath)
+
+    # Load settings.
+    defaultSettings = {
+        "Mute": False
+    }
+    localSettings = {}
+
+    # Read settings
+    if localSettingsFound:
+        with open(settingPath, encoding="utf-8") as f:
+            localSettings = json.load(f)
+
+    # Print
+    print(
+        f"SETTINGS (Local: {localSettingsFound}): ")
+    for i in defaultSettings:
+        if localSettings.get(i) is None:
+            print(f"{i}: {defaultSettings.get(i)} (Default)")
+        else:
+            print(f'{i}: {localSettings.get(i)} (Default: {defaultSettings.get(i)})')
 
 
 def GenerateSettings():
@@ -40,9 +75,12 @@ def GetVersion():
 def main():
     result = parserFunc()
     if result.version:
-        print(f"Version: {GetVersion()}")
+        Version.Compare()
         return
     if result.settings:
+        Settings()
+        return
+    if result.generateSettings:
         GenerateSettings()
         return
 

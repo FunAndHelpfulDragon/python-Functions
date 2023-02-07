@@ -21,15 +21,24 @@ def LocalSettings():
 
 
 muted = LocalSettings()
-if muted:
-    canReadGlobal = True
-    try:
-        import requests
-    except ModuleNotFoundError:
+GlobalRead = True
+try:
+    import requests
+except ModuleNotFoundError:
+    if muted:
         print(
             "Requests is not installed. Can not check for a new PythonFunction update!"
         )
-        canReadGlobal = False
+    GlobalRead = False
+
+
+def CanReadGlobal():
+    """Get if requests is installed
+
+    Returns:
+        bool: Requests is installed
+    """
+    return GlobalRead
 
 
 def ReadLocal():
@@ -38,20 +47,36 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.3.1"
+    return "1.4.0"
 
 
 def ReadGlobal():
     """Get the version on the server"""
-    if canReadGlobal:
+    if GlobalRead:
         url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
-        r = requests.get(url, timeout=60)
-        return r.text
+        try:
+            r = requests.get(url, timeout=10)
+            return r.text
+        except (requests.exceptions.TooManyRedirects,
+                requests.exceptions.ConnectionError,
+                requests.exceptions.HTTPError,
+                requests.exceptions.Timeout):
+            print("Failed to read the latest version!")
+
+    return None
 
 
 def Compare():
     current = ReadLocal()
     server = ReadGlobal()
+
+    print(
+        "HINT: Make the PyFuncSet.json file and set Mute to true to speed up the loading time."
+    )
+
+    if server is None:
+        # break eariler if no response, we have already mentioned about it.
+        return
 
     if server > current:
         print("*" * os.get_terminal_size().columns)
@@ -64,5 +89,5 @@ Make the file PyFuncSet.json to mute this"""
 
 
 if __name__ == "__main__":
-    if canReadGlobal and muted:
+    if GlobalRead and muted:
         ReadGlobal()
