@@ -17,6 +17,12 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.1
+
+#### Changed
+
+- Moved update checker out of `__init__.py` to `__main__.py`
+
 ### 1.4
 
 #### Added

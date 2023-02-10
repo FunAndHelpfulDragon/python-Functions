@@ -4,8 +4,3 @@ Visit `python-functions.readthedocs.io/` for the documentation
 Visit `https://pypi.org/project/PythonFunctions/` for the pypi version
 Visit `https://github.com/FunAndHelpfulDragon/python-Functions/tree/main/src/PythonFunctions` for the source code.
 """
-
-from . import Version
-
-if Version.CanReadGlobal() and Version.LocalSettings():
-    Version.Compare()
