@@ -104,7 +104,8 @@ class Display:
             typewritter: (str, optional): Shows the text letter by letter. Defaults to False.
             pace: (int, optional): Words per second to show using typewritter effect.Defaults to 100
         """
-        print(f"{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}")
+        print(
+            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}")
 
         if typewriter:
             for i in text:
@@ -114,7 +115,8 @@ class Display:
         else:
             print(text)
 
-        print(f"{Colours.c('g')}{'-' * os.get_terminal_size().columns}{Colours.c()}")
+        print(
+            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}")
 
         self.__storedText = text
 
@@ -145,7 +147,7 @@ class Display:
             for xIndex, xValue in enumerate(yValue):
                 # Complicated string, but it calculates the square that should have the `> ` pointer
                 v = (
-                    f"{Colours.c('bgblue')}>{Colours.c()} {xValue}"
+                    f"{Colours.Back.BLUE}>{Colours.Back.RESET} {xValue}"
                     if self.cursorPosition[0] == xIndex
                     and self.cursorPosition[1] == yIndex
                     else xValue
@@ -191,7 +193,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             )
             return self.options.get(v)[0](self.options.get(v)[1:])
         except TypeError:
-            Message().clear("Invalid input!", timeS=2, colour="red")
+            Message().clear("Invalid input!", timeS=2)
             return None
 
     def ShowOptions(self, *, useList: bool = False):
@@ -266,7 +268,8 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]
+                                  ][self.cursorPosition[0]]
                 )
 
                 if len(itemInfo) > 2:

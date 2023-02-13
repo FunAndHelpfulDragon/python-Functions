@@ -18,8 +18,9 @@ class Message:
     ):
         # checks for timeS is string instead of time
         if isinstance(timeS, str):
+            lr = Fore.LIGHTRED_EX
             print(
-                f"{Fore.LIGHTRED_EX}Automatically fixed error! `timeS` was string instead of number!{Fore.RESET}"
+                f"{lr}Automatically fixed error! `timeS` was string instead of number!{Fore.RESET}"
             )
             time.sleep(2)  # force wait
             message = timeS

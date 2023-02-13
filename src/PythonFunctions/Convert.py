@@ -55,7 +55,6 @@ class LocationConvert:
                 Message().clear(
                     "Must be at least two digits, a letter (x) and a number (y)",
                     timeS=1,
-                    colour=["orange"],
                 )  # noqa
                 return None, None
 
@@ -66,6 +65,5 @@ class LocationConvert:
         Message().clear(
             "Must be at least two digits, a letter (x) and a number (y)",
             timeS=1,
-            colour=["orange"],
         )  # noqa
         return None, None

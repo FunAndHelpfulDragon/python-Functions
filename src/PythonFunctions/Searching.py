@@ -11,7 +11,6 @@ from .Colours import CONSOLEFORMATS, Fore, Style
 class search:
     def __init__(self):
         self.__FoundList = []
-        self.clean = Cln()
 
         self.directory = ""
         self.target = None
@@ -49,7 +48,8 @@ class search:
         self.hidden = hidden or []
         self.target = target
         self.layers = layers + 1
-        self.directory = directory if directory != "." else os.path.abspath(".")
+        self.directory = directory if directory != "." else os.path.abspath(
+            ".")
         self.logging = logging
 
         return asyncio.run(self.__AsyncLocate())
@@ -105,7 +105,7 @@ class search:
         try:
             hiddenFiles = copy.deepcopy(self.hidden)
             hiddenFiles.extend(self.searched)
-            files = self.clean.clean(directory, hiddenFiles)
+            files = Cln().clean(directory, hiddenFiles)
         except PermissionError:
             return self.__Print(
                 f"Missing permissions to read from {directory}",

@@ -17,6 +17,13 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.2
+
+#### Changed
+
+- Fixed linter messages that got by the pylint test (Why did it not fail with a score under 10?)
+- Updated Save decoder/encoder due to pylint.
+
 ### 1.4.1
 
 #### Changed

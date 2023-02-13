@@ -50,10 +50,10 @@ def ReadLocal():
     return "1.4.1"
 
 
+url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
 def ReadGlobal():
     """Get the version on the server"""
     if GlobalRead:
-        url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
         try:
             r = requests.get(url, timeout=10)
             return r.text
