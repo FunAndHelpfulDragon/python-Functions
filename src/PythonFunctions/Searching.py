@@ -48,8 +48,7 @@ class search:
         self.hidden = hidden or []
         self.target = target
         self.layers = layers + 1
-        self.directory = directory if directory != "." else os.path.abspath(
-            ".")
+        self.directory = directory if directory != "." else os.path.abspath(".")
         self.logging = logging
 
         return asyncio.run(self.__AsyncLocate())

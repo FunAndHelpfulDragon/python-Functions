@@ -105,7 +105,8 @@ class Display:
             pace: (int, optional): Words per second to show using typewritter effect.Defaults to 100
         """
         print(
-            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}")
+            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}"
+        )
 
         if typewriter:
             for i in text:
@@ -116,7 +117,8 @@ class Display:
             print(text)
 
         print(
-            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}")
+            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}"
+        )
 
         self.__storedText = text
 
@@ -268,8 +270,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]
-                                  ][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
                 )
 
                 if len(itemInfo) > 2:

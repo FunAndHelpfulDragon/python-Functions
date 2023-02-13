@@ -51,6 +51,8 @@ def ReadLocal():
 
 
 url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
+
+
 def ReadGlobal():
     """Get the version on the server"""
     if GlobalRead:

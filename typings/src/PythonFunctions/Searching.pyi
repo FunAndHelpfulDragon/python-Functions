@@ -3,7 +3,6 @@ from .Colours import CONSOLEFORMATS as CONSOLEFORMATS, Fore as Fore, Style as St
 from _typeshed import Incomplete
 
 class search:
-    clean: Incomplete
     directory: str
     target: Incomplete
     layers: int

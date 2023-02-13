@@ -2,6 +2,7 @@ from dataclasses import dataclass
 
 # pylint: disable=W0611
 from colorama import Back, Fore, Style
+
 # Disabled as imported from other module to make it all fit together
 # pylint: enable=W0611
 
