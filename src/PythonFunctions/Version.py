@@ -47,7 +47,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.4.3"
+    return "1.4.4"
 
 
 url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
@@ -70,13 +70,14 @@ def ReadGlobal():
     return None
 
 
-def Compare():
+def Compare(hint: bool = True):
     current = ReadLocal()
     server = ReadGlobal()
 
-    print(
-        "HINT: Make the PyFuncSet.json file and set Mute to true to speed up the loading time."
-    )
+    if hint:
+        print(
+            "HINT: Make the PyFuncSet.json file and set Mute to true to speed up the loading time."
+        )
 
     if server is None:
         # break eariler if no response, we have already mentioned about it.

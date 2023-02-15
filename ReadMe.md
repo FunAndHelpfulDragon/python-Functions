@@ -17,6 +17,13 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.4
+
+#### Changed
+
+- `Version.py` Compare with new option to mute the hint
+- `__main__.py` to print the version instead of run the version compare function.
+
 ### 1.4.3
 
 #### Added

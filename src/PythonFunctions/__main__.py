@@ -72,7 +72,7 @@ def GetVersion():
 def main():
     result = parserFunc()
     if result.version:
-        Version.Compare()
+        print(f"Version: {Version.ReadLocal()}")
         return
     if result.settings:
         Settings()
@@ -85,6 +85,6 @@ def main():
 
 
 if Version.CanReadGlobal() and Version.LocalSettings():
-    Version.Compare()
+    Version.Compare(False)
 
 main()
