@@ -28,7 +28,7 @@ class Message:
 
         # Prints the message
         if message:
-            print(f"{colour}message{Style.RESET_ALL}")
+            print(f"{colour}{message}{Style.RESET_ALL}")
 
         # Waits X seconds
         time.sleep(timeS)
@@ -60,7 +60,7 @@ class Message:
             message=message,
             clear=True,
             delete=delete,
-            colour=CONSOLECOLOURS.Fore.ORANGE,
+            colour=CONSOLECOLOURS.Fore.RED,
         )
 
     @staticmethod

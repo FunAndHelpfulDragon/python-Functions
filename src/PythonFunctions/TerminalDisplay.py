@@ -2,6 +2,7 @@ import os
 import time
 import typing
 
+from dataclasses import dataclass
 from . import Colours
 from .Check import Check
 from .Message import Message
@@ -11,6 +12,12 @@ try:
     from readchar import key, readkey
 except ModuleNotFoundError:
     canRead = False
+
+
+@dataclass
+class Numbers:
+    high: int = 2_147_483_648
+    low: int = -2_147_483_648
 
 
 class Display:
@@ -25,10 +32,18 @@ class Display:
         self.options: typing.Dict = {}  # specific formaat.
         self.__storedText = None
         self.gridData = []
-        self.__highest: int = 2_147_483_648
-        self.__lowest: int = -2_147_483_648
+        self.__Number = Numbers()
         self.chk: Check = Check()
         self.cursorPosition = [0, 0]
+        self.outMsg = ""
+
+    def SetQuitMessage(self, msg: str):
+        """Set the message to show on output
+
+        Args:
+            msg (str): The message to show
+        """
+        self.outMsg = msg
 
     def SetOptions(self, options: typing.Dict):
         """Set the program options
@@ -176,11 +191,11 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
                 continue
 
             print(f"{opt:5}:{optionList.get(opt)[1]}")
-            self.__highest = opt
+            self.__Number.high = opt
 
         print()
 
-        self.__lowest = negList[0]
+        self.__Number.low = negList[0]
         negList = reversed(negList)
         for item in negList:
             print(f"{item:5}:{optionList.get(item)[1]}")
@@ -190,8 +205,8 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             v = self.chk.getInput(
                 "Please enter the number you want to select: ",
                 "INT",
-                lower=self.__lowest,
-                higher=self.__highest,
+                lower=self.__Number.low,
+                higher=self.__Number.high,
             )
             return self.options.get(v)[0](self.options.get(v)[1:])
         except TypeError:
@@ -270,7 +285,8 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
             elif k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]
+                                  ][self.cursorPosition[0]]
                 )
 
                 if len(itemInfo) > 2:
@@ -280,7 +296,7 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
 
             elif k == "q":
                 chosen = True
-                return None
+                return self.outMsg
 
             # moves the cursor, Makes it look clearer
             print("\033[0;0H", end="")

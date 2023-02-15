@@ -17,6 +17,21 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.3
+
+#### Added
+
+- SetQuitMessage in `TerminalDisplay.py`
+- `Message_test.py` to test messages (github)
+
+#### Fixed
+
+- An issue in `Message.py` causing `Message` to always be the output no matter the input message.
+
+#### Removed
+
+- `Beautifier.yml` as it required making a new branch to commit the changes (github)
+
 ### 1.4.2
 
 #### Changed
