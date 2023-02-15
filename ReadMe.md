@@ -17,6 +17,12 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.5
+
+#### Changed
+
+- Changed default output message to `None` for those scripts which relayed on it. (instead of empty string)
+
 ### 1.4.4
 
 #### Changed

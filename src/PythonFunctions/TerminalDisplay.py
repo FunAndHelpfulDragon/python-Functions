@@ -35,7 +35,7 @@ class Display:
         self.__Number = Numbers()
         self.chk: Check = Check()
         self.cursorPosition = [0, 0]
-        self.outMsg = ""
+        self.outMsg = None
 
     def SetQuitMessage(self, msg: str):
         """Set the message to show on output
