@@ -120,3 +120,14 @@ ShowOptions
     :type useList: bool 
     :returns: The result of the callback function of the chosen input
     :rtype: any
+
+SetQuitMessage
+--------------
+
+.. py:function:: SetQuitMessage(msg)
+    :noindex:
+
+    The message to show on quit. (Normaly done by using 'q' in terminal mode)
+
+    :param msg: The message to show
+    :type msg: str

@@ -19,7 +19,8 @@ def int_check():
     """
     ranIn = random.randrange(-10, 10)
     sys.stdin = StringIO(f"{ranIn}")
-    result = chk.getInput("Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
+    result = chk.getInput(
+        "Testing (int): ", chk.ModeEnum.int, lower=-10, higher=10)
     return result
 
 
@@ -34,6 +35,29 @@ def yn_check(vIn: str):
     """
     sys.stdin = StringIO(f"{vIn}")
     return chk.getInput("Testing (yn): ", chk.ModeEnum.yesno)
+
+
+def yn_check_return(vIn: str):
+    """Check if input is y or n and call that function
+
+    Args:
+        vIn (str): The input
+    """
+    sys.stdin = StringIO(f"{vIn}")
+    return chk.getInput("Testing (yn): ", chk.ModeEnum.yesno,
+                        y=yn_check_y_return, n=yn_check_n_return)
+
+
+def yn_check_y_return():
+    """The yes return function for input check
+    """
+    return "yes"
+
+
+def yn_check_n_return():
+    """The no return function for input check
+    """
+    return "no"
 
 
 def str_check(vIn: str, arr: list):
@@ -76,6 +100,14 @@ def test_error():
     except EOFError:
         # End of file error means that nothing got returned. As so, it breaka
         assert True
+
+
+def test_yes_return():
+    assert yn_check_return("y") is "yes"
+
+
+def test_no_return():
+    assert yn_check_return("n") is "no"
 
 
 def test_str():

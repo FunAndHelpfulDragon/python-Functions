@@ -45,6 +45,7 @@ Display a 2d array? Use this useful function.
    :type colourData: dict
 
 If you want to use the colourData option, assaign it like this, with the string on the left and the colour info (Read colours) as the colour
+You can replace `\033[32m` with anything from the `Colours` module
 
 .. code-block::python
 

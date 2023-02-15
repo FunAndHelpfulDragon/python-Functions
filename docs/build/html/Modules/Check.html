@@ -58,6 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback (Version 1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Save.html">Save (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching (Verison 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
@@ -129,7 +130,7 @@ This enum contains all of the possible checks and is required to use.</p>
 <h2>Int Check (Version 3)<a class="headerlink" href="#int-check-version-3" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">higher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">higher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, but with all the arguments of an int check</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -165,13 +166,15 @@ If one or both are defined, then it will make sure the value is between that ran
 <h2>Yes No Check (Version 1)<a class="headerlink" href="#yes-no-check-version-1" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, but with arguments for a yes no check</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum.yesno</em>) – The check to run.</p></li>
+<li><p><strong>y</strong> (<em>function</em>) – The yes return function</p></li>
+<li><p><strong>n</strong> (<em>function</em>) – The no return function</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -188,6 +191,28 @@ If one or both are defined, then it will make sure the value is between that ran
 <span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Do you want to continue [Y/n]: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">yesno</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Check</span> <span class="kn">import</span> <span class="n">Check</span>
+<span class="n">check</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">yesFunc</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello I win&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">noFunc</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*Cries* :(&quot;</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Win game? [Y/n]: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">yesno</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yesFunc</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">noFunc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If y or n does not exists and that is the function that is meant to be called (e.g. call yesFunc but it doesn’t get passed)
+Then the value <cite>True</cite> or <cite>False</cite> will be returned depending on the context and input.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, it will return the result of the function (if it returns), else it will return the result of True</p>
 </div>
 </section>
 <section id="str-check-version-1">

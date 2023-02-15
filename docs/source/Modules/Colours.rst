@@ -32,6 +32,8 @@ Before v1.4, the data about an code was sitting in a dictionary, requiring you t
 However, since v1.4 it is all contained inside a class which makes it easier to import and for those using an ide like VSCode, easier to write.
 This is like how `colorama`_ does their `Fore`, `Style`, `Back`, `Cursor` datasets
 
+.. _colorama: https://pypi.org/project/colorama/
+
 .. code-block:: python
 
     from PythonFunctions import Colours

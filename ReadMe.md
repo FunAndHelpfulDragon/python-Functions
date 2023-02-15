@@ -17,6 +17,15 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.6
+
+- Added return function support to `yes no check`
+- Added tests (github)
+- Changed yes no check to support capital letters (now makes them lowercase before compare)
+- Updated documentation
+- Went back to old update log form.
+- Fixed documentation warnings
+
 ### 1.4.5
 
 #### Changed

@@ -37,7 +37,7 @@ This enum contains all of the possible checks and is required to use.
 Int Check (Version 3)
 ---------------------
 
-.. py:function:: check.getInput(input, type, higher, lower)
+.. py:function:: check.getInput(input, type, *, higher, lower)
     :noindex:
 
     The main function, but with all the arguments of an int check
@@ -67,7 +67,7 @@ Int Check (Version 3)
 Yes No Check (Version 1)
 ------------------------
 
-.. py:function:: check.getInput(input, type)
+.. py:function:: check.getInput(input, type, *, y, n)
     :noindex:
 
     The main function, but with arguments for a yes no check
@@ -76,6 +76,10 @@ Yes No Check (Version 1)
     :type input: str
     :param type: The check to run.
     :type type: check.ModeEnum.yesno
+    :param y: The yes return function
+    :type y: function
+    :param n: The no return function
+    :type n: function
     :return: If yes or no got entered
     :rtype: bool
 
@@ -85,6 +89,29 @@ Yes No Check (Version 1)
     check = Check()
     result = check.getInput("Do you want to continue [Y/n]: ", check.ModeEnum.yesno)
     print(result)
+
+.. code-block:: python
+
+    from PythonFunctions.Check import Check
+    check = Check()
+
+    def yesFunc():
+        print("Hello I win")
+    
+    def noFunc():
+        print("*Cries* :(")
+    
+    result = check.getInput("Win game? [Y/n]: ", check.ModeEnum.yesno, y=yesFunc, n=noFunc)
+    print(result)
+
+.. note::
+    If y or n does not exists and that is the function that is meant to be called (e.g. call yesFunc but it doesn't get passed)
+    Then the value `True` or `False` will be returned depending on the context and input.
+
+.. note::
+    By default, it will return the result of the function (if it returns), else it will return the result of True
+
+
 
 Str Check (Version 1)
 ---------------------
