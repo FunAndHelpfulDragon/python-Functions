@@ -103,11 +103,11 @@ def test_error():
 
 
 def test_yes_return():
-    assert yn_check_return("y") is "yes"
+    assert yn_check_return("y") == "yes"
 
 
 def test_no_return():
-    assert yn_check_return("n") is "no"
+    assert yn_check_return("n") == "no"
 
 
 def test_str():
