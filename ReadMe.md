@@ -17,6 +17,17 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.7
+
+- Added `ui.CreateImage`
+- Updated `ui.AddButton` to include image option.
+- Updated `ui.AddButton` to use a better callback function
+- Updated `ui.ChangeState` to not use a dictionary but instead pass in each argument.
+- Updated documentation
+- Disabled `__main__.py` `GenerateSettings` and `Settings`
+- Removed `Version.LocalSettings`
+- Removed `Version.Compare` saying to make the "PyFuncSet.json" file
+
 ### 1.4.6
 
 - Added return function support to `yes no check`

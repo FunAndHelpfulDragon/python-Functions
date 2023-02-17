@@ -46,10 +46,23 @@ CreateFrame
 
     frame:tk.Frame = tkUi.CreateFrame()
 
+CreateImage
+-----------
+
+.. py:function:: CreateImage(filePath)
+    :noindex:
+
+    Creates a new tk PhotoImage object
+
+    :param filePath: The path of the image.
+    :type filePath: str
+    :returns: The PhotoImage object
+    :rtype: tk.PhotoImage
+
 AddButton
 ---------
 
-.. py:Function:: AddButton(text, callback, row, column, *, textVar, frame, sticky, callbackArgs, rowspan, columnspan)
+.. py:Function:: AddButton(text, callback, row, column, *, textVar, frame, sticky, callbackArgs, rowspan, columnspan, image)
     :noindex:
 
     Create a new tk button to interact with
@@ -61,9 +74,10 @@ AddButton
     :param textVar: (Optional) The text variable to use instead of text. Defaults to None
     :param frame: (Optional) The frame to apply the button to. Defaults to None
     :param sticky: (Optional) The sides to stick to ("north", "east", "south", "west"). Defaults to "nesw"
-    :param callbackArgs: (Optional) value to send to the function on callback. Defaults to True    
+    :param callbackArgs: (Optional) value to send to the function on callback. Defaults to None
     :param rowspan: (Optional) How many rows does it take up. Defaults to 1
     :param columnspan: (Optional) How many columns does it take up. Defaults to 1
+    :param image: (Optional) The image to add onto the button. Defaults to None
     :type text: str
     :type callback: function
     :type row: int
@@ -74,6 +88,7 @@ AddButton
     :type callbackArgs: any
     :type rowspan: int
     :type columnspan: int
+    :type image:
     :returns: The ui button element
     :rtype: tk.Button
 
@@ -157,22 +172,27 @@ AddTextBox
 ChangeState
 -----------
 
-.. py:function:: ChangeState(element, state)
+.. py:function:: ChangeState(Element, state, *, row, column)
     :noindex:
 
     Show or hide an element
 
-    :param element: Information about the element
-    :param state: (Optional) state to make the element. Defaults to True
-    :type element: dict
+    :param Element: The element to effect
+    :param state: (Optional) The new mode of the element. Defaults to True.
+    :param row: (Optional) The place to put the element. Defaults to 0.
+    :param column: (Optional) The place to put the element. Defaults to 0.
+    :type Element: any (tk object)
     :type state: bool
+    :type row: int
+    :type column: int
 
 .. code-block:: python
 
-    tkUi.ChangeState({"Element": textBox, "row": 0, "column": 10})
+    tkUi.ChangeState(textBox, row=0, column=10) # set to true and places at (0, 10)
+    tkUi.ChangeState(textBox, False) # hides
 
 .. note::
-    element needs to be a dictionary containing "Element" (if state is false) and "row", "column" (if state is true)
+    `row` and `column` are only needed it state is `True`
 
 CreateStringVar
 ---------------

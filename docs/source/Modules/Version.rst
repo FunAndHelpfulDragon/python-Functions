@@ -10,21 +10,6 @@ A module designed to get the version of the package.
 
     from PythonFunctions import Version
 
-LocalSettings
--------------
-
-.. py:function:: LocalSettings():
-    :noindex:
-
-    Checks if the :ref: `muted <Mutting>` setting has been activated
-
-    :returns: If `Mute` is true
-    :rtype: bool
-
-.. note::
-    If `Mute` is true, you can still manually can the function to bypass it.
-    Mute just makes sure it doesn't happen automatically
-
 CanReadGlobal
 -------------
 

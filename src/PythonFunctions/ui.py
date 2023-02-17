@@ -16,6 +16,7 @@ class ui:
         self.Frames = []  # List of frames
         self.callback = callback
         self.font = ("verdana", 20)
+        self.tk = tk  # just in case they need it.
 
     def FontSettings(self, *, font="verdana", size=20):
         """Changes the font settings
@@ -42,6 +43,17 @@ class ui:
 
         return Frame
 
+    def CreateImage(self, filePath: str) -> tk.PhotoImage:
+        """Create an image object with the file
+
+        Args:
+            filePath (str): File to make into an image object
+
+        Returns:
+            tk.PhotoImage: The image object
+        """
+        return tk.PhotoImage(file=filePath)
+
     def __GetUiElement(self, frame=None) -> tk.Canvas or tk.Frame:
         """Returns the default canvas or frame
 
@@ -62,7 +74,8 @@ class ui:
         if self.callback is not None:
             return self.callback(**kwargs)
 
-        raise NotImplementedError(f"{buttonName} has no designated callback function!")
+        raise NotImplementedError(
+            f"{buttonName} has no designated callback function!")
 
     def AddButton(
         self,
@@ -74,9 +87,10 @@ class ui:
         textVar: tk.StringVar = None,
         frame=None,
         sticky: str = "nesw",
-        callbackArgs: bool = True,
+        callbackArgs: bool = None,
         rowspan: int = 1,
         columnspan: int = 1,
+        image: tk.PhotoImage = None
     ) -> tk.Button:
         """Add a new button to the UI
 
@@ -91,6 +105,7 @@ class ui:
             rowspan (int, optional): How many rows it covers. Defaults to 1.
             columnspan (int, optional): How many columns it covers. Defaults to 1.
             callbackArgs (any, optional): Value to send to the function
+            image (tk.PhotoImage): An image to add to the button
 
         Returns:
             tk.Button: The button object
@@ -101,21 +116,19 @@ class ui:
 
         Button: tk.Button = None
 
-        if callbackArgs:
-            Button = tk.Button(
-                self.__GetUiElement(frame),
-                text=text,
-                textvariable=textVar,
-                command=lambda: callback(callbackArgs),
-                font=self.font,
-            )
-        else:
-            Button = tk.Button(
-                self.__GetUiElement(frame),
-                text=text,
-                textvariable=textVar,
-                command=callback,
-            )
+        def cmd():
+            if callbackArgs:
+                return callback(callbackArgs)
+            return callback()
+
+        Button = tk.Button(
+            self.__GetUiElement(frame),
+            text=text,
+            textvariable=textVar,
+            command=cmd,
+            font=self.font,
+            image=image
+        )
 
         Button.grid(
             row=row,
@@ -211,20 +224,22 @@ class ui:
             rowspan=rowspan,
             columnspan=columnspan,
         )
-        self.Elements.append({"Element": textBox, "row": row, "column": column})
+        self.Elements.append(
+            {"Element": textBox, "row": row, "column": column})
         return textBox
 
-    def ChangeState(self, Element: dict, state: bool = True):
-        """Changes a Frame visibility from X to Y
+    def ChangeState(self, Element, state: bool = True, *, row: int = 0, column: int = 0):
+        """Make a element visible or invisible
 
         Args:
-            Element (dict): The dictionary object containg the element
-            state (bool, optional): The new state of the frame. Defaults to True.
+            Element (_type_): The element to change the state of
+            state (bool, optional): The state to change to. Defaults to True.
+            row (int, optional): The row index to place the element. Defaults to 0.
+            column (int, optional): The column index to place the element. Defaults to 0.
         """
         if state:
-            Element["Element"].grid(row=Element["row"], column=Element["column"])
-        else:
-            Element["Element"].grid_forget()
+            return Element.grid(row=row, column=column)
+        return Element.grid_forget()
 
     def CreateStringVar(
         self, frame: tk.Frame = None, default: str = ""

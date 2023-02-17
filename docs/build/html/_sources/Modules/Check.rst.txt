@@ -64,7 +64,7 @@ Int Check (Version 3)
     result = check.getInput("Please enter a number between 1 and 10: ", check.ModeEnum.int, 1, 10)
     print(result)
 
-Yes No Check (Version 1)
+Yes No Check (Version 2)
 ------------------------
 
 .. py:function:: check.getInput(input, type, *, y, n)

@@ -75,16 +75,18 @@ def main():
         print(f"Version: {Version.ReadLocal()}")
         return
     if result.settings:
-        Settings()
+        # Settings()
+        print("Disabled for the time being as there are no settings")
         return
     if result.generateSettings:
-        GenerateSettings()
+        # GenerateSettings()
+        print("Disabled for the time being as there are no settings")
         return
 
     print("Please add `--help` on the end to view the arguments")
 
 
-if Version.CanReadGlobal() and Version.LocalSettings():
+if Version.CanReadGlobal():
     Version.Compare(False)
 
 main()

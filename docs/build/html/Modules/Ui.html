@@ -51,10 +51,12 @@
 <li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback (Version 1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Save.html">Save (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching (Verison 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Ui (Version 3)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#fontsettings">FontSettings</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#createframe">CreateFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#createimage">CreateImage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#addbutton">AddButton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#addlabel">AddLabel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#addtextbox">AddTextBox</a></li>
@@ -143,11 +145,31 @@
 </pre></div>
 </div>
 </section>
+<section id="createimage">
+<h2>CreateImage<a class="headerlink" href="#createimage" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">CreateImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filePath</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Creates a new tk PhotoImage object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filePath</strong> (<em>str</em>) – The path of the image.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The PhotoImage object</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tk.PhotoImage</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
 <section id="addbutton">
 <h2>AddButton<a class="headerlink" href="#addbutton" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">AddButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textVar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sticky</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbackArgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowspan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnspan</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">AddButton</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textVar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sticky</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callbackArgs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rowspan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columnspan</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a new tk button to interact with</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -159,9 +181,10 @@
 <li><p><strong>textVar</strong> (<em>tk.StringVar</em>) – (Optional) The text variable to use instead of text. Defaults to None</p></li>
 <li><p><strong>frame</strong> (<em>tk.Frame</em>) – (Optional) The frame to apply the button to. Defaults to None</p></li>
 <li><p><strong>sticky</strong> (<em>str</em>) – (Optional) The sides to stick to (“north”, “east”, “south”, “west”). Defaults to “nesw”</p></li>
-<li><p><strong>callbackArgs</strong> (<em>any</em>) – (Optional) value to send to the function on callback. Defaults to True</p></li>
+<li><p><strong>callbackArgs</strong> (<em>any</em>) – (Optional) value to send to the function on callback. Defaults to None</p></li>
 <li><p><strong>rowspan</strong> (<em>int</em>) – (Optional) How many rows does it take up. Defaults to 1</p></li>
 <li><p><strong>columnspan</strong> (<em>int</em>) – (Optional) How many columns does it take up. Defaults to 1</p></li>
+<li><p><strong>image</strong> – (Optional) The image to add onto the button. Defaults to None</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -258,24 +281,27 @@ If you want it added, file a pull request</p>
 <h2>ChangeState<a class="headerlink" href="#changestate" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">ChangeState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">ChangeState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Element</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">row</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">column</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Show or hide an element</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>element</strong> (<em>dict</em>) – Information about the element</p></li>
-<li><p><strong>state</strong> (<em>bool</em>) – (Optional) state to make the element. Defaults to True</p></li>
+<li><p><strong>Element</strong> (<em>any</em><em> (</em><em>tk object</em><em>)</em>) – The element to effect</p></li>
+<li><p><strong>state</strong> (<em>bool</em>) – (Optional) The new mode of the element. Defaults to True.</p></li>
+<li><p><strong>row</strong> (<em>int</em>) – (Optional) The place to put the element. Defaults to 0.</p></li>
+<li><p><strong>column</strong> (<em>int</em>) – (Optional) The place to put the element. Defaults to 0.</p></li>
 </ul>
 </dd>
 </dl>
 </dd></dl>
 
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tkUi</span><span class="o">.</span><span class="n">ChangeState</span><span class="p">({</span><span class="s2">&quot;Element&quot;</span><span class="p">:</span> <span class="n">textBox</span><span class="p">,</span> <span class="s2">&quot;row&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;column&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tkUi</span><span class="o">.</span><span class="n">ChangeState</span><span class="p">(</span><span class="n">textBox</span><span class="p">,</span> <span class="n">row</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># set to true and places at (0, 10)</span>
+<span class="n">tkUi</span><span class="o">.</span><span class="n">ChangeState</span><span class="p">(</span><span class="n">textBox</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># hides</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>element needs to be a dictionary containing “Element” (if state is false) and “row”, “column” (if state is true)</p>
+<p><cite>row</cite> and <cite>column</cite> are only needed it state is <cite>True</cite></p>
 </div>
 </section>
 <section id="createstringvar">

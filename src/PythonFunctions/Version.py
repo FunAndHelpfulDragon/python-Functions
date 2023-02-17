@@ -1,34 +1,14 @@
 # Module update checker, based off the github file
-import json
 import os
 
 
-def LocalSettings():
-    """Check if muted
-
-    Returns:
-        bool: Muted or not
-    """
-    path = os.getcwd() + "/PyFuncSet.json"
-    if os.path.exists(path):
-        data = {}
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-
-        return not data.get("Mute")
-
-    return True
-
-
-muted = LocalSettings()
 GlobalRead = True
 try:
     import requests
 except ModuleNotFoundError:
-    if muted:
-        print(
-            "Requests is not installed. Can not check for a new PythonFunction update!"
-        )
+    print(
+        "Requests is not installed. Can not check for a new PythonFunction update!"
+    )
     GlobalRead = False
 
 
@@ -47,7 +27,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.4.6"
+    return "1.4.7"
 
 
 url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
@@ -87,12 +67,11 @@ def Compare(hint: bool = True):
         print("*" * os.get_terminal_size().columns)
         print(
             f"""Notice: A newer version of PythonFunctions is alvalible.
-Current Version: {current}. New version: {server}
-Make the file PyFuncSet.json to mute this"""
+Current Version: {current}. New version: {server}"""
         )
         print("*" * os.get_terminal_size().columns)
 
 
 if __name__ == "__main__":
-    if GlobalRead and muted:
+    if GlobalRead:
         ReadGlobal()
