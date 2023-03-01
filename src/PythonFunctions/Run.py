@@ -53,3 +53,13 @@ def End() -> float:
         float: The time difference
     """
     return time.time() - start
+
+
+def Timer(func):
+    def wrapper(*args):
+        t1 = time.time()
+        x = func(*args)
+        t2 = time.time()
+        print(f'{func.__name__} took {t2-t1} seconds')
+        return x
+    return wrapper

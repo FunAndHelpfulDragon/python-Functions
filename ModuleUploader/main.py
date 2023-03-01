@@ -1,5 +1,6 @@
 import argparse
 import os
+import asyncio
 
 
 def parser():
@@ -13,3 +14,4 @@ def parser():
 
 os.system(f"python ModuleUploader/Updater.py {parser().version}")
 os.system("python ModuleUploader/Uploader.py")
+os.system('python ModuleUploader/DocCreator.py')

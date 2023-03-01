@@ -27,6 +27,8 @@ def test_message():
         line3 = f.readline().strip('\n')
         assert line3 == "\x1b[2J\x1b[HTest"
 
+    sys.stdout = sys.__stdout__
+
 
 def test_cleanup():
     os.remove("TestSaveTemp/Msg.txt")

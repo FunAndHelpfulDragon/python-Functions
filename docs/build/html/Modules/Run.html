@@ -54,9 +54,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#getmarktime">GetMarkTime</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#compareindex">CompareIndex</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#end">End</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timer">Timer</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Save.html">Save (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching (Verison 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
@@ -196,6 +198,22 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Run</span><span class="o">.</span><span class="n">End</span><span class="p">())</span>
 </pre></div>
 </div>
+</section>
+<section id="timer">
+<h2>Timer<a class="headerlink" href="#timer" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is not used like the other functions.</p>
+</div>
+<p>The purpose of this is to check how long it takes a function to run. To use it follow the code below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@Run</span><span class="o">.</span><span class="n">Timer</span>
+<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This above code will print off <cite>a</cite> and <cite>b</cite> and the time it took. (<cite>test took X seconds</cite>).</p>
 </section>
 </section>
 

@@ -11,7 +11,7 @@ A module to take a folder, remove some random and unneccessary files, and give y
 Usage
 -----
 
-.. py:function:: clean.clean(path, reserved)
+.. py:function:: clean.clean(path, reserved, *, includeHidden)
     :noindex:
 
     The main function, Even can go through here of through one function at a time.
@@ -21,6 +21,8 @@ Usage
     :type path: str
     :param reserved: Optional, A list of files that are not included
     :type reserved: List[str]
+    :param includeHidden: Optional, include files that have either '.' or '__' to begin with. Defaults to False.
+    :type includeHidden: bool
     :return: A list of files that have been "cleaned"
     :rtype: List[str]
 

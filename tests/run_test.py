@@ -1,7 +1,6 @@
 """Test to do with run and time"""
 
 import time
-
 import pytest
 
 from . import PythonFunctions
@@ -42,3 +41,17 @@ def test_compare():
     i2 = run.GetMarkTime(1)
 
     assert i2 - i1 == run.CompareIndex(0, 1)
+
+
+def test_wrapper():
+    @run.Timer
+    def delay():
+        time.sleep(1)
+
+    @run.Timer
+    def delay2(a, b):
+        time.sleep(1)
+        return a, b
+
+    assert delay() is None
+    assert delay2(1, 2) == (1, 2)

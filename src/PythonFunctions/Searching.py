@@ -19,7 +19,7 @@ class search:
         self.searched = []
         self.logging = False
 
-    def __Print(self, msg: str, colour: str = None, msgformat: str = None):
+    def __Print(self, msg: str, colour: str = None, msgformat: str = ''):
         if self.logging:
             print(f"{msgformat}{colour}{msg}{Style.RESET_ALL}")
             # Print(msg, colour, msgformat)
@@ -48,7 +48,8 @@ class search:
         self.hidden = hidden or []
         self.target = target
         self.layers = layers + 1
-        self.directory = directory if directory != "." else os.path.abspath(".")
+        self.directory = directory if directory != "." else os.path.abspath(
+            ".")
         self.logging = logging
 
         return asyncio.run(self.__AsyncLocate())
@@ -104,7 +105,7 @@ class search:
         try:
             hiddenFiles = copy.deepcopy(self.hidden)
             hiddenFiles.extend(self.searched)
-            files = Cln().clean(directory, hiddenFiles)
+            files = Cln().clean(directory, hiddenFiles, includeHidden=True)
         except PermissionError:
             return self.__Print(
                 f"Missing permissions to read from {directory}",

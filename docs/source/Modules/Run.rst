@@ -83,3 +83,21 @@ End
 .. code-block:: python
 
     print(Run.End())
+
+Timer
+-----
+
+.. note::
+    This is not used like the other functions.
+
+The purpose of this is to check how long it takes a function to run. To use it follow the code below.
+
+.. code-block:: python
+
+    @Run.Timer
+    def test():
+        print('a')
+        time.sleep(1)
+        print('b')
+
+This above code will print off `a` and `b` and the time it took. (`test took X seconds`).

@@ -57,6 +57,7 @@
 <li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback (Version 1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Save.html">Save (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching (Verison 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
@@ -98,7 +99,7 @@
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">clean.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">clean.</span></span><span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reserved</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">includeHidden</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, Even can go through here of through one function at a time.
 This function does add some small things compaired to the other functions however.</p>
 <dl class="field-list simple">
@@ -106,6 +107,7 @@ This function does add some small things compaired to the other functions howeve
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – The path of the folder to “clean”</p></li>
 <li><p><strong>reserved</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Optional, A list of files that are not included</p></li>
+<li><p><strong>includeHidden</strong> (<em>bool</em>) – Optional, include files that have either ‘.’ or ‘__’ to begin with. Defaults to False.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>

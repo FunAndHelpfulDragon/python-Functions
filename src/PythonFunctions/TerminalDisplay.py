@@ -178,7 +178,7 @@ class Display:
 
 Controls:
 ---------------------------------------------------------
-W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
+W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
         )
 
     def __ShowList(self):
@@ -253,25 +253,25 @@ W: Up, A: Left, S: Down, D: Right, Q: Quit, Enter: Select"""
         chosen = False
         while not chosen:
             k = readkey().lower()
-            if k == "w":
+            if k in ("w", key.UP):
                 self.cursorPosition[1] -= 1
                 # Lock
                 if self.cursorPosition[1] < 0:
                     self.cursorPosition[1] = 0
 
-            elif k == "a":
+            elif k in ("a", key.LEFT):
                 self.cursorPosition[0] -= 1
                 # Lock
                 if self.cursorPosition[0] < 0:
                     self.cursorPosition[0] = 0
 
-            elif k == "s":
+            elif k in ("s", key.DOWN):
                 self.cursorPosition[1] += 1
                 # lock
                 if self.cursorPosition[1] > len(self.gridData) - 1:
                     self.cursorPosition[1] = len(self.gridData) - 1
 
-            elif k == "d":
+            elif k in ("d", key.RIGHT):
                 self.cursorPosition[0] += 1
                 # Lock
                 if (

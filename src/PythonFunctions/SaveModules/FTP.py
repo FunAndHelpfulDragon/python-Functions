@@ -34,7 +34,8 @@ class save(template.SaveTemplate):
             self.ftp.connect(server[0], port)
             credentials = self.data.get("FTP")
 
-            self.ftp.login(credentials.get("Name"), credentials.get("Password"))
+            self.ftp.login(credentials.get("Name"),
+                           credentials.get("Password"))
 
             if len(info) > 1:
                 try:

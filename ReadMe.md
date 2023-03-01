@@ -17,6 +17,15 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.8
+
+- Added arrow key support in terminal display.
+- Added timer function wrapper to run.py
+- Added `includeHidden` to `CleanFolderData.py`
+- Updated documentation
+- Updated Searching to always search hidden directories by default unless excluded.
+- Removed `None` that appears in `search.Locate` with `Logging` enabled
+
 ### 1.4.7
 
 - Added `ui.CreateImage`
