@@ -100,13 +100,14 @@
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, Basically every check is called through this</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum</em>) – The check to run</p></li>
+<li><p><strong>callback</strong> (<em>function.</em>) – The function to run after the user input. (Must be able to pick up at least 1 argument)</p></li>
 <li><p><strong>args</strong> (<em>any</em>) – Other arguments required for the check</p></li>
 </ul>
 </dd>

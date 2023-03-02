@@ -54,6 +54,7 @@
 <li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback (Version 1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Save.html">Save (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching (Verison 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
@@ -91,15 +92,15 @@
 <p class="admonition-title">Note</p>
 <p>More things might get added, depends on if i need to conver stuff for ease.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Convert</span> <span class="kn">import</span> <span class="n">LocationConvert</span> <span class="k">as</span> <span class="n">LC</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">LC</span><span class="o">.</span><span class="n">Convert</span><span class="p">(</span><span class="s2">&quot;A3&quot;</span><span class="p">))</span> <span class="c1"># Output (0, 3)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Conver</span> <span class="kn">import</span> <span class="n">Location</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="s1">&#39;A3&#39;</span><span class="p">))</span> <span class="c1"># output: (0, 2)</span>
 </pre></div>
 </div>
 <section id="convert">
 <h2>Convert<a class="headerlink" href="#convert" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">LC.</span></span><span class="sig-name descname"><span class="pre">Convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">Location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Translates letter to number and make a tuple</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

@@ -8,14 +8,14 @@ Converts cooridnates to the represented position
 
 .. code-block:: python
     
-    from PythonFunctions.Convert import LocationConvert as LC
-    print(LC.Convert("A3")) # Output (0, 3)
+    from PythonFunctions.Conver import Location
+    print(Location('A3')) # output: (0, 2)
 
 
 Convert
 -------
 
-.. py:function:: LC.Convert(position)
+.. py:function:: Location(position)
     :noindex:
 
     Translates letter to number and make a tuple
