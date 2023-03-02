@@ -8,7 +8,7 @@ import pytest
 
 from . import PythonFunctions
 
-Convert = PythonFunctions.Convert.LocationConvert
+Convert = PythonFunctions.Convert
 
 
 # BAD WAY BUT FOR TESTING PURPOSE
@@ -45,10 +45,11 @@ letters = {
 @pytest.mark.repeat(3)
 def test_Convert():
     """Test to convert a random location to a tuple"""
-    position = "".join(random.sample(string.ascii_uppercase, random.randrange(1, 3)))
+    position = "".join(random.sample(
+        string.ascii_uppercase, random.randrange(1, 3)))
 
     num = random.randrange(100)
-    result = Convert().Convert(f"{position}{num}")
+    result = Convert.Location(f"{position}{num}")
 
     x = 0
     for _, i in enumerate(position):

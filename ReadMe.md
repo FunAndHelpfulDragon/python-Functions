@@ -17,6 +17,30 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.9
+
+#### Added
+
+- Added notes to `Colours.py` documentation.
+- `Check.py`: Added option to check if an input is a valid path on the os.
+- `Check.py`: Added a callback function option that gets called after the user enters a result.
+
+#### Changed
+
+- Updated `Check.py`, `Colours.py`, `Convert.py` documentation
+- Updated testing for `Check.py`
+- Went back to the `Added`, `Changed`, `Removed` format.
+
+#### Fixed
+
+- Fixed issue with `Message.py` not being happy after `Colours.py` update.
+- Fixed some tests
+
+#### Removed
+
+- Removed most of the data from `Colours.py` due to being in `Colorama`
+- Removed class out of `Convert.py`
+
 ### 1.4.8
 
 - Added arrow key support in terminal display.
@@ -87,7 +111,7 @@ Please read [Contributing.md](Contribution.md)
 
 - Moved update checker out of `__init__.py` to `__main__.py`
 
-### 1.4
+### 1.4.0
 
 #### Added
 

@@ -1,6 +1,7 @@
 import sys
 import os
-from . import PythonFunctions, Colours
+from colorama import Fore, Style
+from . import PythonFunctions
 msg = PythonFunctions.Message.Message
 
 
@@ -21,9 +22,9 @@ def test_message():
 
     with open("TestSaveTemp/Msg.txt", "r", encoding="utf-8") as f:
         line1 = f.readline().strip('\n')
-        assert line1 == f"{Colours.CONSOLECOLOURS.Fore.ORANGE}Testing{Colours.Style.RESET_ALL}"
+        assert line1 == f"{Fore.YELLOW}Testing{Style.RESET_ALL}"
         line2 = f.readline().strip('\n')
-        assert line2 == f"{Colours.CONSOLECOLOURS.Fore.RED}Testing 2{Colours.Style.RESET_ALL}"
+        assert line2 == f"{Fore.RED}Testing 2{Style.RESET_ALL}"
         line3 = f.readline().strip('\n')
         assert line3 == "\x1b[2J\x1b[HTest"
 

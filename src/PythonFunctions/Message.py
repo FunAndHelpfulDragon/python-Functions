@@ -1,7 +1,7 @@
 import os
 import time
 
-from .Colours import CONSOLECOLOURS, Fore, Style
+from colorama import Fore, Style
 
 
 class Message:
@@ -60,7 +60,7 @@ class Message:
             message=message,
             clear=True,
             delete=delete,
-            colour=CONSOLECOLOURS.Fore.RED,
+            colour=Fore.RED,
         )
 
     @staticmethod
@@ -72,5 +72,5 @@ class Message:
             timeS (int, optional): The time to wait before carring on. Defaults to 0.
         """
         Message.__messageSort(
-            timeS=timeS, message=message, colour=CONSOLECOLOURS.Fore.ORANGE
+            timeS=timeS, message=message, colour=Fore.YELLOW
         )

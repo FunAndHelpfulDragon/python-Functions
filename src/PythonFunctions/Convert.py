@@ -1,69 +1,49 @@
-import dataclasses
 import typing
 
 from .Message import Message
+# Thanks to Guy_732
+# changes letter to number based in the alphabet
 
 
-# Converts the input to a valid location (a1 -> [0,0])
-@dataclasses.dataclass
-class LocationConvert:
-    """Convert a letter and a number, to a position array
+def decode(s: str) -> int:
+    s = s.lower()
+    ref = ord("a") - 1
+    v = 0
+    exp = 1
+    for c in reversed(s):
+        v += (ord(c) - ref) * exp
+        exp *= 26
+
+    return v
+
+
+def Location(value: str) -> typing.Tuple:
+    """Convert a letter number location into two numbers.
 
     Args:
-        value (str): The position to translate
+        value (str): The letter number value to convert.
+
+    Returns:
+        typing.Tuple: The result of the conversion.
     """
+    letters = ""
+    y = ""
 
-    def __init__(self):
-        self.letters: str = ""
-        self.y: str = ""
+    if len(value) >= 2:
+        value = value.lower().strip()
 
-    # Thanks to Guy_732
-    # changes letter to number based in the alphabet
-    def _decode(self, s: str) -> int:
-        s = s.lower()
-        ref = ord("a") - 1
-        v = 0
-        exp = 1
-        for c in reversed(s):
-            v += (ord(c) - ref) * exp
-            exp *= 26
+        for v in value:
+            if v.isdigit():
+                y += v
+                continue
 
-        return v
+            letters += v
 
-    def Convert(self, value: str) -> typing.Tuple:
-        """Main convert function
+        if letters == value:
+            return Message.clear(
+                "Input must contain at least 1 letter and at least 1 integer."), None
 
-        Args:
-            value: (str)
+        return decode(letters) - 1, int(y) - 1
 
-        Returns:
-            Tuple: The cooridnate position
-        """
-        if len(value) >= 2:
-            # lower input
-            value = value.lower().strip()
-
-            # splits the input into numbers and letters
-            for v in value:
-                if v.isdigit():
-                    self.y += v
-                else:
-                    self.letters += v
-
-            # Checks if there is at least 1 character that is not a letter
-            if self.letters == value:
-                Message().clear(
-                    "Must be at least two digits, a letter (x) and a number (y)",
-                    timeS=1,
-                )  # noqa
-                return None, None
-
-            # convert letters into numbers
-            return self._decode(self.letters) - 1, (int(self.y) - 1)
-
-        # Not enough characters
-        Message().clear(
-            "Must be at least two digits, a letter (x) and a number (y)",
-            timeS=1,
-        )  # noqa
-        return None, None
+    return Message.clear(
+        "Input must contain at least 1 letter and at least 1 integer."), None
