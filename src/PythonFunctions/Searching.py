@@ -4,8 +4,9 @@ import glob
 import os
 import typing
 
+from colorama import Fore, Style
 from .CleanFolderData import Clean as Cln
-from .Colours import CONSOLEFORMATS, Fore, Style
+from .Colours import FORMAT
 
 
 class search:
@@ -110,7 +111,7 @@ class search:
             return self.__Print(
                 f"Missing permissions to read from {directory}",
                 Fore.RED,
-                CONSOLEFORMATS.BOLD,
+                FORMAT.BOLD,
             )
 
         # loops though all the files

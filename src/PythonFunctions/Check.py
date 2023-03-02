@@ -13,9 +13,7 @@ class ModeEnum(Enum):
     int = "INT"
     yesno = "yn"
     str = "str"
-
-
-# Check if the input is a valid input using a whole bunch of data
+    path = "path"
 
 
 @dataclasses.dataclass
@@ -45,18 +43,20 @@ class Check:
         path_Info = os.path.dirname(path_Location)
         for external in Clean().clean(f"{path_Info}/Checks"):
             if external[:-3].lower() == mode.lower():
-                module = importlib.import_module(f"{Checks.__package__}.{mode}")
+                module = importlib.import_module(
+                    f"{Checks.__package__}.{mode}")
                 return module.check(data, Message, ID, **info)
 
         raise NotImplementedError(f"Mode: {mode} not implemented")
 
-    def getInput(self, msg: str, mode: ModeEnum, **info):
+    def getInput(self, msg: str, mode: ModeEnum, callback=None, **info):
         """Translate the user input, through the check and returns
 
         Args:
             msg (str): The message to display to the user
             mode (ModeEnum): The check to run
             info (Multipile): Other arguments for some checks
+            callback (function): Callback after result has been entered
 
         Returns:
             _type_: The result of the check
@@ -82,6 +82,8 @@ class Check:
                 check = None
                 continue
 
+            if callable(callback):
+                return callback(result)
             return result
 
         # If check is none, just send it back i suppose.
