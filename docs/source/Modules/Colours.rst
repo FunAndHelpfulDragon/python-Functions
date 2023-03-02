@@ -22,8 +22,17 @@ Very useful for debugging error messages and making a user interface in the term
 .. _here: https://pypi.org/project/colorama/
 
 
+.. note::
+    If you are using this file for `colorama.Fore`, `colorama.Style`, `colorama.Back` please switch over to colorama instead.
+    Those functions will be removed in v1.5
+
 DATA
 ----
+
+.. note::
+    As of v1.4.9 most of the data has been removed and it is just now the console formats.
+    If colorama does include the left over styles, please tell me.
+    This file (and package) might be removed soon.
 
 .. note::
     This replaces the old ConsoleFormat function, but in a better way.

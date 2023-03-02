@@ -60,7 +60,7 @@ def yn_check_n_return():
     return "no"
 
 
-def str_check(vIn: str, arr: list):
+def str_check(vIn: str, arr: list, callback=None):
     """Checks if input is in list
 
     Args:
@@ -71,7 +71,20 @@ def str_check(vIn: str, arr: list):
         The result: of the check
     """
     sys.stdin = StringIO(f"{vIn}")
-    return chk.getInput("Testing (str): ", chk.ModeEnum.str, info=arr)
+    return chk.getInput("Testing (str): ", chk.ModeEnum.str, callback=callback, info=arr)
+
+
+def path_check(vIn: str):
+    """Checks if input is a valid os path.
+
+    Args:
+        vIn (str): The input
+
+    Returns:
+        The result of the check
+    """
+    sys.stdin = StringIO(f"{vIn}")
+    return chk.getInput("Testing (path): ", chk.ModeEnum.path)
 
 
 def test_int():
@@ -123,3 +136,15 @@ def test_str():
     assert not str_check("d", strList)
     assert not str_check("f", strList)
     assert not str_check("g", strList)
+
+
+def test_path():
+    assert path_check('ReadMe.md')
+
+
+def test_callback():
+    def callback(value):
+        assert True
+        assert value is True
+
+    str_check("a", ["a", "e", "i", "o", "u"], callback)

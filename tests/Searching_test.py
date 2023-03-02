@@ -1,6 +1,6 @@
 from . import search
 
-hidden = [".venv", "*.pyc", "docs", "dist", "typings"]
+hidden = [".venv", "*.pyc", "docs", "dist", "typings", ".git", ".github"]
 srch = search()
 
 

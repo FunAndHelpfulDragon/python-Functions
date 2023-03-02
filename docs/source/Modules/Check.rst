@@ -12,7 +12,7 @@ A module to check the user input against some requirements.
 Usage
 -----
 
-.. py:function:: check.getInput(input, type, args)
+.. py:function:: check.getInput(input, type, callback, args)
     :noindex:
 
     The main function, Basically every check is called through this
@@ -21,6 +21,8 @@ Usage
     :type input: str
     :param type: The check to run
     :type type: check.ModeEnum
+    :param callback: The function to run after the user input. (Must be able to pick up at least 1 argument)
+    :type callback: function.
     :param args: Other arguments required for the check
     :type args: any
     :return: Depends on the check
