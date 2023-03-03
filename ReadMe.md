@@ -17,6 +17,36 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.10
+
+#### Added
+
+- AudioExtractor in `Convert.py`
+- AudioExtractor to `Convert.py` documentation
+- New optional dependiences installation options.
+- `Watermark.py` `LINKCODE` function. (link + text)
+- `Watermark.py` `TIME` function. (Just gets the hour, minute second)
+- Relative documentation for `Watermark.py`
+
+#### Updated
+
+- `Save.py` `Read` and `Write` function to use `*` before the encoding argument.
+- renamed `Save.py` `Write` function from `Save` to `Write`. (But left `Save` in as a redirect to `Write` until `1.5.0` and gave a warning)
+- Updated `Save.py` documentation
+- Updated `pyproject.toml` to use move optional dependecies.
+- Updated related documentation to include the optional dependience installation instructions.
+- Regenerated the whole documentation in `docs/build`
+- `Watermark.py` to make it more readable and so more functions can be used elsewhere.
+- `Watermark.py` to have a default file name of `__main__`
+- Renamed `main` in `Watermark.py` to `watermark`. (Like save, left main as a redirect and gave a warning)
+
+#### Fixed
+
+- `Save.py` test with the new `encoding` argument.
+- Other random files that got broken with the `Save.py` update.
+- Some pylint issues
+- Tests that got broken
+
 ### 1.4.9
 
 #### Added

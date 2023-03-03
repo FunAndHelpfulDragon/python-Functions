@@ -1,11 +1,13 @@
 import typing
+import os
 
 from .Message import Message
-# Thanks to Guy_732
-# changes letter to number based in the alphabet
+from .CleanFolderData import Clean
 
 
 def decode(s: str) -> int:
+    # Thanks to Guy_732
+    # changes letter to number based in the alphabet
     s = s.lower()
     ref = ord("a") - 1
     v = 0
@@ -47,3 +49,37 @@ def Location(value: str) -> typing.Tuple:
 
     return Message.clear(
         "Input must contain at least 1 letter and at least 1 integer."), None
+
+
+def AudioExtractor(path: str, destination: str = 'mp3'):
+    """Convert a mp4 file to mp3. Supports whole folders.
+
+    Args:
+        path (str): The path to convert the data.
+        destination (str, optional): The destination of the data. Defaults to 'mp3'.
+    """
+    try:
+        # pylint: disable=C0415
+        import moviepy.editor as mpyEditor
+        # pylint: enable=C0415
+    except ModuleNotFoundError:
+        pass
+
+    data = [path]
+    if os.path.isdir(path):
+        data = Clean().clean(path)
+
+    if len(data) == 0:
+        return "No files found!"
+
+    if not os.path.exists(destination):
+        os.makedirs(destination)
+
+    for i in data:
+        if i.endswith('.mp4'):
+            FILE = mpyEditor.AudioFileClip(i)
+            FILE.write_audiofile(f'{destination}/{i.replace(".mp4", ".mp3")}')
+            FILE.close()
+
+    return Message.warn(f"Finished making mp3 files. Check: {os.path.abspath(destination)}",
+                        timeS=0.5)

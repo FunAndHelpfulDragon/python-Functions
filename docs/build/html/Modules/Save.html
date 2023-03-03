@@ -54,7 +54,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#driveexists">DriveExists</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#drivecredentials">DriveCredentials</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#save">Save</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#write">Write</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#read">Read</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#makefolders">MakeFolders</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#removefile">RemoveFile</a></li>
@@ -176,11 +176,11 @@ More information about them later</p>
 </pre></div>
 </div>
 </section>
-<section id="save">
-<h3>Save<a class="headerlink" href="#save" title="Permalink to this heading"></a></h3>
+<section id="write">
+<h3>Write<a class="headerlink" href="#write" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">WRite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Save the specified data to a file (path) with the specified encoding</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -199,7 +199,7 @@ More information about them later</p>
 </dl>
 </dd></dl>
 
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="s2">&quot;Example.txt&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="s2">&quot;Example.txt&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -207,7 +207,7 @@ More information about them later</p>
 <h3>Read<a class="headerlink" href="#read" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">Read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">Read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Returns what the file contains after going through the specified encoding</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -377,6 +377,11 @@ You can’t switch servers unless the other server has the same username and sur
 </section>
 <section id="gdr-google-drive-api">
 <h3>gdr (Google Drive API)<a class="headerlink" href="#gdr-google-drive-api" title="Permalink to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Google has it’s own api which needs to be installed.
+If you want to install it run <cite>pip install PythonFunctions[google] -U</cite></p>
+</div>
 <p>Google drive api takes a bit more setup other than installing the module. Some of which i can not automate.
 I could set up a default one but i don’t want to because then i have to handle it and everyone will share the same data.</p>
 <p>To set up google drive api follow these steps:</p>
