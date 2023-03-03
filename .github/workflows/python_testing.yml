@@ -22,7 +22,6 @@ jobs:
           pip install -e .
           pip install -e .[tools]
           pip install -e .[encryption]
-          pip install -e .[terminal]
           pip install flake8
       - name: Lint with flake8
         run: |
