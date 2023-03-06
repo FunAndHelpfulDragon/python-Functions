@@ -6,6 +6,8 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+# pylint: disable=W0622
+
 project = "Python Functions"
 copyright = "2023, FunAndHelpfullDragon"
 author = "FunAndHelpfullDragon"
@@ -18,7 +20,8 @@ release = "1.0.1"
 # sys.path.append('..')
 
 # extensions = ['src.PythonFunctions']
-extensions = ["sphinx.ext.duration", "sphinx.ext.doctest", "sphinx.ext.autodoc"]
+extensions = ["sphinx.ext.duration",
+              "sphinx.ext.doctest", "sphinx.ext.autodoc"]
 
 templates_path = ["_templates"]
 exclude_patterns = []
