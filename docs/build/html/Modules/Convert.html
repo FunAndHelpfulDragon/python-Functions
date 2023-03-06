@@ -46,8 +46,7 @@
 <li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Colours.html">Colours (Version 1)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Convert (Version 1.1)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#location">Location</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#audioextractor">AudioExtractor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#convert">Convert</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption (Version 1)</a></li>
@@ -97,8 +96,8 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="s1">&#39;A3&#39;</span><span class="p">))</span> <span class="c1"># output: (0, 2)</span>
 </pre></div>
 </div>
-<section id="location">
-<h2>Location<a class="headerlink" href="#location" title="Permalink to this heading"></a></h2>
+<section id="convert">
+<h2>Convert<a class="headerlink" href="#convert" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-name descname"><span class="pre">Location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span></dt>
@@ -112,34 +111,6 @@
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>tuple</p>
-</dd>
-</dl>
-</dd></dl>
-
-</section>
-<section id="audioextractor">
-<h2>AudioExtractor<a class="headerlink" href="#audioextractor" title="Permalink to this heading"></a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Module <cite>moviepy</cite> needs to be installed for this to work.
-Install using <cite>pip install PythonFunctions[audio] -U</cite></p>
-</div>
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">AudioExtractor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span></dt>
-<dd><p>Extracts a mp3 file from a mp4 file.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> (<em>str</em>) – The path to convert. (If directory, will do all of the directory)</p></li>
-<li><p><strong>destination</strong> (<em>str</em>) – (Optional), where to place the files. Defaults to “mp3” in the runtime directory.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Message about the progress</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str | None</p>
 </dd>
 </dl>
 </dd></dl>

@@ -43,6 +43,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#muting-the-module">Muting the module</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Board.html">Board (Version 2)</a></li>
@@ -55,7 +56,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Modules/PrintTraceback.html">PrintTraceback (Version 1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Run.html">Run (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Save.html">Save (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Searching.html">Searching (Verison 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Ui.html">Ui (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Version.html">Version (Version 2)</a></li>
@@ -109,14 +109,26 @@
 <p>There are optional Dependencies which can be installed to improve the usability of the service.</p>
 <p>Active (Might be useful for you):
 - encryption
-- google
-- audio
-- terminal
-- all (Installs all of the above)</p>
+- google</p>
 <p>Development (Useful for adding new functions)
-- tools</p>
+- test
+- linter</p>
 <p>To install these, use the following code. Replace <cite>module</cite> with one of the above.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install PythonFunctions<span class="o">[</span>module<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="muting-the-module">
+<span id="mutting"></span><h2>Muting the module<a class="headerlink" href="#muting-the-module" title="Permalink to this heading"></a></h2>
+<p>Lets say, you are using an older version for a specific reason and you don’t wont to upgrade yet. Well you can mute the output by making a file
+By making the file <code class="docutils literal notranslate"><span class="pre">PyFuncSet.json</span></code> and attaching the code below, all update notifications will be muted. If file does not exists, it will not be muted.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;Mute&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>If you don’t want to manually make the file, you can run the command below and then edit the file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>python -m PythonFunctions -s
 </pre></div>
 </div>
 </section>

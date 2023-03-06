@@ -50,8 +50,7 @@ class save:
         self.encoding: Encoding = Enum(
             "Encoding", ["NONE", "JSON", "BINARY", "CRYPTOGRAPHY", "CSV"]
         )
-        self.storage: Storage = Enum(
-            "Storage", ["NORMAL", "FTP", "GOOGLE", "OTHER"])
+        self.storage: Storage = Enum("Storage", ["NORMAL", "FTP", "GOOGLE", "OTHER"])
         self.DriveCredentialsEnum: DriveCredentialsMode = Enum(
             "DriveCredentialsMode", ["ADD", "DELETE"]
         )
@@ -78,8 +77,7 @@ class save:
             module = module[:-3]  # remove .py
             # Attempt to load the module
             try:
-                mdl = importlib.import_module(
-                    f"{SaveModules.__package__}.{module}")
+                mdl = importlib.import_module(f"{SaveModules.__package__}.{module}")
                 self.saveModules[module] = mdl.load()
             except (AttributeError, ModuleNotFoundError) as e:
                 Message.warn(
@@ -100,16 +98,16 @@ class save:
             self.settings["SettingsSave"] = f"{parent}/PyFuncSave/Settings.secret"
 
             # Save if not exists
-            self.Write(
+            self.Save(
                 self.settings,
                 self.settings.get("SettingsSave"),
-                encoding=[self.encoding.JSON, self.encoding.BINARY],
+                [self.encoding.JSON, self.encoding.BINARY],
             )
         else:
             # Load settings otherwise
             self.settings = self.Read(
                 f"{parent}/PyFuncSave/Settings.secret",
-                encoding=[self.encoding.JSON, self.encoding.BINARY],
+                [self.encoding.JSON, self.encoding.BINARY],
             )
 
         # Reset the password as we want them to add it.
@@ -127,18 +125,17 @@ class save:
             )
 
             if data.get("Name") == "" or not correct:
-                data["Name"] = input(
-                    "Please enter your username for the FTP server: ")
+                data["Name"] = input("Please enter your username for the FTP server: ")
 
             data["Password"] = getpass.getpass(
                 "Please enter your password for the FTP server: "
             )
 
             self.settings["FTP"] = data
-            self.Write(
+            self.Save(
                 self.settings,
                 self.settings.get("SettingsSave"),
-                encoding=[self.encoding.JSON, self.encoding.BINARY],
+                [self.encoding.JSON, self.encoding.BINARY],
             )
 
     def __TranslateStorage(self, path: str):
@@ -170,14 +167,13 @@ class save:
         """
 
         key = self.enc.GetKey()  # get the byte version
-        self.settings["Passcode"] = key.decode(
-            "utf-8")  # store the byte as string
+        self.settings["Passcode"] = key.decode("utf-8")  # store the byte as string
 
         # save the data
-        self.Write(
+        self.Save(
             self.settings,
             self.settings.get("SettingsSave"),
-            encoding=[self.encoding.JSON, self.encoding.BINARY],
+            [self.encoding.JSON, self.encoding.BINARY],
         )
 
         return key
@@ -205,8 +201,7 @@ class save:
             str: The result of the action
         """
         if not os.path.exists(f"{path}/gCred.json"):
-            raise AttributeError(
-                "Couldn't find `gCred.json` in the path specified!")
+            raise AttributeError("Couldn't find `gCred.json` in the path specified!")
 
         saveDir = os.path.dirname(self.settings.get("SettingsSave"))
         if mode == self.DriveCredentialsEnum.ADD:
@@ -302,8 +297,7 @@ class save:
         }
 
         for code in encoding:
-            result, rBytes, _ = _LOOKUP.get(code.value)(
-                result, decode, rBytes=rBytes)
+            result, rBytes, _ = _LOOKUP.get(code.value)(result, decode, rBytes=rBytes)
 
         return result, rBytes
 
@@ -323,12 +317,7 @@ class save:
 
         return path, storage, encoding
 
-    def Save(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
-        """Save data to the designated file system."""
-        print("Please use `Write` instead of `Save`. This will be removed in v1.5.0")
-        return self.Write(data, path, encoding=encoding)
-
-    def Write(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
+    def Save(self, data: any, path: str, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
 
         Args:
@@ -343,11 +332,10 @@ class save:
 
         data, wByte = self.__CodeData(data, encoding)
 
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         return module.WriteData(data, path, wByte)
 
-    def Read(self, path: str, *, encoding: typing.List = None) -> any:
+    def Read(self, path: str, encoding: typing.List = None) -> any:
         """Read data from a file
 
         Args:
@@ -358,8 +346,7 @@ class save:
             any: The data in the file
         """
         path, storage, encoding = self.__GetFileInformation(path, encoding)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
 
         rBytes = False
         for item in encoding:
@@ -385,8 +372,7 @@ class save:
         if storage is None:
             path, storage = self.__TranslateStorage(path)
 
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.credentials(self.settings)
         return module.MakeFolders(path)
 
@@ -397,8 +383,7 @@ class save:
             path (str): The path to remove that file
         """
         path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.credentials(self.settings)
         module.DeleteFile(path)
 
@@ -409,7 +394,6 @@ class save:
             path (str): The path to remove the folder
         """
         path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.credentials(self.settings)
         module.DeleteFolder(path)
