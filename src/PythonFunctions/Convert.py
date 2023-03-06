@@ -1,5 +1,7 @@
 import typing
+import os
 
+from .CleanFolderData import Clean
 from .Message import Message
 # Thanks to Guy_732
 # changes letter to number based in the alphabet
