@@ -2,8 +2,7 @@ name: Build python package
 
 on: push
 
-permissions:
-  contents: write
+permissions: write-all
 
 jobs:
   deploy:
