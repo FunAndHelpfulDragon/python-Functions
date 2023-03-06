@@ -3,8 +3,7 @@ Encryption (Version 1)
 
 .. note::
     External module required!!!
-    If you wish to use this module, please go and download `Cryptography`_. Otherwise this module is useless.
-    Use `pip install PythonFunctions[encryption]` to get the required modules.
+    If you wish to use this module, please go and download `Cryptography`_. Otherwise this module is useless
 
 .. _Cryptography: https://pypi.org/project/cryptography/
 
