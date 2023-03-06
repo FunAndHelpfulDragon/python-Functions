@@ -53,6 +53,7 @@ def Location(value: str) -> typing.Tuple:
 
 def AudioExtractor(path: str, destination: str = 'mp3'):
     """Convert a mp4 file to mp3. Supports whole folders.
+    Credit: https://stackoverflow.com/questions/55081352/how-to-convert-mp4-to-mp3-using-python
 
     Args:
         path (str): The path to convert the data.
