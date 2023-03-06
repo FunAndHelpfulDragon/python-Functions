@@ -39,6 +39,10 @@ Please read [Contributing.md](Contribution.md)
 - `Watermark.py` to make it more readable and so more functions can be used elsewhere.
 - `Watermark.py` to have a default file name of `__main__`
 - Renamed `main` in `Watermark.py` to `watermark`. (Like save, left main as a redirect and gave a warning)
+- Updated some backend github code.
+- Updated documentation for `tests/`
+- Updated some tests (not much though)
+- Fixed pylint complaining at a doc by making it disabled in that file. (`docs/source/conf.py`)
 
 #### Fixed
 

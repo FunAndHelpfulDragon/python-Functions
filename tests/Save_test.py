@@ -96,17 +96,22 @@ def test_Remove_File_None():
 
 def test_Remove_File_JSON():
     sv.RemoveFile("TestSaveTemp/JSON.json")
-    assert not os.path.exists("TestSaveTemp/Normal.txt")
+    assert not os.path.exists("TestSaveTemp/JSON.json")
 
 
 def test_Remove_File_BINARY():
     sv.RemoveFile("TestSaveTemp/Bin.bin")
-    assert not os.path.exists("TestSaveTemp/Normal.txt")
+    assert not os.path.exists("TestSaveTempBin.bin")
 
 
 def test_Remove_File_Crypto():
     sv.RemoveFile("TestSaveTemp/Crypt.bin")
-    assert not os.path.exists("TestSaveTemp/Normal.txt")
+    assert not os.path.exists("TestSaveTemp/Crypt.bin")
+
+
+def test_Remove_File_CSV():
+    sv.RemoveFile("TestSaveTemp/CSV.csv")
+    assert not os.path.exists("TestSaveTemp/CSV.csv")
 
 
 def test_Remove_Folder():
