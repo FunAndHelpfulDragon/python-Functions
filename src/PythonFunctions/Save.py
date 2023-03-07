@@ -323,7 +323,7 @@ class save:
 
         return path, storage, encoding
 
-     def Save(self, data: any, path: str, encoding: typing.List = None) -> bool:
+    def Save(self, data: any, path: str, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
 
         Args:
@@ -352,7 +352,8 @@ class save:
 
         data, wByte = self.__CodeData(data, encoding)
 
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         return module.WriteData(data, path, wByte)
 
     def Read(self, path: str, encoding: typing.List = None) -> any:
@@ -366,7 +367,8 @@ class save:
             any: The data in the file
         """
         path, storage, encoding = self.__GetFileInformation(path, encoding)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
 
         rBytes = False
         for item in encoding:
@@ -392,7 +394,8 @@ class save:
         if storage is None:
             path, storage = self.__TranslateStorage(path)
 
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         module.credentials(self.settings)
         return module.MakeFolders(path)
 
@@ -403,7 +406,8 @@ class save:
             path (str): The path to remove that file
         """
         path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         module.credentials(self.settings)
         module.DeleteFile(path)
 
@@ -414,6 +418,7 @@ class save:
             path (str): The path to remove the folder
         """
         path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         module.credentials(self.settings)
         module.DeleteFolder(path)
