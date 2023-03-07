@@ -8,7 +8,7 @@ Watermark (Version 2)
 
 
 watermark
-----
+---------
 
 .. note::
     I have also added my information into this function as i made it and wanted credit. 

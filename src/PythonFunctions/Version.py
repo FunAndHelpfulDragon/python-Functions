@@ -1,6 +1,6 @@
 # Module update checker, based off the github file
 import os
-
+from packaging import version
 
 GlobalRead = True
 try:
@@ -27,7 +27,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.4.11"
+    return "1.4.12"
 
 
 url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"
@@ -50,20 +50,15 @@ def ReadGlobal():
     return None
 
 
-def Compare(hint: bool = True):
+def Compare():
     current = ReadLocal()
     server = ReadGlobal()
-
-    if hint:
-        print(
-            "HINT: Make the PyFuncSet.json file and set Mute to true to speed up the loading time."
-        )
 
     if server is None:
         # break eariler if no response, we have already mentioned about it.
         return
 
-    if server > current:
+    if version.parse(server) > version.parse(current):
         print("*" * os.get_terminal_size().columns)
         print(
             f"""Notice: A newer version of PythonFunctions is alvalible.

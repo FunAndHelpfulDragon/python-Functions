@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PythonFunctions"
-version = "1.4.11"
+version = "1.4.12"
 authors = [
     { name="Dragmine149" }
 ]
@@ -19,7 +19,8 @@ classifiers = [
 
 dependencies = [
     "colorama",
-    "requests"
+    "requests",
+    "packaging"
 ]
 
 [project.optional-dependencies]

@@ -87,6 +87,6 @@ def main():
 
 
 if Version.CanReadGlobal():
-    Version.Compare(False)
+    Version.Compare()
 
 main()

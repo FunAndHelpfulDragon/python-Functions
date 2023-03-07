@@ -17,6 +17,16 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.12
+
+### Fixed
+
+- Issue in `Version.py` that would mean `Version 1.4.11` comes before `Version 1.4.7`
+
+### Removed
+
+- Hint and Hint argumnet in `Version.py` `Compare` function.
+
 ### 1.4.11
 
 #### Added
@@ -42,7 +52,6 @@ Please read [Contributing.md](Contribution.md)
 - Updated some backend github code.
 - Updated documentation for `tests/`
 - Updated some tests (not much though)
-- Fixed pylint complaining at a doc by making it disabled in that file. (`docs/source/conf.py`)
 
 #### Fixed
 
@@ -50,6 +59,7 @@ Please read [Contributing.md](Contribution.md)
 - Other random files that got broken with the `Save.py` update.
 - Some pylint issues
 - Tests that got broken
+- Fixed pylint complaining at a doc by making it disabled in that file. (`docs/source/conf.py`)
 
 ### 1.4.10
 
