@@ -1,11 +1,13 @@
 import typing
+import os
 
 from .Message import Message
-# Thanks to Guy_732
-# changes letter to number based in the alphabet
+from .CleanFolderData import Clean
 
 
 def decode(s: str) -> int:
+    # Thanks to Guy_732
+    # changes letter to number based in the alphabet
     s = s.lower()
     ref = ord("a") - 1
     v = 0

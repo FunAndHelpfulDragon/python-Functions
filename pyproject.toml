@@ -19,7 +19,6 @@ classifiers = [
 
 dependencies = [
     "colorama",
-    "readchar",
     "requests"
 ]
 
@@ -36,6 +35,23 @@ google = [
     "google-api-python-client",
     "google-auth-httplib2",
     "google-auth-oauthlib",
+]
+audio = [
+    "moviepy>1.0.0"
+]
+terminal = [
+    "readchar"
+]
+all = [
+    "moviepy>1.0.0",
+    "google-api-python-client",
+    "google-auth-httplib2",
+    "google-auth-oauthlib",
+    "pytest>=7.2.0",
+    "pytest-repeat>=0.9.1",
+    "pylint>=2.15.5",
+    "cryptography>=38.0.3",
+    "readchar",
 ]
 
 

@@ -84,13 +84,15 @@ class Clean:
             newData.append(file)
         return newData
 
-    def clean(self, path: str, reserved: typing.List[str] = None, *, includeHidden: bool = False) -> typing.List[str]:
+    def clean(self, path: str, reserved: typing.List[str] = None,
+              *, includeHidden: bool = False) -> typing.List[str]:
         """Returns the finished product of cleaning up the path
 
         Args:
             path (str): The path to get the files from
             reserved (typing.List[str], optional): The list of data to not include in the final list
-            includeHidden (bool, optional): Include data that is in '.' or '__' folders. Defaults to False
+            includeHidden (bool, optional): Include data that is in '.' or '__' folders.
+            Defaults to False
 
         Returns:
             typing.List[str]: The final data list
