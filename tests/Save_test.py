@@ -31,32 +31,32 @@ def test_MakeFolders():
 
 def test_write_Data_None():
     """Test to write a normal file with no encoding correctly"""
-    assert sv.Save("Hello World", "TestSaveTemp/Normal.txt",
+    assert sv.Write("Hello World", "TestSaveTemp/Normal.txt",
                    encoding=sv.encoding.NONE)
 
 
 def test_write_Data_JSON():
     """Test to write a json file correctly"""
-    assert sv.Save(
+    assert sv.Write(
         {"1": "Hi 2", "2": "Hi 3"}, "TestSaveTemp/JSON.json", encoding=sv.encoding.JSON
     )
 
 
 def test_write_Data_BINARY():
     """Test to write data as binary using pickle correctly"""
-    assert sv.Save("Hello World", "TestSaveTemp/Bin.bin",
-                   encoding=sv.encoding.BINARY)
+    assert sv.Write("Hello World", "TestSaveTemp/Bin.bin",
+                    encoding=sv.encoding.BINARY)
 
 
 def test_Write_Data_Crypto():
     """Test to write data using cryptography correctly"""
-    assert sv.Save("Hello World", "TestSaveTemp/Crypt.bin",
-                   encoding=sv.encoding.CRYPTOGRAPHY)
+    assert sv.Write("Hello World", "TestSaveTemp/Crypt.bin",
+                    encoding=sv.encoding.CRYPTOGRAPHY)
 
 
 def test_Save_Data_CSV():
     """Test to write csv data from a dictonary"""
-    assert sv.Save(csvData, "TestSaveTemp/CSV.csv", encoding=sv.encoding.CSV)
+    assert sv.Write(csvData, "TestSaveTemp/CSV.csv", encoding=sv.encoding.CSV)
 
 
 def test_Read_Data_None():
