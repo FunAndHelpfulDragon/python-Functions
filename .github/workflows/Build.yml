@@ -34,3 +34,8 @@ jobs:
           rm -rf docs/build
           cd docs
           make html
+      - name: Upload Documentatioon Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Latest Docs
+          path: docs/build/html
