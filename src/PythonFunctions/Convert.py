@@ -2,7 +2,6 @@ import typing
 import os
 
 from .Message import Message
-from .CleanFolderData import Clean
 
 
 def decode(s: str) -> int:
