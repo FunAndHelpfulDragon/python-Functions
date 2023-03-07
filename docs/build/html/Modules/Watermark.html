@@ -55,7 +55,9 @@
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Watermark (Version 2)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#main">main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watermark">watermark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linkcode">LINKCODE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#time">TIME</a></li>
 </ul>
 </li>
 </ul>
@@ -86,19 +88,19 @@
              
   <section id="watermark-version-2">
 <h1>Watermark (Version 2)<a class="headerlink" href="#watermark-version-2" title="Permalink to this heading"></a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Watermark</span> <span class="kn">import</span> <span class="n">main</span> <span class="k">as</span> <span class="n">Watermark</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Watermark</span> <span class="kn">import</span> <span class="n">watermark</span>
 <span class="n">Watermark</span><span class="p">(</span><span class="s2">&quot;HI&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<section id="main">
-<h2>main<a class="headerlink" href="#main" title="Permalink to this heading"></a></h2>
+<section id="watermark">
+<h2>watermark<a class="headerlink" href="#watermark" title="Permalink to this heading"></a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>I have also added my information into this function as i made it and wanted credit.</p>
 </div>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twitter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youtube</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">github</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">watermark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">twitter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">youtube</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">github</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">colour</span></span></em><span class="sig-paren">)</span></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -112,6 +114,50 @@
 </dl>
 </dd></dl>
 
+</section>
+<section id="linkcode">
+<h2>LINKCODE<a class="headerlink" href="#linkcode" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">LINKCODE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">link</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Makes a clickable link in the terminal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>link</strong> (<em>str</em>) – The link to redirect to</p></li>
+<li><p><strong>text</strong> (<em>str</em>) – (Optional) The text to display. Defaults to the link.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A message with a clickable link</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="time">
+<h2>TIME<a class="headerlink" href="#time" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">TIME</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>Return a time in h,m,s format. Each value being 2 digits.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>The current time of it being ran at.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple[str, str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">Watermark</span><span class="o">.</span><span class="n">Time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">h</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Example: 14:03:20</span>
+</pre></div>
+</div>
 </section>
 </section>
 

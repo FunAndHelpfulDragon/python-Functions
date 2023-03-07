@@ -25,3 +25,12 @@ jobs:
         with:
           name: Latest Build
           path: dist/latest
+      - name: Install documentation dependencies
+        run: |
+          pip install sphinx
+          pip install sphinx-rtd-theme
+      - name: Build Documentation
+        run: |
+          rm -rf docs/build
+          cd docs
+          make html
