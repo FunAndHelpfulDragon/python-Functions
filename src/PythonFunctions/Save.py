@@ -324,9 +324,19 @@ class save:
         return path, storage, encoding
 
     def Save(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
-        """Save data to the designated file system."""
-        print("Please use `Write` instead of `Save`. This will be removed in v1.5.0")
-        return self.Write(data, path, encoding=encoding)
+        """Save data to the designated file system.
+
+        Args:
+            data (any): The data to save
+            path (str): The path to save to (Read documentation for other systems)
+            encoding (typing.List, optional): The encoding to save with. Defaults to None.
+
+        Returns:
+            bool: Whever it saves correctly or not
+        """
+        print("Please use save.Write instead! Save.Save will be removed in v1.5.0")
+        self.Write(data=data, path=path, encoding=encoding)
+
 
     def Write(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
