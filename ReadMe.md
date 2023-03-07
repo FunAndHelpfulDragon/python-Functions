@@ -17,7 +17,7 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
-### 1.4.10
+### 1.4.11
 
 #### Added
 
@@ -51,6 +51,9 @@ Please read [Contributing.md](Contribution.md)
 - Some pylint issues
 - Tests that got broken
 
+### 1.4.10
+
+This was a mess, basically just ended up making it v1.4.11
 
 ### 1.4.9
 

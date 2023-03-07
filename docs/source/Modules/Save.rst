@@ -54,10 +54,10 @@ DriveCredentials
 
     sv.DriveCredentials(".", sv.DriveCredentialsMode.ADD)
 
-Save
-^^^^
+Write
+^^^^^
 
-.. py:function:: Save(data, path, encoding)
+.. py:function:: Write(data, path, *, encoding)
     :noindex:
 
     Save the specified data to a file (path) with the specified encoding
@@ -73,12 +73,12 @@ Save
 
 .. code-block:: python
 
-    sv.Save("Hello World", "Example.txt")
+    sv.Write("Hello World", "Example.txt")
 
 Read
 ^^^^
 
-.. py:function:: Read(path, encoding)
+.. py:function:: Read(path, *, encoding)
     :noindex:
 
     Returns what the file contains after going through the specified encoding
@@ -219,6 +219,10 @@ Example of ftp file:
 
 gdr (Google Drive API)
 ^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+    Google has it's own api which needs to be installed.
+    If you want to install it run `pip install PythonFunctions[google] -U`
 
 Google drive api takes a bit more setup other than installing the module. Some of which i can not automate.
 I could set up a default one but i don't want to because then i have to handle it and everyone will share the same data.

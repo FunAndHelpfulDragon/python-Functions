@@ -31,7 +31,8 @@ def test_MakeFolders():
 
 def test_write_Data_None():
     """Test to write a normal file with no encoding correctly"""
-    assert sv.Write("Hello World", "TestSaveTemp/Normal.txt", encoding=sv.encoding.NONE)
+    assert sv.Write("Hello World", "TestSaveTemp/Normal.txt",
+                   encoding=sv.encoding.NONE)
 
 
 def test_write_Data_JSON():

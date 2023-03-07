@@ -135,10 +135,10 @@ class save:
             )
 
             self.settings["FTP"] = data
-            self.Save(
+            self.Write(
                 self.settings,
                 self.settings.get("SettingsSave"),
-                [self.encoding.JSON, self.encoding.BINARY],
+                encoding=[self.encoding.JSON, self.encoding.BINARY],
             )
 
     def __TranslateStorage(self, path: str):
@@ -174,10 +174,10 @@ class save:
             "utf-8")  # store the byte as string
 
         # save the data
-        self.Save(
+        self.Write(
             self.settings,
             self.settings.get("SettingsSave"),
-            [self.encoding.JSON, self.encoding.BINARY],
+            encoding=[self.encoding.JSON, self.encoding.BINARY],
         )
 
         return key
@@ -334,8 +334,9 @@ class save:
         Returns:
             bool: Whever it saves correctly or not
         """
-        print("Please use save.Write instead!")
+        print("Please use save.Write instead! Save.Save will be removed in v1.5.0")
         self.Write(data=data, path=path, encoding=encoding)
+
 
     def Write(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.

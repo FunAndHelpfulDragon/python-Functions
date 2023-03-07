@@ -10,6 +10,7 @@ A better and easier to use input system for the terminal, supports multiple mode
 
 .. note::
     Module `ReadChar`_ is required to get the interactive mode of the terminal.
+    Use `pip install PythonFunctions[terminal] -U` to install readchar
 
 .. _ReadChar: https://pypi.org/project/readchar/
 
