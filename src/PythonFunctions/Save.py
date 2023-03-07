@@ -100,16 +100,16 @@ class save:
             self.settings["SettingsSave"] = f"{parent}/PyFuncSave/Settings.secret"
 
             # Save if not exists
-            self.Save(
+            self.Write(
                 self.settings,
                 self.settings.get("SettingsSave"),
-                [self.encoding.JSON, self.encoding.BINARY],
+                encoding=[self.encoding.JSON, self.encoding.BINARY],
             )
         else:
             # Load settings otherwise
             self.settings = self.Read(
                 f"{parent}/PyFuncSave/Settings.secret",
-                [self.encoding.JSON, self.encoding.BINARY],
+                encoding=[self.encoding.JSON, self.encoding.BINARY],
             )
 
         # Reset the password as we want them to add it.
@@ -323,7 +323,7 @@ class save:
 
         return path, storage, encoding
 
-    def Save(self, data: any, path: str, encoding: typing.List = None) -> bool:
+    def Save(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
 
         Args:
@@ -337,7 +337,7 @@ class save:
         print("Please use save.Write instead!")
         self.Write(data=data, path=path, encoding=encoding)
 
-    def Write(self, data: any, path: str, encoding: typing.List = None) -> bool:
+    def Write(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
 
         Args:
@@ -356,7 +356,7 @@ class save:
             storage.name)
         return module.WriteData(data, path, wByte)
 
-    def Read(self, path: str, encoding: typing.List = None) -> any:
+    def Read(self, path: str, *, encoding: typing.List = None) -> any:
         """Read data from a file
 
         Args:
