@@ -57,7 +57,7 @@ DriveCredentials
 Write
 ^^^^^
 
-.. py:function:: WRite(data, path, *, encoding)
+.. py:function:: Write(data, path, *, encoding)
     :noindex:
 
     Save the specified data to a file (path) with the specified encoding
