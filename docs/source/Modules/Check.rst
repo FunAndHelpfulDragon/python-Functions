@@ -138,3 +138,32 @@ Str Check (Version 1)
     check = Check()
     result = check.getInput("Vowel: ", check.ModeEnum.str, info=("a", "e", "i", "o", "u"))
     print(result)
+
+Path Check (Version 2)
+----------------------
+
+.. py:function:: check.getInput(input, type)
+    :noindex:
+
+    The main function but with arguments for a path check.
+
+    :param input: The stuff to ask the user
+    :type input: str
+    :param type: The check to run.
+    :type type: check.ModeEnum.path
+    :param info: The list to check the value against
+    :type info: tuple | list
+    :returns: if input is in info
+    :rtype: bool | string
+
+.. code-block:: python
+
+    from PythonFunctions.Check import Check
+    check = Check()
+    result = check.getInput("Path: ", check.ModeEnum.path)
+    print(result)
+
+.. note::
+    If "" is passed though, then false will be returned.\n
+    If an invalid path is passed in, then the program will ask again.\n
+    If a valid path is passed in, the path will be returned.

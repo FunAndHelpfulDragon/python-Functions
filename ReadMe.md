@@ -17,13 +17,23 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.13
+
+#### Added
+
+- Documentation for `Check.Path`
+
+#### Updated
+
+- `Check.Path` to: return a path when valid; return false on no path; reask on invalid path.
+
 ### 1.4.12
 
-### Fixed
+#### Fixed
 
 - Issue in `Version.py` that would mean `Version 1.4.11` comes before `Version 1.4.7`
 
-### Removed
+#### Removed
 
 - Hint and Hint argumnet in `Version.py` `Compare` function.
 
