@@ -302,3 +302,5 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             print("\033[0;0H", end="")
             self.ShowHeader(text=self.__storedText)
             self.__ShowGrid()
+
+        return None

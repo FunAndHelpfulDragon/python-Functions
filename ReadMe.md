@@ -27,6 +27,10 @@ Please read [Contributing.md](Contribution.md)
 
 - `Check.Path` to: return a path when valid; return false on no path; reask on invalid path.
 
+#### Fixed
+
+- Pylint complaining about TerminalDisplay
+
 ### 1.4.12
 
 #### Fixed
