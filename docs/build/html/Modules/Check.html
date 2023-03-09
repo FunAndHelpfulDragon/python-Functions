@@ -168,15 +168,17 @@ If one or both are defined, then it will make sure the value is between that ran
 <h2>Yes No Check (Version 2)<a class="headerlink" href="#yes-no-check-version-2" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nA</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, but with arguments for a yes no check</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum.yesno</em>) – The check to run.</p></li>
-<li><p><strong>y</strong> (<em>function</em>) – The yes return function</p></li>
-<li><p><strong>n</strong> (<em>function</em>) – The no return function</p></li>
+<li><p><strong>y</strong> (<em>function</em>) – (Optional) The yes return function</p></li>
+<li><p><strong>n</strong> (<em>function</em>) – (Optional) The no return function</p></li>
+<li><p><strong>yA</strong> (<em>any</em>) – (Optional) Data to pass into the yes function</p></li>
+<li><p><strong>nA</strong> (<em>any</em>) – (Optional) Data to pass into the no function</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -210,7 +212,8 @@ If one or both are defined, then it will make sure the value is between that ran
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If y or n does not exists and that is the function that is meant to be called (e.g. call yesFunc but it doesn’t get passed)
-Then the value <cite>True</cite> or <cite>False</cite> will be returned depending on the context and input.</p>
+Then the value <cite>True</cite> or <cite>False</cite> will be returned depending on the context and input.
+<cite>yA</cite> and <cite>nA</cite> will be useless without the function <cite>y</cite> or <cite>n</cite></p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

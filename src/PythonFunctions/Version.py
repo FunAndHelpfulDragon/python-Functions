@@ -27,7 +27,7 @@ def ReadLocal():
     Returns:
         str: Module version
     """
-    return "1.4.13"
+    return "1.4.14"
 
 
 url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"

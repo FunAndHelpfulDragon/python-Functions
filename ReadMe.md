@@ -17,6 +17,12 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.14
+
+#### Updated
+
+- `Checks.yn` to include ability to pass in an argument into the function.
+
 ### 1.4.13
 
 #### Added

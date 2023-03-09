@@ -69,7 +69,7 @@ Int Check (Version 3)
 Yes No Check (Version 2)
 ------------------------
 
-.. py:function:: check.getInput(input, type, *, y, n)
+.. py:function:: check.getInput(input, type, *, y, n, yA, nA)
     :noindex:
 
     The main function, but with arguments for a yes no check
@@ -78,10 +78,14 @@ Yes No Check (Version 2)
     :type input: str
     :param type: The check to run.
     :type type: check.ModeEnum.yesno
-    :param y: The yes return function
+    :param y: (Optional) The yes return function
     :type y: function
-    :param n: The no return function
+    :param n: (Optional) The no return function
     :type n: function
+    :param yA: (Optional) Data to pass into the yes function
+    :type yA: any
+    :param nA: (Optional) Data to pass into the no function
+    :type nA: any
     :return: If yes or no got entered
     :rtype: bool
 
@@ -109,6 +113,7 @@ Yes No Check (Version 2)
 .. note::
     If y or n does not exists and that is the function that is meant to be called (e.g. call yesFunc but it doesn't get passed)
     Then the value `True` or `False` will be returned depending on the context and input.
+    `yA` and `nA` will be useless without the function `y` or `n`
 
 .. note::
     By default, it will return the result of the function (if it returns), else it will return the result of True

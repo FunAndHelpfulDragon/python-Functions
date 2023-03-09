@@ -18,9 +18,20 @@ def check(value, Message, _, **info):
     if len(value) == 0:
         return Message.clear("Invalid input! Nothing there")
 
-    if info.get("y") and value[0].lower() == "y":
-        return info.get("y")() or True
-    if info.get("n") and value[0].lower() == "n":
-        return info.get("n")() or True
+    v = value[0].lower()
+    n = info.get("n")
+    nA = info.get("nA")
+    y = info.get("y")
+    yA = info.get("yA")
 
-    return True if value[0] == "y" else False if value[0] == "n" else None
+    if v == "n":
+        if n:
+            return n(nA) if nA else n()
+        return False
+
+    if v == "y":
+        if y:
+            return y(yA) if yA else y()
+        return True
+
+    return None
