@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PythonFunctions"
-version = "1.4.14"
+version = "1.4.15"
 authors = [
     { name="Dragmine149" }
 ]

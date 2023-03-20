@@ -17,6 +17,12 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.15
+
+#### Updated
+
+- Added more checks to `Encryption.py` to make sure that `fernet` is installed to use it.
+
 ### 1.4.14
 
 #### Updated

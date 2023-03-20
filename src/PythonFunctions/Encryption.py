@@ -16,7 +16,8 @@ class Encryption:
     """The major class to encrypt and decrypt data securly"""
 
     def __init__(self) -> None:
-        self.fernet = fernet
+        if not disabled:
+            self.fernet = fernet
         self.check: bool = not disabled
         self.key = None
 
@@ -41,12 +42,16 @@ class Encryption:
         return self.key
 
     def EncryptData(self, data, passcode):
+        if disabled:
+            return "Missing Modules! Encryption Class Disabled!"
         if not isinstance(data, bytes):
             data = data.encode("utf-8")
 
         return Fernet(passcode).encrypt(data)
 
     def DecryptData(self, data, passcode):
+        if disabled:
+            return "Missing Modules! Encryption Class Disabled!"
         dta = Fernet(passcode).decrypt(data)
         if isinstance(dta, bytes):
             return dta.decode("utf-8")
