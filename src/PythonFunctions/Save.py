@@ -337,7 +337,6 @@ class save:
         print("Please use save.Write instead! Save.Save will be removed in v1.5.0")
         self.Write(data=data, path=path, encoding=encoding)
 
-
     def Write(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
 
@@ -408,7 +407,7 @@ class save:
         """
         if not isinstance(path, list):
             path = [path]
-        
+
         for i in path:
             i, storage = self.__TranslateStorage(i)
             module: SaveModules.template.SaveTemplate = self.saveModules.get(

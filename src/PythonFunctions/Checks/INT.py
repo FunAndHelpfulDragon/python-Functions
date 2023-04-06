@@ -23,8 +23,7 @@ def check(value, Message, ID, **info) -> int:
             if value < lowerRange:
                 Message.clear(
                     f"Out of range. Too low! (Lowest Value: {lowerRange})",
-                    timeS=1,
-                    colour=["red"],
+                    timeS=1
                 )
                 return None
 
@@ -32,8 +31,7 @@ def check(value, Message, ID, **info) -> int:
             if value > higherRange:
                 Message.clear(
                     f"Out of range. Too high! (Highest Value: {higherRange})",
-                    timeS=1,
-                    colour=["red"],
+                    timeS=1
                 )
                 return None
         return int(value)

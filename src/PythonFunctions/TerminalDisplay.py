@@ -204,11 +204,11 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
         try:
             v = self.chk.getInput(
                 "Please enter the number you want to select: ",
-                "INT",
+                self.chk.ModeEnum.int,
                 lower=self.__Number.low,
                 higher=self.__Number.high,
             )
-            return self.options.get(v)[0](self.options.get(v)[1:])
+            return self.options.get(v)[0](*self.options.get(v)[1:])
         except TypeError:
             Message().clear("Invalid input!", timeS=2)
             return None

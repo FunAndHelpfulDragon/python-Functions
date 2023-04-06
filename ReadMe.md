@@ -17,15 +17,23 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.17
+
+#### Fixed
+
+- Fixed issues with pylint causing random warnings
+- Fixed issues in `TerminalDisplay` causing list to break instantly
+- Fixed issue in `Checks.Int` causing some things to break (unused code)
+
 ### 1.4.16
 
-#### Updated
+#### Added
 
 - Added support for lists in `Save.RemoveFile` and `Save.RemoveFolder` (And updated related documentation)
 
 ### 1.4.15
 
-#### Updated
+#### Added
 
 - Added more checks to `Encryption.py` to make sure that `fernet` is installed to use it.
 
