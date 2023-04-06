@@ -17,6 +17,12 @@ Please read [Contributing.md](Contribution.md)
 
 ## Update Log
 
+### 1.4.16
+
+#### Updated
+
+- Added support for lists in `Save.RemoveFile` and `Save.RemoveFolder` (And updated related documentation)
+
 ### 1.4.15
 
 #### Updated

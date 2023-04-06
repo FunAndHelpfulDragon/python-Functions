@@ -400,26 +400,34 @@ class save:
         module.credentials(self.settings)
         return module.MakeFolders(path)
 
-    def RemoveFile(self, path: str):
+    def RemoveFile(self, path: typing.List[str]):
         """Remove a file at a path
 
         Args:
-            path (str): The path to remove that file
+            path (str | typing.List[str]): The path to remove that file
         """
-        path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
-        module.credentials(self.settings)
-        module.DeleteFile(path)
+        if not isinstance(path, list):
+            path = [path]
+        
+        for i in path:
+            i, storage = self.__TranslateStorage(i)
+            module: SaveModules.template.SaveTemplate = self.saveModules.get(
+                storage.name)
+            module.credentials(self.settings)
+            module.DeleteFile(i)
 
-    def RemoveFolder(self, path: str):
+    def RemoveFolder(self, path: typing.List[str]):
         """Remove a folder (and all sub stuff)
 
         Args:
             path (str): The path to remove the folder
         """
-        path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
-        module.credentials(self.settings)
-        module.DeleteFolder(path)
+        if not isinstance(path, list):
+            path = [path]
+
+        for i in path:
+            i, storage = self.__TranslateStorage(i)
+            module: SaveModules.template.SaveTemplate = self.saveModules.get(
+                storage.name)
+            module.credentials(self.settings)
+            module.DeleteFolder(i)

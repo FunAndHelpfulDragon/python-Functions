@@ -120,7 +120,7 @@ RemoveFile
     Remove path
 
     :param path: File to remove
-    :type path: str
+    :type path: str | List[str]
     :returns: Information about deletion
     :rtype: str | bool | None
 
@@ -137,7 +137,7 @@ RemoveFolder
     Remove the folder and all subfolders / paths
 
     :param path: Parent folder to remove
-    :type path: str
+    :type path: str | List[str]
     :returns: Information about deletion
     :rtype: str | bool | None
 
