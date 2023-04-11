@@ -5,12 +5,8 @@ it is on purpose as something broke on the server side (not installed modules)
 """
 
 import os
-
-from . import PythonFunctions
-
-Encryption = PythonFunctions.Encryption
-
-enc = Encryption.Encryption()
+from src.PythonFunctions.Encryption import Encryption
+enc = Encryption()
 
 
 def test_Key():

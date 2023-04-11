@@ -14,6 +14,9 @@ class Save(template.SaveTemplate):
             return f.write(data) == len(data)
 
     def ReadData(self, path: str, Encoding: bool = False) -> any:
+        if not os.path.exists(path):
+            return False
+
         if Encoding:
             with open(path, "rb") as f:
                 return f.read()
@@ -32,6 +35,12 @@ class Save(template.SaveTemplate):
     def DeleteFolder(self, path: str):
         if os.path.exists(path):
             shutil.rmtree(path)
+
+    def ListFolder(self, path: str):
+        return os.listdir(path)
+
+    def CheckIfExists(self, path: str):
+        return os.path.exists(path)
 
 
 def load():

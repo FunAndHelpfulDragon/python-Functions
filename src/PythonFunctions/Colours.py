@@ -1,9 +1,5 @@
-# pylint: disable=W0611
 from dataclasses import dataclass
-from colorama import Fore, Back, Style
 from colorama.ansi import AnsiCodes
-# Disabled as imported from other module to make it all fit together
-# pylint: enable=W0611
 
 
 @dataclass

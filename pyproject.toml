@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PythonFunctions"
-version = "1.4.17"
+version = "1.5"
 authors = [
     { name="Dragmine149" }
 ]
@@ -59,3 +59,4 @@ all = [
 [project.urls]
 "Homepage" = "https://github.com/FunAndHelpfulDragon/python-Functions/"
 "Bug Tracker" = "https://github.com/FunAndHelpfulDragon/python-Functions/issues"
+"Documentation" = "https://python-functions.readthedocs.io/en/latest"

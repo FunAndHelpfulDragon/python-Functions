@@ -229,8 +229,12 @@ class save:
         return result, rBytes, None
 
     def __pickeCoder(self, result, decode: bool, *, rBytes: bool = None):
-        result = pickle.dumps(result) if not decode else pickle.loads(result)
-        return result, True, rBytes
+        try:
+            result = pickle.dumps(result) if not decode else pickle.loads(result)
+            return result, True, rBytes
+        except EOFError as e:
+            PrintTraceback()
+            return -1, False, None
 
     def __cryptoCoder(self, result, decode: bool, *, rBytes: bool = None):
         Passcode = self.settings.get("Passcode")
@@ -304,6 +308,8 @@ class save:
         for code in encoding:
             result, rBytes, _ = _LOOKUP.get(code.value)(
                 result, decode, rBytes=rBytes)
+            if result == -1:
+                return False, None
 
         return result, rBytes
 
@@ -379,6 +385,10 @@ class save:
                 rBytes = True
 
         data = module.ReadData(path, rBytes)
+        if isinstance(data, bool):
+            # Skip straight to return, don't try and decode it.
+            return data
+
         data, _ = self.__CodeData(data, reversed(encoding), decode=True)
 
         return data
@@ -430,3 +440,14 @@ class save:
                 storage.name)
             module.credentials(self.settings)
             module.DeleteFolder(i)
+
+    def ListFolder(self, path: str):
+        """List all files that are in a folder
+
+        Args:
+            path (str): The path to list files
+        """
+        path, storage = self.__TranslateStorage(path)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module.credentials(self.settings)
+        return module.ListFolder(path)

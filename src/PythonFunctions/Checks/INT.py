@@ -36,5 +36,5 @@ def check(value, Message, ID, **info) -> int:
                 return None
         return int(value)
 
-    Message.clear("Invalid input! Not a `real` number", timeS=1, colour="light red")
+    Message.clear("Invalid input! Not a `real` number", timeS=1)
     return None

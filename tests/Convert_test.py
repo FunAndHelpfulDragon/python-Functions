@@ -5,14 +5,9 @@ import random
 import string
 
 import pytest
-
-from . import PythonFunctions
-
-Convert = PythonFunctions.Convert
-
+from src.PythonFunctions import Convert
 
 letters = string.ascii_uppercase
-# BAD WAY BUT FOR TESTING PURPOSE
 
 
 @pytest.mark.repeat(3)

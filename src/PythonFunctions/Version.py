@@ -11,23 +11,8 @@ except ModuleNotFoundError:
     )
     GlobalRead = False
 
-
-def CanReadGlobal():
-    """Get if requests is installed
-
-    Returns:
-        bool: Requests is installed
-    """
-    return GlobalRead
-
-
 def ReadLocal():
-    """Get the module version
-
-    Returns:
-        str: Module version
-    """
-    return "1.4.17"
+    return "1.5"
 
 
 url = "https://raw.githubusercontent.com/FunAndHelpfulDragon/python-Functions/main/Version.txt"

@@ -2,7 +2,7 @@ import datetime
 import inspect
 import os
 
-from .Colours import Style
+from colorama import Style
 
 
 def LINKCODE(link: str, text: str = None):

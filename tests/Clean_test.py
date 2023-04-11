@@ -2,12 +2,8 @@
 """
 
 import os
-
-from . import PythonFunctions
-
-Clean = PythonFunctions.CleanFolderData
-
-cln = Clean.Clean()
+from src.PythonFunctions.CleanFolderData import Clean
+cln = Clean()
 
 
 def test_Clean():

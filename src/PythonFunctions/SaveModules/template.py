@@ -85,6 +85,31 @@ class SaveTemplate:
             "The file system you are trying to use does not have support for `DeleteFolder`"
         )
 
+    def ListFolder(self, path: str):
+        """List all files in a folder
+
+        Args:
+            path (str): The folder to list from
+
+        Raises:
+            NotImplementedError: This hasn't been made for this file system yet
+        """
+        raise NotImplementedError(
+            "The file system you are trying to use does not have support for `ListFolder`"
+        )
+
+    def CheckIfExists(self, path: str):
+        """Checks if a file exists
+
+        Args:
+            path (str): The file to check
+
+        Raises:
+            NotImplementedError: This hasn't been made for this file system yet
+        """
+        raise NotImplementedError(
+            "The file system you are trying to use does not have support for `ListFolder`"
+        )
 
 def load():
     return SaveTemplate()

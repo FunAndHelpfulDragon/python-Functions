@@ -1,11 +1,7 @@
 """Tests functions in the Board module
 """
 import random
-
-from . import PythonFunctions
-
-Board = PythonFunctions.Board
-
+from src.PythonFunctions import Board
 
 def rp_test_Size(x: int, y: int):
     """Test that the size input is the correct for size output"""

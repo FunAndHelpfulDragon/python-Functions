@@ -1,5 +1,4 @@
-from . import search
-
+from src.PythonFunctions.Searching import search
 hidden = [".venv", "*.pyc", "docs", "dist", "typings", ".git", ".github"]
 srch = search()
 

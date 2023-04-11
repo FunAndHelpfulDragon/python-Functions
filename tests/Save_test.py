@@ -3,11 +3,8 @@ import shutil
 
 import pytest
 
-from . import PythonFunctions
-
-Save = PythonFunctions.Save
-
-sv = Save.save()
+from src.PythonFunctions.Save import save
+sv = save()
 
 csvData = {
     "header": ["name", "test"],

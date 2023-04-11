@@ -5,10 +5,7 @@ import random
 import string
 
 import pytest
-
-from . import PythonFunctions
-
-IsDigit = PythonFunctions.IsDigit.IsDigit
+from src.PythonFunctions.IsDigit import IsDigit
 
 
 @pytest.mark.repeat(10)

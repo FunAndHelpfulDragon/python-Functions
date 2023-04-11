@@ -77,7 +77,7 @@ More information in documentation"""
                     sys.exit(f"{Cpath} has not been found!")
             return self.__LoadGoogle()
 
-    def __ListDirectory(self, folder=".", name=""):
+    def ListFolder(self, path=".", name=""):
         """Loop through the path to get all the items
 
         Args:
@@ -95,8 +95,8 @@ More information in documentation"""
 
         query = "trashed = false and 'me' in owners"
 
-        if folder != "":
-            query += f" and '{folder}' in parents"
+        if path != "":
+            query += f" and '{path}' in parents"
         if name != "":
             query += f" and name contains '{name}'"
 
@@ -141,7 +141,7 @@ More information in documentation"""
             )
             return False
 
-        items = self.__ListDirectory(folder, name)
+        items = self.ListFolder(folder, name)
         if len(items) == 0:
             return False, None
         return True, items[0]
@@ -289,6 +289,10 @@ More information in documentation"""
         except HttpError:
             return "Not found"
 
+    def CheckIfExists(self, path: str):
+        pathInfo = os.path.split(path)
+        exists, _ = self.__checkIfExists(pathInfo[0], pathInfo[1])
+        return exists
 
 def load():
     return save()

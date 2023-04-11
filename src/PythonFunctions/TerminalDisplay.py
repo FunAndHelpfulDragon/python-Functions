@@ -1,11 +1,12 @@
-import os
+import shutil
 import time
 import typing
 
 from dataclasses import dataclass
-from . import Colours
+from colorama import Fore, Back
 from .Check import Check
 from .Message import Message
+from .PrintTraceback import PrintTraceback
 
 canRead = True
 try:
@@ -58,7 +59,7 @@ class Display:
             if isinstance(options.get(option), tuple):
                 newOptions = (
                     (options.get(option)[0],)
-                    + (options.get(option)[1].replace(" ", "_"),)
+                    + (options.get(option)[1].replace(" ", "`-_-`"),)
                     + options.get(option)[2:]
                 )
 
@@ -80,7 +81,7 @@ class Display:
         if index is None:
             index = len(self.options)
 
-        newOptions = (option[0],) + (option[1].replace(" ", "_"),) + option[2:]
+        newOptions = (option[0],) + (option[1].replace(" ", "`-_-`"),) + option[2:]
         self.options.update({index: newOptions})
 
     def RemoveOption(self, index: int):
@@ -120,7 +121,7 @@ class Display:
             pace: (int, optional): Words per second to show using typewritter effect.Defaults to 100
         """
         print(
-            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}"
+            f"{Fore.GREEN}{'-' * shutil.get_terminal_size().columns}{Fore.RESET}"
         )
 
         if typewriter:
@@ -132,7 +133,7 @@ class Display:
             print(text)
 
         print(
-            f"{Colours.Fore.GREEN}{'-' * os.get_terminal_size().columns}{Colours.Fore.RESET}"
+            f"{Fore.GREEN}{'-' * shutil.get_terminal_size().columns}{Fore.RESET}"
         )
 
         self.__storedText = text
@@ -142,7 +143,7 @@ class Display:
         self.gridData = []
         row = []
 
-        length, consoleLen = 0, os.get_terminal_size().columns  # Size limitations
+        length, consoleLen = 0, shutil.get_terminal_size().columns  # Size limitations
         for itemIndex in self.options:
             item = self.options.get(itemIndex)[1]
 
@@ -164,12 +165,12 @@ class Display:
             for xIndex, xValue in enumerate(yValue):
                 # Complicated string, but it calculates the square that should have the `> ` pointer
                 v = (
-                    f"{Colours.Back.BLUE}>{Colours.Back.RESET} {xValue}"
+                    f"{Back.BLUE}>{Back.RESET} {xValue}"
                     if self.cursorPosition[0] == xIndex
                     and self.cursorPosition[1] == yIndex
                     else xValue
                 )
-                v = v.replace("_", " ")
+                v = v.replace("`-_-`", " ")
 
                 print(v, end="")
             print()
@@ -190,7 +191,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
                 negList.append(opt)
                 continue
 
-            print(f"{opt:5}:{optionList.get(opt)[1]}")
+            print(f"{opt:5}: {optionList.get(opt)[1].replace('`-_-`', ' ')}")
             self.__Number.high = opt
 
         print()
@@ -198,7 +199,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
         self.__Number.low = negList[0]
         negList = reversed(negList)
         for item in negList:
-            print(f"{item:5}:{optionList.get(item)[1]}")
+            print(f"{item:5}: {optionList.get(item)[1].replace('`-_-`', ' ')}")
 
     def __GetListInput(self):
         try:
@@ -211,6 +212,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             return self.options.get(v)[0](*self.options.get(v)[1:])
         except TypeError:
             Message().clear("Invalid input!", timeS=2)
+            PrintTraceback()
             return None
 
     def ShowOptions(self, *, useList: bool = False):
@@ -248,41 +250,31 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
 
         return None
 
+    def __MoveCursorInformation(self, keyPress: str):
+        if keyPress in ("W", "w", key.UP):
+            return (0, -1)
+        if keyPress in ("A", "a", key.LEFT):
+            return (-1, 0)
+        if keyPress in ("S", "s", key.DOWN):
+            return (0, 1)
+        if keyPress in ("D", "d", key.RIGHT):
+            return (1, 0)
+        return (0, 0)
+
+    # Modified from chat gpt 3.5 rewrite
+    def __MoveCursorIndex(self, cPos: typing.List, keyPress: str):
+        # Get movement, if invalid just return 0,0
+        cursorX, cursorY = self.__MoveCursorInformation(keyPress)
+        x = max(0, min(cPos[0] + cursorX, len(self.gridData[cPos[1]]) - 1))
+        y = max(0, min(cPos[1] + cursorY, len(self.gridData) - 1))
+        return [x, y]
+
     def __MoveCursor(self):
         """Moves the cursor on the screen"""
         chosen = False
         while not chosen:
-            k = readkey().lower()
-            if k in ("w", key.UP):
-                self.cursorPosition[1] -= 1
-                # Lock
-                if self.cursorPosition[1] < 0:
-                    self.cursorPosition[1] = 0
-
-            elif k in ("a", key.LEFT):
-                self.cursorPosition[0] -= 1
-                # Lock
-                if self.cursorPosition[0] < 0:
-                    self.cursorPosition[0] = 0
-
-            elif k in ("s", key.DOWN):
-                self.cursorPosition[1] += 1
-                # lock
-                if self.cursorPosition[1] > len(self.gridData) - 1:
-                    self.cursorPosition[1] = len(self.gridData) - 1
-
-            elif k in ("d", key.RIGHT):
-                self.cursorPosition[0] += 1
-                # Lock
-                if (
-                    self.cursorPosition[0]
-                    > len(self.gridData[self.cursorPosition[1]]) - 1
-                ):
-                    self.cursorPosition[0] = (
-                        len(self.gridData[self.cursorPosition[1]]) - 1
-                    )
-
-            elif k == key.ENTER:
+            k = readkey()
+            if k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
                     self.gridData[self.cursorPosition[1]
@@ -294,9 +286,11 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
 
                 return itemInfo[0](itemInfo[1])
 
-            elif k == "q":
+            if k in ("Q", "q"):
                 chosen = True
                 return self.outMsg
+            
+            self.cursorPosition = self.__MoveCursorIndex(self.cursorPosition, k)
 
             # moves the cursor, Makes it look clearer
             print("\033[0;0H", end="")

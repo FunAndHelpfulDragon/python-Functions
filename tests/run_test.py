@@ -3,52 +3,50 @@
 import time
 import pytest
 
-from . import PythonFunctions
-
-run = PythonFunctions.Run
-IsDigit = PythonFunctions.IsDigit.IsDigit
+from src.PythonFunctions import Run
+from src.PythonFunctions.IsDigit import IsDigit
 
 
 @pytest.mark.repeat(5)
 def test_mark():
     """Marking..."""
-    index = run.Mark()
+    index = Run.Mark()
     assert index > 0
-    assert len(run.markers) == index
+    assert len(Run.markers) == index
 
 
 def test_get_mark():
     """Reading..."""
-    if len(run.markers) == 0:
-        run.Mark()
+    if len(Run.markers) == 0:
+        Run.Mark()
 
     try:
-        run.GetMarkTime(len(run.markers))
+        Run.GetMarkTime(len(Run.markers))
     except IndexError:
         assert True
 
-    assert IsDigit(run.GetMarkTime(0))
+    assert IsDigit(Run.GetMarkTime(0))
 
 
 def test_compare():
     "Comparing..."
-    if len(run.markers) == 0:
-        run.Mark()
+    if len(Run.markers) == 0:
+        Run.Mark()
         time.sleep(0.05)
-        run.Mark()
+        Run.Mark()
 
-    i1 = run.GetMarkTime(0)
-    i2 = run.GetMarkTime(1)
+    i1 = Run.GetMarkTime(0)
+    i2 = Run.GetMarkTime(1)
 
-    assert i2 - i1 == run.CompareIndex(0, 1)
+    assert i2 - i1 == Run.CompareMarkers(0, 1)
 
 
 def test_wrapper():
-    @run.Timer
+    @Run.Timer
     def delay():
         time.sleep(1)
 
-    @run.Timer
+    @Run.Timer
     def delay2(a, b):
         time.sleep(1)
         return a, b

@@ -1,9 +1,8 @@
 import sys
 import os
 from colorama import Fore, Style
-from . import PythonFunctions
-msg = PythonFunctions.Message.Message
-
+from src.PythonFunctions.Message import Message
+msg = Message()
 
 def test_writeSetup():
     try:

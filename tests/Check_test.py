@@ -5,10 +5,8 @@ import random
 import sys
 from io import StringIO
 
-from . import PythonFunctions
-
-Check = PythonFunctions.Check
-chk = Check.Check()
+from src.PythonFunctions.Check import Check
+chk = Check()
 
 
 def int_check():

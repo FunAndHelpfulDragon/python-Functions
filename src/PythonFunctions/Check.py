@@ -49,14 +49,15 @@ class Check:
 
         raise NotImplementedError(f"Mode: {mode} not implemented")
 
-    def getInput(self, msg: str, mode: ModeEnum, callback=None, **info):
+    def getInput(self, msg: str, mode: ModeEnum, callback=None, rCheck: bool = False, **info):
         """Translate the user input, through the check and returns
 
         Args:
             msg (str): The message to display to the user
             mode (ModeEnum): The check to run
-            info (Multipile): Other arguments for some checks
             callback (function): Callback after result has been entered
+            rCheck (bool): Return the input value as well as the result
+            info (Multipile): Other arguments for some checks
 
         Returns:
             _type_: The result of the check
@@ -84,7 +85,8 @@ class Check:
 
             if callable(callback):
                 return callback(result)
-            return result
+            return result if not rCheck else (result, check)
+
 
         # If check is none, just send it back i suppose.
         return check

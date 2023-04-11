@@ -1,8 +1,5 @@
-from . import PythonFunctions
-
-TD = PythonFunctions.TerminalDisplay.Display
-
-dsp = TD()
+from src.PythonFunctions.TerminalDisplay import Display
+dsp = Display()
 
 
 def callback(value):

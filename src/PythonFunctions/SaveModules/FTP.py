@@ -117,6 +117,13 @@ class save(template.SaveTemplate):
 
         return self.ftp.rmd(path)
 
+    def ListFolder(self, path: str):
+        self.ftp.cwd(path)
+        return self.ftp.nlst()
+
+    def CheckIfExists(self, path: str):
+        directory, file = os.path.split(path)
+        return file in self.ListFolder(directory)
 
 def load():
     return save()

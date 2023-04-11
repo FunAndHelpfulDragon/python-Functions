@@ -52,6 +52,18 @@ class save(template.SaveTemplate):
 
         return self.moduleClass.MakeFolders(path)
 
+    def ListFolder(self, path: str):
+        if self.moduleClass is None:
+            self.getFileSystem()
+
+        return self.moduleClass.ListFolder(path)
+
+    def CheckIfExists(self, path: str):
+        if self.moduleClass is None:
+            self.getFileSystem()
+            
+        return self.moduleClass.CheckIfExists(path)
+
 
 def load():
     return save()
