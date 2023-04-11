@@ -232,7 +232,7 @@ class save:
         try:
             result = pickle.dumps(result) if not decode else pickle.loads(result)
             return result, True, rBytes
-        except EOFError as e:
+        except EOFError:
             PrintTraceback()
             return -1, False, None
 

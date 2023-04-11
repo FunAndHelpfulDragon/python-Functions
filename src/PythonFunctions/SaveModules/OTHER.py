@@ -61,7 +61,7 @@ class save(template.SaveTemplate):
     def CheckIfExists(self, path: str):
         if self.moduleClass is None:
             self.getFileSystem()
-            
+
         return self.moduleClass.CheckIfExists(path)
 
 

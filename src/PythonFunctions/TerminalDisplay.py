@@ -289,7 +289,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             if k in ("Q", "q"):
                 chosen = True
                 return self.outMsg
-            
+
             self.cursorPosition = self.__MoveCursorIndex(self.cursorPosition, k)
 
             # moves the cursor, Makes it look clearer

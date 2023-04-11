@@ -11,6 +11,10 @@ except ModuleNotFoundError:
     )
     GlobalRead = False
 
+
+def CanReadGlobal():
+    return GlobalRead
+
 def ReadLocal():
     return "1.5"
 
