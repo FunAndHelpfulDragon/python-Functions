@@ -5,7 +5,8 @@ Here is where all of the previous old updates are. One day i might add links to 
 Only current version (Y.Z.X) will be shown in the main [Read Me](../ReadMe.md)
 
 - [Current Version](../ReadMe.md)
-- [Version 1.4.X](../ReadMe.md)
+- [Version 1.5.X](../ReadMe.md)
+- [Version 1.4.X](v1.4.md)
 - [Version 1.3.X](v1.3.md)
 - [Version 1.2.X](v1.2.md)
 - [Version 1.1.X](v1.1.md)
