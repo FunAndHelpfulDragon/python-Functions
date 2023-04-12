@@ -28,6 +28,7 @@ Please read [Contributing.md](Contribution.md)
 - Added `CheckIfExists` to `Save`
 - Added `rCheck` to `Check` to return the check value as well (defaults to false)
 - Added `true`, `false` to `__init__.py` 
+- Added `requireResult` to `TerminalDisplay.ShowOptions`
 
 #### Updated
 

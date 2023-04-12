@@ -215,11 +215,12 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             PrintTraceback()
             return None
 
-    def ShowOptions(self, *, useList: bool = False):
+    def ShowOptions(self, *, useList: bool = False, requireResult: bool = True):
         """Returns the item at that index
 
         Args:
-            list (bool, optional): To show in a list or grid view. Defaults to False.
+            useList (bool, optional): To show in a list or grid view. Defaults to False.
+            requireResult (bool, optional): Require an input to be gathered. Defaults to True.
 
         Returns:
             _type_: The item returned
@@ -228,10 +229,12 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             self.cursorPosition = [0, 0]
             self.__GenerateGridData()
             self.__ShowGrid()
-            return self.__MoveCursor()
+            if requireResult:
+                return self.__MoveCursor()
 
         self.__ShowList()
-        return self.__GetListInput()
+        if requireResult:
+            return self.__GetListInput()
 
     def __GetItemInfo(self, item: str):
         """Trys to find item in the list.
