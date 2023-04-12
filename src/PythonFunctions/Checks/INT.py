@@ -1,6 +1,11 @@
 """Checks if a value is within a certain range
 """
 
+def Clear(Message, msg: str, clear: bool):
+    if clear:
+        return Message.clear(msg, timeS=1)
+    return Message.warn(msg, timeS=1)
+
 
 def check(value, Message, ID, **info) -> int:
     """Checks if a value is within a certain range
@@ -15,6 +20,7 @@ def check(value, Message, ID, **info) -> int:
     """
     higherRange = info.get("higher")
     lowerRange = info.get("lower")
+    clear = info.get("clear")
 
     if value == '':
         return False
@@ -24,19 +30,11 @@ def check(value, Message, ID, **info) -> int:
         value = float(value)
         if lowerRange is not None:
             if value < lowerRange:
-                Message.clear(
-                    f"Out of range. Too low! (Lowest Value: {lowerRange})",
-                    timeS=1
-                )
-                return None
+                return Clear(Message, f"Out of range. Too low! (Lowest Value: {lowerRange})", clear)
 
         if higherRange is not None:
             if value > higherRange:
-                Message.clear(
-                    f"Out of range. Too high! (Highest Value: {higherRange})",
-                    timeS=1
-                )
-                return None
+                return Clear(Message, f"Out of range. Too high! (Highest Value: {higherRange})", clear)
         return int(value)
 
     Message.clear("Invalid input! Not a `real` number", timeS=1)

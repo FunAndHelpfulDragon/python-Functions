@@ -23,6 +23,7 @@ Contributing: [Contribute](Contribution.md)
 - Added `rCheck` to `Check` to return the check value as well (defaults to false)
 - Added `true`, `false` to `__init__.py` 
 - Added `requireResult` to `TerminalDisplay.ShowOptions`
+- Added `Clear` option to `checks.INT`
 
 #### Updated
 
