@@ -30,12 +30,13 @@ def check(value, Message, ID, **info) -> int:
         value = float(value)
         if lowerRange is not None:
             if value < lowerRange:
-                return Clear(Message, f"Out of range. Too low! (Lowest Value: {lowerRange})", clear)
+                return Clear(Message,
+                             f"Out of range. Too low! (Lowest Value: {lowerRange})", clear)
 
         if higherRange is not None:
             if value > higherRange:
-                return Clear(Message, f"Out of range. Too high! (Highest Value: {higherRange})", clear)
+                return Clear(Message,
+                             f"Out of range. Too high! (Highest Value: {higherRange})", clear)
         return int(value)
 
-    Message.clear("Invalid input! Not a `real` number", timeS=1)
-    return None
+    return Clear(Message, "Invalid input! Not a `real` number", clear)
