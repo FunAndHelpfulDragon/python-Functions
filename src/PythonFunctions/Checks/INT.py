@@ -16,6 +16,9 @@ def check(value, Message, ID, **info) -> int:
     higherRange = info.get("higher")
     lowerRange = info.get("lower")
 
+    if value == '':
+        return False
+
     # is digit check
     if ID.IsDigit(value):
         value = float(value)

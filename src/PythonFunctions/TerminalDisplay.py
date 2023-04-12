@@ -235,6 +235,8 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
         self.__ShowList()
         if requireResult:
             return self.__GetListInput()
+        
+        return None
 
     def __GetItemInfo(self, item: str):
         """Trys to find item in the list.
