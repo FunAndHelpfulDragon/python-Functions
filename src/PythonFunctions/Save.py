@@ -331,6 +331,9 @@ class save:
         Returns:
             bool: Whever it saves correctly or not
         """
+        if encoding is None:
+            encoding = self.encoding.NONE
+
         # Convert to list to avoid later issues
         if not isinstance(encoding, typing.List):
             encoding = [encoding]
@@ -348,6 +351,9 @@ class save:
         Returns:
             any: The data in the file
         """
+        if encoding is None:
+            encoding = self.encoding.NONE
+
         # Convert to list to avoid later issues
         if not isinstance(encoding, typing.List):
             encoding = [encoding]
