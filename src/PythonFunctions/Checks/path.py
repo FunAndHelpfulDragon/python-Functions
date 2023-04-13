@@ -1,4 +1,4 @@
-from src.PythonFunctions.Save import save
+from PythonFunctions.Save import save
 
 def check(value, **___):
     return save().CheckIfExists(value)

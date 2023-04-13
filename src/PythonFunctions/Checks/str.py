@@ -1,4 +1,4 @@
-from src.PythonFunctions.Message import Message
+from PythonFunctions.Message import Message
 
 def check(value, **info):
     value = str(value)

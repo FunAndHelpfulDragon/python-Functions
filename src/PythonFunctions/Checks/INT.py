@@ -1,7 +1,7 @@
 """Checks if a value is within a certain range
 """
-from src.PythonFunctions.IsDigit import IsDigit
-from src.PythonFunctions.Message import Message
+from PythonFunctions.IsDigit import IsDigit
+from PythonFunctions.Message import Message
 
 def Clear(msg: str, clear: bool):
     if clear:
