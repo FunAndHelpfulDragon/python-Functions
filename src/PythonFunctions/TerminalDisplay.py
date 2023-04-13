@@ -187,7 +187,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
 
         negList = []
         for opt in optionList:
-            if opt < 0:
+            if opt <= 0:
                 negList.append(opt)
                 continue
 
@@ -196,10 +196,11 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
 
         print()
 
-        self.__Number.low = negList[0]
-        negList = reversed(negList)
-        for item in negList:
-            print(f"{item:5}: {optionList.get(item)[1].replace('`-_-`', ' ')}")
+        if len(negList) > 0:
+            self.__Number.low = negList[0]
+            negList = reversed(negList)
+            for item in negList:
+                print(f"{item:5}: {optionList.get(item)[1].replace('`-_-`', ' ')}")
 
     def __GetListInput(self):
         try:

@@ -44,5 +44,6 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - Tests caused by `Run.py` rework
 - issue with `TerminalDisplay.MoveCursor` not taking in arrow keys
 - `Checks.INT` not being able to stop on an empty input.
+- Issue in `TerminalDisplay` when no negative options in list mode
 
 To view all updates, Please view [Updates](Updates/ReadMe.md)
