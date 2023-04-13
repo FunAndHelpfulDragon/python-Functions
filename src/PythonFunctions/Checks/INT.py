@@ -1,13 +1,15 @@
 """Checks if a value is within a certain range
 """
+from src.PythonFunctions.IsDigit import IsDigit
+from src.PythonFunctions.Message import Message
 
-def Clear(Message, msg: str, clear: bool):
+def Clear(msg: str, clear: bool):
     if clear:
         return Message.clear(msg, timeS=1)
     return Message.warn(msg, timeS=1)
 
 
-def check(value, Message, ID, **info) -> int:
+def check(value, **info) -> int:
     """Checks if a value is within a certain range
 
     Args:
@@ -26,17 +28,15 @@ def check(value, Message, ID, **info) -> int:
         return False
 
     # is digit check
-    if ID.IsDigit(value):
+    if IsDigit(value):
         value = float(value)
         if lowerRange is not None:
             if value < lowerRange:
-                return Clear(Message,
-                             f"Out of range. Too low! (Lowest Value: {lowerRange})", clear)
+                return Clear(f"Out of range. Too low! (Lowest Value: {lowerRange})", clear)
 
         if higherRange is not None:
             if value > higherRange:
-                return Clear(Message,
-                             f"Out of range. Too high! (Highest Value: {higherRange})", clear)
+                return Clear(f"Out of range. Too high! (Highest Value: {higherRange})", clear)
         return int(value)
 
-    return Clear(Message, "Invalid input! Not a `real` number", clear)
+    return Clear("Invalid input! Not a `real` number", clear)

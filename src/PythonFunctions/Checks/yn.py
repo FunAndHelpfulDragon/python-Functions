@@ -5,9 +5,10 @@ Arguments:
 ----------
 None
 """
+from src.PythonFunctions.Message import Message
 
 
-def check(value, Message, _, **info):
+def check(value, **info):
     """
     If value == `y` then return True
     if value == `n` then return False

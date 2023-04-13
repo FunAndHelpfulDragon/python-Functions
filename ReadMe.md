@@ -31,6 +31,9 @@ Contributing: [Contribute](Contribution.md)
 - Updated tests to not rely on the `__init__.py` file. (this is going to break something now isn't it?)
 - Removed `colorama` from `colours`
 - (with help of gpt3.5) reworked `TerminalDisplay.MoveCursor`.
+- Saved code in `Save.py` by removing a ton of duplicate code used when trying to call the module function
+- Moved imports for `Check` into their represented file instead of passing them in.
+- Updated `.pylintrc` to removed more errors messages + codes (Look at the file if you are intrested)
 
 #### Fixed
 

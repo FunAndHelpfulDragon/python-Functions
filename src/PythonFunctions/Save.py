@@ -313,35 +313,12 @@ class save:
 
         return result, rBytes
 
-    def __GetFileInformation(
-        self, path: str, encoding: typing.List = None
-    ) -> typing.Tuple[str, Storage, typing.List]:
-        if encoding is None:
-            encoding = [self.encoding.NONE]
-
-        if not isinstance(encoding, typing.List):
-            encoding = [encoding]
-
+    def GetModule(self, path: str) -> SaveModules.template.SaveTemplate:
         path, storage = self.__TranslateStorage(path)
-        self.saveModules.get(self.storage.FTP.name).credentials(self.settings)
 
-        self.MakeFolders(os.path.dirname(path), storage=storage)
-
-        return path, storage, encoding
-
-    def Save(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
-        """Save data to the designated file system.
-
-        Args:
-            data (any): The data to save
-            path (str): The path to save to (Read documentation for other systems)
-            encoding (typing.List, optional): The encoding to save with. Defaults to None.
-
-        Returns:
-            bool: Whever it saves correctly or not
-        """
-        print("Please use save.Write instead! Save.Save will be removed in v1.5.0")
-        self.Write(data=data, path=path, encoding=encoding)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module.credentials(self.settings)
+        return module
 
     def Write(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
@@ -354,13 +331,12 @@ class save:
         Returns:
             bool: Whever it saves correctly or not
         """
-        path, storage, encoding = self.__GetFileInformation(path, encoding)
-
+        # Convert to list to avoid later issues
+        if not isinstance(encoding, typing.List):
+            encoding = [encoding]
+        
         data, wByte = self.__CodeData(data, encoding)
-
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
-        return module.WriteData(data, path, wByte)
+        return self.GetModule(path).WriteData(data, path, wByte)
 
     def Read(self, path: str, *, encoding: typing.List = None) -> any:
         """Read data from a file
@@ -372,19 +348,17 @@ class save:
         Returns:
             any: The data in the file
         """
-        path, storage, encoding = self.__GetFileInformation(path, encoding)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
-
+        # Convert to list to avoid later issues
+        if not isinstance(encoding, typing.List):
+            encoding = [encoding]
+        
         rBytes = False
         for item in encoding:
-            if item == self.encoding.BINARY:
+            if item in (self.encoding.BINARY, self.encoding.CRYPTOGRAPHY):
                 rBytes = True
+                break
 
-            if item == self.encoding.CRYPTOGRAPHY:
-                rBytes = True
-
-        data = module.ReadData(path, rBytes)
+        data = self.GetModule(path).ReadData(path, rBytes)
         if isinstance(data, bool):
             # Skip straight to return, don't try and decode it.
             return data
@@ -393,21 +367,14 @@ class save:
 
         return data
 
-    def MakeFolders(self, path: str, **data):
+    def MakeFolders(self, path: str):
         """Make X folders at the path if they do not exist already.
         Automatic if folders do not exist already
 
         Args:
             path (str): The path to make folders
         """
-        storage = data.get("storage")
-        if storage is None:
-            path, storage = self.__TranslateStorage(path)
-
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
-        module.credentials(self.settings)
-        return module.MakeFolders(path)
+        return self.GetModule(path).MakeFolders(path)
 
     def RemoveFile(self, path: typing.List[str]):
         """Remove a file at a path
@@ -419,11 +386,7 @@ class save:
             path = [path]
 
         for i in path:
-            i, storage = self.__TranslateStorage(i)
-            module: SaveModules.template.SaveTemplate = self.saveModules.get(
-                storage.name)
-            module.credentials(self.settings)
-            module.DeleteFile(i)
+            self.GetModule(i).DeleteFile(i)
 
     def RemoveFolder(self, path: typing.List[str]):
         """Remove a folder (and all sub stuff)
@@ -435,11 +398,7 @@ class save:
             path = [path]
 
         for i in path:
-            i, storage = self.__TranslateStorage(i)
-            module: SaveModules.template.SaveTemplate = self.saveModules.get(
-                storage.name)
-            module.credentials(self.settings)
-            module.DeleteFolder(i)
+            self.GetModule(i).DeleteFolder(i)
 
     def ListFolder(self, path: str):
         """List all files that are in a folder
@@ -447,7 +406,12 @@ class save:
         Args:
             path (str): The path to list files
         """
-        path, storage = self.__TranslateStorage(path)
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
-        module.credentials(self.settings)
-        return module.ListFolder(path)
+        return self.GetModule(path).ListFolder(path)
+
+    def CheckIfExists(self, path: str):
+        """Checks if a path exists
+
+        Args:
+            path (str): The path to check
+        """
+        return self.GetModule(path).CheckIfExists(path)

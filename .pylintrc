@@ -2,6 +2,36 @@
 disable=C0114,C0115, C0116
 ignore=docs
 
+[MESSAGES CONTROL]
+# Mainly gotten from here, which i agree with: https://stackoverflow.com/questions/52123470/how-do-i-disable-pylint-unused-import-error-messages-in-vs-code]
+# Disabled messages
+#    Pointless
+#       W0142 = *args and **kwargs support
+#       W0403 = Relative imports
+#       W0613 = Unused argument
+#       W0232 = Class has no __init__ method
+#       R0903 = Too few public methods
+#       R0913 = Too many arguments
+#       C0103 = Invalid name
+#       R0914 = Too many local variables
+#       C0304 = Final newline missing
+#
+#    PyLint's module importation is unreliable
+#       F0401 = Unable to import module
+#       W0402 = Uses of a deprecated module
+#       E1101 = Module x has no y member
+#
+#    Already an error when wildcard imports are used
+#       W0614 = Unused import from wildcard
+#
+#    Stricter messages that can be disabled until everything else has been fixed
+#       C0111 = Missing docstring
+#
+#    Naming style should be up to the user. We should be able to write how we want.
+#    
+
+disable=W0142,W0403,W0613,W0232,R0903,W0614,C0111,R0913,C0103,F0401,W0402,R0914
+
 [MAIN]
 
 # Analyse import fallback blocks. This can be used to support both Python 2 and

@@ -1,9 +1,4 @@
-import os
+from src.PythonFunctions.Save import save
 
-
-def check(value, _, __, **___):
-    if os.path.exists(value):
-        return value
-    if value == "":
-        return False
-    return None
+def check(value, **___):
+    return save().CheckIfExists(value)

@@ -4,7 +4,6 @@ import os
 from enum import Enum
 
 from . import Checks
-from . import IsDigit as ID
 from .CleanFolderData import Clean
 from .Message import Message
 
@@ -45,7 +44,7 @@ class Check:
             if external[:-3].lower() == mode.lower():
                 module = importlib.import_module(
                     f"{Checks.__package__}.{mode}")
-                return module.check(data, Message, ID, **info)
+                return module.check(data, **info)
 
         raise NotImplementedError(f"Mode: {mode} not implemented")
 
