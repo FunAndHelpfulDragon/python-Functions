@@ -4,8 +4,23 @@ import os
 
 from colorama import Style
 
+BROKENSHELL = ('/bin/zsh')
+SHELL = os.environ.get('SHELL')
 
-def LINKCODE(link: str, text: str = None):
+
+def LINKCODE(link: str, text: str = None) -> str:
+    """Returns the text as a clickable link
+
+    Args:
+        link (str): The link to send the user to on click 
+        text (str, optional): The text to mask the linke. Defaults to None.
+
+    Returns:
+        str: The clickable text
+    """
+    if SHELL in BROKENSHELL:
+        return f'{text} ({link})'
+
     if text is None:
         text = link
     return f"\u001b]8;;{link}\u001b\\{text}\u001b]8;;\u001b\\"
@@ -29,28 +44,6 @@ def TIME():
     ss = convertToFull(s)
 
     return hs, ms, ss
-
-
-def main(
-    name: str,
-    twitter: str = None,
-    youtube: str = None,
-    github: str = None,
-    *,
-    colour: str = None
-):
-    """
-    Prints off a watermark / header style thing on call.
-
-    Args:
-        name (str): The username
-        twitter (str, optional): Twitter link
-        youtube (str, optional): Youtube link
-        github (str, optional): Github link
-        colour (str, optional): Colour of the watermark
-    """
-    watermark(name, twitter, youtube, github, colour=colour)
-    print("Please use `watermark` instead of `main` in function. This will be removed in v1.5.0")
 
 
 def watermark(

@@ -13,6 +13,8 @@ Contributing: [Contribute](Contribution.md)
 
 ### 1.5 (BETA)
 
+NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
+
 #### Added
 
 - Added check for file not existing in Save.Read (normal mode). Returns False instead
@@ -34,6 +36,7 @@ Contributing: [Contribute](Contribution.md)
 - Saved code in `Save.py` by removing a ton of duplicate code used when trying to call the module function
 - Moved imports for `Check` into their represented file instead of passing them in.
 - Updated `.pylintrc` to removed more errors messages + codes (Look at the file if you are intrested)
+- Updated `watermark.LINKCODE` to return something different if using a "BrokenShell"
 
 #### Fixed
 
