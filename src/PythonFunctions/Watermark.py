@@ -4,7 +4,7 @@ import os
 
 from colorama import Style
 
-BROKENSHELL = ('/bin/zsh')
+BROKENSHELL = ('/bin/zsh', '')
 SHELL = os.environ.get('SHELL')
 
 
