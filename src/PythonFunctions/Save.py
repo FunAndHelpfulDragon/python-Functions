@@ -334,7 +334,7 @@ class save:
         # Convert to list to avoid later issues
         if not isinstance(encoding, typing.List):
             encoding = [encoding]
-        
+
         data, wByte = self.__CodeData(data, encoding)
         return self.GetModule(path).WriteData(data, path, wByte)
 
@@ -351,7 +351,7 @@ class save:
         # Convert to list to avoid later issues
         if not isinstance(encoding, typing.List):
             encoding = [encoding]
-        
+
         rBytes = False
         for item in encoding:
             if item in (self.encoding.BINARY, self.encoding.CRYPTOGRAPHY):

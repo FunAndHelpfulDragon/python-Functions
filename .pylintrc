@@ -4,12 +4,10 @@ ignore=docs
 
 [MESSAGES CONTROL]
 # Mainly gotten from here, which i agree with: https://stackoverflow.com/questions/52123470/how-do-i-disable-pylint-unused-import-error-messages-in-vs-code]
+# Slightly modified due to pylint updates and my opions
 # Disabled messages
 #    Pointless
-#       W0142 = *args and **kwargs support
-#       W0403 = Relative imports
 #       W0613 = Unused argument
-#       W0232 = Class has no __init__ method
 #       R0903 = Too few public methods
 #       R0913 = Too many arguments
 #       C0103 = Invalid name
@@ -27,10 +25,46 @@ ignore=docs
 #    Stricter messages that can be disabled until everything else has been fixed
 #       C0111 = Missing docstring
 #
-#    Naming style should be up to the user. We should be able to write how we want.
-#    
+#    My opions on stuff
+#       C0114 = Missing Module docstring. (Unless someone can tell me how to just import the class) This gets explained in the class, no need to repeat it
+#       C0103 = THING does not conform to THING naming style. If this was split up more maybe, but as it is not. it just makes everything a pain.
 
-disable=W0142,W0403,W0613,W0232,R0903,W0614,C0111,R0913,C0103,F0401,W0402,R0914
+# Normal pylint stuff, just added on the bottom
+#
+# Disable the message, report, category or checker with the given id(s). You
+# can either give multiple identifiers separated by comma (,) or put this
+# option multiple times (only on the command line, not in the configuration
+# file where it should appear only once). You can also use "--disable=all" to
+# disable everything first and then re-enable specific checks. For example, if
+# you want to run only the similarities checker, you can use "--disable=all
+# --enable=similarities". If you want to run only the classes checker, but have
+# no Warning level messages displayed, use "--disable=all --enable=classes
+# --disable=W".
+
+disable=W0613,R0903,W0614,C0111,R0913,C0103,F0401,W0402,R0914,C0114,C0103,
+        raw-checker-failed,
+        bad-inline-option,
+        locally-disabled,
+        file-ignored,
+        suppressed-message,
+        useless-suppression,
+        deprecated-pragma,
+        use-symbolic-message-instead
+
+# Only show warnings with the listed confidence levels. Leave empty to show
+# all. Valid levels: HIGH, CONTROL_FLOW, INFERENCE, INFERENCE_FAILURE,
+# UNDEFINED.
+confidence=HIGH,
+           CONTROL_FLOW,
+           INFERENCE,
+           INFERENCE_FAILURE,
+           UNDEFINED
+
+# Enable the message, report, category or checker with the given id(s). You can
+# either give multiple identifier separated by comma (,) or put this option
+# multiple time (only on the command line, not in the configuration file where
+# it should appear only once). See also the "--disable" option for examples.
+enable=c-extension-no-member
 
 [MAIN]
 
@@ -419,42 +453,6 @@ logging-format-style=old
 # Logging modules to check that the string format arguments are in logging
 # function parameter format.
 logging-modules=logging
-
-
-[MESSAGES CONTROL]
-
-# Only show warnings with the listed confidence levels. Leave empty to show
-# all. Valid levels: HIGH, CONTROL_FLOW, INFERENCE, INFERENCE_FAILURE,
-# UNDEFINED.
-confidence=HIGH,
-           CONTROL_FLOW,
-           INFERENCE,
-           INFERENCE_FAILURE,
-           UNDEFINED
-
-# Disable the message, report, category or checker with the given id(s). You
-# can either give multiple identifiers separated by comma (,) or put this
-# option multiple times (only on the command line, not in the configuration
-# file where it should appear only once). You can also use "--disable=all" to
-# disable everything first and then re-enable specific checks. For example, if
-# you want to run only the similarities checker, you can use "--disable=all
-# --enable=similarities". If you want to run only the classes checker, but have
-# no Warning level messages displayed, use "--disable=all --enable=classes
-# --disable=W".
-disable=raw-checker-failed,
-        bad-inline-option,
-        locally-disabled,
-        file-ignored,
-        suppressed-message,
-        useless-suppression,
-        deprecated-pragma,
-        use-symbolic-message-instead
-
-# Enable the message, report, category or checker with the given id(s). You can
-# either give multiple identifier separated by comma (,) or put this option
-# multiple time (only on the command line, not in the configuration file where
-# it should appear only once). See also the "--disable" option for examples.
-enable=c-extension-no-member
 
 
 [METHOD_ARGS]
