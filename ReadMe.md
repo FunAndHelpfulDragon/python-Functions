@@ -32,6 +32,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Check.INT](src/PythonFunctions/Checks/INT.py) with the ability to 'warn' instead of 'clear'
 - [Check.PATH](src/PythonFunctions/Checks/path.py) to use `Save.py` `CheckIfExists` instead of `os`
 - [Check.YN](src/PythonFunctions/Checks/yn.py), [Check.STR](src/PythonFunctions/Checks/str.py) to use modules instead of pass in
+- Renamed [Colours.py](src/PythonFunctions/Colours.py) `FORMAT` to `Format`
 - [Run.py](src/PythonFunctions/Run.py) to use a dictionary instead
 - [Run.py](src/PythonFunctions/Run.py) to be able to name markers
 - [Run.py](src/PythonFunctions/Run.py) functions according to the new marker system
@@ -47,6 +48,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 
 #### Fixed
 
+- Issue where [Colours.py](src/PythonFunctions/Colours.py) was returning a number in Format instead of a ascii code
 - Issue where [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) would not show any negative value options in list mode
 - Issue where [Watermark.py](src/PythonFunctions/Watermark.py) `LINKCODE` would not display a clickable link if the shell didn't allow it.
 

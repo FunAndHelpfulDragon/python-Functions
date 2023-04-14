@@ -6,7 +6,7 @@ import typing
 
 from colorama import Fore, Style
 from .CleanFolderData import Clean as Cln
-from .Colours import FORMAT
+from .Colours import Format
 
 
 class search:
@@ -23,7 +23,6 @@ class search:
     def __Print(self, msg: str, colour: str = None, msgformat: str = ''):
         if self.logging:
             print(f"{msgformat}{colour}{msg}{Style.RESET_ALL}")
-            # Print(msg, colour, msgformat)
 
     def Locate(
         self,
@@ -111,7 +110,7 @@ class search:
             return self.__Print(
                 f"Missing permissions to read from {directory}",
                 Fore.RED,
-                FORMAT.BOLD,
+                Format.BOLD,
             )
 
         # loops though all the files

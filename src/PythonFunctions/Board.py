@@ -10,6 +10,7 @@ import shutil
 import string
 
 from colorama import Fore, Style
+from .Colours import Format
 
 
 def CreateBoard(
@@ -34,14 +35,15 @@ def CreateBoard(
     return board
 
 
-def __TranslateNumber(number: int) -> str:
-    letters = '\t'
+def __TranslateNumber(number: int, letters: str) -> str:
     lettersList = list(string.ascii_letters)
+    letters += Format.UNDERLINE
     for i in range(number):
         if i < len(lettersList):
             letters += lettersList[i]
             continue
         letters += ' '
+    letters += Format.RESET
 
     return letters
 
@@ -55,12 +57,14 @@ def DisplayBoard(
     Args:
         board (typing.List[typing.List]): The board (2D array) to show
         colourInfo (dict, optional): The colour info of the grid.
-        coords (bool, optional): Whever to show the coordinates on the outside. (Max x:52,y:inf)
+        coords (bool, optional): Whever to show the coordinates on the outside. 
+        (Max x:52,y:inf)
     """
-    print(__TranslateNumber(len(board[0])))
+    seperator = ' ' * len(str(len(board)))
+    print(__TranslateNumber(len(board[0]), f' {seperator}'))
     for y, y_Index in enumerate(board):
         if coords:
-            print(f'{y}\t', end='')
+            print(f'{y}{seperator}', end='')
         for x_Index in y_Index:
             if colourInfo is not None:
                 print(f"{colourInfo.get(x_Index)}{x_Index}{Style.RESET_ALL}",
