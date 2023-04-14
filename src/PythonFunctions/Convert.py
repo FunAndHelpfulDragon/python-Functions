@@ -43,12 +43,14 @@ def Location(value: str) -> typing.Tuple:
 
         if letters == value:
             return Message.clear(
-                "Input must contain at least 1 letter and at least 1 integer."), None
+                "Input must contain at least 1 letter and at least 1 integer.", 
+                timeS=1), None
 
         return decode(letters) - 1, int(y) - 1
 
     return Message.clear(
-        "Input must contain at least 1 letter and at least 1 integer."), None
+        "Input must contain at least 1 letter and at least 1 integer.",
+        timeS=1), None
 
 
 def AudioExtractor(path: str, destination: str = 'mp3'):

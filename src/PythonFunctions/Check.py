@@ -13,6 +13,7 @@ class ModeEnum(Enum):
     yesno = "yn"
     str = "str"
     path = "path"
+    location = "Location"
 
 
 @dataclasses.dataclass
