@@ -13,3 +13,16 @@ class AnsiFormat(AnsiCodes):
 
 
 Format = AnsiFormat()
+
+
+def TranslateString(string: str, Form: AnsiFormat) -> str:
+    """Translates a string into the format specified
+
+    Args:
+        string (str): The string to translate
+        Form (AnsiFormat): The format to use
+
+    Returns:
+        str: The result
+    """
+    return f'{Form}{string}{Format.RESET}'
