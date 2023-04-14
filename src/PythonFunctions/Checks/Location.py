@@ -1,11 +1,11 @@
 from PythonFunctions.Convert import Location
-from PythonFunctions.Logic import checkInstances
+from PythonFunctions.Logic import CheckNone
 from PythonFunctions.Message import Message
 
 
 def check(value, **info):
     position = Location(value)
-    if checkInstances(None, position):
+    if CheckNone(position):
         return None
 
     x = info.get('x')

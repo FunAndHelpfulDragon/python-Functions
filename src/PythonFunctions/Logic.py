@@ -8,11 +8,7 @@ def checkInstances(instanceType: any, *obj: any) -> bool:
     Returns:
         bool: Are they all instanceType
     """
-    for item in obj:
-        if not isinstance(item, instanceType):
-            return False
-
-    return True
+    return not any(isinstance(item, instanceType) for item in obj)
 
 
 def MultiCheck(*obj: any) -> bool:
@@ -25,8 +21,16 @@ def MultiCheck(*obj: any) -> bool:
     Returns:
         bool: Are they all true?
     """
-    for item in obj:
-        if item is False:
-            return False
+    return any(item is False for item in obj)
 
-    return True
+
+def CheckNone(*obj: any) -> bool:
+    """Checks if all of object are None
+
+    Args:
+        *obj (any): The objects to test
+
+    Returns:
+        bool: Are they all none?
+    """
+    return not any(o is None for o in obj)
