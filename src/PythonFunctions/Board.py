@@ -48,6 +48,10 @@ def __TranslateNumber(number: int, letters: str) -> str:
     return letters
 
 
+def __getSeperator(index, board):
+    return ' ' * (len(str(len(board))) - (len(str(index)) - 1))
+
+
 def DisplayBoard(
     board: typing.List[typing.List], *, colourInfo: typing.DefaultDict = None,
     coords: bool = False
@@ -60,11 +64,10 @@ def DisplayBoard(
         coords (bool, optional): Whever to show the coordinates on the outside. 
         (Max x:52,y:inf)
     """
-    seperator = ' ' * len(str(len(board)))
-    print(__TranslateNumber(len(board[0]), f' {seperator}'))
+    print(__TranslateNumber(len(board[0]), f' {__getSeperator(0, board)}'))
     for y, y_Index in enumerate(board):
         if coords:
-            print(f'{y}{seperator}', end='')
+            print(f'{y + 1}{__getSeperator(y + 1, board)}', end='')
         for x_Index in y_Index:
             if colourInfo is not None:
                 print(f"{colourInfo.get(x_Index)}{x_Index}{Style.RESET_ALL}",

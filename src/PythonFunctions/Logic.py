@@ -33,4 +33,4 @@ def CheckNone(*obj: any) -> bool:
     Returns:
         bool: Are they all none?
     """
-    return not any(o is None for o in obj)
+    return any(o is None for o in obj)
