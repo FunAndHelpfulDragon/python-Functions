@@ -17,6 +17,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 
 #### Added
 
+- [Board.py](src/PythonFunctions/Board.py) `DisplayBoard` `coords` argument to show coordinates on the left and top of the board printout.
 - [Board.py](src/PythonFunctions/Board.py) `MultiBoardDisplay` to display multiple boards at once side by side. (Thanks chatGPT)
 - `rCheck` to [Check.py](src/PythonFunctions/Check.py) to return the value as well as the results. (Defaults to false)
 - [Logic.py](src/PythonFunctions/Logic.py) for random multi logic functions (All of X are Y instance, etc) (Also added test suite)
