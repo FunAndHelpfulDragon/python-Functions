@@ -20,7 +20,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Board.py](src/PythonFunctions/Board.py) `DisplayBoard` `coords` argument to show coordinates on the left and top of the board printout.
 - [Board.py](src/PythonFunctions/Board.py) `MultiBoardDisplay` to display multiple boards at once side by side. (Thanks chatGPT)
 - `rCheck` to [Check.py](src/PythonFunctions/Check.py) to return the value as well as the results. (Defaults to false)
-- `TranslateString` to [Colours.py](src/PythonFunctions/Colours.py) to 'Translates a string into the format specified' (documentation quote)
+- `Translate` to [Colours.py](src/PythonFunctions/Colours.py) to 'Translates a string into the format specified' (documentation quote)
 - [Logic.py](src/PythonFunctions/Logic.py) for random multi logic functions (All of X are Y instance, etc) (Also added test suite)
 - [Save.py](src/PythonFunctions/Save.py) `GetModule` function to save a bunch of code in pass-through functions
 - [Save.py](src/PythonFunctions/Save.py) `ListFolder` and `CheckIfExists` methods. (Also added to representive systems)

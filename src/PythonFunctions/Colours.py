@@ -15,7 +15,7 @@ class AnsiFormat(AnsiCodes):
 Format = AnsiFormat()
 
 
-def TranslateString(string: str, Form: AnsiFormat) -> str:
+def Translate(string: str, Form: AnsiFormat) -> str:
     """Translates a string into the format specified
 
     Args:
