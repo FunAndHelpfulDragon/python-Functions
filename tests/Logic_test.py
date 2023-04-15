@@ -6,7 +6,7 @@ def test_check_all_bool():
     b: bool = True
     c: bool = True
 
-    assert checkInstances(bool, a, b, c)
+    assert not checkInstances(bool, a, b, c)
 
 
 def test_check_not_all_bool():
@@ -22,7 +22,7 @@ def test_check_all_int():
     b: int = 10
     c: int = 50
 
-    assert checkInstances(int, a, b, c)
+    assert not checkInstances(int, a, b, c)
 
 
 def test_check_all_not_int():

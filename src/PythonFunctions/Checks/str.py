@@ -1,5 +1,6 @@
 from PythonFunctions.Message import Message
 
+
 def check(value, **info):
     value = str(value)
     if len(value) == 0:
