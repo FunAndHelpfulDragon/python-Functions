@@ -1,5 +1,7 @@
-CleanFolderData (Version 2)
-===========================
+CleanFolderData
+===============
+
+Last Updated: v1.4.10
 
 A module to take a folder, remove some random and unneccessary files, and give you a list / array of the outcome.
 

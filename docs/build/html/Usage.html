@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Usage &mdash; Python Functions 1.0.1 documentation</title>
@@ -12,15 +12,12 @@
   <![endif]-->
   
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Board (Version 2)" href="Modules/Board.html" />
+    <link rel="next" title="Board" href="Modules/Board.html" />
     <link rel="prev" title="Welcome to Python Functions’s documentation!" href="index.html" /> 
 </head>
 
@@ -29,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> Python Functions
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Python Functions
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -45,8 +46,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#optional-dependencies">Optional Dependencies</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Board.html">Board (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Modules/Check.html">Check (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Board.html">Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modules/Check.html">Check</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/CleanFolderData.html">CleanFolderData (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Colours.html">Colours (Version 1)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Modules/Convert.html">Convert (Version 1.1)</a></li>
@@ -75,7 +76,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Usage</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/Usage.rst.txt" rel="nofollow"> View page source</a>
@@ -96,11 +97,11 @@
 <h2>Installation<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <p>To use <code class="docutils literal notranslate"><span class="pre">PythonFunctions</span></code> first install it using pip:</p>
 <p>(Using testpypi, developement builds)</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install -i https://test.pypi.org/simple/ Python-Functions
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>https://test.pypi.org/simple/<span class="w"> </span>Python-Functions
 </pre></div>
 </div>
 <p>(Using pypi, stable build)</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install PythonFunctions
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>PythonFunctions
 </pre></div>
 </div>
 </section>
@@ -108,15 +109,19 @@
 <h2>Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Permalink to this heading"></a></h2>
 <p>There are optional Dependencies which can be installed to improve the usability of the service.</p>
 <p>Active (Might be useful for you):
-- encryption
-- google
-- audio
-- terminal
-- all (Installs all of the above)</p>
-<p>Development (Useful for adding new functions)
-- tools</p>
+- encryption</p>
+<ul class="simple">
+<li><p>google</p></li>
+<li><p>audio</p></li>
+<li><p>terminal</p></li>
+<li><p>all (Installs all of the above)</p></li>
+</ul>
+<p>Development (Useful for adding new functions)</p>
+<ul class="simple">
+<li><p>tools</p></li>
+</ul>
 <p>To install these, use the following code. Replace <cite>module</cite> with one of the above.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install PythonFunctions<span class="o">[</span>module<span class="o">]</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>PythonFunctions<span class="o">[</span>module<span class="o">]</span>
 </pre></div>
 </div>
 </section>
@@ -127,7 +132,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Python Functions’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Modules/Board.html" class="btn btn-neutral float-right" title="Board (Version 2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Modules/Board.html" class="btn btn-neutral float-right" title="Board" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

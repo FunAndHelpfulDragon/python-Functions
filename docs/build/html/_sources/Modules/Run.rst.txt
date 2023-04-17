@@ -1,5 +1,7 @@
-Run (Version 3)
-===============
+Run
+===
+
+Last Updated: v1.5
 
 A module to store information about time, also works out calculations about time.
 
@@ -10,11 +12,13 @@ A module to store information about time, also works out calculations about time
 Mark
 ----
 
-.. py:function:: Mark()
+.. py:function:: Mark(name)
     :noindex:
 
     Adds a new marker
 
+    :param name: (Optional) name to give the marker
+    :type name: str
     :returns: The marker index
     :rtype: int
 
@@ -26,34 +30,35 @@ Mark
 GetMarkTime
 -----------
 
-.. py:function:: GetMarkTime(x)
+.. py:function:: GetMarkTime(name)
     :noindex:
 
     Get the time that mark X has
 
-    :param x: The marker index to get the time of
-    :type x: int
+    :param name: The marker index to get the time of
+    :type name: str
     :returns: The time at that point
     :rtype: float
-    :raise IndexError: The provided marker was not in range of all of the markers
 
 .. code-block:: python
 
     time = Run.GetMarkTime(index)
     print(time)
 
-CompareIndex
-------------
+CompareMarkers
+--------------
 
-.. py:function:: CompareIndex(a, b)
+.. py:function:: CompareIndex(a, b, roundVale)
     :noindex:
 
     Compare the marked times between a and b
 
     :param a: The first marker
-    :type a: int
     :param b: The second marker
+    :param roundValue: (Optional), How many decimal places to round to. Defaults to -1 (none)
+    :type a: int
     :type b: int
+    :type roundValue: int
     :returns: The time difference
     :rtype: float
     :raise IndexError: One of the provided markers was not in range of all of the markers

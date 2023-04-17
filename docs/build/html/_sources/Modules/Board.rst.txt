@@ -1,5 +1,7 @@
-Board (Version 2)
-=================
+Board
+=====
+
+Last Updated: v1.5
 
 .. code-block:: python
 
@@ -10,15 +12,15 @@ Board (Version 2)
 Used to quickly create or display a 2d array of items.
 Useful for creating boards for board games.
 
-CreateBoard (Version 2)
------------------------
+CreateBoard
+-----------
 
 To create a board, you can use the ``Board.CreateBoard()`` function
 
-.. py:function:: PythonFunctions.Board.CreateBoard(x, y)
+.. py:function:: Board.CreateBoard(x, y, *, param='-')
    :noindex:
 
-   Returns a 2D array
+   Returns a 2D array filled with value
 
    :param x: The width of the board
    :param y: The height of the board
@@ -29,27 +31,48 @@ To create a board, you can use the ``Board.CreateBoard()`` function
    :return: The 2D array
    :rtype: list[list[str]]
 
-DisplayBoard (Version 2)
-------------------------
+DisplayBoard
+------------
 
 Display a 2d array? Use this useful function.
 
-.. py:function:: PythonFunctions.Board.DisplayBoard(brd, colourData)
+.. py:function:: Board.DisplayBoard(brd, *, colourData, coords=False)
    :noindex:
 
    Prints out the 2D array in the terrminal
 
    :param brd: The 2D array
-   :type brd: list[list[str]]
    :param colourData: Optional, The colour to make each item
+   :param coords: Show the coordinates of the board on either side
+   :type brd: list[list[str]]
    :type colourData: dict
+   :type coords: bool
 
-If you want to use the colourData option, assaign it like this, with the string on the left and the colour info (Read colours) as the colour
-You can replace `\033[32m` with anything from the `Colours` module
+An example of colourData is shown below use Fore from colorama for the colours (or manually do the codes yourself)
+Any unassigned values will be shown in the default colour (white)
 
 .. code-block::python
 
    colourData = {
-      "-": "\033[32m",
-      "+": "\033[31m"
+      "-": colorama.Fore.RED,
+      "+": colorama.Fore.BLUE
    }
+
+MultiBoardDisplay
+-----------------
+
+(with help from chatGPT)
+
+Display multiple boards side by side in the terminal.
+
+.. py:function:: Board.MultiBoardDisplay(*boards, colourData)
+   :noindex:
+
+   Return the message to print multiple boards
+
+   :param boards: The boards to show. Can just be listed as (board, board, board) etc...
+   :param colourData: Optional, The colour to make each item
+   :type boards: tuple[list[list[str]]] (2D list one after another)
+   :type colourData: dict
+   :rtype: str
+   :return: Message to print multiple boards.

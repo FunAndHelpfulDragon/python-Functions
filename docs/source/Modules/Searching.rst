@@ -1,5 +1,7 @@
-Searching (Verison 2)
-=====================
+Searching
+=========
+
+Last Updated: v1.4.9
 
 A module used to find a file, or multiple files in 
 

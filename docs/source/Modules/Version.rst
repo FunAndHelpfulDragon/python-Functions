@@ -1,5 +1,7 @@
-Version (Version 2)
-===================
+Version
+=======
+
+Last Updated: v1.5
 
 A module designed to get the version of the package.
 

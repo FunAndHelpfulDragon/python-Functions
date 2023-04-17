@@ -1,5 +1,7 @@
-Check (Version 2)
-=================
+Check
+=====
+
+Last Updated: v1.5
 
 A module to check the user input against some requirements.
 
@@ -12,19 +14,21 @@ A module to check the user input against some requirements.
 Usage
 -----
 
-.. py:function:: check.getInput(input, type, callback, args)
+.. py:function:: check.getInput(input, type, *, callback, rCheck=False, **info)
     :noindex:
 
     The main function, Basically every check is called through this
 
     :param input: The stuff to ask the user
-    :type input: str
     :param type: The check to run
-    :type type: check.ModeEnum
     :param callback: The function to run after the user input. (Must be able to pick up at least 1 argument)
+    :param rCheck: Returns the input value as well as check result
+    :param info: Other arguments required for the check
+    :type input: str
+    :type type: check.ModeEnum
     :type callback: function.
-    :param args: Other arguments required for the check
-    :type args: any
+    :type rCheck: bool
+    :type info: any
     :return: Depends on the check
     :rtype: any
 
@@ -36,8 +40,8 @@ ModeEnum
 This enum is a variable used for declaring the mode that the getInput function should call when it wants the input.
 This enum contains all of the possible checks and is required to use.
 
-Int Check (Version 3)
----------------------
+Int Check
+---------
 
 .. py:function:: check.getInput(input, type, *, higher, lower)
     :noindex:
@@ -45,12 +49,12 @@ Int Check (Version 3)
     The main function, but with all the arguments of an int check
 
     :param input: The stuff to ask the user
-    :type input: str
     :param type: The check to run.
-    :type type: check.ModeEnum.int
     :param higher: Optional, The higher range value
-    :type higher: int
     :param lower: Optional, The lower range value
+    :type input: str
+    :type type: check.ModeEnum.int
+    :type higher: int
     :type lower: int
     :return: The result of the check (int = passed, none = failed)
     :rtype: int | None
@@ -63,11 +67,11 @@ Int Check (Version 3)
 
     from PythonFunctions.Check import Check
     check = Check()
-    result = check.getInput("Please enter a number between 1 and 10: ", check.ModeEnum.int, 1, 10)
+    result = check.getInput("Please enter a number between 1 and 10: ", check.ModeEnum.int, lower=1, higher=10)
     print(result)
 
-Yes No Check (Version 2)
-------------------------
+Yes No Check
+------------
 
 .. py:function:: check.getInput(input, type, *, y, n, yA, nA)
     :noindex:
@@ -75,16 +79,16 @@ Yes No Check (Version 2)
     The main function, but with arguments for a yes no check
 
     :param input: The stuff to ask the user
-    :type input: str
     :param type: The check to run.
-    :type type: check.ModeEnum.yesno
     :param y: (Optional) The yes return function
-    :type y: function
     :param n: (Optional) The no return function
-    :type n: function
     :param yA: (Optional) Data to pass into the yes function
-    :type yA: any
     :param nA: (Optional) Data to pass into the no function
+    :type input: str
+    :type type: check.ModeEnum.yesno
+    :type y: function
+    :type n: function
+    :type yA: any
     :type nA: any
     :return: If yes or no got entered
     :rtype: bool
@@ -101,13 +105,15 @@ Yes No Check (Version 2)
     from PythonFunctions.Check import Check
     check = Check()
 
-    def yesFunc():
+    def yesFunc(arg):
         print("Hello I win")
+        print(arg)
     
-    def noFunc():
+    def noFunc(arg):
         print("*Cries* :(")
+        print(arg)
     
-    result = check.getInput("Win game? [Y/n]: ", check.ModeEnum.yesno, y=yesFunc, n=noFunc)
+    result = check.getInput("Win game? [Y/n]: ", check.ModeEnum.yesno, y=yesFunc, n=noFunc, yA='e', nA='*cries*')
     print(result)
 
 .. note::
@@ -120,8 +126,8 @@ Yes No Check (Version 2)
 
 
 
-Str Check (Version 1)
----------------------
+Str Check
+---------
 
 .. py:function:: check.getInput(input, type, *, info)
     :noindex:
@@ -129,10 +135,10 @@ Str Check (Version 1)
     The main function but with arguments for a str check
 
     :param input: The stuff to ask the user
-    :type input: str
     :param type: The check to run.
-    :type type: check.ModeEnum.str
     :param info: The list to check the value against
+    :type input: str
+    :type type: check.ModeEnum.str
     :type info: tuple | list
     :returns: if input is in info
     :rtype: bool
@@ -144,8 +150,8 @@ Str Check (Version 1)
     result = check.getInput("Vowel: ", check.ModeEnum.str, info=("a", "e", "i", "o", "u"))
     print(result)
 
-Path Check (Version 2)
-----------------------
+Path Check
+----------
 
 .. py:function:: check.getInput(input, type)
     :noindex:
@@ -153,11 +159,9 @@ Path Check (Version 2)
     The main function but with arguments for a path check.
 
     :param input: The stuff to ask the user
-    :type input: str
     :param type: The check to run.
+    :type input: str
     :type type: check.ModeEnum.path
-    :param info: The list to check the value against
-    :type info: tuple | list
     :returns: if input is in info
     :rtype: bool | string
 
@@ -169,6 +173,26 @@ Path Check (Version 2)
     print(result)
 
 .. note::
-    If "" is passed though, then false will be returned.\n
-    If an invalid path is passed in, then the program will ask again.\n
-    If a valid path is passed in, the path will be returned.
+    This uses the Save module and that file system structure, Please refer to that method for path information
+
+Location Check (NEW)
+--------------------
+
+.. py:function:: check.getInput(input, type, *, x, y):
+    :noindex:
+
+    Converts a message over to a location and checks it.
+
+    :param input: The stuff to ask the user
+    :param type: The check to run
+    :param X: (Optional), The bigger limit that X can be
+    :param y: (Optional), The bigger limit that y can be
+    :type input: str
+    :type type: check.ModeEnum.Location
+    :type x: int
+    :type y: y
+    :return: If input is in valid range. (Position)
+    :rtype: list[int, int]
+
+.. note::
+    This uses the Convert.Location module. Please refer to that method for more information

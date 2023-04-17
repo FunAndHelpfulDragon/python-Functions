@@ -1,5 +1,7 @@
-Encryption (Version 1)
-======================
+Encryption
+==========
+
+Last Updated: v1.4.15
 
 .. note::
     External module required!!!

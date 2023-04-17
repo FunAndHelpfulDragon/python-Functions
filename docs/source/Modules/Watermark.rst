@@ -1,5 +1,7 @@
-Watermark (Version 2)
-=====================
+Watermark
+=========
+
+Last Updated: v1.5
 
 .. code-block:: python
 
@@ -42,6 +44,8 @@ LINKCODE
     :return: A message with a clickable link
     :rtype: str
 
+.. note::
+    If the shell is know to not work with links being shorten and text being clickable, then it will return text(link) instead.
 
 TIME
 ----

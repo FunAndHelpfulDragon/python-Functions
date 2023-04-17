@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Check (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
+  <title>Check &mdash; Python Functions 1.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -12,16 +12,13 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CleanFolderData (Version 2)" href="CleanFolderData.html" />
-    <link rel="prev" title="Board (Version 2)" href="Board.html" /> 
+    <link rel="prev" title="Board" href="Board.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -29,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Python Functions
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python Functions
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -41,14 +42,15 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Board.html">Board (Version 2)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Check (Version 2)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Board.html">Board</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Check</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modeenum">ModeEnum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#int-check-version-3">Int Check (Version 3)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#yes-no-check-version-2">Yes No Check (Version 2)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#str-check-version-1">Str Check (Version 1)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#path-check-version-2">Path Check (Version 2)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#int-check">Int Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#yes-no-check">Yes No Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#str-check">Str Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path-check">Path Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#location-check-new">Location Check (NEW)</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
@@ -79,8 +81,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Check (Version 2)</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Check</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Modules/Check.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -90,8 +92,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="check-version-2">
-<h1>Check (Version 2)<a class="headerlink" href="#check-version-2" title="Permalink to this heading"></a></h1>
+  <section id="check">
+<h1>Check<a class="headerlink" href="#check" title="Permalink to this heading"></a></h1>
+<p>Last Updated: v1.5</p>
 <p>A module to check the user input against some requirements.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Check</span> <span class="kn">import</span> <span class="n">Check</span>
 <span class="n">check</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
@@ -101,21 +104,22 @@
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">callback</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rCheck</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, Basically every check is called through this</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum</em>) – The check to run</p></li>
 <li><p><strong>callback</strong> (<em>function.</em>) – The function to run after the user input. (Must be able to pick up at least 1 argument)</p></li>
-<li><p><strong>args</strong> (<em>any</em>) – Other arguments required for the check</p></li>
+<li><p><strong>rCheck</strong> (<em>bool</em>) – Returns the input value as well as check result</p></li>
+<li><p><strong>info</strong> (<em>any</em>) – Other arguments required for the check</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Depends on the check</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>any</p>
 </dd>
 </dl>
@@ -128,14 +132,14 @@
 <p>This enum is a variable used for declaring the mode that the getInput function should call when it wants the input.
 This enum contains all of the possible checks and is required to use.</p>
 </section>
-<section id="int-check-version-3">
-<h2>Int Check (Version 3)<a class="headerlink" href="#int-check-version-3" title="Permalink to this heading"></a></h2>
+<section id="int-check">
+<h2>Int Check<a class="headerlink" href="#int-check" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">higher</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, but with all the arguments of an int check</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum.int</em>) – The check to run.</p></li>
@@ -143,10 +147,10 @@ This enum contains all of the possible checks and is required to use.</p>
 <li><p><strong>lower</strong> (<em>int</em>) – Optional, The lower range value</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The result of the check (int = passed, none = failed)</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>int | None</p>
 </dd>
 </dl>
@@ -159,19 +163,19 @@ If one or both are defined, then it will make sure the value is between that ran
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Check</span> <span class="kn">import</span> <span class="n">Check</span>
 <span class="n">check</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Please enter a number between 1 and 10: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Please enter a number between 1 and 10: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">int</span><span class="p">,</span> <span class="n">lower</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">higher</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
-<section id="yes-no-check-version-2">
-<h2>Yes No Check (Version 2)<a class="headerlink" href="#yes-no-check-version-2" title="Permalink to this heading"></a></h2>
+<section id="yes-no-check">
+<h2>Yes No Check<a class="headerlink" href="#yes-no-check" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yA</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nA</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function, but with arguments for a yes no check</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum.yesno</em>) – The check to run.</p></li>
@@ -181,10 +185,10 @@ If one or both are defined, then it will make sure the value is between that ran
 <li><p><strong>nA</strong> (<em>any</em>) – (Optional) Data to pass into the no function</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>If yes or no got entered</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -199,13 +203,15 @@ If one or both are defined, then it will make sure the value is between that ran
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.Check</span> <span class="kn">import</span> <span class="n">Check</span>
 <span class="n">check</span> <span class="o">=</span> <span class="n">Check</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">yesFunc</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">yesFunc</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello I win&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">noFunc</span><span class="p">():</span>
+<span class="k">def</span> <span class="nf">noFunc</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*Cries* :(&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Win game? [Y/n]: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">yesno</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yesFunc</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">noFunc</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">check</span><span class="o">.</span><span class="n">getInput</span><span class="p">(</span><span class="s2">&quot;Win game? [Y/n]: &quot;</span><span class="p">,</span> <span class="n">check</span><span class="o">.</span><span class="n">ModeEnum</span><span class="o">.</span><span class="n">yesno</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">yesFunc</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">noFunc</span><span class="p">,</span> <span class="n">yA</span><span class="o">=</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="n">nA</span><span class="o">=</span><span class="s1">&#39;*cries*&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -220,24 +226,24 @@ Then the value <cite>True</cite> or <cite>False</cite> will be returned dependin
 <p>By default, it will return the result of the function (if it returns), else it will return the result of True</p>
 </div>
 </section>
-<section id="str-check-version-1">
-<h2>Str Check (Version 1)<a class="headerlink" href="#str-check-version-1" title="Permalink to this heading"></a></h2>
+<section id="str-check">
+<h2>Str Check<a class="headerlink" href="#str-check" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function but with arguments for a str check</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum.str</em>) – The check to run.</p></li>
 <li><p><strong>info</strong> (<em>tuple</em><em> | </em><em>list</em>) – The list to check the value against</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>if input is in info</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
 </dl>
@@ -250,24 +256,23 @@ Then the value <cite>True</cite> or <cite>False</cite> will be returned dependin
 </pre></div>
 </div>
 </section>
-<section id="path-check-version-2">
-<h2>Path Check (Version 2)<a class="headerlink" href="#path-check-version-2" title="Permalink to this heading"></a></h2>
+<section id="path-check">
+<h2>Path Check<a class="headerlink" href="#path-check" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">check.</span></span><span class="sig-name descname"><span class="pre">getInput</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>The main function but with arguments for a path check.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
 <li><p><strong>type</strong> (<em>check.ModeEnum.path</em>) – The check to run.</p></li>
-<li><p><strong>info</strong> (<em>tuple</em><em> | </em><em>list</em>) – The list to check the value against</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>if input is in info</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool | string</p>
 </dd>
 </dl>
@@ -281,9 +286,36 @@ Then the value <cite>True</cite> or <cite>False</cite> will be returned dependin
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If “” is passed though, then false will be returned.n
-If an invalid path is passed in, then the program will ask again.n
-If a valid path is passed in, the path will be returned.</p>
+<p>This uses the Save module and that file system structure, Please refer to that method for path information</p>
+</div>
+</section>
+<section id="location-check-new">
+<h2>Location Check (NEW)<a class="headerlink" href="#location-check-new" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">check.getInput(input,</span> <span class="pre">type,</span> <span class="pre">*,</span> <span class="pre">x,</span> <span class="pre">y):</span></span></dt>
+<dd><p>Converts a message over to a location and checks it.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<em>str</em>) – The stuff to ask the user</p></li>
+<li><p><strong>type</strong> (<em>check.ModeEnum.Location</em>) – The check to run</p></li>
+<li><p><strong>X</strong> – (Optional), The bigger limit that X can be</p></li>
+<li><p><strong>y</strong> (<em>y</em>) – (Optional), The bigger limit that y can be</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If input is in valid range. (Position)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int, int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This uses the Convert.Location module. Please refer to that method for more information</p>
 </div>
 </section>
 </section>
@@ -292,7 +324,7 @@ If a valid path is passed in, the path will be returned.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Board.html" class="btn btn-neutral float-left" title="Board (Version 2)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Board.html" class="btn btn-neutral float-left" title="Board" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="CleanFolderData.html" class="btn btn-neutral float-right" title="CleanFolderData (Version 2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -30,12 +30,18 @@ There are optional Dependencies which can be installed to improve the usability 
 
 Active (Might be useful for you):
 - encryption
+
 - google
+
 - audio
+
 - terminal
+
 - all (Installs all of the above)
 
+
 Development (Useful for adding new functions)
+
 - tools
 
 To install these, use the following code. Replace `module` with one of the above.

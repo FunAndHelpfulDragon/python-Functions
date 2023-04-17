@@ -12,12 +12,14 @@ def check(value, **info):
     x = info.get('x')
     y = info.get('y')
 
-    if position[0] > x:
-        Message.warn('X value is too big!', timeS=1)
-        return None
+    if x is not None:
+        if position[0] > x:
+            Message.warn('X value is too big!', timeS=1)
+            return None
 
-    if position[1] > y:
-        Message.warn('Y value is too big!', timeS=1)
-        return None
+    if y is not None:
+        if position[1] > y:
+            Message.warn('Y value is too big!', timeS=1)
+            return None
 
     return position

@@ -1,5 +1,7 @@
-Save (Version 2)
-================
+Save
+====
+
+Last Updated: v1.5
 
 A system to easly write, read, delete data. with support of multiple file systems and encryption levels.
 
@@ -111,10 +113,10 @@ MakeFolders
 
     path = sv.MakeFolders("Test/a/b/c/d")
 
-RemoveFile
+DeleteFile
 ^^^^^^^^^^
 
-.. py:function:: RemoveFile(path)
+.. py:function:: DeleteFile(path)
     :noindex:
 
     Remove path
@@ -128,10 +130,10 @@ RemoveFile
 
     sv.RemoveFile("Test/a/b/test.txt")
 
-RemoveFolder
+DeleteFolder
 ^^^^^^^^^^^^
 
-.. py:function:: RemoveFolder(path)
+.. py:function:: DeleteFolder(path)
     :noindex:
 
     Remove the folder and all subfolders / paths
@@ -144,6 +146,32 @@ RemoveFolder
 .. code-block:: python
 
     sv.RemoveFolder("Test")
+
+ListFolder
+^^^^^^^^^^
+
+.. py:function:: ListFolder(path)
+    :noindex:
+
+    List all files in that folder
+
+    :param path: Folder to get files
+    :type path: str
+    :returns: Files in directory
+    :rtype: list
+
+CheckIfExists
+^^^^^^^^^^^^^
+
+.. py:function:: CheckIfExists(path)
+    :noindex:
+
+    Check if a file exists
+
+    :param path: The path to check
+    :type path: str
+    :returns: If the path exists
+    :rtype: bool
 
 ChangePasscode
 ^^^^^^^^^^^^^^

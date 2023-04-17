@@ -49,7 +49,7 @@ class Check:
 
         raise NotImplementedError(f"Mode: {mode} not implemented")
 
-    def getInput(self, msg: str, mode: ModeEnum, callback=None, rCheck: bool = False, **info):
+    def getInput(self, msg: str, mode: ModeEnum, *, callback=None, rCheck: bool = False, **info):
         """Translate the user input, through the check and returns
 
         Args:
@@ -86,7 +86,6 @@ class Check:
             if callable(callback):
                 return callback(result)
             return result if not rCheck else (result, check)
-
 
         # If check is none, just send it back i suppose.
         return check

@@ -1,5 +1,7 @@
-Save (Version 2)
-================
+Save
+====
+
+Last Updated: v1.5
 
 A system to easly write, read, delete data. with support of multiple file systems and encryption levels.
 
@@ -57,7 +59,7 @@ DriveCredentials
 Write
 ^^^^^
 
-.. py:function:: WRite(data, path, *, encoding)
+.. py:function:: Write(data, path, *, encoding)
     :noindex:
 
     Save the specified data to a file (path) with the specified encoding
@@ -111,16 +113,16 @@ MakeFolders
 
     path = sv.MakeFolders("Test/a/b/c/d")
 
-RemoveFile
+DeleteFile
 ^^^^^^^^^^
 
-.. py:function:: RemoveFile(path)
+.. py:function:: DeleteFile(path)
     :noindex:
 
     Remove path
 
     :param path: File to remove
-    :type path: str
+    :type path: str | List[str]
     :returns: Information about deletion
     :rtype: str | bool | None
 
@@ -128,22 +130,48 @@ RemoveFile
 
     sv.RemoveFile("Test/a/b/test.txt")
 
-RemoveFolder
+DeleteFolder
 ^^^^^^^^^^^^
 
-.. py:function:: RemoveFolder(path)
+.. py:function:: DeleteFolder(path)
     :noindex:
 
     Remove the folder and all subfolders / paths
 
     :param path: Parent folder to remove
-    :type path: str
+    :type path: str | List[str]
     :returns: Information about deletion
     :rtype: str | bool | None
 
 .. code-block:: python
 
     sv.RemoveFolder("Test")
+
+ListFolder
+^^^^^^^^^^
+
+.. py:function:: ListFolder(path)
+    :noindex:
+
+    List all files in that folder
+
+    :param path: Folder to get files
+    :type path: str
+    :returns: Files in directory
+    :rtype: list
+
+CheckIfExists
+^^^^^^^^^^^^^
+
+.. py:function:: CheckIfExists(path)
+    :noindex:
+
+    Check if a file exists
+
+    :param path: The path to check
+    :type path: str
+    :returns: If the path exists
+    :rtype: bool
 
 ChangePasscode
 ^^^^^^^^^^^^^^

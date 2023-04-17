@@ -111,5 +111,6 @@ class SaveTemplate:
             "The file system you are trying to use does not have support for `ListFolder`"
         )
 
+
 def load():
     return SaveTemplate()

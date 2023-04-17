@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IsDigit (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
+  <title>IsDigit &mdash; Python Functions 1.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -12,16 +12,13 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="PrintTraceback (Version 1)" href="PrintTraceback.html" />
-    <link rel="prev" title="Encryption (Version 1)" href="Encryption.html" /> 
+    <link rel="next" title="Message" href="Message.html" />
+    <link rel="prev" title="Encryption" href="Encryption.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -29,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Python Functions
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python Functions
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -41,19 +42,20 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Board.html">Board (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Check.html">Check (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Colours.html">Colours (Version 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Convert.html">Convert (Version 1.1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption (Version 1)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">IsDigit (Version 2)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#isdigit">IsDigit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Board.html">Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Check.html">Check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Colours.html">Colours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convert.html">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">IsDigit</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">IsDigit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback (Version 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Save.html">Save (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Message.html">Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run.html">Run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Save.html">Save</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching (Verison 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
@@ -74,8 +76,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">IsDigit (Version 2)</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">IsDigit</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Modules/IsDigit.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -85,8 +87,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="isdigit-version-2">
-<h1>IsDigit (Version 2)<a class="headerlink" href="#isdigit-version-2" title="Permalink to this heading"></a></h1>
+  <section id="isdigit">
+<h1>IsDigit<a class="headerlink" href="#isdigit" title="Permalink to this heading"></a></h1>
+<p>Last Updated: pre v1</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There is no class here for once 👀</p>
@@ -94,24 +97,24 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">PythonFunctions.IsDigit</span> <span class="kn">import</span> <span class="n">IsDigit</span>
 </pre></div>
 </div>
-<section id="isdigit">
-<h2>IsDigit<a class="headerlink" href="#isdigit" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h2>IsDigit<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">IsDigit.</span></span><span class="sig-name descname"><span class="pre">IsDigit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">var</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>NOTE: by digit, we include both negative and positive numbers.
 A <cite>float</cite> is also included</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>var</strong> (<em>str</em>) – The input to check for digit</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Is it a digit</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>AttributeError</strong> – None was passed in.</p>
 </dd>
 </dl>
@@ -124,8 +127,8 @@ A <cite>float</cite> is also included</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Encryption.html" class="btn btn-neutral float-left" title="Encryption (Version 1)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="PrintTraceback.html" class="btn btn-neutral float-right" title="PrintTraceback (Version 1)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Encryption.html" class="btn btn-neutral float-left" title="Encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Message.html" class="btn btn-neutral float-right" title="Message" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

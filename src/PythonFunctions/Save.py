@@ -8,11 +8,10 @@ import shutil
 import typing
 from enum import Enum
 
-from . import SaveModules
+from . import SaveModules, Message
 from .Check import Check
 from .CleanFolderData import Clean
 from .Encryption import Encryption
-from .Message import Message
 from .PrintTraceback import PrintTraceback
 
 
@@ -230,7 +229,8 @@ class save:
 
     def __pickeCoder(self, result, decode: bool, *, rBytes: bool = None):
         try:
-            result = pickle.dumps(result) if not decode else pickle.loads(result)
+            result = pickle.dumps(
+                result) if not decode else pickle.loads(result)
             return result, True, rBytes
         except EOFError:
             PrintTraceback()
@@ -316,7 +316,8 @@ class save:
     def GetModule(self, path: str) -> SaveModules.template.SaveTemplate:
         path, storage = self.__TranslateStorage(path)
 
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(
+            storage.name)
         module.credentials(self.settings)
         return module
 

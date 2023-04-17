@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Save (Version 2) &mdash; Python Functions 1.0.1 documentation</title>
+  <title>Save &mdash; Python Functions 1.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -12,16 +12,13 @@
   <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Searching (Verison 2)" href="Searching.html" />
-    <link rel="prev" title="Run (Version 3)" href="Run.html" /> 
+    <link rel="next" title="Searching" href="Searching.html" />
+    <link rel="prev" title="Run" href="Run.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -29,11 +26,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Python Functions
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Python Functions
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -41,24 +42,27 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../Usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Board.html">Board (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Check.html">Check (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Colours.html">Colours (Version 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Convert.html">Convert (Version 1.1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption (Version 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="IsDigit.html">IsDigit (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback (Version 1)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Run.html">Run (Version 3)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Save (Version 2)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="Board.html">Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Check.html">Check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CleanFolderData.html">CleanFolderData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Colours.html">Colours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Convert.html">Convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Encryption.html">Encryption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IsDigit.html">IsDigit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Message.html">Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PrintTraceback.html">PrintTraceback</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Run.html">Run</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Save</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#driveexists">DriveExists</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#drivecredentials">DriveCredentials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#write">Write</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#read">Read</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#makefolders">MakeFolders</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#removefile">RemoveFile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#removefolder">RemoveFolder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deletefile">DeleteFile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deletefolder">DeleteFolder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listfolder">ListFolder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#checkifexists">CheckIfExists</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#changepasscode">ChangePasscode</a></li>
 </ul>
 </li>
@@ -75,11 +79,11 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching (Verison 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui (Version 3)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Version.html">Version (Version 2)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Watermark.html">Watermark (Version 2)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Searching.html">Searching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TerminalDisplay.html">Terminal Display</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Ui.html">Ui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Version.html">Version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Watermark.html">Watermark</a></li>
 </ul>
 
         </div>
@@ -95,8 +99,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
-      <li class="breadcrumb-item active">Save (Version 2)</li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Save</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/Modules/Save.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -106,8 +110,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="save-version-2">
-<h1>Save (Version 2)<a class="headerlink" href="#save-version-2" title="Permalink to this heading"></a></h1>
+  <section id="save">
+<h1>Save<a class="headerlink" href="#save" title="Permalink to this heading"></a></h1>
+<p>Last Updated: v1.5</p>
 <p>A system to easly write, read, delete data. with support of multiple file systems and encryption levels.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">src.PythonFunctions</span> <span class="kn">import</span> <span class="n">save</span>
 <span class="n">sv</span> <span class="o">=</span> <span class="n">save</span><span class="p">()</span>
@@ -131,10 +136,10 @@ More information about them later</p>
 <span class="sig-name descname"><span class="pre">DriveExists</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Checks if <cite>gCred.json</cite> is found within the local storage</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>If it is found</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bool</p>
 </dd>
 </dl>
@@ -151,19 +156,19 @@ More information about them later</p>
 <span class="sig-name descname"><span class="pre">DriveCredentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Copies and deletes drive credentials file.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – The path where the file is</p></li>
 <li><p><strong>mode</strong> (<em>DriveCredentialsMode</em>) – What to do</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Information about what happened</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
-<dt class="field-even">Raises</dt>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
 <li><p><strong>AttributeError</strong> – Invalid mode</p></li>
 <li><p><strong>AttributeError</strong> – Can’t find <cite>gCred.json</cite> under path</p></li>
@@ -183,17 +188,17 @@ More information about them later</p>
 <span class="sig-name descname"><span class="pre">Write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Save the specified data to a file (path) with the specified encoding</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>any</em>) – The data to save</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – The location to save to</p></li>
 <li><p><strong>encoding</strong> (<em>List</em><em>[</em><em>encoding</em><em>] </em><em>| </em><em>encoding</em>) – (Optional) The levels of encoding to apply to the data</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Information to do with the saving</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>bool | str | dict</p>
 </dd>
 </dl>
@@ -210,16 +215,16 @@ More information about them later</p>
 <span class="sig-name descname"><span class="pre">Read</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Returns what the file contains after going through the specified encoding</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>path</strong> (<em>str</em>) – The path to read from</p></li>
 <li><p><strong>encoding</strong> (<em>List</em><em>[</em><em>encoding</em><em>] </em><em>| </em><em>encoding</em>) – The encoding to apply to the file</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The data stored in the file</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>any</p>
 </dd>
 </dl>
@@ -236,13 +241,13 @@ More information about them later</p>
 <span class="sig-name descname"><span class="pre">MakeFolders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Make a folder, or folders following the path given.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The folders to make</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The path of the folders</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str | dict | None</p>
 </dd>
 </dl>
@@ -252,20 +257,20 @@ More information about them later</p>
 </pre></div>
 </div>
 </section>
-<section id="removefile">
-<h3>RemoveFile<a class="headerlink" href="#removefile" title="Permalink to this heading"></a></h3>
+<section id="deletefile">
+<h3>DeleteFile<a class="headerlink" href="#deletefile" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">RemoveFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">DeleteFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Remove path</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – File to remove</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> | </em><em>List</em><em>[</em><em>str</em><em>]</em>) – File to remove</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Information about deletion</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str | bool | None</p>
 </dd>
 </dl>
@@ -275,20 +280,20 @@ More information about them later</p>
 </pre></div>
 </div>
 </section>
-<section id="removefolder">
-<h3>RemoveFolder<a class="headerlink" href="#removefolder" title="Permalink to this heading"></a></h3>
+<section id="deletefolder">
+<h3>DeleteFolder<a class="headerlink" href="#deletefolder" title="Permalink to this heading"></a></h3>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">RemoveFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">DeleteFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Remove the folder and all subfolders / paths</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Parent folder to remove</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em><em> | </em><em>List</em><em>[</em><em>str</em><em>]</em>) – Parent folder to remove</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Information about deletion</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str | bool | None</p>
 </dd>
 </dl>
@@ -297,6 +302,46 @@ More information about them later</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sv</span><span class="o">.</span><span class="n">RemoveFolder</span><span class="p">(</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</section>
+<section id="listfolder">
+<h3>ListFolder<a class="headerlink" href="#listfolder" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">ListFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>List all files in that folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Folder to get files</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Files in directory</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="checkifexists">
+<h3>CheckIfExists<a class="headerlink" href="#checkifexists" title="Permalink to this heading"></a></h3>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">CheckIfExists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Check if a file exists</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – The path to check</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>If the path exists</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 <section id="changepasscode">
 <h3>ChangePasscode<a class="headerlink" href="#changepasscode" title="Permalink to this heading"></a></h3>
@@ -311,10 +356,10 @@ please make sure to decrypt and save it before changing your passcode.</p>
 <span class="sig-name descname"><span class="pre">ChangePasscode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Changes the stored passcode to a new random value</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The new passcode</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>bytes</p>
 </dd>
 </dl>
@@ -481,8 +526,8 @@ The dictionary must contain these values: <cite>header</cite> and <cite>rows</ci
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Run.html" class="btn btn-neutral float-left" title="Run (Version 3)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Searching.html" class="btn btn-neutral float-right" title="Searching (Verison 2)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Run.html" class="btn btn-neutral float-left" title="Run" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Searching.html" class="btn btn-neutral float-right" title="Searching" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

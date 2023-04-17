@@ -5,7 +5,7 @@ import typing
 from dataclasses import dataclass
 from colorama import Fore, Back
 from .Check import Check
-from .Message import Message
+from . import Message
 from .PrintTraceback import PrintTraceback
 
 canRead = True
@@ -81,7 +81,8 @@ class Display:
         if index is None:
             index = len(self.options)
 
-        newOptions = (option[0],) + (option[1].replace(" ", "`-_-`"),) + option[2:]
+        newOptions = (option[0],) + \
+            (option[1].replace(" ", "`-_-`"),) + option[2:]
         self.options.update({index: newOptions})
 
     def RemoveOption(self, index: int):
@@ -200,7 +201,8 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             self.__Number.low = negList[0]
             negList = reversed(negList)
             for item in negList:
-                print(f"{item:5}: {optionList.get(item)[1].replace('`-_-`', ' ')}")
+                print(
+                    f"{item:5}: {optionList.get(item)[1].replace('`-_-`', ' ')}")
 
     def __GetListInput(self):
         try:
@@ -212,7 +214,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             )
             return self.options.get(v)[0](*self.options.get(v)[1:])
         except TypeError:
-            Message().clear("Invalid input!", timeS=2)
+            Message.clear("Invalid input!", timeS=2)
             PrintTraceback()
             return None
 
@@ -296,7 +298,8 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
                 chosen = True
                 return self.outMsg
 
-            self.cursorPosition = self.__MoveCursorIndex(self.cursorPosition, k)
+            self.cursorPosition = self.__MoveCursorIndex(
+                self.cursorPosition, k)
 
             # moves the cursor, Makes it look clearer
             print("\033[0;0H", end="")

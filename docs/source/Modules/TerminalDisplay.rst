@@ -1,5 +1,7 @@
-Terminal Display (Version 2)
-============================
+Terminal Display
+================
+
+Last Updated: v1.5
 
 A better and easier to use input system for the terminal, supports multiple modes.
 
@@ -112,13 +114,15 @@ ShowHeader
 ShowOptions
 -----------
 
-.. py:function:: ShowOptions(useList)
+.. py:function:: ShowOptions(*, useList, requireResult)
     :noindex:
 
     The main function shows all the options that have been specified.
 
     :param useList: (Optional) To use a list format instead of a interactive movable format
+    :param requireResult: (Optional) Require a result to be returned (Defaults to true)
     :type useList: bool 
+    :type requireResult: bool
     :returns: The result of the callback function of the chosen input
     :rtype: any
 

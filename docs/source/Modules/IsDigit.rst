@@ -1,5 +1,7 @@
-IsDigit (Version 2)
-===================
+IsDigit
+=======
+
+Last Updated: pre v1
 
 .. note::
     There is no class here for once 👀

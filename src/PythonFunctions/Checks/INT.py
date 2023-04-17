@@ -3,6 +3,7 @@
 from PythonFunctions.IsDigit import IsDigit
 from PythonFunctions.Message import Message
 
+
 def Clear(msg: str, clear: bool):
     if clear:
         return Message.clear(msg, timeS=1)
