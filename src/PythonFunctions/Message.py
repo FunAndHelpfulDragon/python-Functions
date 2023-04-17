@@ -8,7 +8,7 @@ def __messageSort(
     *,
     timeS: int = 0,
     message: str = None,
-    clear: bool = False,
+    clearConsole: bool = False,
     colour: str = "",
     delete: bool = False,
 ):
@@ -30,7 +30,7 @@ def __messageSort(
     time.sleep(timeS)
 
     # If clearing console data
-    if clear:
+    if clearConsole:
         # Check if we don't care about previous data
         if delete:
             return os.system("cls" if os.name == "nt" else "clear")
@@ -54,7 +54,7 @@ def clear(
     __messageSort(
         timeS=timeS,
         message=message,
-        clear=True,
+        clearConsole=True,
         delete=delete,
         colour=Fore.RED,
     )

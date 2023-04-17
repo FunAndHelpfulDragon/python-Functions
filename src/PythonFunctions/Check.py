@@ -3,9 +3,8 @@ import importlib
 import os
 from enum import Enum
 
-from . import Checks
+from . import Checks, Message
 from .CleanFolderData import Clean
-from .Message import Message
 
 
 class ModeEnum(Enum):

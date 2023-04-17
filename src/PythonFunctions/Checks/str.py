@@ -1,4 +1,6 @@
-from PythonFunctions.Message import Message
+import importlib
+
+Message = importlib.import_module('.Message', 'PythonFunctions')
 
 
 def check(value, **info):

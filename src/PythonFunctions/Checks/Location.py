@@ -1,6 +1,11 @@
-from PythonFunctions.Convert import Location
-from PythonFunctions.Logic import CheckNone
-from PythonFunctions.Message import Message
+import importlib
+
+Convert = importlib.import_module('.Convert', 'PythonFunctions')
+Logic = importlib.import_module('.Logic', 'PythonFunctions')
+Message = importlib.import_module('.Message', 'PythonFunctions')
+
+Location = Convert.Location
+CheckNone = Logic.CheckNone
 
 
 def check(value, **info):

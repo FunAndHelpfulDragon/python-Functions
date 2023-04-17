@@ -1,7 +1,9 @@
 """Checks if a value is within a certain range
 """
-from PythonFunctions.IsDigit import IsDigit
-from PythonFunctions.Message import Message
+import importlib
+IsDigit = importlib.import_module('.IsDigit', 'PythonFunctions')
+Message = importlib.import_module('.Message', 'PythonFunctions')
+IsDigit = IsDigit.IsDigit
 
 
 def Clear(msg: str, clear: bool):

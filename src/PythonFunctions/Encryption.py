@@ -1,4 +1,4 @@
-from .Message import Message
+from . import Message
 from .PrintTraceback import PrintTraceback
 
 disabled = False
@@ -30,7 +30,7 @@ class Encryption:
         if disabled:
             return "Missing Modules! Classs Disabled!!"
 
-        Message().warn(
+        Message.warn(
             "Please make sure you keep the key safe!",
             timeS=4,
         )
