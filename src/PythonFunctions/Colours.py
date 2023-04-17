@@ -45,4 +45,4 @@ def Revert(string: str) -> str:
         return string[start:end]
 
     print("String does not start with '\x1b'")
-    return None
+    return string
