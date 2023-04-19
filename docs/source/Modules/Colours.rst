@@ -30,3 +30,16 @@ Translate
     :type Form: colorama.Form, colorama.Style, Colours.Format
     :rtype: str
     :return: the result
+
+Revert
+------
+
+.. py:function:: Colours.Revert(string):
+    :noindex:
+
+    Revert a string back into the original form
+
+    :param string: String to revert
+    :type string: str
+    :return: The result (either original or input)
+    :rtype: str

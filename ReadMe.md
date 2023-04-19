@@ -22,6 +22,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Location](src/PythonFunctions/Checks/Location.py) to [Check.py](src/PythonFunctions/Check.py). Compares string with location
 - `rCheck` to [Check.py](src/PythonFunctions/Check.py) to return the value as well as the results. (Defaults to false)
 - `Translate` to [Colours.py](src/PythonFunctions/Colours.py) to 'Translates a string into the format specified' (documentation quote)
+- `Revert` to [Colours.py](src/PythonFunctions/Colours.py) to 'Revert a translated string into the original string'
 - [Logic.py](src/PythonFunctions/Logic.py) for random multi logic functions (All of X are Y instance, etc) (Also added test suite)
 - [Save.py](src/PythonFunctions/Save.py) `GetModule` function to save a bunch of code in pass-through functions
 - [Save.py](src/PythonFunctions/Save.py) `ListFolder` and `CheckIfExists` methods. (Also added to representive systems)
