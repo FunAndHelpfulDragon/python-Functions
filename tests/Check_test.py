@@ -69,7 +69,8 @@ def str_check(vIn: str, arr: list, callback=None):
         The result: of the check
     """
     sys.stdin = StringIO(f"{vIn}")
-    return chk.getInput("Testing (str): ", chk.ModeEnum.str, callback=callback, info=arr)
+    return chk.getInput("Testing (str): ", chk.ModeEnum.str, callback=callback,
+                        info=arr)
 
 
 def path_check(vIn: str):
