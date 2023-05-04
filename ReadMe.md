@@ -2,6 +2,10 @@
 
 This is a gigantic folder, with multiple functions for multiple use cases. The only folder that you will need, is [PythonFunctions](./src/PythonFunctions/).
 
+## Major Updates
+
+Version 1.5 will be released the same time that version 2.0 of Python Battleships (https://github.com/dragmine149/Python_Battleships) is released. Please stay turned.
+
 ## Information
 
 Documentation: https://python-functions.readthedocs.io/en/latest/
@@ -17,6 +21,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 
 #### Added
 
+- `cursor` to [__init__.py](src/PythonFunctions/__init__.py) for quick move cursor
 - [Board.py](src/PythonFunctions/Board.py) `DisplayBoard` `coords` argument to show coordinates on the left and top of the board printout.
 - [Board.py](src/PythonFunctions/Board.py) `MultiBoardDisplay` to display multiple boards at once side by side. (Thanks chatGPT)
 - [Location](src/PythonFunctions/Checks/Location.py) to [Check.py](src/PythonFunctions/Check.py). Compares string with location
@@ -32,6 +37,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 #### Updated
 
 - [Check.py](src/PythonFunctions/Check.py) to not pass in the modules any more (isdigit, etc)
+- [Check.py](src/PythonFunctions/Check.py) to not require user input
 - [Check.INT](src/PythonFunctions/Checks/INT.py) with the ability to 'warn' instead of 'clear'
 - [Check.PATH](src/PythonFunctions/Checks/path.py) to use `Save.py` `CheckIfExists` instead of `os`
 - [Check.YN](src/PythonFunctions/Checks/yn.py), [Check.STR](src/PythonFunctions/Checks/str.py) to use modules instead of pass in
