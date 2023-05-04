@@ -2,6 +2,12 @@
 
 This is a gigantic folder, with multiple functions for multiple use cases. The only folder that you will need, is [PythonFunctions](./src/PythonFunctions/).
 
+## Major Updates
+
+Version 1.5 will be released the same time that version 2.0 of Python Battleships (https://github.com/dragmine149/Python_Battleships) is released. Please stay turned.
+
+If you want, fell free to test it out right now [here](https://github.com/FunAndHelpfulDragon/python-Functions/tree/Version-1.5)
+
 ## Documentation
 
 Every file has it own documentation, which can be found here: [Documentation](https://python-functions.readthedocs.io/en/latest/).

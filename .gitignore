@@ -5,3 +5,4 @@ PyFuncSave
 *.egg
 *.egg-info/
 .venv/
+.DS_Store
