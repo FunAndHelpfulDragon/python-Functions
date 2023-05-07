@@ -21,7 +21,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 
 #### Added
 
-- `cursor` to [__init__.py](src/PythonFunctions/__init__.py) for quick move cursor
+- `cursor`, `clearLine`, `lenstr`, `n` to [__init__.py](src/PythonFunctions/__init__.py) for quick move cursor (Might move at some point to own file but they are small random stuff so might not)
 - [Board.py](src/PythonFunctions/Board.py) `DisplayBoard` `coords` argument to show coordinates on the left and top of the board printout.
 - [Board.py](src/PythonFunctions/Board.py) `MultiBoardDisplay` to display multiple boards at once side by side. (Thanks chatGPT)
 - [Location](src/PythonFunctions/Checks/Location.py) to [Check.py](src/PythonFunctions/Check.py). Compares string with location
@@ -39,7 +39,9 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Check.py](src/PythonFunctions/Check.py) to not pass in the modules any more (isdigit, etc)
 - [Check.py](src/PythonFunctions/Check.py) to not require user input
 - [Check.INT](src/PythonFunctions/Checks/INT.py) with the ability to 'warn' instead of 'clear'
+- [Check.INT](src/PythonFunctions/Checks/INT.py) debug and respond logs.
 - [Check.PATH](src/PythonFunctions/Checks/path.py) to use `Save.py` `CheckIfExists` instead of `os`
+- [Check.PATH](src/PythonFunctions/Checks/path.py) to include `~/r!` as a way to signal a reset to the program.
 - [Check.YN](src/PythonFunctions/Checks/yn.py), [Check.STR](src/PythonFunctions/Checks/str.py) to use modules instead of pass in
 - Renamed [Colours.py](src/PythonFunctions/Colours.py) `FORMAT` to `Format`
 - Removed Message class from [Message.py](src/PythonFunctions/Message.py) and move functions outside
@@ -66,6 +68,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 #### Removed
 
 - `Colorama` imports from [Colours.py](src/PythonFunctions/Colours.py)
+- Forced `:` at end of input from [Check.py](src/PythonFunctions/Check.py)
 - [Save.py](src/PythonFunctions/Save.py) `__GetFileInformation` due to not being used
 - [Save.py](src/PythonFunctions/Save.py) `Save` function (Version 1.5 due removal)
 - Some documentation from [Version.py](src/PythonFunctions/Version.py) (function explains itself)

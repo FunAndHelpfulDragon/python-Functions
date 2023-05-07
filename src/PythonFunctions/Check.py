@@ -48,7 +48,11 @@ class Check:
 
         raise NotImplementedError(f"Mode: {mode} not implemented")
 
-    def getInput(self, msg: str, mode: ModeEnum, *, callback=None, rCheck: bool = False, vCheck: any = None, **info):
+    def getInput(self,
+                 msg: str, mode: ModeEnum, *,
+                 callback=None, rCheck: bool = False,
+                 vCheck: any = None,
+                 **info):
         """Translate the user input, through the check and returns
 
         Args:
@@ -62,27 +66,24 @@ class Check:
         Returns:
             _type_: The result of the check
         """
+
         if not isinstance(mode, ModeEnum):
             Message.warn(
                 "Invalid value entered to check.getInput. Please use check.ModeEnum"
             )
             return None
 
-        # HAHAHA Force them to use colon space
-        if msg.endswith(":") and not msg.endswith(" "):
-            msg += " "
-        elif not msg.endswith(": "):
-            msg += ": "
-
-        check = vCheck
+        check = None
         while check is None:
-            if vCheck is None:
-                check = input(msg)
-
+            check: str = input(msg) if vCheck is None else str(vCheck)
             result = self.__translate_Mode(check, mode.value, **info)
-            if result is None:
+            if result is None and vCheck is None:
                 check = None
+                Message.warn('Invalid Input!', timeS=.5)
+                print('\033[F\033[F', end='')
                 continue
+
+            print('', end='')
 
             if callable(callback):
                 return callback(result)

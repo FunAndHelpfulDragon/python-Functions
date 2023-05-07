@@ -28,7 +28,7 @@ def check(value, **info) -> int:
     clear = info.get("clear")
 
     if value == '':
-        return False
+        return None
 
     # is digit check
     if IsDigit(value):
@@ -42,4 +42,4 @@ def check(value, **info) -> int:
                 return Clear(f"Out of range. Too high! (Highest Value: {higherRange})", clear)
         return int(value)
 
-    return Clear("Invalid input! Not a `real` number", clear)
+    return Clear(f"Invalid input! ({value}) not a `real` number\033[F", clear)
