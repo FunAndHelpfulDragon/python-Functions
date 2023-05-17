@@ -63,7 +63,7 @@ class save:
         }
 
         self.__LoadModules()
-        self.enc = Encryption()
+        self.__enc = Encryption()
         self.__CheckData()
 
     def __LoadModules(self):
@@ -168,7 +168,7 @@ class save:
             bytes: The new passcode
         """
 
-        key = self.enc.GetKey()  # get the byte version
+        key = self.__enc.GetKey()  # get the byte version
         self.settings["Passcode"] = key.decode(
             "utf-8")  # store the byte as string
 
@@ -249,9 +249,9 @@ class save:
         key = Passcode.encode("utf-8")
 
         result = (
-            self.enc.EncryptData(result, key)
+            self.__enc.EncryptData(result, key)
             if not decode
-            else self.enc.DecryptData(result, key)
+            else self.__enc.DecryptData(result, key)
         )
 
         return result, True, rBytes
