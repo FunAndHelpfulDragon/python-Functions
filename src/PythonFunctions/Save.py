@@ -351,6 +351,7 @@ class save:
 
         Returns:
             any: The data in the file
+            False: File could not be found
         """
         if encoding is None:
             encoding = self.encoding.NONE

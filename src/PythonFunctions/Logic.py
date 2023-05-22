@@ -12,16 +12,22 @@ def checkInstances(instanceType: any, *obj: any) -> bool:
 
 
 def MultiCheck(*obj: any) -> bool:
-    """Checks if all of object are true
+    # Thanks Chat-GPT3
+    """Checks if all of object are the same
     Note: mixing lists and other values won't work
 
     Args:
         *obj (any): The objects to test
 
     Returns:
-        bool: Are they all true?
+        bool: Are they all the same?
     """
-    return any(item is False for item in obj)
+    same = True
+    for item in obj:
+        unique_values = set(item)
+        same = len(unique_values) == 1
+
+    return same
 
 
 def CheckNone(*obj: any) -> bool:
