@@ -5,6 +5,7 @@ import json
 import os
 import pickle
 import shutil
+import sqlite3 as sql
 import typing
 from enum import Enum
 
@@ -423,3 +424,23 @@ class save:
             path (str): The path to check
         """
         return self.GetModule(path).CheckIfExists(path)
+
+    def SQL(self, path: str, command: str, *, encoding: typing.List = None):
+        """Run an SQL command on a file
+
+        Args:
+            path (str): The file
+            command (str): The command to run
+
+        Returns:
+            any: The response of the command
+        """
+        data = self.Read(path, encoding=encoding)
+        rdata = None
+        with sql.connect(data) as database:
+            cursor: sql.Cursor = database.cursor()
+            cursor.execute(command)
+            database.commit()
+            rdata = cursor.fetchall()
+
+        return rdata
