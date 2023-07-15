@@ -7,8 +7,13 @@ from . import template
 class save(template.SaveTemplate):
     def __init__(self) -> None:
         self.ftp: ftplib.FTP = ftplib.FTP()
+        self.tempFile = ''
 
         super().__init__()
+
+    def credentials(self, data):
+        self.settings = data
+        self.tempFile = data.get('SettingsSave') + '/ftp.temp'
 
     def __Login(self, path):
         """Log in to the FTP server using the provided information
@@ -124,6 +129,7 @@ class save(template.SaveTemplate):
     def CheckIfExists(self, path: str):
         directory, file = os.path.split(path)
         return file in self.ListFolder(directory)
+
 
 def load():
     return save()
