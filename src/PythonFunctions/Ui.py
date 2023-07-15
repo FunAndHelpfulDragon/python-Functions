@@ -39,7 +39,7 @@ class ui:
         """
         Frame = tk.Frame(self.canvas)
         Frame.grid(row=row, column=column)
-        self.Frames.append({"Element": Frame, "row": row, "column": column})
+        self.Frames.append({"Element": Frame})
 
         return Frame
 
@@ -74,8 +74,7 @@ class ui:
         if self.callback is not None:
             return self.callback(**kwargs)
 
-        raise NotImplementedError(
-            f"{buttonName} has no designated callback function!")
+        raise NotImplementedError(f"{buttonName} has no designated callback function!")
 
     def AddButton(
         self,
@@ -90,7 +89,7 @@ class ui:
         callbackArgs: bool = None,
         rowspan: int = 1,
         columnspan: int = 1,
-        image: tk.PhotoImage = None
+        image: tk.PhotoImage = None,
     ) -> tk.Button:
         """Add a new button to the UI
 
@@ -127,7 +126,7 @@ class ui:
             textvariable=textVar,
             command=cmd,
             font=self.font,
-            image=image
+            image=image,
         )
 
         Button.grid(
@@ -137,7 +136,7 @@ class ui:
             rowspan=rowspan,
             columnspan=columnspan,
         )
-        self.Elements.append({"Element": Button, "row": row, "column": column})
+        self.Elements.append({"Element": Button})
         return Button
 
     def AddLabel(
@@ -184,7 +183,7 @@ class ui:
             rowspan=rowspan,
             columnspan=columnspan,
         )
-        self.Elements.append({"Element": Label, "row": row, "column": column})
+        self.Elements.append({"Element": Label})
         return Label
 
     def AddTexBox(
@@ -224,22 +223,19 @@ class ui:
             rowspan=rowspan,
             columnspan=columnspan,
         )
-        self.Elements.append(
-            {"Element": textBox, "row": row, "column": column})
+        self.Elements.append({"Element": textBox})
         return textBox
 
-    def ChangeState(self, Element, state: bool = True, *, row: int = 0, column: int = 0):
+    def ChangeState(self, Element, state: bool = True):
         """Make a element visible or invisible
 
         Args:
             Element (_type_): The element to change the state of
             state (bool, optional): The state to change to. Defaults to True.
-            row (int, optional): The row index to place the element. Defaults to 0.
-            column (int, optional): The column index to place the element. Defaults to 0.
         """
         if state:
-            return Element.grid(row=row, column=column)
-        return Element.grid_forget()
+            return Element.grid()
+        return Element.grid_remove()
 
     def CreateStringVar(
         self, frame: tk.Frame = None, default: str = ""

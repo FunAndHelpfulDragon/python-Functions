@@ -181,16 +181,12 @@ ChangeState
 
     :param Element: The element to effect
     :param state: (Optional) The new mode of the element. Defaults to True.
-    :param row: (Optional) The place to put the element. Defaults to 0.
-    :param column: (Optional) The place to put the element. Defaults to 0.
     :type Element: any (tk object)
     :type state: bool
-    :type row: int
-    :type column: int
 
 .. code-block:: python
 
-    tkUi.ChangeState(textBox, row=0, column=10) # set to true and places at (0, 10)
+    tkUi.ChangeState(textBox) # set to true
     tkUi.ChangeState(textBox, False) # hides
 
 .. note::
