@@ -1,19 +1,18 @@
 # Module update checker, based off the github file
-import os
+import shutil
 from packaging import version
 
 GlobalRead = True
 try:
     import requests
 except ModuleNotFoundError:
-    print(
-        "Requests is not installed. Can not check for a new PythonFunction update!"
-    )
+    print("Requests is not installed. Can not check for a new PythonFunction update!")
     GlobalRead = False
 
 
 def CanReadGlobal():
     return GlobalRead
+
 
 def ReadLocal():
     return "1.5"
@@ -48,12 +47,12 @@ def Compare():
         return
 
     if version.parse(server) > version.parse(current):
-        print("*" * os.get_terminal_size().columns)
+        print("*" * shutil.get_terminal_size().columns)
         print(
             f"""Notice: A newer version of PythonFunctions is alvalible.
-Current Version: {current}. New version: {server}"""
+    Current Version: {current}. New version: {server}"""
         )
-        print("*" * os.get_terminal_size().columns)
+        print("*" * shutil.get_terminal_size().columns)
 
 
 if __name__ == "__main__":

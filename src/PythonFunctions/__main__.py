@@ -72,8 +72,11 @@ def GetVersion():
 def main():
     result = parserFunc()
     if result.version:
-        print(f"Version: {Version.ReadLocal()}")
-        return
+        print(f"Local Version: {Version.ReadLocal()}")
+
+    if Version.CanReadGlobal():
+        Version.Compare()
+
     if result.settings:
         # Settings()
         print("Disabled for the time being as there are no settings")
@@ -85,8 +88,5 @@ def main():
 
     print("Please add `--help` on the end to view the arguments")
 
-
-if Version.CanReadGlobal():
-    Version.Compare()
 
 main()
