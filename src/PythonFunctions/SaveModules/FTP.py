@@ -7,13 +7,14 @@ from . import template
 class save(template.SaveTemplate):
     def __init__(self) -> None:
         self.ftp: ftplib.FTP = ftplib.FTP()
-        self.tempFile = ''
+        self.tempFile = ""
+        self.settings = None
 
         super().__init__()
 
     def credentials(self, data):
         self.settings = data
-        self.tempFile = data.get('SettingsSave') + '/ftp.temp'
+        self.tempFile = data.get("SettingsSave") + "/ftp.temp"
 
     def __Login(self, path):
         """Log in to the FTP server using the provided information
@@ -39,8 +40,7 @@ class save(template.SaveTemplate):
             self.ftp.connect(server[0], port)
             credentials = self.data.get("FTP")
 
-            self.ftp.login(credentials.get("Name"),
-                           credentials.get("Password"))
+            self.ftp.login(credentials.get("Name"), credentials.get("Password"))
 
             if len(info) > 1:
                 try:
