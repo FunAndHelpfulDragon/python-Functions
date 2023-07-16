@@ -111,23 +111,6 @@ class SaveTemplate:
             "The file system you are trying to use does not have support for `ListFolder`"
         )
 
-    def SQL(self, path: str, command: str):
-        """Return an SQL command on a file
-
-        Args:
-            path (str): The file
-            command (str): The command to run
-
-        Raises:
-            NotImplementedError: This hasn't been made for this file system yet
-
-        Returns:
-            Any: Result of SQL command
-        """
-        raise NotImplementedError(
-            "The file system you are trying to use does not have support for `SQL`"
-        )
-
 
 def load():
     return SaveTemplate()

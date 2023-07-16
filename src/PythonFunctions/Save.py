@@ -5,7 +5,6 @@ import json
 import os
 import pickle
 import shutil
-import sqlite3 as sql
 import typing
 from enum import Enum
 
@@ -50,8 +49,7 @@ class save:
         self.encoding: Encoding = Enum(
             "Encoding", ["NONE", "JSON", "BINARY", "CRYPTOGRAPHY", "CSV"]
         )
-        self.storage: Storage = Enum(
-            "Storage", ["NORMAL", "FTP", "GOOGLE", "OTHER"])
+        self.storage: Storage = Enum("Storage", ["NORMAL", "FTP", "GOOGLE", "OTHER"])
         self.DriveCredentialsEnum: DriveCredentialsMode = Enum(
             "DriveCredentialsMode", ["ADD", "DELETE"]
         )
@@ -78,8 +76,7 @@ class save:
             module = module[:-3]  # remove .py
             # Attempt to load the module
             try:
-                mdl = importlib.import_module(
-                    f"{SaveModules.__package__}.{module}")
+                mdl = importlib.import_module(f"{SaveModules.__package__}.{module}")
                 self.saveModules[module] = mdl.load()
             except (AttributeError, ModuleNotFoundError) as e:
                 Message.warn(
@@ -127,8 +124,7 @@ class save:
             )
 
             if data.get("Name") == "" or not correct:
-                data["Name"] = input(
-                    "Please enter your username for the FTP server: ")
+                data["Name"] = input("Please enter your username for the FTP server: ")
 
             data["Password"] = getpass.getpass(
                 "Please enter your password for the FTP server: "
@@ -170,8 +166,7 @@ class save:
         """
 
         key = self.__enc.GetKey()  # get the byte version
-        self.settings["Passcode"] = key.decode(
-            "utf-8")  # store the byte as string
+        self.settings["Passcode"] = key.decode("utf-8")  # store the byte as string
 
         # save the data
         self.Write(
@@ -205,8 +200,7 @@ class save:
             str: The result of the action
         """
         if not os.path.exists(f"{path}/gCred.json"):
-            raise AttributeError(
-                "Couldn't find `gCred.json` in the path specified!")
+            raise AttributeError("Couldn't find `gCred.json` in the path specified!")
 
         saveDir = os.path.dirname(self.settings.get("SettingsSave"))
         if mode == self.DriveCredentialsEnum.ADD:
@@ -230,8 +224,7 @@ class save:
 
     def __pickeCoder(self, result, decode: bool, *, rBytes: bool = None):
         try:
-            result = pickle.dumps(
-                result) if not decode else pickle.loads(result)
+            result = pickle.dumps(result) if not decode else pickle.loads(result)
             return result, True, rBytes
         except EOFError:
             PrintTraceback()
@@ -307,8 +300,7 @@ class save:
         }
 
         for code in encoding:
-            result, rBytes, _ = _LOOKUP.get(code.value)(
-                result, decode, rBytes=rBytes)
+            result, rBytes, _ = _LOOKUP.get(code.value)(result, decode, rBytes=rBytes)
             if result == -1:
                 return False, None
 
@@ -317,8 +309,7 @@ class save:
     def GetModule(self, path: str) -> SaveModules.template.SaveTemplate:
         path, storage = self.__TranslateStorage(path)
 
-        module: SaveModules.template.SaveTemplate = self.saveModules.get(
-            storage.name)
+        module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.credentials(self.settings)
         return module
 
@@ -424,23 +415,3 @@ class save:
             path (str): The path to check
         """
         return self.GetModule(path).CheckIfExists(path)
-
-    def SQL(self, path: str, command: str, *, encoding: typing.List = None):
-        """Run an SQL command on a file
-
-        Args:
-            path (str): The file
-            command (str): The command to run
-
-        Returns:
-            any: The response of the command
-        """
-        data = self.Read(path, encoding=encoding)
-        rdata = None
-        with sql.connect(data) as database:
-            cursor: sql.Cursor = database.cursor()
-            cursor.execute(command)
-            database.commit()
-            rdata = cursor.fetchall()
-
-        return rdata
