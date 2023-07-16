@@ -81,8 +81,7 @@ class Display:
         if index is None:
             index = len(self.options)
 
-        newOptions = (option[0],) + \
-            (option[1].replace(" ", "`-_-`"),) + option[2:]
+        newOptions = (option[0],) + (option[1].replace(" ", "`-_-`"),) + option[2:]
         self.options.update({index: newOptions})
 
     def RemoveOption(self, index: int):
@@ -121,9 +120,7 @@ class Display:
             typewritter: (str, optional): Shows the text letter by letter. Defaults to False.
             pace: (int, optional): Words per second to show using typewritter effect.Defaults to 100
         """
-        print(
-            f"{Fore.GREEN}{'-' * shutil.get_terminal_size().columns}{Fore.RESET}"
-        )
+        print(f"{Fore.GREEN}{'-' * shutil.get_terminal_size().columns}{Fore.RESET}")
 
         if typewriter:
             for i in text:
@@ -133,9 +130,7 @@ class Display:
         else:
             print(text)
 
-        print(
-            f"{Fore.GREEN}{'-' * shutil.get_terminal_size().columns}{Fore.RESET}"
-        )
+        print(f"{Fore.GREEN}{'-' * shutil.get_terminal_size().columns}{Fore.RESET}")
 
         self.__storedText = text
 
@@ -179,7 +174,7 @@ class Display:
             """
 
 Controls:
----------------------------------------------------------
+----------------------------------------------------------------------------
 W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
         )
 
@@ -201,8 +196,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             self.__Number.low = negList[0]
             negList = reversed(negList)
             for item in negList:
-                print(
-                    f"{item:5}: {optionList.get(item)[1].replace('`-_-`', ' ')}")
+                print(f"{item:5}: {optionList.get(item)[1].replace('`-_-`', ' ')}")
 
     def __GetListInput(self):
         try:
@@ -285,8 +279,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             if k == key.ENTER:
                 chosen = True
                 itemInfo = self.__GetItemInfo(
-                    self.gridData[self.cursorPosition[1]
-                                  ][self.cursorPosition[0]]
+                    self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
                 )
 
                 if len(itemInfo) > 2:
@@ -298,8 +291,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
                 chosen = True
                 return self.outMsg
 
-            self.cursorPosition = self.__MoveCursorIndex(
-                self.cursorPosition, k)
+            self.cursorPosition = self.__MoveCursorIndex(self.cursorPosition, k)
 
             # moves the cursor, Makes it look clearer
             print("\033[0;0H", end="")
