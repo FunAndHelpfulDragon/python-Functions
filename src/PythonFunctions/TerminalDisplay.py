@@ -37,6 +37,7 @@ class Display:
         self.chk: Check = Check()
         self.cursorPosition = [0, 0]
         self.outMsg = None
+        self.quitIsBack: bool = False
 
     def SetQuitMessage(self, msg: str):
         """Set the message to show on output
@@ -134,17 +135,17 @@ class Display:
 
         self.__storedText = text
 
-    def __GenerateGridData(self):
+    def __GenerateGridData(self, lineLength=-1):
         """Generate the data of the grid. What goes where etc"""
         self.gridData = []
         row = []
 
         length, consoleLen = 0, shutil.get_terminal_size().columns  # Size limitations
-        for itemIndex in self.options:
+        for index, itemIndex in enumerate(self.options):
             item = self.options.get(itemIndex)[1]
 
             # Go onto a new row if going to go over the limit
-            if (length + 6) // consoleLen >= 1:
+            if (length + 6) // consoleLen >= 1 or (lineLength > 0 and index % lineLength == 0 and index > 0):
                 row[len(row) - 1] = row[len(row) - 1].replace(" ", "")
                 self.gridData.append(row)
                 row = []
@@ -170,12 +171,13 @@ class Display:
 
                 print(v, end="")
             print()
+        qm = "Quit" if not self.quitIsBack else "Back"
         print(
-            """
+            f"""
 
 Controls:
 ----------------------------------------------------------------------------
-W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
+W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
         )
 
     def __ShowList(self):
@@ -212,7 +214,8 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
             PrintTraceback()
             return None
 
-    def ShowOptions(self, *, useList: bool = False, requireResult: bool = True):
+    def ShowOptions(self, *, useList: bool = False, requireResult: bool = True,
+                    lineLength: int = -1, quitIsBack: bool = False):
         """Returns the item at that index
 
         Args:
@@ -224,7 +227,8 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: Quit, Enter: Select"""
         """
         if not useList and canRead:
             self.cursorPosition = [0, 0]
-            self.__GenerateGridData()
+            self.__GenerateGridData(lineLength)
+            self.quitIsBack = quitIsBack
             self.__ShowGrid()
             if requireResult:
                 return self.__MoveCursor()

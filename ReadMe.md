@@ -32,6 +32,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Save.py](src/PythonFunctions/Save.py) `GetModule` function to save a bunch of code in pass-through functions
 - [Save.py](src/PythonFunctions/Save.py) `ListFolder` and `CheckIfExists` methods. (Also added to representive systems)
 - [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `requireResult` argument to `ShowOptions` for an input to be required (defualts to true)
+- [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `ShowOptions` with arguments `LineLength` (how many items can be on a line) and `quitIsBack` (replace the `q` option with `back` instead of `quit` (does the same thing though))
 - `true` and `false` to module (yep, i did that)
 
 #### Updated

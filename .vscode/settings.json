@@ -21,9 +21,5 @@
     "--disable=C0114",
     "--disable=C0115",
     "--disable=C0116"
-  ],
-  "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
-  "python.formatting.provider": "none"
+  ]
 }
