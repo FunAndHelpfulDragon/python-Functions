@@ -54,6 +54,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Save.py](src/PythonFunctions/Save.py) with more error logging
 - [Save.py](src/PythonFunctions/Save.py) passthough functions to use `GetModule`
 - [ui.py](src/PythonFunctions/Ui.py) to use `grid_remove` instead of `grid_forget` ([#22](https://github.com/FunAndHelpfulDragon/python-Functions/issues/22))
+- [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `AddOption` function argument naming. (split `options` into `function`, `name`  and `args`)
 - [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) works with temparary space replacement.
 - [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `MoveCursor` function to work with arrow keys, and be smaller and easier to expand. (Thanks chatGPT)
 - [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `Invalid Input` message to show the reason as well. (As can be quite ambigious sometimes)

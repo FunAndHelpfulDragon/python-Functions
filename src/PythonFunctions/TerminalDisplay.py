@@ -68,22 +68,27 @@ class Display:
                 cleanOptions.update({int(option): newOptions})
             else:
                 print(
-                    f"{option} with data {options.get(option)} has an invalid data structure"
+                    f"{option} with data {options.get(option)} has an invalid data"
+                    " structure"
                 )
 
         self.options = cleanOptions
 
-    def AddOption(self, option: typing.Tuple, *, index: int = None):
+    def AddOption(self, function, name: str, args: typing.Tuple, *, index: int = None):
         """Add another option to the list
 
         Args:
-            option (typing.Tuple): The information about the option to set
+            function (method): Callback function to call
+            args (typing.Tuple): The information about the option to set
             index (int, optional): The index place to place the item
         """
         if index is None:
             index = len(self.options)
 
-        newOptions = (option[0],) + (option[1].replace(" ", "`-_-`"),) + option[2:]
+        newOptions = (
+            function,
+            name.replace(" ", "`-_-`"),
+        ) + args
         self.options.update({index: newOptions})
 
     def RemoveOption(self, index: int):
