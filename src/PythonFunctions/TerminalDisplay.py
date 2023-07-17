@@ -87,14 +87,15 @@ class Display:
         if index is None:
             index = len(self.options)
 
-        if args is None:
-            args = ()
-
-        newOptions = (
-            function,
-            name.replace(" ", "`-_-`"),
-        ) + args
-        self.options.update({index: newOptions})
+        self.options.update(
+            {
+                index: (
+                    function,
+                    name.replace(" ", "`-_-`"),
+                )
+                + (args,)
+            }
+        )
 
     def RemoveOption(self, index: int):
         """Remove an option at the selected index

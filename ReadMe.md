@@ -4,7 +4,7 @@ This is a gigantic folder, with multiple functions for multiple use cases. The o
 
 ## Major Updates
 
-Version 1.5 will be released the same time that version 2.0 of Python Battleships (https://github.com/dragmine149/Python_Battleships) is released. Please stay turned.
+Version 1.5 will be released the same time that version 2.0 of [Python Battleships](https://github.com/dragmine149/Python_Battleships) is released. Please stay turned.
 
 ## Information
 
