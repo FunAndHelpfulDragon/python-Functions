@@ -165,7 +165,7 @@ class Display:
                     f"{Back.BLUE}>{Back.RESET} {xValue}"
                     if self.cursorPosition[0] == xIndex
                     and self.cursorPosition[1] == yIndex
-                    else xValue
+                    else xValue + "  "
                 )
                 v = v.replace("`-_-`", " ")
 
