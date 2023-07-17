@@ -145,7 +145,9 @@ class Display:
             item = self.options.get(itemIndex)[1]
 
             # Go onto a new row if going to go over the limit
-            if (length + 6) // consoleLen >= 1 or (lineLength > 0 and index % lineLength == 0 and index > 0):
+            if (length + 6) // consoleLen >= 1 or (
+                lineLength > 0 and index % lineLength == 0 and index > 0
+            ):
                 row[len(row) - 1] = row[len(row) - 1].replace(" ", "")
                 self.gridData.append(row)
                 row = []
@@ -209,13 +211,19 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
                 higher=self.__Number.high,
             )
             return self.options.get(v)[0](*self.options.get(v)[1:])
-        except TypeError:
-            Message.clear("Invalid input!", timeS=2)
+        except TypeError as TE:
+            Message.clear(f"Invalid input! Reason: {TE}", timeS=2)
             PrintTraceback()
             return None
 
-    def ShowOptions(self, *, useList: bool = False, requireResult: bool = True,
-                    lineLength: int = -1, quitIsBack: bool = False):
+    def ShowOptions(
+        self,
+        *,
+        useList: bool = False,
+        requireResult: bool = True,
+        lineLength: int = -1,
+        quitIsBack: bool = False,
+    ):
         """Returns the item at that index
 
         Args:
