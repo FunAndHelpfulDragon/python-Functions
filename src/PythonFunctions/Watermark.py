@@ -4,22 +4,22 @@ import os
 
 from colorama import Style
 
-BROKENSHELL = ('/bin/zsh', '')
-SHELL = os.environ.get('SHELL')
+BROKENSHELL = ("/bin/zsh", "/bin/bash")
+SHELL = os.environ.get("SHELL")
 
 
 def LINKCODE(link: str, text: str = None) -> str:
     """Returns the text as a clickable link
 
     Args:
-        link (str): The link to send the user to on click 
+        link (str): The link to send the user to on click
         text (str, optional): The text to mask the linke. Defaults to None.
 
     Returns:
         str: The clickable text
     """
     if SHELL in BROKENSHELL:
-        return f'{text} ({link})'
+        return f"{text} ({link})"
 
     if text is None:
         text = link

@@ -11,7 +11,9 @@ true = True
 false = False
 
 
-def cursor(x: int, y: int, r: bool = False, *, end: str = None) -> typing.Union[str, None]:
+def cursor(
+    x: int, y: int, r: bool = False, *, end: str = None
+) -> typing.Union[str, None]:
     """Sets the cursor position on screen to specified coordinates
 
     Args:
@@ -22,13 +24,13 @@ def cursor(x: int, y: int, r: bool = False, *, end: str = None) -> typing.Union[
     Returns:
         str | None: The string or result of printing
     """
-    msg: str = f'\033[{x};{y}H'
+    msg: str = f"\033[{x};{y}H"
     if r:
         return msg
     return print(msg, end=end)
 
 
-SPACE = ' '
+SPACE = " "
 
 
 def lenstr(item: any, adjsut: int = 0) -> int:
@@ -42,7 +44,7 @@ def lenstr(item: any, adjsut: int = 0) -> int:
         int: The length of the string plus adjust
     """
     if item is None:
-        raise ValueError('Missing item')
+        raise ValueError("Missing item")
 
     return len(str(item)) + adjsut
 
@@ -56,6 +58,7 @@ def n(item: any, default: any, checkA=None, checkB=None, *, v2=None) -> any:
         default (any): The default value
         checkA (any, optional): Check a of the check (a==). Defaults to None.
         checkB (any, optional): Check b of th check (==b). Defaults to None.
+        v2 (any, optional): Use this instead of item for `d if i else i`
 
     Returns:
         any: The result
@@ -69,7 +72,7 @@ def n(item: any, default: any, checkA=None, checkB=None, *, v2=None) -> any:
 
 
 def clearLine(r: bool = False):
-    msg = '' * shutil.get_terminal_size().columns
+    msg = "" * shutil.get_terminal_size().columns
     if not r:
-        return print(msg, end='')
+        return print(msg, end="")
     return r
