@@ -46,6 +46,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Check.PATH](src/PythonFunctions/Checks/path.py) to include `~/r!` as a way to signal a reset to the program.
 - [Check.YN](src/PythonFunctions/Checks/yn.py), [Check.STR](src/PythonFunctions/Checks/str.py) to use modules instead of pass in
 - Renamed [Colours.py](src/PythonFunctions/Colours.py) `FORMAT` to `Format`
+- [Encryption.py](src/PythonFunctions/Encryption.py) time out if no encryption module found from 2 seconds to 0.5 seconds.
 - Removed Message class from [Message.py](src/PythonFunctions/Message.py) and move functions outside
 - [Run.py](src/PythonFunctions/Run.py) to use a dictionary instead
 - [Run.py](src/PythonFunctions/Run.py) to be able to name markers
