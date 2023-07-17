@@ -74,7 +74,9 @@ class Display:
 
         self.options = cleanOptions
 
-    def AddOption(self, function, name: str, args: typing.Tuple, *, index: int = None):
+    def AddOption(
+        self, function, name: str, *, args: typing.Tuple = None, index: int = None
+    ):
         """Add another option to the list
 
         Args:
@@ -84,6 +86,9 @@ class Display:
         """
         if index is None:
             index = len(self.options)
+
+        if args is None:
+            args = ()
 
         newOptions = (
             function,
