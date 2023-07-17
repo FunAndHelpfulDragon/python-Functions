@@ -1,3 +1,4 @@
+import inspect
 import shutil
 import time
 import typing
@@ -210,7 +211,11 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
                 lower=self.__Number.low,
                 higher=self.__Number.high,
             )
-            return self.options.get(v)[0](*self.options.get(v)[1:])
+            if len(inspect.signature(self.options.get(v)[0]).parameters) > 0:
+                return self.options.get(v)[0](*self.options.get(v)[1:])
+
+            return self.options.get(v)[0]()
+
         except TypeError as TE:
             Message.clear(f"Invalid input! Reason: {TE}", timeS=2)
             PrintTraceback()

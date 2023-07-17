@@ -57,6 +57,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) works with temparary space replacement.
 - [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `MoveCursor` function to work with arrow keys, and be smaller and easier to expand. (Thanks chatGPT)
 - [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `Invalid Input` message to show the reason as well. (As can be quite ambigious sometimes)
+- [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `__GetListInput` method when item selected to not send arguments if there are no arguments required.
 - [Version.py](src/PythonFunctions/Version.py) to use `shutil.get_terminal_size` instead of `os.get_terminal_size`
 
 
