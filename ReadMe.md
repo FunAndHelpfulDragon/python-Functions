@@ -21,7 +21,14 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 
 #### Added
 
-- `cursor`, `clearLine`, `lenstr`, `n` to [__init__.py](src/PythonFunctions/__init__.py) for quick move cursor (Might move at some point to own file but they are small random stuff so might not)
+- Made new file [utils.py](src/PythonFunctions/utils.py) with:
++ `true`, `false` (Lower case variants of `True`, `False`)
++ `cursor` (sets position of cursor in terminal)
++ `SPACE` (just an empty space)
++ `lenstr` (returns the length of the string and an adjustment)
++ `n` (complicaeted if else function)
++ `clearLine` (clear a line of the terminal. (Basically replaces it with empty spaces))
++ `clamp` (clamp a float between two numbers)
 - [Board.py](src/PythonFunctions/Board.py) `DisplayBoard` `coords` argument to show coordinates on the left and top of the board printout.
 - [Board.py](src/PythonFunctions/Board.py) `MultiBoardDisplay` to display multiple boards at once side by side. (Thanks chatGPT)
 - [Location](src/PythonFunctions/Checks/Location.py) to [Check.py](src/PythonFunctions/Check.py). Compares string with location

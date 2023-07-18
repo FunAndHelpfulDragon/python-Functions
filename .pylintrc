@@ -27,6 +27,7 @@ ignore=docs
 #
 #    My opions on stuff
 #       C0114 = Missing Module docstring. (Unless someone can tell me how to just import the class) This gets explained in the class, no need to repeat it
+#       W0105 = I use that for documentation. (Pointless documentation)
 
 # Normal pylint stuff, just added on the bottom
 #
@@ -40,7 +41,7 @@ ignore=docs
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
 
-disable=W0613,R0903,W0614,C0111,R0913,C0103,F0401,W0402,R0914,C0114,
+disable=W0613,R0903,W0614,C0111,R0913,C0103,F0401,W0402,R0914,C0114,W0105,
         raw-checker-failed,
         bad-inline-option,
         locally-disabled,
