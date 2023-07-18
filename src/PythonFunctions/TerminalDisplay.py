@@ -294,19 +294,29 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
 
     # Modified from chat gpt 3.5 rewrite
     def __MoveCursorIndex(self, cPos: typing.List, keyPress: str):
-        # Get movement, if invalid just return 0,0
+        """Move the cursor around the grid.
+
+        Args:
+            cPos (typing.List): The current position
+            keyPress (str): The key that got pressed
+
+        Returns:
+            List[int]: The new position of the cursor
+        """
         moveX, moveY = self.__MoveCursorInformation(keyPress)
 
-        currentX = cPos[0]
-        currentY = cPos[1]
+        newX = moveX + cPos[0]
+        newY = cPos[1]
 
-        newX = moveX + currentX
-        newY = currentY
-
-        rollOver = newX - (len(self.gridData[currentY]) - 1)
+        # If the cursor can warp around, warp around
+        rollOver = newX - (len(self.gridData[cPos[1]]) - 1)
         if rollOver > 0 and newY + 1 < len(self.gridData):
             newX = rollOver - 1
             newY += 1
+
+        if rollOver == -len(self.gridData[cPos[1]]) and newY - 1 >= 0:
+            newY -= 1
+            newX = len(self.gridData[newY]) - 1
 
         newY += moveY
 
