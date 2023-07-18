@@ -336,10 +336,10 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
                     self.gridData[self.cursorPosition[1]][self.cursorPosition[0]]
                 )
 
-                if len(itemInfo) > 2:
+                if len(inspect.signature(itemInfo[0]).parameters) > 0:
                     return itemInfo[0](itemInfo[1:])
 
-                return itemInfo[0](itemInfo[1])
+                return itemInfo[0]()
 
             if k in ("Q", "q"):
                 chosen = True
