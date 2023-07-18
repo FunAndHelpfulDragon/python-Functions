@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from colorama import Fore, Back
 from .Check import Check
 from . import Message
+from .utils import clamp
 from .PrintTraceback import PrintTraceback
 
 canRead = True
@@ -294,9 +295,24 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
     # Modified from chat gpt 3.5 rewrite
     def __MoveCursorIndex(self, cPos: typing.List, keyPress: str):
         # Get movement, if invalid just return 0,0
-        cursorX, cursorY = self.__MoveCursorInformation(keyPress)
-        x = max(0, min(cPos[0] + cursorX, len(self.gridData[cPos[1]]) - 1))
-        y = max(0, min(cPos[1] + cursorY, len(self.gridData) - 1))
+        moveX, moveY = self.__MoveCursorInformation(keyPress)
+
+        currentX = cPos[0]
+        currentY = cPos[1]
+
+        newX = moveX + currentX
+        newY = currentY
+
+        rollOver = newX - (len(self.gridData[currentY]) - 1)
+        if rollOver > 0 and newY + 1 < len(self.gridData):
+            newX = rollOver - 1
+            newY += 1
+
+        newY += moveY
+
+        x = clamp(newX, minValue=0, maxValue=len(self.gridData[newY]) - 1)
+        y = clamp(newY, minValue=0, maxValue=len(self.gridData))
+
         return [x, y]
 
     def __MoveCursor(self):
