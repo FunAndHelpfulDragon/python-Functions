@@ -1,5 +1,7 @@
 import typing
 import shutil
+import getpass
+import sys
 
 
 true = True
@@ -96,3 +98,19 @@ def clamp(
     """
 
     return sorted((minValue, value, maxValue))[1]
+
+
+def passOrInput(msg: str, option: bool = False) -> str:
+    """If option ask for password else ask for normal input
+
+    Args:
+        msg (str): The message to show
+        option (bool): The option to choose. Default to False
+
+    Returns:
+        str: The result
+    """
+    if option:
+        return getpass.getpass(msg)
+
+    return input(msg)
