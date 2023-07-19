@@ -6,11 +6,12 @@ from . import template
 
 class Save(template.SaveTemplate):
     def WriteData(self, data: any, path: str, Encoding: bool = False) -> bool:
+        print(path)
         if Encoding:
             with open(path, "wb") as f:
                 return f.write(data) == len(data)
 
-        with open(path, "w", encoding="utf-8") as f:
+        with open(path, "w+", encoding="utf-8") as f:
             return f.write(data) == len(data)
 
     def ReadData(self, path: str, Encoding: bool = False) -> any:

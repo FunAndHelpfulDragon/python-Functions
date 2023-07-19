@@ -80,7 +80,8 @@ class save:
                 self.saveModules[module] = mdl.load()
             except (AttributeError, ModuleNotFoundError) as e:
                 Message.warn(
-                    f"Failed to load save module: {SaveModules.__package__}.{module}. Error: {e}"
+                    f"Failed to load save module: {SaveModules.__package__}.{module}."
+                    f" Error: {e}"
                 )
                 PrintTraceback()
 
@@ -155,6 +156,9 @@ class save:
 
         if path.startswith("oth://"):
             return path.strip("oth://"), self.storage.OTHER
+
+        if path.startswith("~"):
+            path = path.replace("~", os.getenv("HOME"))
 
         return path, self.storage.NORMAL
 
@@ -306,12 +310,12 @@ class save:
 
         return result, rBytes
 
-    def GetModule(self, path: str) -> SaveModules.template.SaveTemplate:
+    def GetModule(self, path: str) -> tuple[str, SaveModules.template.SaveTemplate]:
         path, storage = self.__TranslateStorage(path)
 
         module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)
         module.credentials(self.settings)
-        return module
+        return path, module
 
     def Write(self, data: any, path: str, *, encoding: typing.List = None) -> bool:
         """Save data to the designated file system.
@@ -332,7 +336,8 @@ class save:
             encoding = [encoding]
 
         data, wByte = self.__CodeData(data, encoding)
-        return self.GetModule(path).WriteData(data, path, wByte)
+        path, module = self.GetModule(path)
+        return module.WriteData(data, path, wByte)
 
     def Read(self, path: str, *, encoding: typing.List = None) -> any:
         """Read data from a file
@@ -358,7 +363,8 @@ class save:
                 rBytes = True
                 break
 
-        data = self.GetModule(path).ReadData(path, rBytes)
+        path, module = self.GetModule(path)
+        data = module.ReadData(path, rBytes)
         if isinstance(data, bool):
             # Skip straight to return, don't try and decode it.
             return data
@@ -374,7 +380,8 @@ class save:
         Args:
             path (str): The path to make folders
         """
-        return self.GetModule(path).MakeFolders(path)
+        path, module = self.GetModule(path)
+        return module.MakeFolders(path)
 
     def RemoveFile(self, path: typing.List[str]):
         """Remove a file at a path
@@ -386,7 +393,8 @@ class save:
             path = [path]
 
         for i in path:
-            self.GetModule(i).DeleteFile(i)
+            path, module = self.GetModule(i)
+            module.DeleteFile(path)
 
     def RemoveFolder(self, path: typing.List[str]):
         """Remove a folder (and all sub stuff)
@@ -398,7 +406,8 @@ class save:
             path = [path]
 
         for i in path:
-            self.GetModule(i).DeleteFolder(i)
+            path, module = self.GetModule(i)
+            module.DeleteFolder(path)
 
     def ListFolder(self, path: str):
         """List all files that are in a folder
@@ -406,7 +415,8 @@ class save:
         Args:
             path (str): The path to list files
         """
-        return self.GetModule(path).ListFolder(path)
+        path, module = self.GetModule(path)
+        return module.ListFolder(path)
 
     def CheckIfExists(self, path: str):
         """Checks if a path exists
@@ -414,4 +424,5 @@ class save:
         Args:
             path (str): The path to check
         """
-        return self.GetModule(path).CheckIfExists(path)
+        path, module = self.GetModule(path)
+        return module.CheckIfExists(path)
