@@ -29,6 +29,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 + `n` (complicaeted if else function)
 + `clearLine` (clear a line of the terminal. (Basically replaces it with empty spaces))
 + `clamp` (clamp a float between two numbers)
++ `PassOrInput` (Use getpass.getpass or input)
 - [Board.py](src/PythonFunctions/Board.py) `DisplayBoard` `coords` argument to show coordinates on the left and top of the board printout.
 - [Board.py](src/PythonFunctions/Board.py) `MultiBoardDisplay` to display multiple boards at once side by side. (Thanks chatGPT)
 - [Location](src/PythonFunctions/Checks/Location.py) to [Check.py](src/PythonFunctions/Check.py). Compares string with location
@@ -38,8 +39,12 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - [Logic.py](src/PythonFunctions/Logic.py) for random multi logic functions (All of X are Y instance, etc) (Also added test suite)
 - [Save.py](src/PythonFunctions/Save.py) `GetModule` function to save a bunch of code in pass-through functions
 - [Save.py](src/PythonFunctions/Save.py) `ListFolder` and `CheckIfExists` methods. (Also added to representive systems)
-- [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `requireResult` argument to `ShowOptions` for an input to be required (defualts to true)
-- [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `ShowOptions` with arguments `LineLength` (how many items can be on a line) and `quitIsBack` (replace the `q` option with `back` instead of `quit` (does the same thing though))
+- [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `ShowOptions` function with arguments:
++ `requireResult` (require an input to be made? (Default True))
++ `lineLenght` (Grid Mode, amount of items on a line limit (does not bypass the normal limit))
++ `quitIsBack` (Replace the `Q` function message with `Back` instead of `Quit` (Does the same thing though))
++ `cursorPosition` (Set the cursor to this position by default.)
+- [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) `GetCursorPosition` to return the position of the cursor in grid mode
 - `true` and `false` to module (yep, i did that)
 
 #### Updated
@@ -80,6 +85,7 @@ NOTE: THIS IS BOUND TO CHANGE. DUE TO MULTIPLE SMALL UPDATES.
 - Issue where [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) would not show any negative value options in list mode
 - Issue where [TerminalDisplay.py](src/PythonFunctions/TerminalDisplay.py) would not compersend the fact that '> ' did not exist
 - Issue where [Watermark.py](src/PythonFunctions/Watermark.py) `LINKCODE` would not display a clickable link if the shell didn't allow it.
+- Issue where [Save.py](src/PythonFunctions/Save.py) would not accept `~` as the home dir (`$HOME`)
 
 #### Removed
 
