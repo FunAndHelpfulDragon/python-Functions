@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from colorama import Fore, Back
 from .Check import Check
 from . import Message
-from .utils import clamp
+from .utils import clamp, n
 from .PrintTraceback import PrintTraceback
 
 canRead = True
@@ -240,6 +240,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
         requireResult: bool = True,
         lineLength: int = -1,
         quitIsBack: bool = False,
+        cursorPosition: list[int] = None,
     ):
         """Returns the item at that index
 
@@ -250,8 +251,9 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
         Returns:
             _type_: The item returned
         """
+
         if not useList and canRead:
-            self.cursorPosition = [0, 0]
+            self.cursorPosition = n(cursorPosition, [0, 0])
             self.__GenerateGridData(lineLength)
             self.quitIsBack = quitIsBack
             self.__ShowGrid()
@@ -263,6 +265,14 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
             return self.__GetListInput()
 
         return None
+
+    def GetCursorPosition(self) -> list[int]:
+        """Gets the current position of the cursor
+
+        Returns:
+            list[int]: The cursor position
+        """
+        return self.cursorPosition
 
     def __GetItemInfo(self, item: str):
         """Trys to find item in the list.
