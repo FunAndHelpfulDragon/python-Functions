@@ -10,7 +10,7 @@ Converts cooridnates to the represented position
 
 .. code-block:: python
     
-    from PythonFunctions.Conver import Location
+    from PythonFunctions.Convert import Location
     print(Location('A3')) # output: (0, 2)
 
 
@@ -41,7 +41,7 @@ AudioExtractor
 
     :param path: The path to convert. (If directory, will do all of the directory)
     :type path: str
-    :param destination: (Optional), where to place the files. Defaults to "mp3" in the runtime directory.
+    :param destination: (Optional), where to place the files. Defaults to "mp3" in the runtime directory. Note: If a file already exists in the destination, it will not be converted.
     :type destination: str
     :return: Message about the progress
     :rtype: str | None

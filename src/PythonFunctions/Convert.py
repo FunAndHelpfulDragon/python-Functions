@@ -69,8 +69,10 @@ def AudioExtractor(path: str, destination: str = 'mp3'):
         pass
 
     data = [path]
+    dir = ''
     if os.path.isdir(path):
         data = Clean().clean(path)
+        dir = path
 
     if len(data) == 0:
         return "No files found!"
@@ -79,8 +81,12 @@ def AudioExtractor(path: str, destination: str = 'mp3'):
         os.makedirs(destination)
 
     for i in data:
+        # avoid repeating the same things
+        if i.replace('.mp4', '.mp3') in os.listdir(destination):
+            continue
+
         if i.endswith('.mp4'):
-            FILE = mpyEditor.AudioFileClip(i)
+            FILE = mpyEditor.AudioFileClip(f'{dir}/{i}')
             FILE.write_audiofile(f'{destination}/{i.replace(".mp4", ".mp3")}')
             FILE.close()
 
