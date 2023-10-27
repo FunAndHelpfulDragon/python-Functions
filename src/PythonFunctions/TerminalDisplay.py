@@ -265,7 +265,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
 
         return None
 
-    def GetCursorPosition(self) -> list[int]:
+    def GetCursorPosition(self):
         """Gets the current position of the cursor
 
         Returns:
