@@ -1,7 +1,6 @@
 import typing
 import shutil
 import getpass
-import sys
 
 
 true = True

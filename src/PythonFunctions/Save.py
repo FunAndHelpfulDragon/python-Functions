@@ -310,7 +310,7 @@ class save:
 
         return result, rBytes
 
-    def GetModule(self, path: str) -> tuple[str, SaveModules.template.SaveTemplate]:
+    def GetModule(self, path: str):
         path, storage = self.__TranslateStorage(path)
 
         module: SaveModules.template.SaveTemplate = self.saveModules.get(storage.name)

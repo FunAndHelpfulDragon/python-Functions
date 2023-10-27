@@ -38,8 +38,7 @@ class Display:
         self.__Number = Numbers()
         self.chk: Check = Check()
         self.cursorPosition = [0, 0]
-        self.outMsg = None
-        self.quitIsBack: bool = False
+        self.quitInfo = {"outMsg": None, "quitIsBack": False}
 
     def SetQuitMessage(self, msg: str):
         """Set the message to show on output
@@ -47,7 +46,7 @@ class Display:
         Args:
             msg (str): The message to show
         """
-        self.outMsg = msg
+        self.quitInfo["outMsg"] = msg
 
     def SetOptions(self, options: typing.Dict):
         """Set the program options
@@ -186,7 +185,7 @@ class Display:
 
                 print(v, end="")
             print()
-        qm = "Quit" if not self.quitIsBack else "Back"
+        qm = "Quit" if not self.quitInfo.get("quitIsBack") else "Back"
         print(
             f"""
 
@@ -240,7 +239,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
         requireResult: bool = True,
         lineLength: int = -1,
         quitIsBack: bool = False,
-        cursorPosition: list[int] = None,
+        cursorPosition=None,
     ):
         """Returns the item at that index
 
@@ -255,7 +254,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
         if not useList and canRead:
             self.cursorPosition = n(cursorPosition, [0, 0])
             self.__GenerateGridData(lineLength)
-            self.quitIsBack = quitIsBack
+            self.quitInfo["quitIsBack"] = quitIsBack
             self.__ShowGrid()
             if requireResult:
                 return self.__MoveCursor()
@@ -353,7 +352,7 @@ W/Up: Up, A/Left: Left, S/Down: Down, D/Right: Right, Q: {qm}, Enter: Select"""
 
             if k in ("Q", "q"):
                 chosen = True
-                return self.outMsg
+                return self.quitInfo.get("outMsg")
 
             self.cursorPosition = self.__MoveCursorIndex(self.cursorPosition, k)
 
