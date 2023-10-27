@@ -20,8 +20,8 @@ def test_set():
 
 def test_add():
     """Tests to see if adding options works and is still correct"""
-    dsp.AddOption(callback, "Test3")
-    dsp.AddOption(callback, "Test4")
+    dsp.AddOption(callback, "Test3", index=-1)
+    dsp.AddOption(callback, "Test4", index=-2)
 
     assert len(dsp.options) == 5
 
