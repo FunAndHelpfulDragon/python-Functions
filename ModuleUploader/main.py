@@ -3,14 +3,14 @@ import os
 
 
 def parser():
-    ARGparser = argparse.ArgumentParser(
+    aparse = argparse.ArgumentParser(
         prog="Python Functions updater",
         description="Update the version in the program",
     )
-    ARGparser.add_argument("version")
-    return ARGparser.parse_args()
+    aparse.add_argument("version")
+    return aparse.parse_args()
 
 
 os.system(f"python ModuleUploader/Updater.py {parser().version}")
 os.system("python ModuleUploader/Uploader.py")
-os.system('python ModuleUploader/DocCreator.py')
+os.system("python ModuleUploader/DocCreator.py")

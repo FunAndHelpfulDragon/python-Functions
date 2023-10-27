@@ -83,13 +83,12 @@ def clamp(
         value (float): The number to clamp
         minValue (float): . Defaults to -inf
         maxValue (float): The maximum value. Defaults to inf
-    """
-    """
+
     Sorted will return a list, the middle value will always be the clamped
     value.
 
     This is because, on a sort:
-    - if the value is lower than the minimum, it will be on the left, 
+    - if the value is lower than the minimum, it will be on the left,
     and the minium would be displayed
     - If the value is higher than the maximum, it will be on the right,
     and the maximum woulld be displayed

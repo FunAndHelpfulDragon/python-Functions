@@ -1,5 +1,3 @@
-"""Test to do with run and time"""
-
 import time
 import pytest
 
