@@ -76,7 +76,7 @@ def AudioExtractor(path: str, destination: str = "mp3"):
     except ModuleNotFoundError:
         pass
 
-    data: list[str] = [path]
+    data = [path]
     directory: str = ""
     if os.path.isdir(path):
         data = Clean().clean(path)
