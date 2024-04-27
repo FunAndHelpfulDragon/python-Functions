@@ -74,7 +74,9 @@ def AudioExtractor(path: str, destination: str = "mp3"):
 
         # pylint: enable=C0415
     except ModuleNotFoundError:
-        pass
+        return Message.warn(
+		f"Failed to convert files due to missing 'moviepy' module"
+	)
 
     data = [path]
     directory: str = ""
