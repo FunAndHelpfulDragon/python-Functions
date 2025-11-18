@@ -1,3 +1,9 @@
+# Archive Notice
+I worked on this project 2+ years ago, back when i started to code and python was one of my first languages. Since then a lot has happened and i've switched from python to rust as my main language. Hence i won't be working on this project any longer for the foreseeable future.
+To me, rust is just nicer to work with at the moment and due to not updating this in 2+ years i felt archiving it is a better way to go.
+
+Fell free to fork this, although knowing all the eco-systems where we rely on modules, you probably already have all of these sub-functions in your project already, especially with the addition of stuff like AI.
+
 # Functions
 
 This is a gigantic folder, with multiple functions for multiple use cases. The only folder that you will need, is [PythonFunctions](./src/PythonFunctions/).
